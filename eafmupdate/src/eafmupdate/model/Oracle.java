@@ -1,4 +1,4 @@
-package fmficrepair;
+package eafmupdate.model;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,8 +12,6 @@ import org.prop4j.FMToBDD;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.editing.NodeCreator;
 import fmficrepair.GenerateUpdateRequest;
-import fmficrepair.Neighbors;
-import fmficrepair.Util;
 import net.sf.javabdd.BDD;
 import net.sf.javabdd.BDDFactory;
 

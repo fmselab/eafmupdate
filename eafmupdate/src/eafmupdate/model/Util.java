@@ -1,4 +1,4 @@
-package fmficrepair;
+package eafmupdate.model;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,6 +23,10 @@ import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
 import fmautorepair.mutationoperators.FMMutation;
 import fmautorepair.mutationoperators.FMMutator;
 import fmautorepair.utils.CollectionsUtil;
+import fmficrepair.CompareOracleMutantBDD;
+import fmficrepair.GenerateMutants;
+import fmficrepair.GenerateUpdateRequest;
+import fmficrepair.MutatedModel;
 import splar.core.fm.FeatureModelException;
 import splar.core.fm.configuration.ConfigurationEngineException;
 

@@ -6,9 +6,9 @@ import java.util.Random;
 
 import org.uncommons.watchmaker.framework.EvolutionaryOperator;
 
+import eafmupdate.model.Util;
 import fmautorepair.mutationoperators.FMMutation;
 import fmficrepair.MutatedModel;
-import fmficrepair.Util;
 
 public class FMEvolutionaryOperator implements EvolutionaryOperator<MutatedModel> {
 	

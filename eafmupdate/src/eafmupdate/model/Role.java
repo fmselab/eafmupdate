@@ -1,4 +1,4 @@
-package fmficrepair;
+package eafmupdate.model;
 
 public enum Role {
 	PARENT, SIBLING;

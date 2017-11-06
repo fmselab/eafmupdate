@@ -1,4 +1,4 @@
-package fmficrepair;
+package fmficrepair.repair;
 
 import org.junit.Test;
 

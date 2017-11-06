@@ -5,9 +5,9 @@ import java.util.List;
 import org.uncommons.watchmaker.framework.FitnessEvaluator;
 
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
+import eafmupdate.model.Oracle;
+import eafmupdate.model.Util;
 import fmficrepair.MutatedModel;
-import fmficrepair.Oracle;
-import fmficrepair.Util;
 
 public class FeatureModelEvaluator implements FitnessEvaluator<MutatedModel> {
 	

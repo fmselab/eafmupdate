@@ -12,10 +12,10 @@ import java.util.Map;
 import org.sat4j.specs.TimeoutException;
 
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
+import eafmupdate.model.Oracle;
+import eafmupdate.model.Util;
 import fmautorepair.utils.Utils;
 import fmficrepair.MutatedModel;
-import fmficrepair.Oracle;
-import fmficrepair.Util;
 import splar.core.fm.FeatureModelException;
 import splar.core.fm.configuration.ConfigurationEngineException;
 

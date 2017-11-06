@@ -4,11 +4,11 @@ import java.util.Iterator;
 
 import de.ovgu.featureide.fm.core.base.IFeature;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
+import eafmupdate.model.Util;
 import fmautorepair.mutationoperators.FMMutation;
 import fmautorepair.mutationoperators.FMMutator;
 import fmautorepair.utils.Filter;
 import fmautorepair.utils.FilteredIterator;
-import fmficrepair.Util;
 
 /**
  * given a feature model, it mutates it

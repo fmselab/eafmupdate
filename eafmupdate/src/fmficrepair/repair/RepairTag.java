@@ -1,6 +1,4 @@
-package fmficrepair;
-
-import fmficrepair.repair.Models;
+package fmficrepair.repair;
 
 /**
  * a tag for a repair set of mutations.

@@ -1,4 +1,4 @@
-package fmficrepair;
+package fmficrepair.repair;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,6 +12,8 @@ import java.util.Map.Entry;
 
 import org.junit.Test;
 
+import eafmupdate.model.Util;
+import fmficrepair.MutatedModel;
 import fmficrepair.repair.Models;
 import fmficrepair.repair.Process;
 import fmficrepair.repair.Processes;

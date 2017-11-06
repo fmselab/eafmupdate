@@ -19,6 +19,8 @@ import de.ovgu.featureide.fm.core.editing.Comparison;
 import de.ovgu.featureide.fm.core.editing.ModelComparator;
 import de.ovgu.featureide.fm.core.editing.NodeCreator;
 import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
+import eafmupdate.model.Oracle;
+import eafmupdate.model.Util;
 import fmautorepair.utils.Utils;
 import net.sf.javabdd.BDD;
 import net.sf.javabdd.BDDFactory;

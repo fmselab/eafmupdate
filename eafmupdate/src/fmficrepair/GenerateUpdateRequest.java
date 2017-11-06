@@ -16,6 +16,11 @@ import org.sat4j.specs.TimeoutException;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.base.IFeatureStructure;
 import de.ovgu.featureide.fm.core.editing.NodeCreator;
+import eafmupdate.model.Neighbors;
+import eafmupdate.model.Oracle;
+import eafmupdate.model.Role;
+import eafmupdate.model.Roles;
+import eafmupdate.model.Util;
 import net.sf.javabdd.BDD;
 import net.sf.javabdd.BDD.AllSatIterator;
 

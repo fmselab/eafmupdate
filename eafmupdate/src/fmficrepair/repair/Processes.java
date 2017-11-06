@@ -5,8 +5,8 @@ import org.uncommons.watchmaker.framework.selection.RouletteWheelSelection;
 import org.uncommons.watchmaker.framework.selection.TruncationSelection;
 
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
-import fmficrepair.Oracle;
-import fmficrepair.Util;
+import eafmupdate.model.Oracle;
+import eafmupdate.model.Util;
 //import fmficrepair.repair.ProcessEvolutionary;
 import usingwatchmaker.FeatureModelEvaluator;
 
