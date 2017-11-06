@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="ATMsoftware">
+				<alt mandatory="true" name="UserInterface">
+					<feature mandatory="true" name="Basic2Dview"/>
+					<feature mandatory="true" name="Deluxe3Dview"/>
+				</alt>
+				<and mandatory="true" name="Bankingfunctionality">
+					<feature mandatory="true" name="Checkingbalance"/>
+					<feature mandatory="true" name="Withdrawnmoney"/>
+					<feature name="Depositmoney"/>
+					<feature mandatory="true" name="Viewtransaction"/>
+					<feature name="Printingstatement"/>
+					<feature mandatory="true" name="Changeaccountpassword"/>
+					<feature name="Changemaximumlimitforwithdrawal"/>
+					<feature name="Localtransfertothesamebank"/>
+					<or name="Localtransfertootherbanks">
+						<feature mandatory="true" name="Detuschbank"/>
+						<feature mandatory="true" name="Stadtparkasse"/>
+						<feature mandatory="true" name="Volksbank"/>
+					</or>
+					<feature name="Internationaltransfer"/>
+					<feature name="Moneyexchange"/>
+					<feature name="Checkingmoneyexchangerate"/>
+					<feature mandatory="true" name="Printingbalanceafterwithdrawal"/>
+				</and>
+				<and name="Additionalfunctionality">
+					<feature name="Mobiletop_up"/>
+					<feature name="Paythebills"/>
+					<alt name="Languageselection">
+						<feature mandatory="true" name="German"/>
+						<feature mandatory="true" name="English"/>
+						<feature mandatory="true" name="French"/>
+						<feature mandatory="true" name="Italian"/>
+					</alt>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

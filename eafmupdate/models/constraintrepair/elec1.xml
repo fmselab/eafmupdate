@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="Building">
+				<and mandatory="true" name="Elevators">
+					<and mandatory="true" name="ControlPanel">
+						<feature mandatory="true" name="LevelSelector"/>
+						<feature name="CancelMechanism"/>
+						<feature mandatory="true" name="OpenDoorMechanism"/>
+						<feature mandatory="true" name="CloseDoorMechanism"/>
+						<feature mandatory="true" name="AlarmMechanism"/>
+						<feature mandatory="true" name="OperationModeSelector"/>
+						<feature mandatory="true" name="ManualStopMechanism"/>
+					</and>
+					<feature mandatory="true" name="Display"/>
+					<and mandatory="true" name="Doors">
+						<feature mandatory="true" name="FrontDoor"/>
+						<feature name="BackDoor"/>
+					</and>
+					<alt name="After_HoursSecurityAccessPanel">
+						<feature name="AccessCardScanner"/>
+						<feature name="FingerprintScanner"/>
+					</alt>
+					<feature mandatory="true" name="MaintenanceHatch"/>
+				</and>
+				<and mandatory="true" name="Levels">
+					<and mandatory="true" name="Display_1">
+						<feature mandatory="true" name="ElevatorDirection"/>
+						<feature mandatory="true" name="ElevatorLevel"/>
+					</and>
+					<and mandatory="true" name="ControlPanel_1">
+						<feature mandatory="true" name="Up_DownSelector"/>
+						<feature name="CancelMechanism_1"/>
+					</and>
+					<and mandatory="true" name="Doors_1">
+						<feature mandatory="true" name="FrontDoor_1"/>
+						<feature name="BackDoor_1"/>
+					</and>
+				</and>
+				<and mandatory="true" name="ElevatorSafetySystem">
+					<feature mandatory="true" name="ObstructionDetector"/>
+					<feature mandatory="true" name="OverloadDetector"/>
+					<feature mandatory="true" name="Emergency"/>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

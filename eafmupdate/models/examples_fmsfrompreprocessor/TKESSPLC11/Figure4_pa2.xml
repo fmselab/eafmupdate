@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and abstract="true" mandatory="true" name="TKSESPLC11">
+				<or mandatory="true" name="DIR_UNDIR">
+					<feature mandatory="true" name="Undirected"/>
+					<feature mandatory="true" name="Directed"/>
+				</or>
+				<feature name="Cycle"/>
+				<and name="GraphLibrary">
+					<feature name="Number"/>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

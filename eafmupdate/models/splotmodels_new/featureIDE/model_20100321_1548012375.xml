@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="ProjectPortalSuite">
+				<and mandatory="true" name="DesktopManager">
+					<feature name="IndicadoresyReportes"/>
+					<feature name="Bibliotecadocumentalnormativa"/>
+					<feature name="Basedeconocimiento"/>
+					<and mandatory="true" name="PlantilladeProyecto">
+						<feature mandatory="true" name="Bibliotecadocumentaldeingenieria"/>
+						<feature name="Bibliotecadocumentaldecontratos"/>
+						<feature name="Registrosfinancieros"/>
+						<feature name="Registrodecargosypersonas"/>
+					</and>
+					<feature name="Bibliotecadocumentaldepersonas"/>
+				</and>
+				<feature name="ExecutiveDashboard"/>
+				<feature name="EngineeringDocumentManagement"/>
+				<feature name="ContractManagement"/>
+				<feature name="ProgramandControlManagement"/>
+				<feature name="StaffingManagement"/>
+				<feature name="ComplianceManagement"/>
+				<feature name="BestPracticesandLessonsLearned"/>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

@@ -1,0 +1,18 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r VODPlayer(VODPlayer)
+	:g [1,1]
+		: StartPlayer(StartPlayer)
+		: Pause(Pause)
+		: PlayImm(PlayImm)
+		: StartMovie(StartMovie)
+			:o StopMovie(StopMovie)
+		: VCRInterf(VCRInterf)
+		: Quit(Quit)
+		: SelectMovie(SelectMovie)
+			:o ChangeServer(ChangeServer)
+			:o Detail(Detail)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="MoviesApp">
+				<and mandatory="true" name="GUI">
+					<feature name="Thin"/>
+					<feature mandatory="true" name="Rich"/>
+				</and>
+				<and mandatory="true" name="DB">
+					<feature name="Local"/>
+					<alt name="Remote">
+						<feature mandatory="true" name="CachePolicy"/>
+					</alt>
+				</and>
+				<and mandatory="true" name="Network">
+					<feature name="Wifi"/>
+					<feature mandatory="true" name="Bluetooth"/>
+				</and>
+				<and mandatory="true" name="GPS">
+					<feature mandatory="true" name="Built_In"/>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation Built_In from OPTIONAL TO MANDATORY</c>
+			<c>mutation DB from ALT TO OR</c>
+			<c>mutation GUI from ALT TO AND</c>
+			<c>mutation Network from ALT TO AND to OPT</c>
+			<c>mutation DB from OR TO ALTERNATIVE</c>
+			<c>mutation Remote from AND TO OR</c>
+			<c>mutation MoviesApp from AND TO ALT</c>
+			<c>mutation Built_In from MANDATORY TO OPTIONAL</c>
+			<c>mutation MoviesApp from ALT TO AND</c>
+			<c>mutation Bluetooth from OPTIONAL TO MANDATORY</c>
+			<c>mutation Remote from OR TO ALTERNATIVE</c>
+			<c>mutation GPS from OPTIONAL TO MANDATORY</c>
+			<c>mutation MoviesApp from AND TO ALT</c>
+			<c>mutation MoviesApp from ALT TO OR</c>
+			<c>mutation MoviesApp from OR TO AND</c>
+			<c>mutation Built_In from OPTIONAL TO MANDATORY</c>
+			<c>mutation Thin from MANDATORY TO OPTIONAL</c>
+			<c>mutation DB from ALT TO AND to OPT</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

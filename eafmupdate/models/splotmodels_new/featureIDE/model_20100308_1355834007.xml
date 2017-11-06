@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="ConferenceContext">
+				<or name="Person">
+					<alt mandatory="true" name="Location">
+						<feature mandatory="true" name="RoomResolution"/>
+						<feature mandatory="true" name="BuildingResolution"/>
+					</alt>
+					<feature mandatory="true" name="EventsPreference"/>
+					<or mandatory="true" name="Publications">
+						<feature mandatory="true" name="ConferencePapers"/>
+						<feature mandatory="true" name="JournalPapers"/>
+						<feature mandatory="true" name="BookChapters"/>
+					</or>
+					<feature mandatory="true" name="ContactDetails"/>
+					<feature mandatory="true" name="___"/>
+				</or>
+				<and name="Conference">
+					<feature name="Venue"/>
+					<or name="ParticipatingPeople">
+						<feature mandatory="true" name="PhDStudent"/>
+						<alt mandatory="true" name="Experts">
+							<feature mandatory="true" name="HavingAwards"/>
+							<feature mandatory="true" name="HavingJournalPublications"/>
+						</alt>
+					</or>
+					<feature name="_r_2_32"/>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

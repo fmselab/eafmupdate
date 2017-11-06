@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="graph">
+				<and mandatory="true" name="services">
+					<and mandatory="true" name="graph_manipulation">
+						<feature mandatory="true" name="delete"/>
+						<and mandatory="true" name="select">
+							<alt mandatory="true" name="selection_mode">
+								<feature mandatory="true" name="increment_selection"/>
+								<feature mandatory="true" name="non_increment_selection"/>
+							</alt>
+						</and>
+						<and mandatory="true" name="add">
+							<feature mandatory="true" name="entity_add"/>
+							<feature mandatory="true" name="connector_add"/>
+						</and>
+						<and mandatory="true" name="move">
+							<alt mandatory="true" name="moving_mode">
+								<feature mandatory="true" name="outline_moving"/>
+								<feature mandatory="true" name="content_moving"/>
+							</alt>
+							<alt name="moving_constraint">
+								<feature mandatory="true" name="horizontal_constraint"/>
+								<feature mandatory="true" name="vertical_constraint"/>
+							</alt>
+						</and>
+						<feature name="compose"/>
+						<and name="layer_adjust">
+							<feature mandatory="true" name="up_layer"/>
+							<feature mandatory="true" name="down_layer"/>
+						</and>
+					</and>
+					<and name="do_undo_redo">
+						<feature mandatory="true" name="select_do_undo_redo"/>
+						<feature mandatory="true" name="add_do_undo_redo"/>
+						<feature mandatory="true" name="delete_do_undo_redo"/>
+						<feature mandatory="true" name="move_do_undo_redo"/>
+						<feature name="compose_do_undo_redo"/>
+						<feature name="layer_adjust_do_undo_redo"/>
+					</and>
+					<feature name="zoom_inout"/>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>do_undo_redo</var>
+					</not>
+					<var>graph_manipulation</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>zoom_inout</var>
+					</not>
+					<var>graph_manipulation</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>compose</var>
+					</not>
+					<disj>
+						<not>
+							<var>do_undo_redo</var>
+						</not>
+						<var>compose_do_undo_redo</var>
+					</disj>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>compose_do_undo_redo</var>
+					</not>
+					<var>compose</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>compose_do_undo_redo</var>
+					</not>
+					<var>do_undo_redo</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>layer_adjust</var>
+					</not>
+					<disj>
+						<not>
+							<var>do_undo_redo</var>
+						</not>
+						<var>layer_adjust_do_undo_redo</var>
+					</disj>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>layer_adjust_do_undo_redo</var>
+					</not>
+					<var>do_undo_redo</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>layer_adjust_do_undo_redo</var>
+					</not>
+					<var>layer_adjust</var>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

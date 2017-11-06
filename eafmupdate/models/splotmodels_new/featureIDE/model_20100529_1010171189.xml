@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="JCalc">
+				<alt mandatory="true" name="LANG">
+					<feature mandatory="true" name="PT_BR"/>
+					<feature mandatory="true" name="EN"/>
+				</alt>
+				<and mandatory="true" name="MENU">
+					<feature mandatory="true" name="FILE"/>
+					<feature mandatory="true" name="HELP"/>
+					<feature name="EDIT"/>
+					<feature name="SAVE"/>
+				</and>
+				<alt name="LOOKANDFEEL">
+					<feature mandatory="true" name="Metal"/>
+					<feature mandatory="true" name="System"/>
+					<feature mandatory="true" name="Motif"/>
+					<feature mandatory="true" name="GTK"/>
+					<feature mandatory="true" name="Windows"/>
+				</alt>
+				<feature name="ANALYZER"/>
+				<feature name="PERFORMANCE"/>
+				<alt mandatory="true" name="DEVICE">
+					<feature mandatory="true" name="Z6"/>
+					<feature mandatory="true" name="Milestone"/>
+					<feature mandatory="true" name="PC"/>
+				</alt>
+				<feature name="COMMA"/>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<alt mandatory="true" name="colligens">
+				<feature mandatory="true" name="HAVE_LIBGCRYPT"/>
+				<feature mandatory="true" name="HAVE_LIBCRYPTO"/>
+			</alt>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>Figure1_pv</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

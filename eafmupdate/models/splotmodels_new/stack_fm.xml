@@ -1,0 +1,27 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r Stack(Stack)
+	:o Size(Size)
+		:g [1,1]
+			: Fixed(Fixed)
+				:m Value(Value)
+			: Dynamic(Dynamic)
+	:m ElementType(ElementType)
+		:g [1,1]
+			: Integer(Integer)
+			: Float(Float)
+			: String(String)
+	:o Optimization(Optimization)
+		:g [1,1]
+			: Speed(Speed)
+			: MemoryUsage(MemoryUsage)
+	:o Counter(Counter)
+	:o AdditionalFeatures(AdditionalFeatures)
+		:g [1,*]
+			: ThreadSafety(ThreadSafety)
+			: BoundsCheck(BoundsCheck)
+			: TypeCheck(TypeCheck)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

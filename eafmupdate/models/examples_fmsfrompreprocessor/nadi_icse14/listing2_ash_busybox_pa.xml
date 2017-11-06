@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and abstract="true" mandatory="true" name="Root">
+				<feature name="ASH"/>
+				<feature name="NOMMU"/>
+				<feature name="EDITING"/>
+				<feature name="MAX_LEN"/>
+				<feature name="EDITING_VI"/>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>ASH</var>
+					<not>
+						<var>NOMMU</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<conj>
+						<var>EDITING_VI</var>
+						<var>MAX_LEN</var>
+					</conj>
+					<var>EDITING</var>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<or abstract="true" mandatory="true" name="TKSESPLC11">
+				<feature mandatory="true" name="GraphLibrary"/>
+				<feature mandatory="true" name="Cycle"/>
+				<feature mandatory="true" name="Number"/>
+				<feature mandatory="true" name="Directed"/>
+				<feature mandatory="true" name="Undirected"/>
+			</or>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation Cycle from OPTIONAL TO MANDATORY</c>
+			<c>mutation TKSESPLC11 from AND TO OR</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>
+

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="MobileGames">
+				<or mandatory="true" name="Input">
+					<feature mandatory="true" name="TouchScreen"/>
+					<feature mandatory="true" name="Keypad"/>
+					<feature mandatory="true" name="Speech"/>
+					<feature mandatory="true" name="Movementdetection"/>
+				</or>
+				<and name="Output">
+					<feature name="ForceFeedback"/>
+				</and>
+				<and name="NetworkSupport">
+					<feature name="OnlineMultiplayer"/>
+				</and>
+				<and name="Internationalization">
+					<feature name="Internationallanguangessupport"/>
+				</and>
+				<and name="PlatformIndependence">
+					<feature name="Platformindependencesupport"/>
+				</and>
+				<and name="Payandbillsupport">
+					<feature name="Payandbillsystem"/>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<var>TouchScreen</var>
+					<disj>
+						<var>Keypad</var>
+						<disj>
+							<var>Speech</var>
+							<disj>
+								<var>Movementdetection</var>
+								<disj>
+									<var>Input</var>
+									<disj>
+										<var>ForceFeedback</var>
+										<disj>
+											<var>Output</var>
+											<disj>
+												<var>OnlineMultiplayer</var>
+												<disj>
+													<var>NetworkSupport</var>
+													<disj>
+														<var>Internationallanguangessupport</var>
+														<disj>
+															<var>Internationalization</var>
+															<disj>
+																<var>Platformindependencesupport</var>
+																<disj>
+																	<var>PlatformIndependence</var>
+																	<disj>
+																		<var>Payandbillsystem</var>
+																		<disj>
+																			<var>Payandbillsupport</var>
+																			<var>MobileGames</var>
+																		</disj>
+																	</disj>
+																</disj>
+															</disj>
+														</disj>
+													</disj>
+												</disj>
+											</disj>
+										</disj>
+									</disj>
+								</disj>
+							</disj>
+						</disj>
+					</disj>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

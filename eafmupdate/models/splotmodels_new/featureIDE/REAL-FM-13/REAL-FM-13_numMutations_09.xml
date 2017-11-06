@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<alt mandatory="true" name="tecom">
+				<and mandatory="true" name="ipvoice">
+					<and mandatory="true" name="software">
+						<feature name="swpack1"/>
+						<feature name="swpack2"/>
+					</and>
+				</and>
+				<and mandatory="true" name="rack">
+					<and mandatory="true" name="sizes">
+						<feature mandatory="true" name="large"/>
+						<feature name="medium"/>
+						<feature name="small"/>
+					</and>
+				</and>
+				<and mandatory="true" name="messaging">
+					<feature name="upgrade_swpack"/>
+				</and>
+			</alt>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>swpack1</var>
+					</not>
+					<not>
+						<var>upgrade_swpack</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>ipvoice</var>
+					</not>
+					<disj>
+						<not>
+							<var>messaging</var>
+						</not>
+						<var>upgrade_swpack</var>
+					</disj>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>REAL-FM-13_numMutations_09</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

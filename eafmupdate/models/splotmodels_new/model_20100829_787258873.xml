@@ -1,0 +1,72 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r MeetingConfig(MeetingConfig)
+	:m General(General)
+		:m Title(Title)
+		:m InstitutionID(InstitutionID)
+		:o Assemblymembers(Assemblymembers)
+	:m Data(Data)
+		:m Meetingattributes(Meetingattributes)
+			:g [1,*]
+				: Starttime(Starttime)
+				: Endtime(Endtime)
+				: Attendees(Attendees)
+				: Place(Place)
+		:o Usegroupsascategories(Usegroupsascategories)
+		:m Iteminsertionalgorithm(Iteminsertionalgorithm)
+			:g [1,1]
+				: Attheend(Attheend)
+				: Categoryorder(Categoryorder)
+				: Proposinggrouporder(Proposinggrouporder)
+	:m Workflowandsecurity(Workflowandsecurity)
+		:m Meetingworkflow(Meetingworkflow)
+			:g [1,1]
+				: Standardworkflow(Standardworkflow)
+				: Collegeworkflow(Collegeworkflow)
+				: Archiveworkflow(Archiveworkflow)
+		:o Zope3conditioninterfave(Zope3conditioninterfave)
+		:o Zope3actioninterface(Zope3actioninterface)
+	:m Userinterface(Userinterface)
+		:m Meetingdisplaystatus(Meetingdisplaystatus)
+			:g [1,*]
+				: Archived(Archived)
+				: Created(Created)
+				: Decided(Decided)
+				: Closed(Closed)
+				: Published(Published)
+		:m Defaultview(Defaultview)
+			:g [1,1]
+				: Myitems(Myitems)
+				: Allitems(Allitems)
+				: Availablemeetings(Availablemeetings)
+				: Decidedmeetings(Decidedmeetings)
+		:o Itemduplication(Itemduplication)
+		:o Openannexesinseparatewindow(Openannexesinseparatewindow)
+	:o Emailnotification(Emailnotification)
+	:m Tasks(Tasks)
+		:o Displaymacro(Displaymacro)
+		:o Taskcreator(Taskcreator)
+			:g [1,*]
+				: Manager(Manager)
+				: Meetingmanager(Meetingmanager)
+				: Owner(Owner)
+	:m Votes(Votes)
+		:o Enablevoting(Enablevoting)
+		:o Voteencoder(Voteencoder)
+			:g [1,*]
+				: _r_47_49_50_51(_r_47_49_50_51)
+				: Voter(Voter)
+		:o Availablevotevalues(Availablevotevalues)
+			:g [1,*]
+				: Yes(Yes)
+				: No(No)
+				: Abstention(Abstention)
+		:o Defaultvotevalue(Defaultvotevalue)
+			:g [1,1]
+				: _r_47_58_59_60(_r_47_58_59_60)
+				: _r_47_58_59_61(_r_47_58_59_61)
+				: _r_47_58_59_62(_r_47_58_59_62)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

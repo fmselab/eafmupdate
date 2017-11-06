@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="EC2">
+				<alt mandatory="true" name="O_S">
+					<feature mandatory="true" name="Linux"/>
+					<feature mandatory="true" name="Windows"/>
+				</alt>
+				<alt mandatory="true" name="Country">
+					<feature mandatory="true" name="US"/>
+					<feature mandatory="true" name="EU"/>
+				</alt>
+				<alt mandatory="true" name="InstanceCategory">
+					<alt mandatory="true" name="Ondemand">
+						<alt mandatory="true" name="Standard">
+							<feature mandatory="true" name="S"/>
+							<feature mandatory="true" name="L"/>
+							<feature mandatory="true" name="XL"/>
+						</alt>
+						<alt mandatory="true" name="HighMemory">
+							<feature mandatory="true" name="Duo"/>
+							<feature mandatory="true" name="Qua"/>
+						</alt>
+						<alt mandatory="true" name="HighCPU">
+							<feature mandatory="true" name="M"/>
+							<feature mandatory="true" name="_r_3_4_5_17_20_29_31"/>
+						</alt>
+					</alt>
+					<feature mandatory="true" name="Reserve"/>
+				</alt>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

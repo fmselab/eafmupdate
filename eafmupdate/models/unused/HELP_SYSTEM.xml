@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="HelpSystem">
+				<or mandatory="true" name="Priority">
+					<feature mandatory="true" name="PL"/>
+					<feature mandatory="true" name="PI"/>
+					<feature mandatory="true" name="PH"/>
+				</or>
+				<alt mandatory="true" name="Method">
+					<feature mandatory="true" name="PR"/>
+					<feature mandatory="true" name="PB"/>
+				</alt>
+				<alt mandatory="true" name="Level">
+					<feature mandatory="true" name="IT"/>
+					<feature mandatory="true" name="AD"/>
+					<feature mandatory="true" name="BG"/>
+				</alt>
+				<alt mandatory="true" name="Activity">
+					<feature mandatory="true" name="PS"/>
+					<feature mandatory="true" name="CT"/>
+				</alt>
+				<alt mandatory="true" name="SensorInput">
+					<feature mandatory="true" name="S1"/>
+					<feature mandatory="true" name="S2"/>
+					<feature mandatory="true" name="S3"/>
+					<feature mandatory="true" name="S4"/>
+				</alt>
+				<alt mandatory="true" name="SensorPosition">
+					<and mandatory="true" name="NotPressed">
+						<alt mandatory="true" name="Pressed">
+							<feature mandatory="true" name="Sound1"/>
+							<feature mandatory="true" name="Sound2"/>
+						</alt>
+					</and>
+				</alt>
+				<feature mandatory="true" name="Sound"/>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>PH</var>
+					</not>
+					<var>Activity</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>PH</var>
+					</not>
+					<var>Method</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>PL</var>
+					</not>
+					<var>SensorPosition</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>PI</var>
+					</not>
+					<var>SensorInput</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>PH</var>
+					</not>
+					<var>Level</var>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation Sound from OPTIONAL TO MANDATORY</c>
+			<c>mutation Priority from OR TO AND in OPT</c>
+			<c>mutation Priority from AND TO OR</c>
+			<c>mutation Priority from OR TO AND in OPT</c>
+			<c>mutation PH from OPTIONAL TO MANDATORY</c>
+			<c>mutation Priority from AND TO OR</c>
+			<c>mutation Priority from OR TO AND in OPT</c>
+			<c>mutation PL from OPTIONAL TO MANDATORY</c>
+			<c>mutation Pressed from OPTIONAL TO MANDATORY</c>
+			<c>mutation Activity from ALT TO AND to OPT</c>
+			<c>mutation Activity from AND TO ALT</c>
+			<c>mutation Priority from AND TO OR</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>
+

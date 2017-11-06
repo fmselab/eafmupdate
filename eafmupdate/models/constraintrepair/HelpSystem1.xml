@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="HelpSystem">
+				<or mandatory="true" name="Priority">
+					<feature name="PL"/>
+					<feature name="PI"/>
+					<feature name="PH"/>
+				</or>
+				<alt mandatory="true" name="Method">
+					<feature name="PR"/>
+					<feature name="PB"/>
+				</alt>
+				<alt mandatory="true" name="Level">
+					<feature name="IT"/>
+					<feature name="AD"/>
+					<feature name="BG"/>
+				</alt>
+				<alt mandatory="true" name="Activity">
+					<feature name="PS"/>
+					<feature name="CT"/>
+				</alt>
+				<alt mandatory="true" name="SensorInput">
+					<feature name="S1"/>
+					<feature name="S2"/>
+					<feature name="S3"/>
+					<feature name="S4"/>
+				</alt>
+				<alt mandatory="true" name="SensorPosition">
+					<feature name="NotPressed"/>
+					<alt name="Pressed">
+						<feature name="Sound1"/>
+						<feature name="Sound2"/>
+					</alt>
+				</alt>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>PH</var>
+					</not>
+					<var>Activity</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>PH</var>
+					</not>
+					<var>Method</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>PL</var>
+					</not>
+					<var>SensorPosition</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>PI</var>
+					</not>
+					<var>SensorInput</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>PH</var>
+					</not>
+					<var>Level</var>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

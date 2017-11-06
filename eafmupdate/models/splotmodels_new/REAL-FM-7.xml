@@ -1,0 +1,24 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r jplug(jplug)
+	:m interface(interface)
+		:g [1,1]
+			: sdi(sdi)
+			: mdi(mdi)
+	:o gui_builder(gui_builder)
+		:m java(java)
+		:o qt(qt)
+	:o model_code_synch(model_code_synch)
+	:o compiler(compiler)
+		:g [1,*]
+			: javac(javac)
+			: mvc(mvc)
+	:o diagram_builder(diagram_builder)
+		:m uml(uml)
+		:o petri_net(petri_net)
+</feature_tree>
+<constraints>
+C1:~gui_builder  or  ~sdi
+C2:~model_code_synch  or  diagram_builder
+</constraints>
+</feature_model>

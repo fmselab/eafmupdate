@@ -1,0 +1,19 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r SAL(SAL)
+	:m Language(Language)
+		:m SimpleArithmetic(SimpleArithmetic)
+		:o Conditional(Conditional)
+	:m Evaluator(Evaluator)
+		:g [1,1]
+			: Evaluationsemantics(Evaluationsemantics)
+			: Machinesemantics(Machinesemantics)
+	:o Optimizer(Optimizer)
+		:g [1,*]
+			: Constantfolding(Constantfolding)
+			: Short_circuit(Short_circuit)
+</feature_tree>
+<constraints>
+C1:Conditional  or  ~Short_circuit
+</constraints>
+</feature_model>

@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="eShop">
+				<and mandatory="true" name="Storefront">
+					<or name="Homepage">
+						<feature mandatory="true" name="Staticcontent"/>
+						<and mandatory="true" name="Dynamiccontent">
+							<or mandatory="true" name="Contenttype">
+								<feature mandatory="true" name="Welcomemessage"/>
+								<feature mandatory="true" name="Specialoffers"/>
+							</or>
+							<or mandatory="true" name="Variationsource">
+								<feature mandatory="true" name="Timedependent"/>
+								<feature mandatory="true" name="Personalized"/>
+							</or>
+						</and>
+					</or>
+					<and name="Registration">
+						<or mandatory="true" name="Registrationenforcement">
+							<feature mandatory="true" name="Registertobrowse"/>
+							<feature mandatory="true" name="Registertobuy"/>
+							<feature mandatory="true" name="None"/>
+						</or>
+						<and mandatory="true" name="Registrationinformation">
+							<feature mandatory="true" name="Logincredentials"/>
+							<and name="Shippingaddress">
+								<feature name="Multipleshippingaddresses"/>
+							</and>
+							<and name="Billingaddress">
+								<feature name="Multiplebillingaddresses"/>
+							</and>
+							<and name="Creditcardinformation">
+								<feature mandatory="true" name="Cardholdername"/>
+								<feature mandatory="true" name="Cardnumber"/>
+								<feature mandatory="true" name="Expirydate"/>
+								<feature name="Securityinformation"/>
+							</and>
+							<or name="Demographics">
+								<feature mandatory="true" name="Age"/>
+								<feature mandatory="true" name="Income"/>
+								<feature mandatory="true" name="Education"/>
+								<feature mandatory="true" name="CustomDemographicfield"/>
+							</or>
+							<feature name="PersonalInformation"/>
+							<or name="Preferences">
+								<feature mandatory="true" name="Sitelayout"/>
+								<feature mandatory="true" name="Listsize"/>
+								<feature mandatory="true" name="Language"/>
+							</or>
+							<feature name="Reminders"/>
+							<feature name="Quickcheckoutprofile"/>
+							<feature name="Customfields"/>
+						</and>
+						<feature name="Userbehaviourtrackinginformation"/>
+					</and>
+					<and mandatory="true" name="Catalog">
+						<and mandatory="true" name="ProductInformation">
+							<or mandatory="true" name="Producttype">
+								<feature mandatory="true" name="Eletronicgoods"/>
+								<feature mandatory="true" name="Physicalgoods"/>
+								<feature mandatory="true" name="Services"/>
+							</or>
+							<feature mandatory="true" name="Basicinformation"/>
+							<feature name="Detailedinformation"/>
+							<feature name="Warrantyinformation"/>
+							<feature name="Customerreviews"/>
+							<or name="Associatedassets">
+								<feature mandatory="true" name="Documents"/>
+								<or mandatory="true" name="Mediafiles">
+									<or mandatory="true" name="Image">
+										<feature mandatory="true" name="Thumbnail"/>
+										<feature mandatory="true" name="a2Dimage"/>
+										<feature mandatory="true" name="a3Dimage"/>
+										<feature mandatory="true" name="a360degreesimage"/>
+										<feature mandatory="true" name="Differentperspectives"/>
+										<feature mandatory="true" name="Gallery"/>
+									</or>
+									<feature mandatory="true" name="Video"/>
+									<feature mandatory="true" name="Sound"/>
+								</or>
+							</or>
+							<and name="Productvariants">
+								<feature name="Complexproductconfiguration"/>
+							</and>
+							<feature name="Size"/>
+							<feature name="Weight"/>
+							<feature name="Availability"/>
+							<feature name="custom_fields"/>
+						</and>
+						<and name="Categories">
+							<and mandatory="true" name="categories_catalog">
+								<and name="_id_52">
+									<feature name="Multi_level"/>
+									<feature name="Multipleclassification"/>
+								</and>
+							</and>
+						</and>
+						<feature name="Multiplecatalogs"/>
+						<or name="Searching">
+							<feature mandatory="true" name="Basicsearch"/>
+							<feature mandatory="true" name="Advancedsearch"/>
+						</or>
+						<and name="Browsing">
+							<feature mandatory="true" name="Productpage"/>
+							<feature name="Categorypage"/>
+							<and name="Indexpage">
+								<or name="Sortingfilters">
+									<feature mandatory="true" name="Price"/>
+									<feature mandatory="true" name="Quality"/>
+									<feature mandatory="true" name="Price_Qualityratio"/>
+									<feature mandatory="true" name="Manufacturername"/>
+									<feature mandatory="true" name="Customfilter"/>
+								</or>
+							</and>
+						</and>
+						<and name="Customviews">
+							<feature name="Seasonalproductviews"/>
+							<feature name="Personalizedviews"/>
+						</and>
+					</and>
+					<and name="Wishlist">
+						<feature name="Wishlistsaveaftersession"/>
+						<feature name="E_mailwishlist"/>
+						<feature name="Multiplewishlists"/>
+						<or name="Permissions">
+							<feature mandatory="true" name="Publicaccess"/>
+							<feature mandatory="true" name="Restrictedaccess"/>
+							<feature mandatory="true" name="Privateaccess"/>
+						</or>
+					</and>
+					<and mandatory="true" name="Buypaths">
+						<and mandatory="true" name="Shoppingcart">
+							<feature mandatory="true" name="Inventorymanagementpolicy"/>
+							<feature mandatory="true" name="Cartcontentpage"/>
+							<feature name="Cartsummarypage"/>
+							<feature name="Cartsaveaftersession"/>
+						</and>
+						<and mandatory="true" name="Checkout">
+							<or mandatory="true" name="Checkouttype">
+								<and mandatory="true" name="Registeredcheckout">
+									<and name="Quickcheckout">
+										<feature name="Enableprofileupdateoncheckout"/>
+									</and>
+								</and>
+								<feature mandatory="true" name="Guestcheckout"/>
+							</or>
+							<and name="Shippingoptions">
+								<feature name="Qualityofserviceselection"/>
+								<feature name="Carrierselection"/>
+								<feature name="Giftoptions"/>
+								<feature name="Multipleshipments"/>
+								<feature mandatory="true" name="Shippingcostcalculation"/>
+							</and>
+							<or mandatory="true" name="Taxationoptions">
+								<and mandatory="true" name="Customtaxation">
+									<or mandatory="true" name="Type">
+										<feature mandatory="true" name="Fixed_ratetaxation"/>
+										<and mandatory="true" name="Rule_basedtaxation">
+											<feature mandatory="true" name="Taxcodes"/>
+											<and mandatory="true" name="Address">
+												<feature mandatory="true" name="Shipping"/>
+												<feature name="Billing"/>
+											</and>
+											<or name="Resolution">
+												<feature mandatory="true" name="Country"/>
+												<feature mandatory="true" name="Region"/>
+												<feature mandatory="true" name="City"/>
+											</or>
+										</and>
+									</or>
+									<or mandatory="true" name="Ammountspecification">
+										<feature mandatory="true" name="Surcharge"/>
+										<feature mandatory="true" name="Percentage"/>
+									</or>
+								</and>
+								<or mandatory="true" name="Taxgateways">
+									<feature mandatory="true" name="CertiTAX"/>
+									<feature mandatory="true" name="CyberSource"/>
+									<feature mandatory="true" name="Customtaxgateway"/>
+								</or>
+							</or>
+							<and mandatory="true" name="Paymentoptions">
+								<or mandatory="true" name="Paymenttypes">
+									<feature mandatory="true" name="COD"/>
+									<feature mandatory="true" name="Creditcard"/>
+									<feature mandatory="true" name="Debitcard"/>
+									<feature mandatory="true" name="Eletroniccheque"/>
+									<feature mandatory="true" name="Faxmailorder"/>
+									<feature mandatory="true" name="Purchaseorder"/>
+									<feature mandatory="true" name="Giftcertificate"/>
+									<feature mandatory="true" name="Phoneorder"/>
+									<feature mandatory="true" name="Custompaymenttype"/>
+								</or>
+								<feature name="Frauddetection"/>
+								<or name="Paymentgateways">
+									<feature mandatory="true" name="Authorize_Net"/>
+									<feature mandatory="true" name="_id_133"/>
+									<feature mandatory="true" name="LinkPoint"/>
+									<feature mandatory="true" name="Paradata"/>
+									<feature mandatory="true" name="SkipJack"/>
+									<feature mandatory="true" name="VerisignPayflowPro"/>
+									<feature mandatory="true" name="Custompaymentgateway"/>
+								</or>
+							</and>
+						</and>
+						<or mandatory="true" name="Orderconfirmation">
+							<feature mandatory="true" name="Eletronicpage"/>
+							<feature mandatory="true" name="E_mail"/>
+							<feature mandatory="true" name="Phone"/>
+							<feature mandatory="true" name="Mail"/>
+						</or>
+					</and>
+					<or name="Customerservice">
+						<and mandatory="true" name="Questionandfeedbackforms">
+							<feature name="Questionandfeedbacktracking"/>
+						</and>
+						<feature mandatory="true" name="Productreturns"/>
+						<and mandatory="true" name="Orderstatusreview">
+							<or mandatory="true" name="Filteringcriteria">
+								<feature mandatory="true" name="Ordernumber"/>
+								<feature mandatory="true" name="Orderdate"/>
+								<feature mandatory="true" name="Orderstatus"/>
+							</or>
+							<feature name="Requestorderhardcopy"/>
+						</and>
+						<or mandatory="true" name="Shipmentstatustracking">
+							<feature mandatory="true" name="Internaltracking"/>
+							<feature mandatory="true" name="Partnertracking"/>
+						</or>
+					</or>
+					<and name="Userbehaviourtracking">
+						<or mandatory="true" name="Behaviourtracked">
+							<feature mandatory="true" name="Locallyvisitedpages"/>
+							<feature mandatory="true" name="Externalreferringpages"/>
+							<feature mandatory="true" name="Previouspurchases"/>
+						</or>
+					</and>
+				</and>
+				<and mandatory="true" name="Businessmanagement">
+					<and mandatory="true" name="Ordermanagement">
+						<or mandatory="true" name="Fulfillment">
+							<and mandatory="true" name="Physicalgoodsfulfillment">
+								<feature mandatory="true" name="Warehousemanagement"/>
+								<or mandatory="true" name="shipping">
+									<and mandatory="true" name="Customshippingmethod">
+										<and mandatory="true" name="Pricing">
+											<feature mandatory="true" name="Flatrate"/>
+											<or name="Ratefactors">
+												<feature mandatory="true" name="Quantitypurchased"/>
+												<feature mandatory="true" name="Ordertotal"/>
+												<feature mandatory="true" name="_id_173"/>
+												<feature mandatory="true" name="Productclassification"/>
+											</or>
+										</and>
+									</and>
+									<or mandatory="true" name="Shippinggateways">
+										<feature mandatory="true" name="FedEX"/>
+										<feature mandatory="true" name="UPS"/>
+										<feature mandatory="true" name="USPS"/>
+										<feature mandatory="true" name="CanadaPost"/>
+										<feature mandatory="true" name="Customshippinggateway"/>
+									</or>
+								</or>
+							</and>
+							<and mandatory="true" name="Eletronicgoodsfulfillment">
+								<feature mandatory="true" name="Filerepository"/>
+								<feature mandatory="true" name="Licensemanagement"/>
+							</and>
+							<and mandatory="true" name="Servicesfulfillment">
+								<feature name="Appointmentscheduling"/>
+								<feature name="Resourceplanning"/>
+							</and>
+						</or>
+					</and>
+					<and name="Targeting">
+						<or mandatory="true" name="Targetingcriteria">
+							<feature mandatory="true" name="Customerpreferences"/>
+							<feature mandatory="true" name="Personalinformation"/>
+							<feature mandatory="true" name="_id_190"/>
+							<feature mandatory="true" name="targeting_criteria_previous_purchases"/>
+							<feature mandatory="true" name="Shoppingcartcontent"/>
+							<feature mandatory="true" name="Wishlistcontent"/>
+							<feature mandatory="true" name="Previouslyvisitedpages"/>
+							<feature mandatory="true" name="Dateandtime"/>
+							<feature mandatory="true" name="Customtargetcriteria"/>
+						</or>
+						<or mandatory="true" name="Targetingmechanisms">
+							<and mandatory="true" name="Advertisements">
+								<or mandatory="true" name="Advertisementtypes">
+									<feature mandatory="true" name="Bannerads"/>
+									<feature mandatory="true" name="Pop_upads"/>
+								</or>
+								<or mandatory="true" name="Advertisementsources">
+									<feature mandatory="true" name="Houseadvertisements"/>
+									<and mandatory="true" name="Paidadvertisements">
+										<feature mandatory="true" name="Advertisementmanagementinterface"/>
+									</and>
+								</or>
+								<feature name="Advertisementresponsetracking"/>
+								<feature name="Contextsensitiveads"/>
+							</and>
+							<and mandatory="true" name="Discounts">
+								<and mandatory="true" name="Discountconditions">
+									<feature mandatory="true" name="Productandquantityscope"/>
+									<feature mandatory="true" name="Timescope"/>
+									<feature name="Purchasevaluescope"/>
+								</and>
+								<or mandatory="true" name="Award">
+									<feature mandatory="true" name="Percentagediscount"/>
+									<feature mandatory="true" name="Fixeddiscount"/>
+									<feature mandatory="true" name="Freeitem"/>
+								</or>
+								<and mandatory="true" name="Eligibilityrequirements">
+									<feature name="Customersegments"/>
+									<feature name="_id_219"/>
+								</and>
+								<or mandatory="true" name="Graduationby">
+									<feature mandatory="true" name="Purchasevalue"/>
+									<feature mandatory="true" name="Quantity"/>
+								</or>
+								<feature name="Coupons"/>
+								<feature mandatory="true" name="Handlingmultiplediscounts"/>
+							</and>
+							<or mandatory="true" name="Sellstrategies">
+								<feature mandatory="true" name="Productkitting"/>
+								<and mandatory="true" name="Up_selling">
+									<feature mandatory="true" name="Substituteproducts"/>
+								</and>
+								<and mandatory="true" name="Cross_selling">
+									<feature mandatory="true" name="Pastcustomersalsobought"/>
+								</and>
+							</or>
+						</or>
+						<or mandatory="true" name="Displayandnotification">
+							<feature mandatory="true" name="Assignmenttopagetypesfordisplay"/>
+							<feature mandatory="true" name="Productflagging"/>
+							<and mandatory="true" name="E_mails">
+								<feature name="personalized_emails"/>
+								<feature name="Responsetracking"/>
+							</and>
+						</or>
+						<feature name="Campaigns"/>
+					</and>
+					<and name="Affiliates">
+						<feature mandatory="true" name="Affiliateregistration"/>
+						<feature mandatory="true" name="Commissiontracking"/>
+					</and>
+					<and name="Inventorytracking">
+						<feature name="Allowbackorders"/>
+					</and>
+					<and name="Procurement">
+						<and mandatory="true" name="Stockreplenishment">
+							<feature mandatory="true" name="Manual"/>
+							<and name="Automatic">
+								<feature mandatory="true" name="Non_repudiationservice"/>
+							</and>
+						</and>
+					</and>
+					<and name="Reportingandanalysis">
+						<feature mandatory="true" name="Reporttypes"/>
+						<feature mandatory="true" name="Reportformats"/>
+						<feature mandatory="true" name="Levelofdetail"/>
+					</and>
+					<or name="Externalsystemsintegration">
+						<feature mandatory="true" name="Fulfillmentsystem"/>
+						<feature mandatory="true" name="Inventorymanagementsystem"/>
+						<feature mandatory="true" name="Procurementsystem"/>
+						<feature mandatory="true" name="Externaldistributorsystem"/>
+					</or>
+					<and mandatory="true" name="Administration">
+						<and mandatory="true" name="Contentmanagement">
+							<feature mandatory="true" name="Productdatabasemanagement"/>
+							<feature mandatory="true" name="Presentationoptions"/>
+							<feature mandatory="true" name="Generallayoutmanagement"/>
+							<feature name="Contentapproval"/>
+						</and>
+						<and mandatory="true" name="Storeadministration">
+							<feature mandatory="true" name="Sitesearch"/>
+							<feature mandatory="true" name="Searchengineregistration"/>
+							<feature mandatory="true" name="Domainnamesetup"/>
+						</and>
+					</and>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>Wishlist</var>
+					</not>
+					<var>Wishlistsaveaftersession</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>Registration</var>
+					<var>Wishlistsaveaftersession</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Eletronicgoods</var>
+					</not>
+					<var>Size</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Physicalgoods</var>
+					</not>
+					<var>Size</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Eletronicgoods</var>
+					</not>
+					<var>Eletronicgoodsfulfillment</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Userbehaviourtrackinginformation</var>
+					</not>
+					<var>Userbehaviourtracking</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Quickcheckout</var>
+					</not>
+					<var>Quickcheckoutprofile</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Customerpreferences</var>
+					</not>
+					<var>Preferences</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Services</var>
+					</not>
+					<var>Servicesfulfillment</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Physicalgoods</var>
+					</not>
+					<var>Physicalgoodsfulfillment</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Wishlistcontent</var>
+					</not>
+					<var>Wishlist</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Registeredcheckout</var>
+					</not>
+					<var>Registertobuy</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Shippingoptions</var>
+					</not>
+					<var>shipping</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Registeredcheckout</var>
+					</not>
+					<var>Registrationenforcement</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Previouslyvisitedpages</var>
+					</not>
+					<disj>
+						<var>Locallyvisitedpages</var>
+						<var>Externalreferringpages</var>
+					</disj>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Specialoffers</var>
+					</not>
+					<var>Discounts</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Availability</var>
+					</not>
+					<var>Inventorytracking</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Physicalgoods</var>
+					</not>
+					<var>Weight</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Categorypage</var>
+					</not>
+					<var>Categories</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Permissions</var>
+					</not>
+					<var>Registration</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>E_mailwishlist</var>
+					</not>
+					<var>Registration</var>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

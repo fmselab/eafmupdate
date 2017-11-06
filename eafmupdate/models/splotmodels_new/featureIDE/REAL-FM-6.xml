@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="cellphone">
+				<or name="wireless">
+					<feature mandatory="true" name="infrared"/>
+					<feature mandatory="true" name="bluetooth"/>
+				</or>
+				<alt mandatory="true" name="accu_cell">
+					<feature mandatory="true" name="li_ion"/>
+					<feature mandatory="true" name="ni_mh"/>
+					<feature mandatory="true" name="ni_ca"/>
+				</alt>
+				<alt mandatory="true" name="display">
+					<feature mandatory="true" name="color"/>
+					<feature mandatory="true" name="monochrome"/>
+				</alt>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>bluetooth</var>
+					</not>
+					<var>li_ion</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>color</var>
+					</not>
+					<not>
+						<var>ni_ca</var>
+					</not>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

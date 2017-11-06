@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="MoviesApp">
+				<and mandatory="true" name="GUI">
+					<feature name="Thin"/>
+					<feature mandatory="true" name="Rich"/>
+				</and>
+				<alt mandatory="true" name="DB">
+					<feature mandatory="true" name="Local"/>
+					<and mandatory="true" name="Remote">
+						<feature name="CachePolicy"/>
+					</and>
+				</alt>
+				<and mandatory="true" name="Network">
+					<feature mandatory="true" name="Wifi"/>
+					<feature name="Bluetooth"/>
+				</and>
+				<and mandatory="true" name="GPS">
+					<feature mandatory="true" name="Built_In"/>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>movies_app_fm_numMutations_10</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

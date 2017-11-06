@@ -1,0 +1,60 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r Sienna(Sienna)
+	:m Trim(Trim)
+		:m Grade(Grade)
+			:g [1,1]
+				: Base(Base)
+				: LE(LE)
+				: SE(SE)
+				: XLE(XLE)
+					:o XLENavigationPackage(XLENavigationPackage)
+					:o XLEPremiumPackage(XLEPremiumPackage)
+				: LTD(LTD)
+		:m Engine(Engine)
+			:g [1,1]
+				: L4(L4)
+				: V6(V6)
+		:m Drive(Drive)
+			:g [1,1]
+				: a2Wd(a2Wd)
+				: AWD(AWD)
+		:m PsgrCount(PsgrCount)
+			:g [1,1]
+				: a7PSGR(a7PSGR)
+				: a8PSGR(a8PSGR)
+		:m ModelCode(ModelCode)
+			:g [1,1]
+				: a5312(a5312)
+				: a5328(a5328)
+	:m Color(Color)
+		:m ExteriorColor(ExteriorColor)
+			:g [1,1]
+				: SilverSkyMetallic(SilverSkyMetallic)
+				: SuperWhite(SuperWhite)
+				: BlizzardPearl(BlizzardPearl)
+		:m InteriorColor(InteriorColor)
+			:g [1,1]
+				: Bisc(Bisc)
+				: Gray(Gray)
+				: Charcoal(Charcoal)
+	:o Accessories(Accessories)
+		:o FloorMats(FloorMats)
+		:o MudFlaps(MudFlaps)
+	:m Derived(Derived)
+		:m Antenna(Antenna)
+			:g [1,1]
+				: InGlass(InGlass)
+				: Pole(Pole)
+</feature_tree>
+<constraints>
+C1:Base  or  ~a5312
+C2:InGlass  or  ~XLEPremiumPackage
+C3:InGlass  or  ~XLENavigationPackage
+C4:~LTD  or  InGlass
+C5:~LE  or  Pole
+C6:~SE  or  Pole
+C7:SE  or  ~Charcoal
+C8:~Base  or  Pole
+</constraints>
+</feature_model>

@@ -1,0 +1,24 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r ProjectPortalSuite(ProjectPortalSuite)
+	:m DesktopManager(DesktopManager)
+		:o IndicadoresyReportes(IndicadoresyReportes)
+		:o Bibliotecadocumentalnormativa(Bibliotecadocumentalnormativa)
+		:o Basedeconocimiento(Basedeconocimiento)
+		:m PlantilladeProyecto(PlantilladeProyecto)
+			:m Bibliotecadocumentaldeingenieria(Bibliotecadocumentaldeingenieria)
+			:o Bibliotecadocumentaldecontratos(Bibliotecadocumentaldecontratos)
+			:o Registrosfinancieros(Registrosfinancieros)
+			:o Registrodecargosypersonas(Registrodecargosypersonas)
+		:o Bibliotecadocumentaldepersonas(Bibliotecadocumentaldepersonas)
+	:o ExecutiveDashboard(ExecutiveDashboard)
+	:o EngineeringDocumentManagement(EngineeringDocumentManagement)
+	:o ContractManagement(ContractManagement)
+	:o ProgramandControlManagement(ProgramandControlManagement)
+	:o StaffingManagement(StaffingManagement)
+	:o ComplianceManagement(ComplianceManagement)
+	:o BestPracticesandLessonsLearned(BestPracticesandLessonsLearned)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

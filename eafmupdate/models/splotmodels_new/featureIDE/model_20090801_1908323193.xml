@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<or mandatory="true" name="CFDPLibrary">
+				<and mandatory="true" name="Send">
+					<feature name="SendAcknowledgedMode"/>
+					<feature name="SendFileSystemOperations"/>
+				</and>
+				<and mandatory="true" name="Receive">
+					<feature name="ReceiveAcknowledgedMode"/>
+					<feature name="ReceiveFileSystemOperations"/>
+				</and>
+				<and mandatory="true" name="PUS">
+					<feature name="PUSRename"/>
+					<feature name="PUSCopy"/>
+				</and>
+				<and mandatory="true" name="Reboot_">
+					<feature name="RebootEntity"/>
+					<feature name="RebootPUS"/>
+				</and>
+			</or>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

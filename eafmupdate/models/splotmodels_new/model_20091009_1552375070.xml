@@ -1,0 +1,55 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r Inventory(Inventory)
+	:m CatalogManagement(CatalogManagement)
+		:o ItemAssociations(ItemAssociations)
+		:o Services(Services)
+		:o Identification(Identification)
+			:g [1,*]
+				: RFID(RFID)
+				: BarCode(BarCode)
+		:m ItemClassification(ItemClassification)
+			:g [1,*]
+				: Categories(Categories)
+				: Tags(Tags)
+		:m Items(Items)
+			:g [1,*]
+				: Generic(Generic)
+				: Assembly(Assembly)
+				: Perishable(Perishable)
+				: Serialized(Serialized)
+				: RawMaterial(RawMaterial)
+	:m StockManagement(StockManagement)
+		:m Transactions(Transactions)
+			:g [1,*]
+				: Increase(Increase)
+				: Decrease(Decrease)
+				: Transfer(Transfer)
+				: Adjustment(Adjustment)
+				: Consignment(Consignment)
+				: Allocation(Allocation)
+				: Assembling(Assembling)
+		:o WarehouseManagement(WarehouseManagement)
+		:o SerialTracking(SerialTracking)
+		:o ExpirationControl(ExpirationControl)
+		:m UnitsConversion(UnitsConversion)
+		:m PhysicalCounting(PhysicalCounting)
+		:m ValuationMethod(ValuationMethod)
+			:g [1,1]
+				: FIFO(FIFO)
+				: LIFO(LIFO)
+				: AVG(AVG)
+		:m InventoryMethod(InventoryMethod)
+			:g [1,1]
+				: Perpetual(Perpetual)
+				: Periodic(Periodic)
+</feature_tree>
+<constraints>
+C1:Assembly  or  ~Assembling
+C2:WarehouseManagement  or  ~Transfer
+C3:~SerialTracking  or  Identification
+C4:ExpirationControl  or  ~Perishable
+C5:Identification  or  ~Serialized
+C6:ItemAssociations  or  ~Assembly
+</constraints>
+</feature_model>

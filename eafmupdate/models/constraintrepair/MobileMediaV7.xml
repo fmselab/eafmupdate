@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="MobileMedia">
+				<and mandatory="true" name="AlbumManagement">
+					<feature mandatory="true" name="CreateAlbum"/>
+					<feature mandatory="true" name="DeleteAlbum"/>
+				</and>
+				<and mandatory="true" name="MediaManagement">
+					<and name="Favorites">
+						<feature mandatory="true" name="SetFavorites"/>
+						<feature mandatory="true" name="ViewFavorites"/>
+					</and>
+					<feature name="Sorting"/>
+					<feature name="CopyMedia"/>
+					<and name="SMSTransfer">
+						<feature mandatory="true" name="ReceivePhoto"/>
+						<feature mandatory="true" name="SendPhoto"/>
+					</and>
+					<and mandatory="true" name="BasicMediaOperation">
+						<feature mandatory="true" name="EraseMedia"/>
+						<feature mandatory="true" name="DeleteMedia"/>
+						<feature mandatory="true" name="EditMediaLabel"/>
+					</and>
+				</and>
+				<or mandatory="true" name="MediaSelection">
+					<and mandatory="true" name="Photo">
+						<feature mandatory="true" name="ViewPhoto"/>
+						<feature name="CapturePhoto"/>
+					</and>
+					<and mandatory="true" name="Music">
+						<feature mandatory="true" name="PlayMusic"/>
+					</and>
+				</or>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

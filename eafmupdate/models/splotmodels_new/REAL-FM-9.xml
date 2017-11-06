@@ -1,0 +1,25 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r james(james)
+	:m user_mngt(user_mngt)
+		:g [1,1]
+			: db(db)
+			: ldap(ldap)
+	:o ws_interface(ws_interface)
+	:m gui(gui)
+		:g [1,*]
+			: pc(pc)
+			: pda(pda)
+	:m core(core)
+	:m modules(modules)
+		:g [1,*]
+			: calendar(calendar)
+			: forum(forum)
+			: congress_mngt(congress_mngt)
+			: repository(repository)
+</feature_tree>
+<constraints>
+C1:~pda  or  ~repository
+C2:~congress_mngt  or  repository
+</constraints>
+</feature_model>

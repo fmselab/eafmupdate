@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="VOLSKWAGENUP">
+				<alt mandatory="true" name="MODELO">
+					<feature mandatory="true" name="TAKE"/>
+					<feature mandatory="true" name="MOVE"/>
+					<feature mandatory="true" name="HIGH"/>
+				</alt>
+				<or mandatory="true" name="PORTAS">
+					<feature mandatory="true" name="a2P"/>
+					<feature mandatory="true" name="a4P"/>
+				</or>
+				<and mandatory="true" name="SEGURANCA">
+					<feature mandatory="true" name="ISOFIX"/>
+					<feature mandatory="true" name="ALERTAS"/>
+					<feature mandatory="true" name="A2B"/>
+					<feature mandatory="true" name="ABS"/>
+				</and>
+				<alt mandatory="true" name="CAMBIO">
+					<feature mandatory="true" name="MEC"/>
+					<feature mandatory="true" name="DSG"/>
+				</alt>
+				<alt mandatory="true" name="PINTURA">
+					<feature mandatory="true" name="SOLIDA"/>
+					<feature mandatory="true" name="METALICA"/>
+					<feature mandatory="true" name="ESPECIAL"/>
+				</alt>
+				<or name="OPCIONAIS">
+					<feature mandatory="true" name="DE"/>
+					<feature mandatory="true" name="SE"/>
+					<feature mandatory="true" name="VE"/>
+					<feature mandatory="true" name="TE"/>
+					<feature mandatory="true" name="FN"/>
+					<feature mandatory="true" name="AC"/>
+					<feature mandatory="true" name="CE"/>
+					<feature mandatory="true" name="MN"/>
+					<feature mandatory="true" name="CV"/>
+					<feature mandatory="true" name="R13"/>
+					<feature mandatory="true" name="R14"/>
+					<feature mandatory="true" name="R15"/>
+					<feature mandatory="true" name="SOM"/>
+					<feature mandatory="true" name="COURO"/>
+				</or>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>TAKE</var>
+					</not>
+					<var>R13</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>MOVE</var>
+					</not>
+					<disj>
+						<var>DE</var>
+						<disj>
+							<var>CE</var>
+							<disj>
+								<var>MN</var>
+								<disj>
+									<var>CV</var>
+									<var>R14</var>
+								</disj>
+							</disj>
+						</disj>
+					</disj>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>HIGH</var>
+					</not>
+					<disj>
+						<var>a4P</var>
+						<disj>
+							<var>DE</var>
+							<disj>
+								<var>SE</var>
+								<disj>
+									<var>VE</var>
+									<disj>
+										<var>TE</var>
+										<disj>
+											<var>FN</var>
+											<disj>
+												<var>AC</var>
+												<disj>
+													<var>CE</var>
+													<disj>
+														<var>MN</var>
+														<disj>
+															<var>CV</var>
+															<disj>
+																<var>R15</var>
+																<disj>
+																	<var>SOM</var>
+																	<var>COURO</var>
+																</disj>
+															</disj>
+														</disj>
+													</disj>
+												</disj>
+											</disj>
+										</disj>
+									</disj>
+								</disj>
+							</disj>
+						</disj>
+					</disj>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>volkswagenup5</c>
+			<c>volkswagenup5</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="Smartphone_SPL">
+				<alt mandatory="true" name="Base_OS">
+					<feature mandatory="true" name="Android"/>
+					<feature mandatory="true" name="WindowsPhone"/>
+					<feature mandatory="true" name="BlackBerryOS"/>
+				</alt>
+				<or mandatory="true" name="InstalledApps">
+					<feature mandatory="true" name="Email"/>
+					<feature mandatory="true" name="Browser"/>
+					<feature mandatory="true" name="Calendar"/>
+					<feature mandatory="true" name="AppStore"/>
+					<feature mandatory="true" name="AlarmClock"/>
+					<feature mandatory="true" name="Calculator"/>
+					<feature mandatory="true" name="Camera"/>
+				</or>
+				<and mandatory="true" name="Device_Drivers">
+					<or mandatory="true" name="Device_Drivers_1">
+						<feature mandatory="true" name="Bluetooth"/>
+						<feature mandatory="true" name="WLAN"/>
+						<feature mandatory="true" name="GPS"/>
+						<feature mandatory="true" name="Acceleration_Sensor"/>
+						<feature mandatory="true" name="Light_Sensor"/>
+						<feature mandatory="true" name="Position_Sensor"/>
+						<feature mandatory="true" name="Camera_1"/>
+					</or>
+					<feature mandatory="true" name="Base_Device_Driver_Package"/>
+				</and>
+				<alt mandatory="true" name="Manufacturer">
+					<and mandatory="true" name="HTC">
+						<feature name="HTC_Package"/>
+					</and>
+					<and mandatory="true" name="Samsung">
+						<feature name="Samsung_Package"/>
+					</and>
+					<and mandatory="true" name="LG">
+						<feature name="LG_Package"/>
+					</and>
+					<and mandatory="true" name="Motorola">
+						<feature name="Motorola_Package"/>
+					</and>
+					<and mandatory="true" name="Sony">
+						<feature name="Sony_Package"/>
+					</and>
+					<and mandatory="true" name="Blackberry">
+						<feature name="Blackberry_Package"/>
+					</and>
+				</alt>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<var>Android</var>
+					<disj>
+						<var>WindowsPhone</var>
+						<not>
+							<var>Samsung</var>
+						</not>
+					</disj>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>Android</var>
+					<disj>
+						<var>WindowsPhone</var>
+						<not>
+							<var>LG</var>
+						</not>
+					</disj>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Camera</var>
+					</not>
+					<var>Camera_1</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>Android</var>
+					<not>
+						<var>Sony</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>Camera</var>
+					<not>
+						<var>Camera_1</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>BlackBerryOS</var>
+					<not>
+						<var>Blackberry</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>AppStore</var>
+					<not>
+						<var>WindowsPhone</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>AppStore</var>
+					<not>
+						<var>BlackBerryOS</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>AppStore</var>
+					<not>
+						<var>Android</var>
+					</not>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>SmartPhone7</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="Xerox">
+				<and mandatory="true" name="Capabilites">
+					<or mandatory="true" name="StandardCapabilities">
+						<feature mandatory="true" name="Print"/>
+						<feature mandatory="true" name="Scan"/>
+						<feature mandatory="true" name="Copy"/>
+						<feature mandatory="true" name="Fax"/>
+						<feature mandatory="true" name="ProductionPrinting"/>
+						<feature mandatory="true" name="Finishing"/>
+						<feature mandatory="true" name="Reprinting"/>
+						<feature mandatory="true" name="ProductionMICRPrinting"/>
+						<feature mandatory="true" name="High_volumenetworkprintingand3rd_partyfinishing"/>
+					</or>
+					<or name="OptionalCapabilties">
+						<feature mandatory="true" name="_r_1_23_24_25"/>
+						<feature mandatory="true" name="Scanning"/>
+					</or>
+					<alt mandatory="true" name="PrintedSides">
+						<feature mandatory="true" name="Duplex"/>
+					</alt>
+					<alt mandatory="true" name="MICR">
+						<feature mandatory="true" name="Yes"/>
+						<feature mandatory="true" name="No"/>
+					</alt>
+					<feature mandatory="true" name="ProductColor"/>
+					<feature mandatory="true" name="PrintLineManagement"/>
+				</and>
+				<and mandatory="true" name="Performance">
+					<feature mandatory="true" name="RatedSpeed"/>
+					<or mandatory="true" name="Resolution">
+						<feature mandatory="true" name="_r_2_12_96_97"/>
+						<feature mandatory="true" name="RIP"/>
+						<feature mandatory="true" name="_r_2_12_96_136"/>
+						<feature mandatory="true" name="Scantofile"/>
+						<feature mandatory="true" name="Black"/>
+						<feature mandatory="true" name="Color"/>
+					</or>
+					<feature mandatory="true" name="Recommendedaveragemonthlyvolume"/>
+					<feature mandatory="true" name="Dutycycle"/>
+					<or mandatory="true" name="ScanSpeed">
+						<feature mandatory="true" name="IntegratedScanner"/>
+						<feature mandatory="true" name="FreeFlowScanner"/>
+					</or>
+					<feature mandatory="true" name="LineScreens"/>
+				</and>
+				<and mandatory="true" name="Technology">
+					<feature mandatory="true" name="PDLs"/>
+					<feature mandatory="true" name="NetworkInterfaces"/>
+					<feature mandatory="true" name="Memory"/>
+					<feature mandatory="true" name="Harddisk"/>
+					<feature mandatory="true" name="CPU"/>
+					<feature mandatory="true" name="UserInterface"/>
+					<feature mandatory="true" name="PrintEngine"/>
+					<or mandatory="true" name="ProcessorImaging">
+						<feature mandatory="true" name="_r_3_165_166_167"/>
+						<feature mandatory="true" name="_r_3_165_166_168"/>
+					</or>
+				</and>
+				<and mandatory="true" name="PaperHandling">
+					<or mandatory="true" name="Papersources">
+						<feature mandatory="true" name="SheetFeedModule"/>
+						<feature mandatory="true" name="HighCapacitySheetFeedModule"/>
+						<feature mandatory="true" name="HighCapacityStackingOption"/>
+						<feature mandatory="true" name="StitchingandBindingoption"/>
+					</or>
+					<or mandatory="true" name="Standardpapercapacity">
+						<feature mandatory="true" name="_r_4_33_169_170"/>
+						<feature mandatory="true" name="_r_4_33_169_171"/>
+						<feature mandatory="true" name="__r_4_33_169_171"/>
+						<feature mandatory="true" name="_r_4_33_169_172"/>
+					</or>
+					<feature mandatory="true" name="Maximumpapercapacitywithoptions"/>
+					<feature mandatory="true" name="MediaDimensions_Minimum"/>
+					<feature mandatory="true" name="MediaDimensions_Maximum"/>
+					<or mandatory="true" name="MediaWeight_Minimum">
+						<feature mandatory="true" name="coated"/>
+						<feature mandatory="true" name="uncoated"/>
+					</or>
+					<or mandatory="true" name="MediaWeight_Maximum">
+						<feature mandatory="true" name="_r_4_39_113_114"/>
+						<feature mandatory="true" name="_r_4_39_113_115"/>
+					</or>
+					<or mandatory="true" name="MediaTypes">
+						<feature mandatory="true" name="_r_4_40_106_107"/>
+						<feature mandatory="true" name="_r_4_40_106_108"/>
+						<feature mandatory="true" name="speciality"/>
+					</or>
+				</and>
+				<and mandatory="true" name="Input">
+					<or mandatory="true" name="HighCapacityFeeder">
+						<feature mandatory="true" name="StandardFour_traySheet"/>
+						<feature mandatory="true" name="OversizedHigh_CapacitySheetFeedModule"/>
+						<feature mandatory="true" name="RollFeedSolution"/>
+					</or>
+					<or mandatory="true" name="OtherInputDevices">
+						<feature mandatory="true" name="Post_printFour_trayPaperInsertionModule"/>
+						<feature mandatory="true" name="Post_printOversizedTwo_trayPaperInsertionModule"/>
+						<feature mandatory="true" name="InsertionModule"/>
+						<feature mandatory="true" name="HighCapacityInsertionModule"/>
+					</or>
+					<or mandatory="true" name="Tray">
+						<feature mandatory="true" name="Tray1"/>
+						<feature mandatory="true" name="Tray2"/>
+						<feature mandatory="true" name="Tray3"/>
+						<feature mandatory="true" name="Tray4"/>
+						<feature mandatory="true" name="Tray5"/>
+					</or>
+					<feature mandatory="true" name="ElectronicInput"/>
+					<feature mandatory="true" name="AutomaticDoucmentFeeder"/>
+				</and>
+				<or mandatory="true" name="Output">
+					<feature mandatory="true" name="OffsetOutputTray"/>
+					<feature mandatory="true" name="TopTray"/>
+					<feature mandatory="true" name="Stacker"/>
+				</or>
+				<or mandatory="true" name="_r_7">
+					<or mandatory="true" name="Finisher">
+						<feature mandatory="true" name="BasicFinisherModule"/>
+						<feature mandatory="true" name="BasicFinisherModulePlus"/>
+						<feature mandatory="true" name="BasicFinisherModule_DC"/>
+						<feature mandatory="true" name="MultifunctionFinisherProfessional"/>
+						<feature mandatory="true" name="MultifunctionFinisherProplus"/>
+					</or>
+					<feature mandatory="true" name="BookletMaking"/>
+					<feature mandatory="true" name="Stapler"/>
+					<feature mandatory="true" name="Binder"/>
+					<feature mandatory="true" name="Cutting"/>
+					<feature mandatory="true" name="TapeBound"/>
+					<feature mandatory="true" name="HolePunch"/>
+					<feature mandatory="true" name="OtherFinishingOptions"/>
+					<feature mandatory="true" name="_r_7_51_145"/>
+					<feature mandatory="true" name="SlitterorMerger"/>
+					<feature mandatory="true" name="ByPassTransport"/>
+				</or>
+				<and mandatory="true" name="PrintControllers">
+					<feature mandatory="true" name="Digitalfront_ends"/>
+				</and>
+				<and mandatory="true" name="Environmental">
+					<feature mandatory="true" name="ElectricalRequirements"/>
+					<or mandatory="true" name="Dimensions">
+						<feature mandatory="true" name="_r_9_57_120_121"/>
+						<feature mandatory="true" name="SheetfeedandInsertionModule"/>
+						<feature mandatory="true" name="SheetEnhancementModule"/>
+						<feature mandatory="true" name="_r_9_57_120_124"/>
+						<feature mandatory="true" name="_r_9_57_120_125"/>
+						<feature mandatory="true" name="FinishingTransportModule"/>
+						<feature mandatory="true" name="FeederModuleWithIntegratedScanner"/>
+						<feature mandatory="true" name="Professional"/>
+						<feature mandatory="true" name="_r_9_57_120_150"/>
+						<feature mandatory="true" name="BasicFinisherModuleDC"/>
+						<feature mandatory="true" name="XeroxDS3500Stacker"/>
+						<feature mandatory="true" name="XeroxTapeBinder"/>
+					</or>
+				</and>
+				<or mandatory="true" name="Security">
+					<feature mandatory="true" name="IPfiltering"/>
+					<feature mandatory="true" name="Imageoverwrite"/>
+					<feature mandatory="true" name="Secureprint"/>
+					<feature mandatory="true" name="EncryptedScantoemail"/>
+					<feature mandatory="true" name="Authentication"/>
+					<feature mandatory="true" name="IP_v6support"/>
+				</or>
+				<feature mandatory="true" name="Price"/>
+				<alt mandatory="true" name="Category">
+					<alt mandatory="true" name="DigitalPrintingPresses">
+						<feature mandatory="true" name="ColorDigitalPrintingPress"/>
+						<feature mandatory="true" name="BandWPublishingDigitalPrintingPress"/>
+						<feature mandatory="true" name="BandWTransactionDigitalPrintingPress"/>
+						<feature mandatory="true" name="HighLightColorDigitalPrintingPress"/>
+					</alt>
+					<alt mandatory="true" name="ProductionPrintersandCopiers">
+						<feature mandatory="true" name="ColorPrinters"/>
+						<feature mandatory="true" name="BandWPrinters"/>
+						<feature mandatory="true" name="BandWPublishing"/>
+						<feature mandatory="true" name="BandWTransaction"/>
+						<feature mandatory="true" name="HighLightColor"/>
+					</alt>
+					<feature mandatory="true" name="ContinuousFeedPrinters"/>
+					<alt mandatory="true" name="WideFormatSolutions">
+						<feature mandatory="true" name="ColorWideFormatPrinters"/>
+						<feature mandatory="true" name="DigitalWideFormatPrintersandCopiers"/>
+						<feature mandatory="true" name="WideFormatFinishers"/>
+						<feature mandatory="true" name="SoftwareSolutions"/>
+					</alt>
+					<alt mandatory="true" name="Workflowsoftware">
+						<feature mandatory="true" name="FreeflowSoftwareandscanners"/>
+						<feature mandatory="true" name="DFEsandcontrollers"/>
+						<feature mandatory="true" name="Productionprintingsoftware"/>
+					</alt>
+					<feature mandatory="true" name="BusinessDevelopment"/>
+				</alt>
+				<alt mandatory="true" name="Products">
+					<alt mandatory="true" name="MonoProducts">
+						<feature mandatory="true" name="BB"/>
+						<feature mandatory="true" name="QM"/>
+						<feature mandatory="true" name="Teak"/>
+						<feature mandatory="true" name="HLC"/>
+						<feature mandatory="true" name="Nuvera"/>
+					</alt>
+					<alt mandatory="true" name="ColorProducts">
+						<feature mandatory="true" name="Mykonos"/>
+						<feature mandatory="true" name="Malta"/>
+						<feature mandatory="true" name="Chandon"/>
+						<feature mandatory="true" name="Chamonix"/>
+						<feature mandatory="true" name="Pinot"/>
+					</alt>
+				</alt>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

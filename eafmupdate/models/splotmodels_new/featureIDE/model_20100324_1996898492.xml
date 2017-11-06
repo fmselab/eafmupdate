@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="VODPlayer">
+				<feature mandatory="true" name="StartPlayer"/>
+				<and mandatory="true" name="SelectMovie">
+					<feature name="ChangeServer"/>
+					<feature name="Detail"/>
+				</and>
+				<and mandatory="true" name="StartMovie">
+					<feature name="StopMovie"/>
+				</and>
+				<feature mandatory="true" name="VCRInterface"/>
+				<feature mandatory="true" name="PlayImm"/>
+				<feature name="Quit"/>
+				<feature name="Pause"/>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<var>StartMovie</var>
+					<not>
+						<var>Pause</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>SelectMovie</var>
+					<disj>
+						<not>
+							<var>ChangeServer</var>
+						</not>
+						<not>
+							<var>Detail</var>
+						</not>
+					</disj>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>StartMovie</var>
+					<not>
+						<var>StopMovie</var>
+					</not>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

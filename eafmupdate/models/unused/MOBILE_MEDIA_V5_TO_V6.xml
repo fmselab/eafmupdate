@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="Mobilemedia">
+				<and mandatory="true" name="Albummanagement">
+					<feature mandatory="true" name="Createalbum"/>
+					<feature mandatory="true" name="Deletealbum"/>
+					<feature mandatory="true" name="Deletephoto"/>
+				</and>
+				<and mandatory="true" name="Photomanagement">
+					<feature name="Sorting"/>
+					<and mandatory="true" name="Photooperation">
+						<feature mandatory="true" name="Editphotolabel"/>
+						<feature mandatory="true" name="Viewphoto"/>
+					</and>
+					<feature name="Copyphoto"/>
+					<and name="Favorite">
+						<and mandatory="true" name="Favorites">
+							<feature mandatory="true" name="Setfavorites"/>
+							<feature mandatory="true" name="Viewfavorites"/>
+						</and>
+					</and>
+					<and name="SMStranfer">
+						<feature mandatory="true" name="Receivephoto"/>
+						<feature mandatory="true" name="Sendphoto"/>
+					</and>
+					<feature mandatory="true" name="Createphoto"/>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation Sendphoto from OPTIONAL TO MANDATORY</c>
+			<c>mutation Receivephoto from OPTIONAL TO MANDATORY</c>
+			<c>mutation Favorites from OPTIONAL TO MANDATORY</c>
+			<c>mutation Viewfavorites from MANDATORY TO OPTIONAL</c>
+			<c>mutation Viewfavorites from OPTIONAL TO MANDATORY</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>
+

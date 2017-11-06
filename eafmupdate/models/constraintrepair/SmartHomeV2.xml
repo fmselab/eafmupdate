@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="SmartHome">
+				<and mandatory="true" name="HeatingManagement">
+					<feature mandatory="true" name="ManualHeating"/>
+					<feature name="SmartHeating"/>
+				</and>
+				<and mandatory="true" name="WindowsManagement">
+					<feature mandatory="true" name="ManualWindows"/>
+					<feature name="ElectronicWindows"/>
+				</and>
+				<and mandatory="true" name="LightManagement">
+					<feature mandatory="true" name="ManualLight"/>
+					<feature name="SmartLight"/>
+					<feature name="Pre_definedValues"/>
+				</and>
+				<and mandatory="true" name="GUI">
+					<feature mandatory="true" name="TouchScreen"/>
+					<feature name="Internet"/>
+				</and>
+				<or name="PresenceSimulator">
+					<feature name="LightSimulation"/>
+					<feature name="BlindSimulation"/>
+					<feature name="MusicSimulation"/>
+				</or>
+				<and mandatory="true" name="FireControl">
+					<and mandatory="true" name="FirstAidGroup">
+						<or abstract="true" mandatory="true" name="FirstAidGroup_1">
+							<feature name="FireDepartment"/>
+							<feature name="OtherGroup"/>
+						</or>
+						<feature name="FireSprinklers"/>
+					</and>
+				</and>
+				<and name="IrrigationSprinklers">
+					<feature mandatory="true" name="SimpleControl"/>
+					<feature name="SmartSprinklers"/>
+				</and>
+				<or mandatory="true" name="Alarm">
+					<feature name="Siren"/>
+					<feature name="Bell"/>
+					<feature name="Lights"/>
+				</or>
+				<and mandatory="true" name="Security">
+					<or mandatory="true" name="AuthenticationDevice">
+						<feature name="Keypad"/>
+						<feature name="RetinaScanner"/>
+						<feature name="FingerPrintReader"/>
+					</or>
+					<or name="IntrusionDetectionDevice">
+						<feature name="GlassbreakSensors"/>
+						<feature name="Cameras"/>
+					</or>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

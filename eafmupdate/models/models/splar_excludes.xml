@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<or mandatory="true" name="root">
+				<feature mandatory="true" name="child1"/>
+				<feature mandatory="true" name="child2"/>
+				<feature mandatory="true" name="child3"/>
+				<feature mandatory="true" name="child4"/>
+			</or>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>child2</var>
+					</not>
+					<var>child4</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>child2</var>
+					<not>
+						<var>child4</var>
+					</not>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

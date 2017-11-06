@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="Aircraft">
+				<alt mandatory="true" name="Wing">
+					<feature mandatory="true" name="High"/>
+					<feature mandatory="true" name="Shoulder"/>
+					<feature mandatory="true" name="Low"/>
+				</alt>
+				<and mandatory="true" name="Engine">
+					<feature mandatory="true" name="Jet"/>
+					<feature mandatory="true" name="Piston"/>
+				</and>
+				<or name="Materials">
+					<feature mandatory="true" name="Metal"/>
+					<feature mandatory="true" name="Wood"/>
+					<feature mandatory="true" name="Cloth"/>
+					<feature mandatory="true" name="Plastic"/>
+				</or>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation Engine from ALT TO OR</c>
+			<c>mutation Engine from OR TO ALTERNATIVE</c>
+			<c>mutation Engine from OPTIONAL TO MANDATORY</c>
+			<c>mutation Engine from ALT TO OR</c>
+			<c>mutation Materials from OR TO AND</c>
+			<c>mutation Materials from AND TO ALT</c>
+			<c>mutation Engine from OR TO AND</c>
+			<c>mutation Materials from ALT TO OR</c>
+			<c>mutation Materials from MANDATORY TO OPTIONAL</c>
+			<c>mutation Wing from OR TO ALTERNATIVE</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>
+

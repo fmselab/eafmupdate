@@ -1,0 +1,33 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r EC2(EC2)
+	:m O_S(O_S)
+		:g [1,1]
+			: Linux(Linux)
+			: Windows(Windows)
+	:m Country(Country)
+		:g [1,1]
+			: US(US)
+			: EU(EU)
+	:m InstanceCategory(InstanceCategory)
+		:g [1,1]
+			: Ondemand(Ondemand)
+				:g [1,1]
+					: Standard(Standard)
+						:g [1,1]
+							: S(S)
+							: L(L)
+							: XL(XL)
+					: HighMemory(HighMemory)
+						:g [1,1]
+							: Duo(Duo)
+							: Qua(Qua)
+					: HighCPU(HighCPU)
+						:g [1,1]
+							: M(M)
+							: _r_3_4_5_17_20_29_31(_r_3_4_5_17_20_29_31)
+			: Reserve(Reserve)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

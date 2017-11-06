@@ -1,0 +1,29 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r MonitorEngine(MonitorEngine)
+	:m MonitorEngineperformance(MonitorEngineperformance)
+		:m Monitortemperatures(Monitortemperatures)
+			:o coolant(coolant)
+			:m oil(oil)
+			:m engine(engine)
+			:m transmission(transmission)
+		:m MonitorRPM(MonitorRPM)
+		:m Monitorexhaustlevelsandtemperature(Monitorexhaustlevelsandtemperature)
+	:m MonitorFuelConsumption(MonitorFuelConsumption)
+		:m Measures(Measures)
+			:g [1,1]
+				: a1perkm(a1perkm)
+				: gallonpermile(gallonpermile)
+		:m Methods(Methods)
+			:g [1,1]
+				: Basedondistance(Basedondistance)
+				: Basedontypeofdriving(Basedontypeofdriving)
+				: Basedondriving(Basedondriving)
+		:o temperature(temperature)
+			:g [1,*]
+				: F1(F1)
+				: F2(F2)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

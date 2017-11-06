@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="WeatherStation">
+				<or mandatory="true" name="Measurements">
+					<feature mandatory="true" name="Pressure"/>
+					<feature mandatory="true" name="Temperature"/>
+					<feature mandatory="true" name="WindSpeed"/>
+				</or>
+				<alt mandatory="true" name="DataSource">
+					<feature mandatory="true" name="Internet"/>
+					<feature mandatory="true" name="Demo"/>
+					<feature mandatory="true" name="ExternalServices"/>
+				</alt>
+				<alt mandatory="true" name="OutputFormat">
+					<feature mandatory="true" name="Text"/>
+					<feature mandatory="true" name="WebServer"/>
+					<feature mandatory="true" name="File"/>
+					<alt mandatory="true" name="Format">
+						<feature mandatory="true" name="XML"/>
+						<feature mandatory="true" name="HTML"/>
+						<feature mandatory="true" name="PlainText"/>
+					</alt>
+					<alt mandatory="true" name="Language">
+						<feature mandatory="true" name="English"/>
+						<feature mandatory="true" name="German"/>
+					</alt>
+				</alt>
+				<or name="Alarm">
+					<feature mandatory="true" name="FreezePoint"/>
+					<feature mandatory="true" name="StormAlert"/>
+				</or>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>FreezePoint</var>
+					</not>
+					<var>Temperature</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Text</var>
+					</not>
+					<not>
+						<var>XML</var>
+					</not>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="Register">
+				<and name="CardReader">
+					<feature name="CreditCard"/>
+					<feature name="BankCard"/>
+				</and>
+				<and mandatory="true" name="Protocol">
+					<feature name="New"/>
+					<feature mandatory="true" name="Old"/>
+				</and>
+				<or mandatory="true" name="Currency">
+					<feature mandatory="true" name="NOK"/>
+					<feature mandatory="true" name="JPY"/>
+				</or>
+				<feature mandatory="true" name="SelfCheckout"/>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation Currency from ALT TO AND</c>
+			<c>mutation Protocol from ALT TO AND to OPT</c>
+			<c>mutation Register from AND TO ALT</c>
+			<c>mutation Register from ALT TO AND</c>
+			<c>mutation Protocol from AND TO ALT</c>
+			<c>mutation Protocol from ALT TO AND</c>
+			<c>mutation Currency from AND TO OR</c>
+			<c>mutation SelfCheckout from OPTIONAL TO MANDATORY</c>
+			<c>mutation Old from OPTIONAL TO MANDATORY</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>
+

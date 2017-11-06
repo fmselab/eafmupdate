@@ -1,0 +1,31 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r ConferenceContext(ConferenceContext)
+	:o Person(Person)
+		:g [1,*]
+			: Location(Location)
+				:g [1,1]
+					: RoomResolution(RoomResolution)
+					: BuildingResolution(BuildingResolution)
+			: EventsPreference(EventsPreference)
+			: Publications(Publications)
+				:g [1,*]
+					: ConferencePapers(ConferencePapers)
+					: JournalPapers(JournalPapers)
+					: BookChapters(BookChapters)
+			: ContactDetails(ContactDetails)
+			: ___(___)
+	:o Conference(Conference)
+		:o Venue(Venue)
+		:o ParticipatingPeople(ParticipatingPeople)
+			:g [1,*]
+				: PhDStudent(PhDStudent)
+				: Experts(Experts)
+					:g [1,1]
+						: HavingAwards(HavingAwards)
+						: HavingJournalPublications(HavingJournalPublications)
+		:o _r_2_32(_r_2_32)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

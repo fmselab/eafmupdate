@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<or mandatory="true" name="Connector">
+				<alt mandatory="true" name="Paradigm">
+					<alt mandatory="true" name="Client_Server">
+						<and mandatory="true" name="Synchronous">
+							<feature name="Timeout"/>
+						</and>
+						<alt mandatory="true" name="Asynchronous">
+							<and mandatory="true" name="Polling">
+								<feature name="Blocking"/>
+								<feature name="Non_blocking"/>
+							</and>
+							<feature mandatory="true" name="Callback"/>
+						</alt>
+					</alt>
+					<or mandatory="true" name="Message_Based">
+						<feature mandatory="true" name="Sender"/>
+						<alt mandatory="true" name="Receiver">
+							<and mandatory="true" name="Pull">
+								<feature mandatory="true" name="Queued"/>
+								<feature name="Non_Queued"/>
+							</and>
+							<feature mandatory="true" name="Push"/>
+						</alt>
+					</or>
+				</alt>
+				<alt mandatory="true" name="Technology">
+					<feature mandatory="true" name="CAN"/>
+					<feature mandatory="true" name="Local"/>
+				</alt>
+			</or>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation Polling from ALT TO AND to OPT</c>
+			<c>mutation Technology from ALT TO AND to OPT</c>
+			<c>mutation Pull from OR TO AND in OPT</c>
+			<c>mutation Queued from OPTIONAL TO MANDATORY</c>
+			<c>mutation Technology from AND TO ALT</c>
+			<c>mutation Message_Based from AND TO OR</c>
+			<c>mutation Technology from MANDATORY TO OPTIONAL</c>
+			<c>mutation Connector from AND TO OR</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<alt mandatory="true" name="Stack">
+				<and mandatory="true" name="Size">
+					<and mandatory="true" name="Fixed">
+						<feature name="Value"/>
+					</and>
+					<feature mandatory="true" name="Dynamic"/>
+				</and>
+				<and mandatory="true" name="ElementType">
+					<feature name="Integer"/>
+					<feature name="Float"/>
+					<feature mandatory="true" name="String"/>
+				</and>
+				<and mandatory="true" name="Optimization">
+					<feature name="Speed"/>
+					<feature name="MemoryUsage"/>
+				</and>
+				<feature mandatory="true" name="Counter"/>
+				<and mandatory="true" name="AdditionalFeatures">
+					<feature mandatory="true" name="ThreadSafety"/>
+					<feature name="BoundsCheck"/>
+					<feature name="TypeCheck"/>
+				</and>
+			</alt>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation AdditionalFeatures from OR TO AND</c>
+			<c>mutation Optimization from ALT TO AND to OPT</c>
+			<c>mutation ThreadSafety from MANDATORY TO OPTIONAL</c>
+			<c>mutation Optimization from AND TO OR</c>
+			<c>mutation BoundsCheck from MANDATORY TO OPTIONAL</c>
+			<c>mutation TypeCheck from MANDATORY TO OPTIONAL</c>
+			<c>mutation Counter from OPTIONAL TO MANDATORY</c>
+			<c>mutation ElementType from ALT TO AND to OPT</c>
+			<c>mutation Optimization from OR TO ALTERNATIVE</c>
+			<c>mutation Size from ALT TO AND</c>
+			<c>mutation ThreadSafety from OPTIONAL TO MANDATORY</c>
+			<c>mutation Optimization from ALT TO AND to OPT</c>
+			<c>mutation ElementType from MANDATORY TO OPTIONAL</c>
+			<c>mutation Value from MANDATORY TO OPTIONAL</c>
+			<c>mutation String from OPTIONAL TO MANDATORY</c>
+			<c>mutation Stack from AND TO ALT</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

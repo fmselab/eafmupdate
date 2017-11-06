@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and abstract="true" mandatory="true" name="fosd10_ex1">
+				<feature name="WORLD"/>
+				<feature name="BYE"/>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<var>WORLD</var>
+			</rule>
+			<rule>
+				<eq>
+					<var>fosd10_ex1</var>
+					<var>BYE</var>
+				</eq>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

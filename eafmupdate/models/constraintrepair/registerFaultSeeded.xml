@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="Register">
+				<or name="CardReader">
+					<feature name="CreditCard"/>
+					<feature name="BankCard"/>
+				</or>
+				<or mandatory="true" name="Protocol">
+					<feature name="New"/>
+					<feature name="Old"/>
+				</or>
+				<or mandatory="true" name="Currency">
+					<feature name="NOK"/>
+					<feature name="JPY"/>
+				</or>
+				<feature mandatory="true" name="SelfCheckout"/>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

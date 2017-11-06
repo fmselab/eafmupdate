@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="Car">
+				<and name="AutomatedDrivingController">
+					<or name="CollisionAvoidanceBraking">
+						<feature mandatory="true" name="StandardAvoidance"/>
+						<feature mandatory="true" name="EnhancedAvoidance"/>
+					</or>
+					<feature name="ParallelParking"/>
+				</and>
+				<alt mandatory="true" name="Sensors">
+					<feature mandatory="true" name="LateralRangeFinder"/>
+					<feature mandatory="true" name="ForwardRangeFinder"/>
+				</alt>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>EnhancedAvoidance</var>
+					</not>
+					<var>ForwardRangeFinder</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>ParallelParking</var>
+					</not>
+					<var>LateralRangeFinder</var>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation AutomatedDrivingController from OPTIONAL TO MANDATORY</c>
+			<c>mutation Sensors from AND TO OR</c>
+			<c>mutation CollisionAvoidanceBraking from ALT TO AND to OPT</c>
+			<c>mutation CollisionAvoidanceBraking from AND TO OR</c>
+			<c>mutation Sensors from OR TO ALTERNATIVE</c>
+			<c>mutation Sensors from ALT TO OR</c>
+			<c>mutation Sensors from MANDATORY TO OPTIONAL</c>
+			<c>mutation CollisionAvoidanceBraking from OR TO AND in OPT</c>
+			<c>mutation AutomatedDrivingController from AND TO OR</c>
+			<c>mutation CollisionAvoidanceBraking from AND TO OR</c>
+			<c>mutation Sensors from OPTIONAL TO MANDATORY</c>
+			<c>mutation Sensors from OR TO AND in OPT</c>
+			<c>mutation AutomatedDrivingController from MANDATORY TO OPTIONAL</c>
+			<c>mutation Sensors from AND TO ALT</c>
+			<c>mutation Sensors from ALT TO AND</c>
+			<c>mutation Sensors from AND TO OR</c>
+			<c>mutation CollisionAvoidanceBraking from OR TO AND in OPT</c>
+			<c>mutation AutomatedDrivingController from OR TO AND in OPT</c>
+			<c>mutation CollisionAvoidanceBraking from AND TO OR</c>
+			<c>mutation Sensors from OR TO ALTERNATIVE</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<alt mandatory="true" name="Software">
+				<alt mandatory="true" name="Anwendungssoftware">
+					<feature mandatory="true" name="Individualsoftware"/>
+					<alt mandatory="true" name="Standardsoftware">
+						<feature mandatory="true" name="Basissoftware"/>
+						<feature mandatory="true" name="Officesoftware"/>
+						<or mandatory="true" name="FunktionsorientierteSoftware">
+							<feature mandatory="true" name="Managementsoftware"/>
+							<feature mandatory="true" name="OperativeSoftware"/>
+							<feature mandatory="true" name="FunktionsabhaengigeSoftware"/>
+							<feature mandatory="true" name="FunktionsuebergreifendeSoftware"/>
+							<feature mandatory="true" name="BranchenspezifischeSoftware"/>
+							<feature mandatory="true" name="BranchenunabhaengigeSoftware"/>
+							<feature mandatory="true" name="Client_Server_Architektur"/>
+							<feature mandatory="true" name="Service_orientierteArchitektur"/>
+						</or>
+					</alt>
+				</alt>
+				<feature mandatory="true" name="Systemsoftware"/>
+			</alt>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="search_engine_PL">
+				<feature name="page_translation"/>
+				<and mandatory="true" name="doc_type">
+					<feature mandatory="true" name="html"/>
+					<alt name="image">
+						<feature mandatory="true" name="jpg"/>
+						<feature mandatory="true" name="gif"/>
+						<feature mandatory="true" name="svg"/>
+					</alt>
+					<feature name="video"/>
+				</and>
+				<or name="search_by_language">
+					<feature mandatory="true" name="portuguese"/>
+					<feature mandatory="true" name="english"/>
+					<feature mandatory="true" name="spanish"/>
+				</or>
+				<feature name="page_preview"/>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>search_by_language</var>
+					</not>
+					<var>page_translation</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>page_preview</var>
+					</not>
+					<not>
+						<var>svg</var>
+					</not>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

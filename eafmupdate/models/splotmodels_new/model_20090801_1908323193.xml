@@ -1,0 +1,20 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r CFDPLibrary(CFDPLibrary)
+	:g [1,*]
+		: Send(Send)
+			:o SendAcknowledgedMode(SendAcknowledgedMode)
+			:o SendFileSystemOperations(SendFileSystemOperations)
+		: Receive(Receive)
+			:o ReceiveAcknowledgedMode(ReceiveAcknowledgedMode)
+			:o ReceiveFileSystemOperations(ReceiveFileSystemOperations)
+		: PUS(PUS)
+			:o PUSRename(PUSRename)
+			:o PUSCopy(PUSCopy)
+		: Reboot_(Reboot_)
+			:o RebootEntity(RebootEntity)
+			:o RebootPUS(RebootPUS)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

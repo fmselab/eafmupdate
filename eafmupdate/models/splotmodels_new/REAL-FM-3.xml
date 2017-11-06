@@ -1,0 +1,61 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r WebPortal(WebPortal)
+	:o AdditionalServices(AdditionalServices)
+		:o SiteStatistics(SiteStatistics)
+			:m Basic(Basic)
+			:o Advanced(Advanced)
+		:o SiteSearch(SiteSearch)
+			:o Images(Images)
+			:o Text(Text)
+				:m HTML(HTML)
+				:o Dynamic(Dynamic)
+		:o AdServer(AdServer)
+			:m Reports(Reports)
+			:o Pop_ups(Pop_ups)
+			:m Banners(Banners)
+				:m Image(Image)
+				:o Flash(Flash)
+			:o KeywordSupport(KeywordSupport)
+	:m WebServer(WebServer)
+		:o Logging(Logging)
+			:g [1,1]
+				: DB(DB)
+				: File(File)
+		:o Protocols(Protocols)
+			:g [1,*]
+				: NTTP(NTTP)
+				: FTP(FTP)
+				: HTTPS(HTTPS)
+		:m Content(Content)
+			:m Static(Static)
+			:o Active(Active)
+				:g [1,*]
+					: ASP(ASP)
+					: PHP(PHP)
+					: JSP(JSP)
+					: CGI(CGI)
+	:o Persistence(Persistence)
+		:g [1,1]
+			: XML(XML)
+			: Database(Database)
+	:o Security(Security)
+		:g [1,*]
+			: DataStorage(DataStorage)
+			: DataTransfer(DataTransfer)
+			: UserAuthentication(UserAuthentication)
+	:o Performance(Performance)
+		:g [1,1]
+			: Ms(Ms)
+			: Sec(Sec)
+			: Min(Min)
+</feature_tree>
+<constraints>
+C1:~KeywordSupport  or  Text
+C2:~Dynamic  or  Active
+C3:~DB  or  Database
+C4:~DataTransfer  or  HTTPS
+C5:~File  or  FTP
+C6:~HTTPS  or  ~Ms
+</constraints>
+</feature_model>

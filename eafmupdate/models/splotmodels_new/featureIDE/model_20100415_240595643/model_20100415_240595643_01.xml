@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="ReferenceManagementSoftware">
+				<alt mandatory="true" name="PlatformType">
+					<feature mandatory="true" name="Web_centred"/>
+					<feature mandatory="true" name="Desktop"/>
+				</alt>
+				<and mandatory="true" name="ContentManagement">
+					<feature mandatory="true" name="Bibliography"/>
+					<feature name="Publications"/>
+					<and mandatory="true" name="References">
+						<feature name="Citeasyouwrite"/>
+					</and>
+					<feature mandatory="true" name="Search"/>
+					<or mandatory="true" name="Categorization">
+						<feature mandatory="true" name="SubjectAssociation"/>
+						<feature mandatory="true" name="Tagging"/>
+					</or>
+					<or name="Importing">
+						<feature mandatory="true" name="_r_6_25_26_27"/>
+						<feature mandatory="true" name="_r_6_25_26_28"/>
+						<feature mandatory="true" name="_r_6_25_26_29"/>
+						<feature mandatory="true" name="_r_6_25_26_30"/>
+						<feature mandatory="true" name="_r_6_25_26_31"/>
+					</or>
+					<feature name="StatisticsGeneration"/>
+				</and>
+				<or name="Exporting">
+					<feature mandatory="true" name="BibTex"/>
+					<feature mandatory="true" name="EndNote"/>
+					<feature mandatory="true" name="RIS"/>
+					<feature mandatory="true" name="PubMed"/>
+					<feature mandatory="true" name="XML"/>
+				</or>
+				<and name="UsersInteraction">
+					<feature mandatory="true" name="ContentSharing"/>
+					<feature name="DiscussionBoards"/>
+					<feature name="PublicationWritingCollaboration"/>
+				</and>
+				<feature name="Multi_languageSupport"/>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<var>Publications</var>
+					<not>
+						<var>PublicationWritingCollaboration</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>Web_centred</var>
+					<not>
+						<var>UsersInteraction</var>
+					</not>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>model_20100415_240595643_01</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

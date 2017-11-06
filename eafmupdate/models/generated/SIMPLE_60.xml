@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="Root">
+				<feature name="A"/>
+				<feature mandatory="true" name="B"/>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation B from OPTIONAL TO MANDATORY</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>
+

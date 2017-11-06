@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="MonitorEngine">
+				<and name="MonitorEngineperformance">
+					<and mandatory="true" name="Monitortemperatures">
+						<feature name="coolant"/>
+						<feature mandatory="true" name="oil"/>
+						<feature mandatory="true" name="engine"/>
+						<feature name="transmission"/>
+					</and>
+					<feature mandatory="true" name="MonitorRPM"/>
+					<feature mandatory="true" name="Monitorexhaustlevelsandtemperature"/>
+				</and>
+				<and mandatory="true" name="MonitorFuelConsumption">
+					<alt mandatory="true" name="Measures">
+						<feature mandatory="true" name="a1perkm"/>
+						<feature mandatory="true" name="gallonpermile"/>
+					</alt>
+					<and mandatory="true" name="Methods">
+						<feature name="Basedondistance"/>
+						<feature mandatory="true" name="Basedontypeofdriving"/>
+						<feature mandatory="true" name="Basedondriving"/>
+					</and>
+					<alt name="temperature">
+						<feature mandatory="true" name="F1"/>
+						<feature mandatory="true" name="F2"/>
+					</alt>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>model_20101120_2091447559_monitor_engine_numMutations_06</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

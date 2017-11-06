@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="Sienna">
+				<and mandatory="true" name="Trim">
+					<alt mandatory="true" name="Grade">
+						<feature mandatory="true" name="Base"/>
+						<feature mandatory="true" name="LE"/>
+						<feature mandatory="true" name="SE"/>
+						<and mandatory="true" name="XLE">
+							<feature name="XLENavigationPackage"/>
+							<feature name="XLEPremiumPackage"/>
+						</and>
+						<feature mandatory="true" name="LTD"/>
+					</alt>
+					<alt mandatory="true" name="Engine">
+						<feature mandatory="true" name="L4"/>
+						<feature mandatory="true" name="V6"/>
+					</alt>
+					<alt mandatory="true" name="Drive">
+						<feature mandatory="true" name="a2Wd"/>
+						<feature mandatory="true" name="AWD"/>
+					</alt>
+					<alt mandatory="true" name="PsgrCount">
+						<feature mandatory="true" name="a7PSGR"/>
+						<feature mandatory="true" name="a8PSGR"/>
+					</alt>
+					<alt mandatory="true" name="ModelCode">
+						<feature mandatory="true" name="a5312"/>
+						<feature mandatory="true" name="a5328"/>
+					</alt>
+				</and>
+				<and mandatory="true" name="Color">
+					<alt mandatory="true" name="ExteriorColor">
+						<feature mandatory="true" name="SilverSkyMetallic"/>
+						<feature mandatory="true" name="SuperWhite"/>
+						<feature mandatory="true" name="BlizzardPearl"/>
+					</alt>
+					<alt mandatory="true" name="InteriorColor">
+						<feature mandatory="true" name="Bisc"/>
+						<feature mandatory="true" name="Gray"/>
+						<feature mandatory="true" name="Charcoal"/>
+					</alt>
+				</and>
+				<and name="Accessories">
+					<feature name="FloorMats"/>
+					<feature name="MudFlaps"/>
+				</and>
+				<and mandatory="true" name="Derived">
+					<alt mandatory="true" name="Antenna">
+						<feature mandatory="true" name="InGlass"/>
+						<feature mandatory="true" name="Pole"/>
+					</alt>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<var>Base</var>
+					<not>
+						<var>a5312</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>InGlass</var>
+					<not>
+						<var>XLEPremiumPackage</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>InGlass</var>
+					<not>
+						<var>XLENavigationPackage</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>LTD</var>
+					</not>
+					<var>InGlass</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>LE</var>
+					</not>
+					<var>Pole</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>SE</var>
+					</not>
+					<var>Pole</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>SE</var>
+					<not>
+						<var>Charcoal</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Base</var>
+					</not>
+					<var>Pole</var>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

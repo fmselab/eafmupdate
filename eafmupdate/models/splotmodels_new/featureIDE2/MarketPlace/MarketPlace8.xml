@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="Marketplace">
+				<and mandatory="true" name="Cliente">
+					<and mandatory="true" name="GestionUsuario">
+						<feature mandatory="true" name="AutenticarUsuario"/>
+						<feature mandatory="true" name="RecuperarContrasena"/>
+						<feature mandatory="true" name="CRUD_Usuario"/>
+					</and>
+				</and>
+				<and mandatory="true" name="Proveedor">
+					<and mandatory="true" name="AdministracionDeProductos">
+						<feature mandatory="true" name="RegistrarProducto"/>
+						<feature mandatory="true" name="ActualizarProducto"/>
+						<feature mandatory="true" name="CrearCategoria"/>
+						<feature name="CrearPaquete"/>
+						<feature name="AlarmaInventarioBajo"/>
+						<feature name="Feature_16"/>
+					</and>
+					<and mandatory="true" name="BuscarProducto">
+						<feature mandatory="true" name="ConsultarHistoricoVentas"/>
+						<feature mandatory="true" name="ConsultarHistoricoComprasCliente"/>
+						<feature mandatory="true" name="ConsultarEstadoPagoCompra"/>
+						<feature name="CrearPromocion"/>
+						<feature name="ConsultarHistoricoDevoluciones"/>
+					</and>
+					<alt mandatory="true" name="AdministracionDeEnvios">
+						<feature mandatory="true" name="ConsultarOrdenesEnvio"/>
+						<feature mandatory="true" name="ActualizarEstadoEnvio"/>
+						<feature mandatory="true" name="ConsultarEnviosPorEstado"/>
+						<feature mandatory="true" name="ConsultarEstadoDevoluciones"/>
+						<feature mandatory="true" name="SeleccionarProveedoresEnvio"/>
+					</alt>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>MarketPlace1.xml</c>
+			<c>MarketPlace8</c>
+			<c>MarketPlace8</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

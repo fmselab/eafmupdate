@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<or mandatory="true" name="colligens">
+				<feature mandatory="true" name="HAVE_LIBGCRYPT"/>
+				<feature mandatory="true" name="HAVE_LIBCRYPTO"/>
+			</or>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>Figure1_pa2</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

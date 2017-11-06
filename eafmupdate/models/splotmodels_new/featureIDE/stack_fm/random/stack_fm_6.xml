@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="Stack">
+				<alt name="Size">
+					<and mandatory="true" name="Fixed">
+						<feature mandatory="true" name="Value"/>
+					</and>
+					<feature mandatory="true" name="Dynamic"/>
+				</alt>
+				<alt mandatory="true" name="ElementType">
+					<feature mandatory="true" name="Integer"/>
+					<feature mandatory="true" name="Float"/>
+					<feature mandatory="true" name="String"/>
+				</alt>
+				<or name="Optimization">
+					<feature mandatory="true" name="Speed"/>
+					<feature mandatory="true" name="MemoryUsage"/>
+				</or>
+				<feature name="Counter"/>
+				<and name="AdditionalFeatures">
+					<feature name="ThreadSafety"/>
+					<feature name="BoundsCheck"/>
+					<feature name="TypeCheck"/>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation AdditionalFeatures from OR TO AND</c>
+			<c>mutation Optimization from ALT TO AND to OPT</c>
+			<c>mutation ThreadSafety from MANDATORY TO OPTIONAL</c>
+			<c>mutation Optimization from AND TO OR</c>
+			<c>mutation BoundsCheck from MANDATORY TO OPTIONAL</c>
+			<c>mutation TypeCheck from MANDATORY TO OPTIONAL</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

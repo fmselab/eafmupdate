@@ -1,0 +1,29 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r MobilePhone(MobilePhone)
+	:m UtilityFunctions(UtilityFunctions)
+		:m Calls(Calls)
+		:m Messaging(Messaging)
+			:g [1,*]
+				: SMS(SMS)
+				: MMS(MMS)
+		:o Games(Games)
+		:m Alarm(Alarm)
+		:m RingingTones(RingingTones)
+	:m Settings(Settings)
+		:m OS(OS)
+			:g [1,1]
+				: Symbian(Symbian)
+				: WinCE(WinCE)
+		:o JavaSupport(JavaSupport)
+	:o Media(Media)
+		:m Camera(Camera)
+		:o MP3(MP3)
+	:o Connectivity(Connectivity)
+		:m USB(USB)
+		:o Bluetooth(Bluetooth)
+</feature_tree>
+<constraints>
+C1:~Games  or  JavaSupport
+</constraints>
+</feature_model>

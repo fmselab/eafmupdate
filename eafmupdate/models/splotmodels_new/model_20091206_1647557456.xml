@@ -1,0 +1,17 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r MobileGame(MobileGame)
+	:m Input(Input)
+		:g [1,*]
+			: MovementDetection(MovementDetection)
+			: SpeechInput(SpeechInput)
+			: Keypad(Keypad)
+			: Touchscreen(Touchscreen)
+	:o Output(Output)
+		:o ForceFeedback(ForceFeedback)
+	:o NetworkSupport(NetworkSupport)
+		:o OnlineMultiplayer(OnlineMultiplayer)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

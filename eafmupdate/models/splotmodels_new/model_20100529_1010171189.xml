@@ -1,0 +1,31 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r JCalc(JCalc)
+	:m LANG(LANG)
+		:g [1,1]
+			: PT_BR(PT_BR)
+			: EN(EN)
+	:m MENU(MENU)
+		:m FILE(FILE)
+		:m HELP(HELP)
+		:o EDIT(EDIT)
+		:o SAVE(SAVE)
+	:o LOOKANDFEEL(LOOKANDFEEL)
+		:g [1,1]
+			: Metal(Metal)
+			: System(System)
+			: Motif(Motif)
+			: GTK(GTK)
+			: Windows(Windows)
+	:o ANALYZER(ANALYZER)
+	:o PERFORMANCE(PERFORMANCE)
+	:m DEVICE(DEVICE)
+		:g [1,1]
+			: Z6(Z6)
+			: Milestone(Milestone)
+			: PC(PC)
+	:o COMMA(COMMA)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

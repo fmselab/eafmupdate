@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="YM_Test">
+				<feature mandatory="true" name="POWERSUPPLY"/>
+				<feature mandatory="true" name="TUNERandCHANNELDECODING"/>
+				<feature mandatory="true" name="DEMULTIPLEXERandDESCRAMBLING"/>
+				<feature mandatory="true" name="AUDIOandVIDEODECODING"/>
+				<feature mandatory="true" name="CONDITIONALACCESS"/>
+				<feature mandatory="true" name="SECURITY"/>
+				<feature mandatory="true" name="PROCESSORandDATASTORAGE"/>
+				<and mandatory="true" name="DATAINTERFACES">
+					<feature name="USB"/>
+					<feature name="Wifi"/>
+					<feature name="PowerLineControl"/>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

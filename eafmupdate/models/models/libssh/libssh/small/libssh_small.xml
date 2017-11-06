@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="libssh">
+				<feature name="WITH_GSSAPI"/>
+				<feature name="WITH_SERVER"/>
+				<feature name="WITH_EXAMPLES"/>
+				<and name="WITH_STATIC_LIB">
+					<and name="WITH_TESTING">
+						<feature name="WITH_BENCHMARKS"/>
+					</and>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

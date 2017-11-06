@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="SmartHome">
+				<and mandatory="true" name="EnvironmentControl">
+					<and mandatory="true" name="MeasurementUnits">
+						<feature name="Celsius"/>
+						<feature name="Fahrenheit"/>
+					</and>
+					<and mandatory="true" name="TemperatureManagement">
+						<feature mandatory="true" name="HeatingManagement"/>
+						<feature name="SmartHeatingManagement"/>
+					</and>
+					<and mandatory="true" name="WindowsManagement">
+						<feature mandatory="true" name="ManualWindows"/>
+						<feature name="AutomaticWindows"/>
+					</and>
+				</and>
+				<and mandatory="true" name="LightManagement">
+					<feature name="SmartLightManagement"/>
+					<feature name="Pre_definedValues"/>
+					<feature mandatory="true" name="SimpleControl"/>
+				</and>
+				<and mandatory="true" name="GUI">
+					<feature name="TouchScreen"/>
+					<feature name="Mobile"/>
+					<feature name="Internet"/>
+				</and>
+				<and mandatory="true" name="PresenceSimulator">
+					<feature name="LightSimulation"/>
+					<feature name="BlindSimulation"/>
+					<feature name="MusicSimulation"/>
+				</and>
+				<and mandatory="true" name="FireControl">
+					<and mandatory="true" name="FirstAidGroup">
+						<feature name="FireDepartment"/>
+						<feature name="OtherGroup"/>
+					</and>
+					<and mandatory="true" name="FireAlarm">
+						<feature name="Siren"/>
+						<feature name="Bell"/>
+						<feature name="Light"/>
+					</and>
+				</and>
+				<and mandatory="true" name="DoorLock">
+					<feature name="KeypadReader"/>
+					<feature name="CardReader"/>
+					<feature name="FingerprintReader"/>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

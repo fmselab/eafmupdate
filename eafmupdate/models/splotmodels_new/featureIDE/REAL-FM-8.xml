@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="monitor_engine_system">
+				<and mandatory="true" name="engine_performance">
+					<and mandatory="true" name="temperatures">
+						<feature name="colant"/>
+						<feature mandatory="true" name="oil"/>
+						<feature mandatory="true" name="engine"/>
+						<feature mandatory="true" name="transmission"/>
+					</and>
+					<feature mandatory="true" name="rpm"/>
+					<feature mandatory="true" name="exhaust_level_temp"/>
+				</and>
+				<and mandatory="true" name="fuel_consumption">
+					<alt mandatory="true" name="measures">
+						<feature mandatory="true" name="l_km"/>
+						<feature mandatory="true" name="gallon_mile"/>
+					</alt>
+					<or mandatory="true" name="methods">
+						<feature mandatory="true" name="distance"/>
+						<feature mandatory="true" name="type_of_driving"/>
+						<feature mandatory="true" name="drive"/>
+					</or>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>drive</var>
+					</not>
+					<var>rpm</var>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

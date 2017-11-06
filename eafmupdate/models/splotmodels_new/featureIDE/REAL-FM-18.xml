@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="doc_gen">
+				<and mandatory="true" name="analysis">
+					<or mandatory="true" name="language_analysis">
+						<alt mandatory="true" name="cobol">
+							<feature mandatory="true" name="ibm_cobol"/>
+							<feature mandatory="true" name="microfocus_cobol"/>
+						</alt>
+						<feature mandatory="true" name="jcl"/>
+						<feature mandatory="true" name="sql"/>
+						<feature mandatory="true" name="delphi"/>
+						<feature mandatory="true" name="progress"/>
+					</or>
+					<feature name="version_mngt"/>
+					<feature name="subsystems"/>
+				</and>
+				<and mandatory="true" name="presentation">
+					<or mandatory="true" name="localization">
+						<feature mandatory="true" name="english"/>
+						<feature mandatory="true" name="dutch"/>
+					</or>
+					<alt mandatory="true" name="interaction">
+						<feature mandatory="true" name="static"/>
+						<feature mandatory="true" name="dynamic"/>
+					</alt>
+					<or mandatory="true" name="main_pages">
+						<or mandatory="true" name="program_page">
+							<feature mandatory="true" name="annotation_section"/>
+							<feature mandatory="true" name="activation_section"/>
+							<feature mandatory="true" name="entities_section"/>
+							<feature mandatory="true" name="parameters_section"/>
+						</or>
+						<feature mandatory="true" name="copybook_page"/>
+						<alt mandatory="true" name="statistics_page">
+							<feature mandatory="true" name="with_history"/>
+							<feature mandatory="true" name="without_history"/>
+						</alt>
+						<feature mandatory="true" name="indexes"/>
+						<feature mandatory="true" name="search_page"/>
+						<feature mandatory="true" name="subsystem_page"/>
+						<feature mandatory="true" name="source_page"/>
+						<feature mandatory="true" name="source_difference"/>
+					</or>
+					<or name="visualizations">
+						<feature mandatory="true" name="perform_graph"/>
+						<feature mandatory="true" name="conditional_perform_graph"/>
+						<feature mandatory="true" name="jcl_graph"/>
+						<feature mandatory="true" name="subsystem_graph"/>
+						<feature mandatory="true" name="overview_graph"/>
+					</or>
+				</and>
+				<alt mandatory="true" name="database">
+					<feature mandatory="true" name="db2"/>
+					<feature mandatory="true" name="oracle"/>
+					<feature mandatory="true" name="mysql"/>
+				</alt>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>subsystem_page</var>
+					</not>
+					<var>subsystems</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>subsystem_graph</var>
+					</not>
+					<var>subsystems</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>source_difference</var>
+					</not>
+					<var>version_mngt</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>perform_graph</var>
+					</not>
+					<var>cobol</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>conditional_perform_graph</var>
+					</not>
+					<var>cobol</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>jcl_graph</var>
+					</not>
+					<var>jcl</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>static</var>
+					</not>
+					<not>
+						<var>annotation_section</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>static</var>
+					</not>
+					<not>
+						<var>search_page</var>
+					</not>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

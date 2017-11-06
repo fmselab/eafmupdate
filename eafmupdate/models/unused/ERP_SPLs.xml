@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<alt mandatory="true" name="ERP_SPL">
+				<and mandatory="true" name="Cadastros">
+					<and mandatory="true" name="Cadastrodecliente">
+						<feature mandatory="true" name="Editarcadastrodecliente"/>
+						<feature mandatory="true" name="Apagarcadastrodecliente"/>
+					</and>
+					<and mandatory="true" name="Cadastrodefornecedor">
+						<feature mandatory="true" name="Editarcadastrodefornecedor"/>
+						<feature mandatory="true" name="Apagarcadastrodefornecedor"/>
+					</and>
+					<and name="Cadastrodefuncionario">
+						<feature mandatory="true" name="Editarcadastrodefuncionario"/>
+						<and mandatory="true" name="Apagarcadastrodefuncionario">
+							<and name="Cadastroderegrasdeacessodeusuario">
+								<feature mandatory="true" name="Editarregrasdeacessodeusuario"/>
+							</and>
+						</and>
+					</and>
+					<and mandatory="true" name="Cadastrodeusuario">
+						<feature mandatory="true" name="Editarcadastrodeusuario"/>
+						<feature mandatory="true" name="Apagarcadastrodeusuario"/>
+					</and>
+					<and abstract="true" mandatory="true" name="Cadastros_6">
+						<and mandatory="true" name="Cadastrodeproduto">
+							<feature mandatory="true" name="Editarcadastrodeproduto"/>
+							<feature mandatory="true" name="Apagarcadastrodeproduto"/>
+						</and>
+						<and mandatory="true" name="Cadastrodeservico">
+							<feature mandatory="true" name="Editarcadastrodeservico"/>
+							<feature mandatory="true" name="Apagarcadastrodeservico"/>
+						</and>
+					</and>
+				</and>
+				<and mandatory="true" name="Listagens">
+					<feature mandatory="true" name="Listagemdeitens"/>
+					<and name="Listagemdeprodutos">
+						<and mandatory="true" name="Login">
+							<feature name="Controledeacesso"/>
+						</and>
+					</and>
+					<feature mandatory="true" name="Listagemdepessoas"/>
+					<feature mandatory="true" name="Listagemdeclientes"/>
+					<feature mandatory="true" name="Listagemdefornecedores"/>
+					<feature mandatory="true" name="Listagemdeusuarios"/>
+					<feature mandatory="true" name="Listagemdeestoque"/>
+				</and>
+				<and mandatory="true" name="Controledeestoque">
+					<feature mandatory="true" name="Entradadeestoque"/>
+					<feature mandatory="true" name="Saidadeestoque"/>
+					<feature mandatory="true" name="Manutencaodeestoque"/>
+				</and>
+				<and mandatory="true" name="Controlefinanceiro">
+					<feature mandatory="true" name="Contasapagar"/>
+					<and mandatory="true" name="Contasareceber">
+						<feature name="Listagemdeservicos"/>
+					</and>
+					<feature mandatory="true" name="Manutencaodelancamentos"/>
+				</and>
+				<feature mandatory="true" name="Listagemdefuncionarios"/>
+			</alt>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation Controledeestoque from OR TO AND</c>
+			<c>mutation ERP_SPL from AND TO ALT</c>
+			<c>mutation Listagemdeestoque from OPTIONAL TO MANDATORY</c>
+			<c>mutation Cadastros_6 from OR TO AND</c>
+			<c>mutation Controlefinanceiro from OR TO AND</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>
+

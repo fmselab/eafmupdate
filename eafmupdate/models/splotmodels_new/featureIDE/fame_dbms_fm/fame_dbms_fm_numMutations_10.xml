@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="FAME_DBMS">
+				<or mandatory="true" name="OS">
+					<feature mandatory="true" name="Nut_OS"/>
+					<feature mandatory="true" name="Win"/>
+				</or>
+				<alt name="BufferManager">
+					<alt mandatory="true" name="Persistent">
+						<or mandatory="true" name="MemoryAllocation">
+							<feature mandatory="true" name="Static"/>
+							<feature mandatory="true" name="Dynamic"/>
+						</or>
+						<or mandatory="true" name="PageReplication">
+							<feature mandatory="true" name="LRU"/>
+							<feature mandatory="true" name="LFU"/>
+						</or>
+					</alt>
+					<feature mandatory="true" name="InMemory"/>
+				</alt>
+				<feature name="DebugLogging"/>
+				<alt name="Storage">
+					<and mandatory="true" name="API">
+						<feature mandatory="true" name="Get"/>
+						<feature mandatory="true" name="Put"/>
+						<feature mandatory="true" name="Delete"/>
+					</and>
+					<feature mandatory="true" name="B_Tree"/>
+					<feature mandatory="true" name="Unindexed"/>
+				</alt>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>fame_dbms_fm_numMutations_10</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

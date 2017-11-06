@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="Connector">
+				<and mandatory="true" name="Paradigm">
+					<alt name="Client_Server">
+						<and mandatory="true" name="Synchronous">
+							<feature name="Timeout"/>
+						</and>
+						<and mandatory="true" name="Asynchronous">
+							<alt mandatory="true" name="Polling">
+								<feature mandatory="true" name="Blocking"/>
+								<feature mandatory="true" name="Non_blocking"/>
+							</alt>
+							<feature mandatory="true" name="Callback"/>
+						</and>
+					</alt>
+					<and mandatory="true" name="Message_Based">
+						<feature name="Sender"/>
+						<and mandatory="true" name="Receiver">
+							<alt mandatory="true" name="Pull">
+								<feature mandatory="true" name="Queued"/>
+								<feature mandatory="true" name="Non_Queued"/>
+							</alt>
+							<feature mandatory="true" name="Push"/>
+						</and>
+					</and>
+				</and>
+				<alt mandatory="true" name="Technology">
+					<feature mandatory="true" name="CAN"/>
+					<feature mandatory="true" name="Local"/>
+				</alt>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation Pull from OR TO AND in OPT</c>
+			<c>mutation Pull from AND TO ALT</c>
+			<c>mutation Paradigm from ALT TO AND</c>
+			<c>mutation Asynchronous from ALT TO AND</c>
+			<c>mutation Sender from MANDATORY TO OPTIONAL</c>
+			<c>mutation Client_Server from MANDATORY TO OPTIONAL</c>
+			<c>mutation Receiver from ALT TO AND</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>
+

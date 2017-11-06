@@ -1,0 +1,26 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r monitor_engine_system(monitor_engine_system)
+	:m engine_performance(engine_performance)
+		:m temperatures(temperatures)
+			:o colant(colant)
+			:m oil(oil)
+			:m engine(engine)
+			:m transmission(transmission)
+		:m rpm(rpm)
+		:m exhaust_level_temp(exhaust_level_temp)
+	:m fuel_consumption(fuel_consumption)
+		:m measures(measures)
+			:g [1,1]
+				: l_km(l_km)
+				: gallon_mile(gallon_mile)
+		:m methods(methods)
+			:g [1,*]
+				: distance(distance)
+				: type_of_driving(type_of_driving)
+				: drive(drive)
+</feature_tree>
+<constraints>
+C1:~drive  or  rpm
+</constraints>
+</feature_model>

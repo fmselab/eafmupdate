@@ -1,0 +1,22 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r cellphone(cellphone)
+	:o wireless(wireless)
+		:g [1,*]
+			: infrared(infrared)
+			: bluetooth(bluetooth)
+	:m accu_cell(accu_cell)
+		:g [1,1]
+			: li_ion(li_ion)
+			: ni_mh(ni_mh)
+			: ni_ca(ni_ca)
+	:m display(display)
+		:g [1,1]
+			: color(color)
+			: monochrome(monochrome)
+</feature_tree>
+<constraints>
+C1:~bluetooth  or  li_ion
+C2:~color  or  ~ni_ca
+</constraints>
+</feature_model>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="tecom">
+				<or mandatory="true" name="ipvoice">
+					<and mandatory="true" name="software">
+						<feature name="swpack1"/>
+						<feature name="swpack2"/>
+					</and>
+				</or>
+				<and mandatory="true" name="rack">
+					<and name="sizes">
+						<feature name="large"/>
+						<feature mandatory="true" name="medium"/>
+						<feature mandatory="true" name="small"/>
+					</and>
+				</and>
+				<and name="messaging">
+					<feature name="upgrade_swpack"/>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>swpack1</var>
+					</not>
+					<not>
+						<var>upgrade_swpack</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>ipvoice</var>
+					</not>
+					<disj>
+						<not>
+							<var>messaging</var>
+						</not>
+						<var>upgrade_swpack</var>
+					</disj>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation messaging from OPTIONAL TO MANDATORY</c>
+			<c>mutation sizes from MANDATORY TO OPTIONAL</c>
+			<c>mutation rack from AND TO OR</c>
+			<c>mutation sizes from ALT TO AND</c>
+			<c>mutation software from ALT TO AND to OPT</c>
+			<c>mutation messaging from AND TO ALT</c>
+			<c>mutation rack from OR TO ALTERNATIVE</c>
+			<c>mutation messaging from MANDATORY TO OPTIONAL</c>
+			<c>mutation rack from ALT TO AND</c>
+			<c>mutation messaging from ALT TO AND to OPT</c>
+			<c>mutation software from MANDATORY TO OPTIONAL</c>
+			<c>mutation large from MANDATORY TO OPTIONAL</c>
+			<c>mutation software from OPTIONAL TO MANDATORY</c>
+			<c>mutation ipvoice from AND TO ALT</c>
+			<c>mutation ipvoice from ALT TO AND</c>
+			<c>mutation ipvoice from AND TO OR</c>
+			<c>mutation ipvoice from OPTIONAL TO MANDATORY</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

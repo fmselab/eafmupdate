@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="Bicycle">
+				<alt mandatory="true" name="Frame">
+					<feature mandatory="true" name="Iron"/>
+					<feature mandatory="true" name="Aluminum"/>
+					<alt mandatory="true" name="Carbon">
+						<feature mandatory="true" name="White"/>
+						<feature mandatory="true" name="Red"/>
+						<feature mandatory="true" name="Black"/>
+					</alt>
+				</alt>
+				<and name="Gears">
+					<feature name="Front"/>
+					<feature name="Rear"/>
+				</and>
+				<feature mandatory="true" name="Wheels"/>
+				<feature mandatory="true" name="Saddle"/>
+				<alt mandatory="true" name="Color">
+					<feature mandatory="true" name="_r_15_16_17"/>
+					<feature mandatory="true" name="Green"/>
+					<feature mandatory="true" name="Blue"/>
+				</alt>
+				<feature mandatory="true" name="Handlebars"/>
+				<feature name="Pedals"/>
+				<alt name="Warranty">
+					<feature mandatory="true" name="a1year"/>
+					<feature mandatory="true" name="a2years"/>
+					<feature mandatory="true" name="a3years"/>
+				</alt>
+				<alt name="Maintenanceplan">
+					<feature mandatory="true" name="_r_29_30_31"/>
+					<feature mandatory="true" name="_r_29_30_32"/>
+					<feature mandatory="true" name="lifetime"/>
+				</alt>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>Front</var>
+					</not>
+					<var>Rear</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Carbon</var>
+					</not>
+					<var>_r_15_16_17</var>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

@@ -1,0 +1,33 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r InsurancePolicy(InsurancePolicy)
+	:m LOB(LOB)
+		:g [1,*]
+			: Auto(Auto)
+				:g [1,*]
+					: Comprehensive(Comprehensive)
+					: TP(TP)
+			: Home(Home)
+			: commercial(commercial)
+			: watercraft(watercraft)
+	:m Financials(Financials)
+	:m Reporting(Reporting)
+	:o ThirdPartyServices(ThirdPartyServices)
+		:o Add_Validation(Add_Validation)
+		:o VINValidation(VINValidation)
+		:o CreditCheck(CreditCheck)
+			:g [1,1]
+				: simple(simple)
+				: advanced(advanced)
+	:m DataCapture(DataCapture)
+		:m clientdata(clientdata)
+		:o cardetails(cardetails)
+		:o housedetails(housedetails)
+	:m U_W(U_W)
+		:m decision(decision)
+</feature_tree>
+<constraints>
+C1:Comprehensive  or  clientdata  or  cardetails
+C2:TP  or  watercraft
+</constraints>
+</feature_model>

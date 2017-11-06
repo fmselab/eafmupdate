@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="MoviesApp">
+				<and mandatory="true" name="GUI">
+					<feature mandatory="true" name="Thin"/>
+					<feature mandatory="true" name="Rich"/>
+				</and>
+				<alt mandatory="true" name="DB">
+					<feature mandatory="true" name="Local"/>
+					<and mandatory="true" name="Remote">
+						<feature mandatory="true" name="CachePolicy"/>
+					</and>
+				</alt>
+				<and mandatory="true" name="Network">
+					<feature name="Wifi"/>
+					<feature name="Bluetooth"/>
+				</and>
+				<and name="GPS">
+					<feature mandatory="true" name="Built_In"/>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation Built_In from OPTIONAL TO MANDATORY</c>
+			<c>mutation DB from ALT TO OR</c>
+			<c>mutation GUI from ALT TO AND</c>
+			<c>mutation Network from ALT TO AND to OPT</c>
+			<c>mutation DB from OR TO ALTERNATIVE</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

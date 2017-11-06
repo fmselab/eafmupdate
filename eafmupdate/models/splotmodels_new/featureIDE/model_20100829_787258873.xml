@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="MeetingConfig">
+				<and mandatory="true" name="General">
+					<feature mandatory="true" name="Title"/>
+					<feature mandatory="true" name="InstitutionID"/>
+					<feature name="Assemblymembers"/>
+				</and>
+				<and mandatory="true" name="Data">
+					<or mandatory="true" name="Meetingattributes">
+						<feature mandatory="true" name="Starttime"/>
+						<feature mandatory="true" name="Endtime"/>
+						<feature mandatory="true" name="Attendees"/>
+						<feature mandatory="true" name="Place"/>
+					</or>
+					<feature name="Usegroupsascategories"/>
+					<alt mandatory="true" name="Iteminsertionalgorithm">
+						<feature mandatory="true" name="Attheend"/>
+						<feature mandatory="true" name="Categoryorder"/>
+						<feature mandatory="true" name="Proposinggrouporder"/>
+					</alt>
+				</and>
+				<and mandatory="true" name="Workflowandsecurity">
+					<alt mandatory="true" name="Meetingworkflow">
+						<feature mandatory="true" name="Standardworkflow"/>
+						<feature mandatory="true" name="Collegeworkflow"/>
+						<feature mandatory="true" name="Archiveworkflow"/>
+					</alt>
+					<feature name="Zope3conditioninterfave"/>
+					<feature name="Zope3actioninterface"/>
+				</and>
+				<and mandatory="true" name="Userinterface">
+					<or mandatory="true" name="Meetingdisplaystatus">
+						<feature mandatory="true" name="Archived"/>
+						<feature mandatory="true" name="Created"/>
+						<feature mandatory="true" name="Decided"/>
+						<feature mandatory="true" name="Closed"/>
+						<feature mandatory="true" name="Published"/>
+					</or>
+					<alt mandatory="true" name="Defaultview">
+						<feature mandatory="true" name="Myitems"/>
+						<feature mandatory="true" name="Allitems"/>
+						<feature mandatory="true" name="Availablemeetings"/>
+						<feature mandatory="true" name="Decidedmeetings"/>
+					</alt>
+					<feature name="Itemduplication"/>
+					<feature name="Openannexesinseparatewindow"/>
+				</and>
+				<feature name="Emailnotification"/>
+				<and mandatory="true" name="Tasks">
+					<feature name="Displaymacro"/>
+					<or name="Taskcreator">
+						<feature mandatory="true" name="Manager"/>
+						<feature mandatory="true" name="Meetingmanager"/>
+						<feature mandatory="true" name="Owner"/>
+					</or>
+				</and>
+				<and mandatory="true" name="Votes">
+					<feature name="Enablevoting"/>
+					<or name="Voteencoder">
+						<feature mandatory="true" name="_r_47_49_50_51"/>
+						<feature mandatory="true" name="Voter"/>
+					</or>
+					<or name="Availablevotevalues">
+						<feature mandatory="true" name="Yes"/>
+						<feature mandatory="true" name="No"/>
+						<feature mandatory="true" name="Abstention"/>
+					</or>
+					<alt name="Defaultvotevalue">
+						<feature mandatory="true" name="_r_47_58_59_60"/>
+						<feature mandatory="true" name="_r_47_58_59_61"/>
+						<feature mandatory="true" name="_r_47_58_59_62"/>
+					</alt>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

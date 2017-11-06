@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="libssh">
+				<feature name="WITH_GSSAPI"/>
+				<feature name="WITH_ZLIB"/>
+				<and name="WITH_SSH1">
+					<feature name="WITH_SFTP"/>
+				</and>
+				<and name="WITH_DEBUG_CRYPTO">
+					<feature name="WITH_SERVER"/>
+				</and>
+				<feature name="WITH_DEBUG_CALLTRACE"/>
+				<feature name="WITH_GCRYPT"/>
+				<feature name="WITH_PCAP"/>
+				<feature name="WITH_INTERNAL_DOC"/>
+				<and name="WITH_CLIENT_TESTING">
+					<and name="WITH_EXAMPLES">
+						<feature name="WITH_NACL"/>
+					</and>
+				</and>
+				<and name="WITH_STATIC_LIB">
+					<and name="WITH_TESTING">
+						<feature name="WITH_BENCHMARKS"/>
+					</and>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>libssh_wrong2</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

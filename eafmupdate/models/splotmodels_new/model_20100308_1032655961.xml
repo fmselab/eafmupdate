@@ -1,0 +1,25 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r Cellphone(Cellphone)
+	:m BasisFunctions(BasisFunctions)
+		:m Message(Message)
+			:m SMS(SMS)
+			:o MMS(MMS)
+		:m VoiceCall(VoiceCall)
+	:o Communication(Communication)
+		:o WLAN(WLAN)
+		:o Bluetooth(Bluetooth)
+		:o UMTS(UMTS)
+	:m Extras(Extras)
+		:g [1,*]
+			: MP3(MP3)
+			: Camera(Camera)
+				:g [1,1]
+					: a3MP(a3MP)
+					: a8MP(a8MP)
+</feature_tree>
+<constraints>
+C1:~MMS  or  Camera
+C2:~Bluetooth  or  ~MP3
+</constraints>
+</feature_model>

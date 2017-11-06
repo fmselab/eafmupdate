@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="james">
+				<alt mandatory="true" name="user_mngt">
+					<feature mandatory="true" name="db"/>
+					<feature mandatory="true" name="ldap"/>
+				</alt>
+				<feature name="ws_interface"/>
+				<or mandatory="true" name="gui">
+					<feature mandatory="true" name="pc"/>
+					<feature mandatory="true" name="pda"/>
+				</or>
+				<feature mandatory="true" name="core"/>
+				<or mandatory="true" name="modules">
+					<feature mandatory="true" name="calendar"/>
+					<feature mandatory="true" name="forum"/>
+					<feature mandatory="true" name="congress_mngt"/>
+					<feature mandatory="true" name="repository"/>
+				</or>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>pda</var>
+					</not>
+					<not>
+						<var>repository</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>congress_mngt</var>
+					</not>
+					<var>repository</var>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

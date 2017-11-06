@@ -1,0 +1,16 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r CIMSProductLine(CIMSProductLine)
+	:m Client(Client)
+		:m Client_Assesment(Client_Assesment)
+		:m Client_Transport(Client_Transport)
+		:m Client_Payment(Client_Payment)
+		:m Client_Training(Client_Training)
+	:m Inventory(Inventory)
+	:m UserProfile(UserProfile)
+	:m Reports(Reports)
+	:m Database(Database)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="HelpSystem">
+				<or mandatory="true" name="Priority">
+					<feature name="PH"/>
+					<feature name="PI"/>
+					<feature name="PL"/>
+				</or>
+				<alt mandatory="true" name="Level">
+					<feature name="BG"/>
+					<feature name="IT"/>
+					<feature name="AD"/>
+				</alt>
+				<alt mandatory="true" name="Method">
+					<feature name="PR"/>
+					<feature name="PB"/>
+				</alt>
+				<alt mandatory="true" name="Activity">
+					<feature name="PS"/>
+					<feature name="CT"/>
+				</alt>
+				<alt mandatory="true" name="SensorInput">
+					<feature name="S1"/>
+					<feature name="S2"/>
+					<feature name="S3"/>
+					<feature name="S4"/>
+				</alt>
+				<and mandatory="true" name="SensorPosition">
+					<feature mandatory="true" name="NotPressed"/>
+					<feature mandatory="true" name="Pressed"/>
+				</and>
+				<alt mandatory="true" name="Sound">
+					<feature name="Sound1"/>
+					<feature name="Sound2"/>
+				</alt>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

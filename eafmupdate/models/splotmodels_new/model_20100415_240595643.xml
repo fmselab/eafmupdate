@@ -1,0 +1,43 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r ReferenceManagementSoftware(ReferenceManagementSoftware)
+	:m PlatformType(PlatformType)
+		:g [1,1]
+			: Web_centred(Web_centred)
+			: Desktop(Desktop)
+	:m ContentManagement(ContentManagement)
+		:m Bibliography(Bibliography)
+		:o Publications(Publications)
+		:m References(References)
+			:o Citeasyouwrite(Citeasyouwrite)
+		:m Search(Search)
+		:m Categorization(Categorization)
+			:g [1,*]
+				: SubjectAssociation(SubjectAssociation)
+				: Tagging(Tagging)
+		:o Exporting(Exporting)
+			:g [1,*]
+				: BibTex(BibTex)
+				: EndNote(EndNote)
+				: RIS(RIS)
+				: PubMed(PubMed)
+				: XML(XML)
+		:o Importing(Importing)
+			:g [1,*]
+				: _r_6_25_26_27(_r_6_25_26_27)
+				: _r_6_25_26_28(_r_6_25_26_28)
+				: _r_6_25_26_29(_r_6_25_26_29)
+				: _r_6_25_26_30(_r_6_25_26_30)
+				: _r_6_25_26_31(_r_6_25_26_31)
+		:o StatisticsGeneration(StatisticsGeneration)
+	:o UsersInteraction(UsersInteraction)
+		:m ContentSharing(ContentSharing)
+		:o DiscussionBoards(DiscussionBoards)
+		:o PublicationWritingCollaboration(PublicationWritingCollaboration)
+	:o Multi_languageSupport(Multi_languageSupport)
+</feature_tree>
+<constraints>
+C1:Publications  or  ~PublicationWritingCollaboration
+C2:Web_centred  or  ~UsersInteraction
+</constraints>
+</feature_model>

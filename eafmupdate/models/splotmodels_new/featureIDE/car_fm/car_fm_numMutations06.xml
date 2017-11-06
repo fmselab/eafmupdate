@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="Car">
+				<and mandatory="true" name="AutomatedDrivingController">
+					<and mandatory="true" name="CollisionAvoidanceBraking">
+						<feature mandatory="true" name="StandardAvoidance"/>
+						<feature name="EnhancedAvoidance"/>
+					</and>
+					<feature name="ParallelParking"/>
+				</and>
+				<alt mandatory="true" name="Sensors">
+					<feature mandatory="true" name="LateralRangeFinder"/>
+					<feature mandatory="true" name="ForwardRangeFinder"/>
+				</alt>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>EnhancedAvoidance</var>
+					</not>
+					<var>ForwardRangeFinder</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>ParallelParking</var>
+					</not>
+					<var>LateralRangeFinder</var>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>car_fm_numMutations06</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

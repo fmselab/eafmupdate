@@ -1,0 +1,57 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r thread(thread)
+	:m thread_instance(thread_instance)
+		:g [1,1]
+			: multiple(multiple)
+				:o coroutine(coroutine)
+					:o dispatching(dispatching)
+						:m dispach_method(dispach_method)
+							:m global_life(global_life)
+						:o scheduling(scheduling)
+							:o bundle_schedule(bundle_schedule)
+								:o bundle_preemption(bundle_preemption)
+								:m bundle_strategy(bundle_strategy)
+									:g [1,1]
+										: bundle_strategy_replugging(bundle_strategy_replugging)
+										: bundle_fcfs(bundle_fcfs)
+										: bundle_lcfs(bundle_lcfs)
+							:o idle_control(idle_control)
+								:g [1,1]
+									: idle_guard(idle_guard)
+									: idle_panic(idle_panic)
+									: idle_user(idle_user)
+							:o query_schedule(query_schedule)
+							:m thread_schedule(thread_schedule)
+								:o thread_preemption(thread_preemption)
+									:o non_preemptable_threads(non_preemptable_threads)
+									:o scheduler_lockable(scheduler_lockable)
+								:m thread_strategy(thread_strategy)
+									:g [1,1]
+										: priority(priority)
+											:o schedule_same_priority(schedule_same_priority)
+											:m priority_behaviour(priority_behaviour)
+												:g [1,1]
+													: priority_cooperative(priority_cooperative)
+													: priority_preemptive(priority_preemptive)
+											:m priority_count(priority_count)
+												:g [1,1]
+													: priority_16(priority_16)
+													: priority_32(priority_32)
+													: priority_8(priority_8)
+										: thread_fcfs(thread_fcfs)
+										: thread_lcfs(thread_lcfs)
+										: thread_strategy_replugging(thread_strategy_replugging)
+					:m location(location)
+						:g [1,1]
+							: integrated(integrated)
+							: separated(separated)
+					:m size(size)
+						:o float_set(float_set)
+						:o volatile_set(volatile_set)
+						:m minimal_set(minimal_set)
+			: single(single)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

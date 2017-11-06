@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="Graph">
+				<or mandatory="true" name="Services">
+					<feature mandatory="true" name="do_undo_redo"/>
+					<feature mandatory="true" name="zoom_input"/>
+					<feature mandatory="true" name="graph_manipulation"/>
+				</or>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>do_undo_redo</var>
+					<var>graph_manipulation</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>zoom_input</var>
+					<var>graph_manipulation</var>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

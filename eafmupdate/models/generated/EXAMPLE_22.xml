@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="Root">
+				<alt name="A">
+					<feature mandatory="true" name="B"/>
+					<feature mandatory="true" name="D"/>
+				</alt>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation A from OR TO AND</c>
+			<c>mutation A from AND TO ALT</c>
+			<c>mutation A from MANDATORY TO OPTIONAL</c>
+			<c>mutation A from ALT TO OR</c>
+			<c>mutation A from OPTIONAL TO MANDATORY</c>
+			<c>mutation A from OR TO ALTERNATIVE</c>
+			<c>mutation A from MANDATORY TO OPTIONAL</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>
+

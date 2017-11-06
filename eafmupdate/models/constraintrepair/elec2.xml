@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="ECS">
+				<and mandatory="true" name="Modules">
+					<and mandatory="true" name="AECS">
+						<and mandatory="true" name="Scheduler">
+							<alt mandatory="true" name="SchedulingAlgorithm">
+								<feature name="FirstComeFirstServe"/>
+								<feature name="ShortestDistance"/>
+								<feature name="EnergyConservative"/>
+								<feature name="RoundRobin"/>
+							</alt>
+						</and>
+						<feature mandatory="true" name="RequestQueuer"/>
+					</and>
+					<feature name="MECS"/>
+					<feature name="EE"/>
+				</and>
+				<and mandatory="true" name="CoreFunctionality">
+					<and mandatory="true" name="SafetyManagement">
+						<feature mandatory="true" name="ObstructionDetector"/>
+						<feature mandatory="true" name="AlertNotifier"/>
+						<or name="OverloadNotifier">
+							<feature name="AudibleBeep_Tone"/>
+							<feature name="AudibleVoiceRecording"/>
+							<feature name="VisualNotification"/>
+						</or>
+					</and>
+					<and mandatory="true" name="ElevatorController">
+						<feature mandatory="true" name="DoorController"/>
+						<and mandatory="true" name="CabController">
+							<feature mandatory="true" name="DirectionController"/>
+							<feature mandatory="true" name="OperationModeController"/>
+							<feature mandatory="true" name="DisplayController"/>
+						</and>
+					</and>
+					<and mandatory="true" name="LevelController">
+						<feature mandatory="true" name="DoorController_1"/>
+						<feature mandatory="true" name="DisplayController_1"/>
+					</and>
+				</and>
+				<or mandatory="true" name="HarwarePlatform">
+					<feature name="ExistingHardware"/>
+					<feature name="NewHardware"/>
+				</or>
+				<or mandatory="true" name="SoftwarePlatform">
+					<feature name="ExistingSoftware"/>
+					<feature name="NewSoftware"/>
+				</or>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="SmartHome">
+				<and name="HVACManagement">
+					<and name="HeatingControl">
+						<feature mandatory="true" name="ManualHeating1"/>
+						<and name="AutomatedHeating">
+							<feature name="RemoteHeatingControl"/>
+						</and>
+					</and>
+					<and name="AirConditioningControl">
+						<feature mandatory="true" name="ManualAirConditioningControl"/>
+						<and name="AutomatedAirConditioningControl">
+							<feature name="RemoteAirConditioningControl"/>
+						</and>
+					</and>
+					<and name="VentilationControl">
+						<feature mandatory="true" name="ManualVentilationControl"/>
+						<feature name="AutomatedVentilationControl"/>
+					</and>
+					<feature name="FullAutomatedHVACControl"/>
+					<feature name="FullManualHVACControl"/>
+				</and>
+				<and mandatory="true" name="WindowsManagement">
+					<feature mandatory="true" name="ManualWindows"/>
+					<feature name="AutomatedWindows"/>
+				</and>
+				<and mandatory="true" name="LightManagement">
+					<or name="AutomatedIlumination">
+						<feature name="AutomatedPerimeterIllumination"/>
+						<feature name="AutomatedIn_houseIllumination"/>
+					</or>
+					<feature mandatory="true" name="ManualIlumination"/>
+				</and>
+				<and mandatory="true" name="UI">
+					<feature mandatory="true" name="TouchScreen"/>
+					<and name="Internet">
+						<and name="Privacy">
+							<alt name="EncryptionAlgorithm">
+								<feature name="RSA"/>
+								<feature name="DES"/>
+							</alt>
+						</and>
+					</and>
+				</and>
+				<or name="PresenceSimulation">
+					<feature name="LightSimulation"/>
+					<feature name="BlindsSimulation"/>
+					<feature name="AVSimulation"/>
+				</or>
+				<and name="FireControl">
+					<and mandatory="true" name="FirstAidGroup">
+						<feature mandatory="true" name="FireDepartment"/>
+						<feature name="OtherGroup"/>
+					</and>
+					<feature name="FireSprinklers"/>
+				</and>
+				<and name="IrrigationSprinklers">
+					<feature mandatory="true" name="SimpleControl"/>
+					<feature name="AutomatedSprinklers"/>
+				</and>
+				<or name="Alarm">
+					<feature name="Siren"/>
+					<feature name="Bell"/>
+					<feature name="Lights"/>
+				</or>
+				<and name="Security">
+					<or mandatory="true" name="AuthenticationDevice">
+						<feature name="Keypad"/>
+						<feature name="RetinaScanner"/>
+						<feature name="FingerprintReader"/>
+					</or>
+					<or name="IntrusionDetectionDevice">
+						<feature name="GlassbreakSensors"/>
+						<feature name="Cameras"/>
+					</or>
+				</and>
+				<and name="BlindsManagement">
+					<feature mandatory="true" name="ManualBlinds"/>
+					<feature name="AutomatedBlinds"/>
+				</and>
+				<and name="AVManagement">
+					<feature name="AutomatedAV"/>
+				</and>
+				<feature name="Moods"/>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>RSA</var>
+					</not>
+					<not>
+						<var>DES</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>HeatingControl</var>
+					</not>
+					<var>HVACManagement</var>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="editor_config">
+				<and mandatory="true" name="backup">
+					<and name="autosave">
+						<feature name="minutes"/>
+					</and>
+					<feature name="backup_onchange"/>
+					<alt mandatory="true" name="backup_extension">
+						<feature mandatory="true" name="file_bak"/>
+						<feature mandatory="true" name="file_bak_ext"/>
+						<feature mandatory="true" name="file_ext_bak"/>
+					</alt>
+				</and>
+				<and name="document_class">
+					<and mandatory="true" name="associated_file_ext">
+						<feature mandatory="true" name="ext"/>
+					</and>
+					<and mandatory="true" name="commands">
+						<feature name="remove_blank_lines"/>
+						<feature name="spell_check"/>
+						<feature name="dos_unix_conversion"/>
+					</and>
+					<and name="syntax_highlighting">
+						<feature name="syntax_definition_file"/>
+					</and>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>REAL-FM-14_numMutations_03</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="WebPortal">
+				<and name="AdditionalServices">
+					<and name="SiteStatistics">
+						<feature mandatory="true" name="Basic"/>
+						<feature name="Advanced"/>
+					</and>
+					<and name="SiteSearch">
+						<feature name="Images"/>
+						<and name="Text">
+							<feature mandatory="true" name="HTML"/>
+							<feature name="Dynamic"/>
+						</and>
+					</and>
+					<and name="AdServer">
+						<feature mandatory="true" name="Reports"/>
+						<feature name="Pop_ups"/>
+						<and mandatory="true" name="Banners">
+							<feature mandatory="true" name="Image"/>
+							<feature name="Flash"/>
+						</and>
+						<feature name="KeywordSupport"/>
+					</and>
+				</and>
+				<and mandatory="true" name="WebServer">
+					<alt name="Logging">
+						<feature mandatory="true" name="DB"/>
+						<feature mandatory="true" name="File"/>
+					</alt>
+					<or name="Protocols">
+						<feature mandatory="true" name="NTTP"/>
+						<feature mandatory="true" name="FTP"/>
+						<feature mandatory="true" name="HTTPS"/>
+					</or>
+					<and mandatory="true" name="Content">
+						<feature mandatory="true" name="Static"/>
+						<or name="Active">
+							<feature mandatory="true" name="ASP"/>
+							<feature mandatory="true" name="PHP"/>
+							<feature mandatory="true" name="JSP"/>
+							<feature mandatory="true" name="CGI"/>
+						</or>
+					</and>
+				</and>
+				<alt name="Persistence">
+					<feature mandatory="true" name="XML"/>
+					<feature mandatory="true" name="Database"/>
+				</alt>
+				<or name="Security">
+					<feature mandatory="true" name="DataStorage"/>
+					<feature mandatory="true" name="DataTransfer"/>
+					<feature mandatory="true" name="UserAuthentication"/>
+				</or>
+				<alt name="Performance">
+					<feature mandatory="true" name="Ms"/>
+					<feature mandatory="true" name="Sec"/>
+					<feature mandatory="true" name="Min"/>
+				</alt>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>KeywordSupport</var>
+					</not>
+					<var>Text</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>Dynamic</var>
+					</not>
+					<var>Active</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>DB</var>
+					</not>
+					<var>Database</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>DataTransfer</var>
+					</not>
+					<var>HTTPS</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>File</var>
+					</not>
+					<var>FTP</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>HTTPS</var>
+					</not>
+					<not>
+						<var>Ms</var>
+					</not>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

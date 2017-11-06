@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="ModeloAgen">
+				<and mandatory="true" name="Agendamento">
+					<feature name="ImpressãodeFolhadeRosto"/>
+					<feature name="Reagendamento"/>
+					<or name="Notificação">
+						<feature mandatory="true" name="Email"/>
+						<feature mandatory="true" name="Celular"/>
+					</or>
+					<alt mandatory="true" name="Regras">
+						<feature mandatory="true" name="PorAdm"/>
+						<feature mandatory="true" name="PorUsuário"/>
+					</alt>
+					<feature mandatory="true" name="Visualização"/>
+					<or name="TipodeUso">
+						<feature mandatory="true" name="Reunião"/>
+						<feature mandatory="true" name="Palestra"/>
+						<feature mandatory="true" name="Treinamento"/>
+						<feature mandatory="true" name="Videoconferência"/>
+					</or>
+				</and>
+				<and name="CadastrodeHorários">
+					<feature name="BloqueiodeHorários"/>
+				</and>
+				<and name="CadastrodeSalas">
+					<or mandatory="true" name="TipodeSala">
+						<feature mandatory="true" name="_r_3_25_26_27"/>
+						<feature mandatory="true" name="Aula"/>
+						<feature mandatory="true" name="Auditório"/>
+						<feature mandatory="true" name="Laboratório"/>
+					</or>
+				</and>
+				<feature name="CadastrodeEquipamentos"/>
+				<feature name="CadastrodeAdministradores"/>
+				<or name="Relatórios">
+					<feature mandatory="true" name="OcupaçãoDiária"/>
+					<feature mandatory="true" name="OcupaçãoSemanal"/>
+				</or>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<var>CadastrodeSalas</var>
+					<not>
+						<var>CadastrodeEquipamentos</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>CadastrodeSalas</var>
+					<not>
+						<var>TipodeUso</var>
+					</not>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

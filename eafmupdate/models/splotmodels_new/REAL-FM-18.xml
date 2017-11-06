@@ -1,0 +1,67 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r doc_gen(doc_gen)
+	:m analysis(analysis)
+		:m language_analysis(language_analysis)
+			:g [1,*]
+				: cobol(cobol)
+					:g [1,1]
+						: ibm_cobol(ibm_cobol)
+						: microfocus_cobol(microfocus_cobol)
+				: jcl(jcl)
+				: sql(sql)
+				: delphi(delphi)
+				: progress(progress)
+		:o version_mngt(version_mngt)
+		:o subsystems(subsystems)
+	:m presentation(presentation)
+		:m localization(localization)
+			:g [1,*]
+				: english(english)
+				: dutch(dutch)
+		:m interaction(interaction)
+			:g [1,1]
+				: static(static)
+				: dynamic(dynamic)
+		:m main_pages(main_pages)
+			:g [1,*]
+				: program_page(program_page)
+					:g [1,*]
+						: annotation_section(annotation_section)
+						: activation_section(activation_section)
+						: entities_section(entities_section)
+						: parameters_section(parameters_section)
+				: copybook_page(copybook_page)
+				: statistics_page(statistics_page)
+					:g [1,1]
+						: with_history(with_history)
+						: without_history(without_history)
+				: indexes(indexes)
+				: search_page(search_page)
+				: subsystem_page(subsystem_page)
+				: source_page(source_page)
+				: source_difference(source_difference)
+		:o visualizations(visualizations)
+			:g [1,*]
+				: perform_graph(perform_graph)
+				: conditional_perform_graph(conditional_perform_graph)
+				: jcl_graph(jcl_graph)
+				: subsystem_graph(subsystem_graph)
+				: overview_graph(overview_graph)
+	:m database(database)
+		:g [1,1]
+			: db2(db2)
+			: oracle(oracle)
+			: mysql(mysql)
+</feature_tree>
+<constraints>
+C1:~subsystem_page  or  subsystems
+C2:~subsystem_graph  or  subsystems
+C3:~source_difference  or  version_mngt
+C4:~perform_graph  or  cobol
+C5:~conditional_perform_graph  or  cobol
+C6:~jcl_graph  or  jcl
+C7:~static  or  ~annotation_section
+C8:~static  or  ~search_page
+</constraints>
+</feature_model>

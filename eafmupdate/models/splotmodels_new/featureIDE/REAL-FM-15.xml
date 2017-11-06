@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="kwic">
+				<or mandatory="true" name="input_output">
+					<feature mandatory="true" name="file"/>
+					<feature mandatory="true" name="console"/>
+				</or>
+				<and mandatory="true" name="circular_shift">
+					<alt mandatory="true" name="shift_data">
+						<feature mandatory="true" name="implicit"/>
+						<feature mandatory="true" name="explicit"/>
+					</alt>
+					<alt name="compression">
+						<feature mandatory="true" name="shift_processing"/>
+						<feature mandatory="true" name="each_line"/>
+						<feature mandatory="true" name="all_lines"/>
+						<feature mandatory="true" name="noise_words"/>
+					</alt>
+				</and>
+				<and mandatory="true" name="alpha_sort">
+					<alt mandatory="true" name="order">
+						<feature mandatory="true" name="descendant"/>
+						<feature mandatory="true" name="ascendant"/>
+					</alt>
+					<alt mandatory="true" name="case_sensitivity">
+						<feature mandatory="true" name="sensitive"/>
+						<feature mandatory="true" name="insensitive"/>
+					</alt>
+				</and>
+				<alt mandatory="true" name="arch_style">
+					<feature mandatory="true" name="shared_data"/>
+					<feature mandatory="true" name="adt"/>
+					<feature mandatory="true" name="implicit_invocation"/>
+					<feature mandatory="true" name="pipe_and_filter"/>
+				</alt>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>compression</var>
+					</not>
+					<var>explicit</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>pipe_and_filter</var>
+					</not>
+					<var>all_lines</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>pipe_and_filter</var>
+					</not>
+					<var>explicit</var>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="GPL">
+				<and mandatory="true" name="Driver">
+					<feature mandatory="true" name="Benchmark"/>
+				</and>
+				<alt mandatory="true" name="Gtp">
+					<feature mandatory="true" name="directed"/>
+					<feature mandatory="true" name="undirected"/>
+				</alt>
+				<alt name="Weight">
+					<feature mandatory="true" name="weighted"/>
+					<feature mandatory="true" name="unweighted"/>
+				</alt>
+				<alt name="Search">
+					<feature mandatory="true" name="BFS"/>
+					<feature mandatory="true" name="DFS"/>
+				</alt>
+				<or mandatory="true" name="Algorithms">
+					<feature mandatory="true" name="number"/>
+					<feature mandatory="true" name="connected"/>
+					<feature mandatory="true" name="stronglyc"/>
+					<feature mandatory="true" name="cycle"/>
+					<feature mandatory="true" name="mstprim"/>
+					<feature mandatory="true" name="mstkruskal"/>
+					<feature mandatory="true" name="shortest"/>
+				</or>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<var>undirected</var>
+					<not>
+						<var>mstkruskal</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>unweighted</var>
+					<not>
+						<var>mstkruskal</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>undirected</var>
+					<not>
+						<var>mstprim</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>undirected</var>
+					<not>
+						<var>stronglyc</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>unweighted</var>
+					<not>
+						<var>mstprim</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>DFS</var>
+					<not>
+						<var>cycle</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>mstprim</var>
+					</not>
+					<not>
+						<var>mstkruskal</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>undirected</var>
+					<not>
+						<var>connected</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>directed</var>
+					<not>
+						<var>shortest</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>Search</var>
+					<not>
+						<var>connected</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>unweighted</var>
+					<not>
+						<var>shortest</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>Search</var>
+					<not>
+						<var>number</var>
+					</not>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

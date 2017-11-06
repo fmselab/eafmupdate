@@ -1,0 +1,26 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r Software(Software)
+	:g [1,1]
+		: Anwendungssoftware(Anwendungssoftware)
+			:g [1,1]
+				: Individualsoftware(Individualsoftware)
+				: Standardsoftware(Standardsoftware)
+					:g [1,1]
+						: Basissoftware(Basissoftware)
+						: Officesoftware(Officesoftware)
+						: FunktionsorientierteSoftware(FunktionsorientierteSoftware)
+							:g [1,*]
+								: Managementsoftware(Managementsoftware)
+								: OperativeSoftware(OperativeSoftware)
+								: FunktionsabhaengigeSoftware(FunktionsabhaengigeSoftware)
+								: FunktionsuebergreifendeSoftware(FunktionsuebergreifendeSoftware)
+								: BranchenspezifischeSoftware(BranchenspezifischeSoftware)
+								: BranchenunabhaengigeSoftware(BranchenunabhaengigeSoftware)
+								: Client_Server_Architektur(Client_Server_Architektur)
+								: Service_orientierteArchitektur(Service_orientierteArchitektur)
+		: Systemsoftware(Systemsoftware)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

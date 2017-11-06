@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="jplug">
+				<alt mandatory="true" name="interface">
+					<feature mandatory="true" name="sdi"/>
+					<feature mandatory="true" name="mdi"/>
+				</alt>
+				<and name="gui_builder">
+					<feature mandatory="true" name="java"/>
+					<feature name="qt"/>
+				</and>
+				<feature name="model_code_synch"/>
+				<or name="compiler">
+					<feature mandatory="true" name="javac"/>
+					<feature mandatory="true" name="mvc"/>
+				</or>
+				<and name="diagram_builder">
+					<feature mandatory="true" name="uml"/>
+					<feature name="petri_net"/>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>gui_builder</var>
+					</not>
+					<not>
+						<var>sdi</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>model_code_synch</var>
+					</not>
+					<var>diagram_builder</var>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

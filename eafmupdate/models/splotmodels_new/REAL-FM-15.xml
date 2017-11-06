@@ -1,0 +1,40 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r kwic(kwic)
+	:m input_output(input_output)
+		:g [1,*]
+			: file(file)
+			: console(console)
+	:m circular_shift(circular_shift)
+		:m shift_data(shift_data)
+			:g [1,1]
+				: implicit(implicit)
+				: explicit(explicit)
+		:o compression(compression)
+			:g [1,1]
+				: shift_processing(shift_processing)
+				: each_line(each_line)
+				: all_lines(all_lines)
+				: noise_words(noise_words)
+	:m alpha_sort(alpha_sort)
+		:m order(order)
+			:g [1,1]
+				: descendant(descendant)
+				: ascendant(ascendant)
+		:m case_sensitivity(case_sensitivity)
+			:g [1,1]
+				: sensitive(sensitive)
+				: insensitive(insensitive)
+	:m arch_style(arch_style)
+		:g [1,1]
+			: shared_data(shared_data)
+			: adt(adt)
+			: implicit_invocation(implicit_invocation)
+			: pipe_and_filter(pipe_and_filter)
+</feature_tree>
+<constraints>
+C1:~compression  or  explicit
+C2:~pipe_and_filter  or  all_lines
+C3:~pipe_and_filter  or  explicit
+</constraints>
+</feature_model>

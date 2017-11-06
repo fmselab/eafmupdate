@@ -1,0 +1,22 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r MoviesApp(MoviesApp)
+	:m GUI(GUI)
+		:g [1,1]
+			: Thin(Thin)
+			: Rich(Rich)
+	:m DB(DB)
+		:g [1,1]
+			: Local(Local)
+			: Remote(Remote)
+				:m CachePolicy(CachePolicy)
+	:m Network(Network)
+		:g [1,1]
+			: Wifi(Wifi)
+			: Bluetooth(Bluetooth)
+	:o GPS(GPS)
+		:o Built_In(Built_In)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

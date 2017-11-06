@@ -1,0 +1,24 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r MobileGames(MobileGames)
+	:m Input(Input)
+		:g [1,*]
+			: TouchScreen(TouchScreen)
+			: Keypad(Keypad)
+			: Speech(Speech)
+			: Movementdetection(Movementdetection)
+	:o Output(Output)
+		:o ForceFeedback(ForceFeedback)
+	:o NetworkSupport(NetworkSupport)
+		:o OnlineMultiplayer(OnlineMultiplayer)
+	:o Internationalization(Internationalization)
+		:o Internationallanguangessupport(Internationallanguangessupport)
+	:o PlatformIndependence(PlatformIndependence)
+		:o Platformindependencesupport(Platformindependencesupport)
+	:o Payandbillsupport(Payandbillsupport)
+		:o Payandbillsystem(Payandbillsystem)
+</feature_tree>
+<constraints>
+C1:TouchScreen  or  Keypad  or  Speech  or  Movementdetection  or  Input  or  ForceFeedback  or  Output  or  OnlineMultiplayer  or  NetworkSupport  or  Internationallanguangessupport  or  Internationalization  or  Platformindependencesupport  or  PlatformIndependence  or  Payandbillsystem  or  Payandbillsupport  or  MobileGames
+</constraints>
+</feature_model>

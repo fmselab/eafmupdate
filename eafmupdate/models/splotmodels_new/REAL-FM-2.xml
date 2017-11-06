@@ -1,0 +1,37 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r WeatherStation(WeatherStation)
+	:m Measurements(Measurements)
+		:g [1,*]
+			: Pressure(Pressure)
+			: Temperature(Temperature)
+			: WindSpeed(WindSpeed)
+	:m DataSource(DataSource)
+		:g [1,1]
+			: Internet(Internet)
+			: Demo(Demo)
+			: ExternalServices(ExternalServices)
+	:m OutputFormat(OutputFormat)
+		:g [1,1]
+			: Text(Text)
+			: WebServer(WebServer)
+			: File(File)
+			: Format(Format)
+				:g [1,1]
+					: XML(XML)
+					: HTML(HTML)
+					: PlainText(PlainText)
+			: Language(Language)
+				:g [1,1]
+					: English(English)
+					: German(German)
+	:o Alarm(Alarm)
+		:g [1,*]
+			: FreezePoint(FreezePoint)
+			: StormAlert(StormAlert)
+</feature_tree>
+<constraints>
+C1:~FreezePoint  or  Temperature
+C2:~Text  or  ~XML
+</constraints>
+</feature_model>

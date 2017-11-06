@@ -1,0 +1,18 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r E_Portal(E_Portal)
+	:m Site(Site)
+	:m Elementos(Elementos)
+	:m Menu(Menu)
+	:m Box(Box)
+		:m Texto(Texto)
+		:o Foto(Foto)
+		:o DestaqueWide(DestaqueWide)
+			:g [1,*]
+				: ComFoto(ComFoto)
+				: SemFoto(SemFoto)
+		:o DestaqueDuplo(DestaqueDuplo)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

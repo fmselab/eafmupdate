@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="Inventory">
+				<and mandatory="true" name="CatalogManagement">
+					<feature name="ItemAssociations"/>
+					<feature name="Services"/>
+					<or name="Identification">
+						<feature mandatory="true" name="RFID"/>
+						<feature mandatory="true" name="BarCode"/>
+					</or>
+					<or mandatory="true" name="ItemClassification">
+						<feature mandatory="true" name="Categories"/>
+						<feature mandatory="true" name="Tags"/>
+					</or>
+					<or mandatory="true" name="Items">
+						<feature mandatory="true" name="Generic"/>
+						<feature mandatory="true" name="Assembly"/>
+						<feature mandatory="true" name="Perishable"/>
+						<feature mandatory="true" name="Serialized"/>
+						<feature mandatory="true" name="RawMaterial"/>
+					</or>
+				</and>
+				<and mandatory="true" name="StockManagement">
+					<or mandatory="true" name="Transactions">
+						<feature mandatory="true" name="Increase"/>
+						<feature mandatory="true" name="Decrease"/>
+						<feature mandatory="true" name="Transfer"/>
+						<feature mandatory="true" name="Adjustment"/>
+						<feature mandatory="true" name="Consignment"/>
+						<feature mandatory="true" name="Allocation"/>
+						<feature mandatory="true" name="Assembling"/>
+					</or>
+					<feature name="WarehouseManagement"/>
+					<feature name="SerialTracking"/>
+					<feature name="ExpirationControl"/>
+					<feature mandatory="true" name="UnitsConversion"/>
+					<feature mandatory="true" name="PhysicalCounting"/>
+					<alt mandatory="true" name="ValuationMethod">
+						<feature mandatory="true" name="FIFO"/>
+						<feature mandatory="true" name="LIFO"/>
+						<feature mandatory="true" name="AVG"/>
+					</alt>
+					<alt mandatory="true" name="InventoryMethod">
+						<feature mandatory="true" name="Perpetual"/>
+						<feature mandatory="true" name="Periodic"/>
+					</alt>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<var>Assembly</var>
+					<not>
+						<var>Assembling</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>WarehouseManagement</var>
+					<not>
+						<var>Transfer</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<not>
+						<var>SerialTracking</var>
+					</not>
+					<var>Identification</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>ExpirationControl</var>
+					<not>
+						<var>Perishable</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>Identification</var>
+					<not>
+						<var>Serialized</var>
+					</not>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>ItemAssociations</var>
+					<not>
+						<var>Assembly</var>
+					</not>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

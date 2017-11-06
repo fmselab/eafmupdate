@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="MobileGame">
+				<or mandatory="true" name="Input">
+					<feature mandatory="true" name="MovementDetection"/>
+					<feature mandatory="true" name="SpeechInput"/>
+					<feature mandatory="true" name="Keypad"/>
+					<feature mandatory="true" name="Touchscreen"/>
+				</or>
+				<and name="Output">
+					<feature name="ForceFeedback"/>
+				</and>
+				<and name="NetworkSupport">
+					<feature name="OnlineMultiplayer"/>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

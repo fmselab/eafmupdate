@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<alt mandatory="true" name="Connector">
+				<alt mandatory="true" name="Paradigm">
+					<and mandatory="true" name="Client_Server">
+						<and mandatory="true" name="Synchronous">
+							<feature name="Timeout"/>
+						</and>
+						<alt mandatory="true" name="Asynchronous">
+							<alt mandatory="true" name="Polling">
+								<feature mandatory="true" name="Blocking"/>
+								<feature mandatory="true" name="Non_blocking"/>
+							</alt>
+							<feature mandatory="true" name="Callback"/>
+						</alt>
+					</and>
+					<and mandatory="true" name="Message_Based">
+						<feature mandatory="true" name="Sender"/>
+						<alt mandatory="true" name="Receiver">
+							<alt mandatory="true" name="Pull">
+								<feature mandatory="true" name="Queued"/>
+								<feature mandatory="true" name="Non_Queued"/>
+							</alt>
+							<feature mandatory="true" name="Push"/>
+						</alt>
+					</and>
+				</alt>
+				<alt mandatory="true" name="Technology">
+					<feature mandatory="true" name="CAN"/>
+					<feature mandatory="true" name="Local"/>
+				</alt>
+			</alt>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation Paradigm from MANDATORY TO OPTIONAL</c>
+			<c>mutation Pull from OR TO AND in OPT</c>
+			<c>mutation Pull from AND TO ALT</c>
+			<c>mutation Connector from AND TO ALT</c>
+			<c>mutation Message_Based from AND TO OR</c>
+			<c>mutation Message_Based from OR TO ALTERNATIVE</c>
+			<c>mutation Synchronous from AND TO OR</c>
+			<c>mutation Synchronous from OR TO AND in OPT</c>
+			<c>mutation Synchronous from AND TO ALT</c>
+			<c>mutation Client_Server from ALT TO AND</c>
+			<c>mutation Client_Server from AND TO ALT</c>
+			<c>mutation Message_Based from ALT TO AND</c>
+			<c>mutation Message_Based from AND TO OR</c>
+			<c>mutation Synchronous from ALT TO AND</c>
+			<c>mutation Message_Based from OR TO AND in OPT</c>
+			<c>mutation Synchronous from AND TO OR</c>
+			<c>mutation Client_Server from ALT TO AND</c>
+			<c>mutation Sender from OPTIONAL TO MANDATORY</c>
+			<c>mutation Receiver from OPTIONAL TO MANDATORY</c>
+			<c>mutation Synchronous from OR TO AND in OPT</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

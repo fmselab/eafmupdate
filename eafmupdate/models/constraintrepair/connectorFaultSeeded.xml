@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="Connector">
+				<and mandatory="true" name="Paradigm">
+					<and mandatory="true" name="Client_Server">
+						<and mandatory="true" name="Synchronous">
+							<feature name="Timeout"/>
+						</and>
+						<alt name="Asynchronous">
+							<alt name="Polling">
+								<feature name="Blocking"/>
+								<feature name="Non_blocking"/>
+							</alt>
+							<feature name="Callback"/>
+						</alt>
+					</and>
+					<and name="Message_Based">
+						<feature mandatory="true" name="Sender"/>
+						<or mandatory="true" name="Receiver">
+							<alt name="Pull">
+								<feature name="Queued"/>
+								<feature name="Non_Queued"/>
+							</alt>
+							<feature name="Push"/>
+						</or>
+					</and>
+				</and>
+				<alt mandatory="true" name="Technology">
+					<feature name="CAN"/>
+					<feature name="Local"/>
+				</alt>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>connector_fm_numMutations_05</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<alt mandatory="true" name="editor_config">
+				<and mandatory="true" name="backup">
+					<and name="autosave">
+						<feature name="minutes"/>
+					</and>
+					<feature name="backup_onchange"/>
+					<and name="backup_extension">
+						<feature name="file_bak"/>
+						<feature name="file_bak_ext"/>
+						<feature name="file_ext_bak"/>
+					</and>
+				</and>
+				<and mandatory="true" name="document_class">
+					<alt name="associated_file_ext">
+						<feature mandatory="true" name="ext"/>
+					</alt>
+					<and name="commands">
+						<feature name="remove_blank_lines"/>
+						<feature mandatory="true" name="spell_check"/>
+						<feature name="dos_unix_conversion"/>
+					</and>
+					<and mandatory="true" name="syntax_highlighting">
+						<feature mandatory="true" name="syntax_definition_file"/>
+					</and>
+				</and>
+			</alt>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation document_class from AND TO OR</c>
+			<c>mutation spell_check from OPTIONAL TO MANDATORY</c>
+			<c>mutation document_class from OR TO AND in OPT</c>
+			<c>mutation document_class from AND TO ALT</c>
+			<c>mutation autosave from AND TO OR</c>
+			<c>mutation backup_extension from ALT TO AND to OPT</c>
+			<c>mutation autosave from OR TO AND in OPT</c>
+			<c>mutation document_class from ALT TO AND</c>
+			<c>mutation autosave from OPTIONAL TO MANDATORY</c>
+			<c>mutation backup from AND TO OR</c>
+			<c>mutation autosave from AND TO ALT</c>
+			<c>mutation autosave from ALT TO OR</c>
+			<c>mutation backup from OR TO ALTERNATIVE</c>
+			<c>mutation autosave from OR TO AND in OPT</c>
+			<c>mutation syntax_highlighting from OPTIONAL TO MANDATORY</c>
+			<c>mutation backup from ALT TO AND to OPT</c>
+			<c>mutation autosave from AND TO OR</c>
+			<c>mutation associated_file_ext from AND TO ALT</c>
+			<c>mutation autosave from OR TO AND in OPT</c>
+			<c>mutation editor_config from AND TO ALT</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

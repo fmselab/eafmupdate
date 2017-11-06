@@ -1,0 +1,42 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r ModeloAgen(ModeloAgen)
+	:m Agendamento(Agendamento)
+		:o ImpressãodeFolhadeRosto(ImpressãodeFolhadeRosto)
+		:o Reagendamento(Reagendamento)
+		:o Notificação(Notificação)
+			:g [1,*]
+				: Email(Email)
+				: Celular(Celular)
+		:m Regras(Regras)
+			:g [1,1]
+				: PorAdm(PorAdm)
+				: PorUsuário(PorUsuário)
+		:m Visualização(Visualização)
+		:o TipodeUso(TipodeUso)
+			:g [1,*]
+				: Reunião(Reunião)
+				: Palestra(Palestra)
+				: Treinamento(Treinamento)
+				: Videoconferência(Videoconferência)
+	:o CadastrodeHorários(CadastrodeHorários)
+		:o BloqueiodeHorários(BloqueiodeHorários)
+	:o CadastrodeSalas(CadastrodeSalas)
+		:m TipodeSala(TipodeSala)
+			:g [1,*]
+				: _r_3_25_26_27(_r_3_25_26_27)
+				: Aula(Aula)
+				: Auditório(Auditório)
+				: Laboratório(Laboratório)
+	:o CadastrodeEquipamentos(CadastrodeEquipamentos)
+	:o CadastrodeAdministradores(CadastrodeAdministradores)
+	:o Relatórios(Relatórios)
+		:g [1,*]
+			: OcupaçãoDiária(OcupaçãoDiária)
+			: OcupaçãoSemanal(OcupaçãoSemanal)
+</feature_tree>
+<constraints>
+C1:CadastrodeSalas  or  ~CadastrodeEquipamentos
+C2:CadastrodeSalas  or  ~TipodeUso
+</constraints>
+</feature_model>

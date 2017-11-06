@@ -1,0 +1,24 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r search_engine_PL(search_engine_PL)
+	:o page_translation(page_translation)
+	:m doc_type(doc_type)
+		:m html(html)
+		:o image(image)
+			:g [1,1]
+				: jpg(jpg)
+				: gif(gif)
+				: svg(svg)
+		:o video(video)
+	:o search_by_language(search_by_language)
+		:g [1,*]
+			: portuguese(portuguese)
+			: english(english)
+			: spanish(spanish)
+	:o page_preview(page_preview)
+</feature_tree>
+<constraints>
+C1:~search_by_language  or  page_translation
+C2:~page_preview  or  ~svg
+</constraints>
+</feature_model>

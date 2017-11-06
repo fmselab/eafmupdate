@@ -1,0 +1,18 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r Car(Car)
+	:o AutomatedDrivingController(AutomatedDrivingController)
+		:m CollisionAvoidanceBraking(CollisionAvoidanceBraking)
+			:g [1,1]
+				: StandardAvoidance(StandardAvoidance)
+				: EnhancedAvoidance(EnhancedAvoidance)
+		:o ParallelParking(ParallelParking)
+	:m Sensors(Sensors)
+		:o LateralRangeFinder(LateralRangeFinder)
+		:o ForwardRangeFinder(ForwardRangeFinder)
+</feature_tree>
+<constraints>
+C1:~EnhancedAvoidance  or  ForwardRangeFinder
+C2:~ParallelParking  or  LateralRangeFinder
+</constraints>
+</feature_model>

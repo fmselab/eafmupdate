@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="MobileMedia">
+				<and mandatory="true" name="AlbumManagement">
+					<feature mandatory="true" name="CreateAlbum"/>
+					<feature mandatory="true" name="Deletealbum"/>
+				</and>
+				<and mandatory="true" name="PhotoManagement">
+					<feature name="Sorting"/>
+					<and mandatory="true" name="PhotoOperation">
+						<feature mandatory="true" name="Createphoto"/>
+						<feature mandatory="true" name="Deletephoto"/>
+						<feature mandatory="true" name="Editphotolabel"/>
+						<feature mandatory="true" name="Viewphoto"/>
+					</and>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

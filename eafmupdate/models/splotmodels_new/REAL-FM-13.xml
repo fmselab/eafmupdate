@@ -1,0 +1,22 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r tecom(tecom)
+	:o ipvoice(ipvoice)
+		:m software(software)
+			:g [1,1]
+				: swpack1(swpack1)
+				: swpack2(swpack2)
+	:m rack(rack)
+		:m sizes(sizes)
+			:g [1,1]
+				: large(large)
+				: medium(medium)
+				: small(small)
+	:o messaging(messaging)
+		:o upgrade_swpack(upgrade_swpack)
+</feature_tree>
+<constraints>
+C1:~swpack1  or  ~upgrade_swpack
+C2:~ipvoice  or  ~messaging  or  upgrade_swpack
+</constraints>
+</feature_model>

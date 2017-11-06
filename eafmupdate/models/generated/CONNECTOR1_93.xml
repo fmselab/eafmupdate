@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="Connector">
+				<and mandatory="true" name="Paradigm">
+					<and name="Client_Server">
+						<and name="Synchronous">
+							<feature name="Timeout"/>
+						</and>
+						<and name="Asynchronous">
+							<alt name="Polling">
+								<feature mandatory="true" name="Blocking"/>
+								<feature mandatory="true" name="Non_blocking"/>
+							</alt>
+							<feature name="Callback"/>
+						</and>
+					</and>
+					<and name="Message_Based">
+						<feature mandatory="true" name="Sender"/>
+						<alt mandatory="true" name="Receiver">
+							<alt mandatory="true" name="Pull">
+								<feature mandatory="true" name="Queued"/>
+								<feature mandatory="true" name="Non_Queued"/>
+							</alt>
+							<feature mandatory="true" name="Push"/>
+						</alt>
+					</and>
+				</and>
+				<and mandatory="true" name="Technology">
+					<feature name="CAN"/>
+					<feature name="Local"/>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation Asynchronous from ALT TO AND to OPT</c>
+			<c>mutation Paradigm from ALT TO AND to OPT</c>
+			<c>mutation Pull from OR TO AND</c>
+			<c>mutation Technology from ALT TO AND</c>
+			<c>mutation Technology from AND TO OR</c>
+			<c>mutation Pull from AND TO ALT</c>
+			<c>mutation Technology from OR TO AND in OPT</c>
+			<c>mutation Client_Server from ALT TO AND to OPT</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>
+

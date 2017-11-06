@@ -1,0 +1,40 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r Bicycle(Bicycle)
+	:m Frame(Frame)
+		:g [1,1]
+			: Iron(Iron)
+			: Aluminum(Aluminum)
+			: Carbon(Carbon)
+				:g [1,1]
+					: White(White)
+					: Red(Red)
+					: Black(Black)
+	:o Gears(Gears)
+		:o Front(Front)
+		:o Rear(Rear)
+	:m Wheels(Wheels)
+	:m Saddle(Saddle)
+	:m Color(Color)
+		:g [1,1]
+			: _r_15_16_17(_r_15_16_17)
+			: Green(Green)
+			: Blue(Blue)
+	:m Handlebars(Handlebars)
+	:o Pedals(Pedals)
+	:o Warranty(Warranty)
+		:g [1,1]
+			: a1year(a1year)
+			: a2years(a2years)
+			: a3years(a3years)
+	:o Maintenanceplan(Maintenanceplan)
+		:g [1,1]
+			: _r_29_30_31(_r_29_30_31)
+			: _r_29_30_32(_r_29_30_32)
+			: lifetime(lifetime)
+</feature_tree>
+<constraints>
+C1:~Front  or  Rear
+C2:~Carbon  or  _r_15_16_17
+</constraints>
+</feature_model>

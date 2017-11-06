@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="thread">
+				<and mandatory="true" name="thread_instance">
+					<and name="multiple">
+						<or name="coroutine">
+							<or mandatory="true" name="dispatching">
+								<or mandatory="true" name="dispach_method">
+									<feature mandatory="true" name="global_life"/>
+								</or>
+								<and mandatory="true" name="scheduling">
+									<or mandatory="true" name="bundle_schedule">
+										<feature mandatory="true" name="bundle_preemption"/>
+										<and mandatory="true" name="bundle_strategy">
+											<feature mandatory="true" name="bundle_strategy_replugging"/>
+											<feature mandatory="true" name="bundle_fcfs"/>
+											<feature mandatory="true" name="bundle_lcfs"/>
+										</and>
+									</or>
+									<alt name="idle_control">
+										<feature mandatory="true" name="idle_guard"/>
+										<feature mandatory="true" name="idle_panic"/>
+										<feature mandatory="true" name="idle_user"/>
+									</alt>
+									<feature name="query_schedule"/>
+									<alt mandatory="true" name="thread_schedule">
+										<and mandatory="true" name="thread_preemption">
+											<feature name="non_preemptable_threads"/>
+											<feature name="scheduler_lockable"/>
+										</and>
+										<or mandatory="true" name="thread_strategy">
+											<and mandatory="true" name="priority">
+												<feature name="schedule_same_priority"/>
+												<and name="priority_behaviour">
+													<feature mandatory="true" name="priority_cooperative"/>
+													<feature mandatory="true" name="priority_preemptive"/>
+												</and>
+												<alt mandatory="true" name="priority_count">
+													<feature mandatory="true" name="priority_16"/>
+													<feature mandatory="true" name="priority_32"/>
+													<feature mandatory="true" name="priority_8"/>
+												</alt>
+											</and>
+											<feature mandatory="true" name="thread_fcfs"/>
+											<feature mandatory="true" name="thread_lcfs"/>
+											<feature mandatory="true" name="thread_strategy_replugging"/>
+										</or>
+									</alt>
+								</and>
+							</or>
+							<and mandatory="true" name="location">
+								<feature name="integrated"/>
+								<feature name="separated"/>
+							</and>
+							<and mandatory="true" name="size">
+								<feature name="float_set"/>
+								<feature name="volatile_set"/>
+								<feature mandatory="true" name="minimal_set"/>
+							</and>
+						</or>
+					</and>
+					<feature name="single"/>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation location from ALT TO AND to OPT</c>
+			<c>mutation dispatching from AND TO OR</c>
+			<c>mutation bundle_schedule from OPTIONAL TO MANDATORY</c>
+			<c>mutation dispach_method from AND TO OR</c>
+			<c>mutation bundle_schedule from AND TO OR</c>
+			<c>mutation coroutine from AND TO OR</c>
+			<c>mutation priority_behaviour from MANDATORY TO OPTIONAL</c>
+			<c>mutation thread_strategy from ALT TO OR</c>
+			<c>mutation bundle_strategy from ALT TO AND</c>
+			<c>mutation thread_instance from ALT TO AND to OPT</c>
+			<c>mutation priority_behaviour from ALT TO AND</c>
+			<c>mutation thread_schedule from AND TO ALT</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="IntelligentTutoring">
+				<or mandatory="true" name="Tutoring">
+					<feature mandatory="true" name="tutoringsimulation"/>
+					<feature mandatory="true" name="Tutoringexercise"/>
+					<feature mandatory="true" name="Tutoringlecture"/>
+				</or>
+				<and mandatory="true" name="Feedback">
+					<feature mandatory="true" name="Advice"/>
+					<feature name="Grading"/>
+				</and>
+				<feature name="ResultMonitoring"/>
+				<or name="UserAuthentication">
+					<feature mandatory="true" name="Student"/>
+					<feature mandatory="true" name="Instructor"/>
+				</or>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>ResultMonitoring</var>
+					</not>
+					<var>UserAuthentication</var>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

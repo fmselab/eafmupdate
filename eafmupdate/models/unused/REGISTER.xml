@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="Register">
+				<and name="CardReader">
+					<feature name="BankCard"/>
+					<feature name="CreditCard"/>
+				</and>
+				<feature name="SelfCheckout"/>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation CardReader from OPTIONAL TO MANDATORY</c>
+			<c>mutation CardReader from MANDATORY TO OPTIONAL</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>
+

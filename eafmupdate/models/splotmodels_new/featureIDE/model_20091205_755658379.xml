@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="Cocheecologico">
+				<and mandatory="true" name="Carroceríade4metros">
+					<alt mandatory="true" name="Pintura">
+						<alt mandatory="true" name="Metalizada">
+							<feature mandatory="true" name="Grisperla"/>
+							<feature mandatory="true" name="Rojoturco"/>
+							<feature mandatory="true" name="Verdecactus"/>
+							<feature mandatory="true" name="Azulcobalto"/>
+						</alt>
+						<alt mandatory="true" name="Nometalizada">
+							<feature mandatory="true" name="Blanco"/>
+							<feature mandatory="true" name="Negro"/>
+							<feature mandatory="true" name="Azulmarino"/>
+							<feature mandatory="true" name="Verdeesmeralda"/>
+							<feature mandatory="true" name="Rojofuego"/>
+						</alt>
+					</alt>
+					<and mandatory="true" name="Cristales">
+						<and mandatory="true" name="Lunasdelanteradepilotoycopiloto">
+							<feature mandatory="true" name="Transparentes"/>
+						</and>
+						<alt mandatory="true" name="Lunastraseraydepasajeros">
+							<feature mandatory="true" name="_r_1_20_26_27_28"/>
+							<alt mandatory="true" name="Tintadas">
+								<feature mandatory="true" name="Tintadooscuro"/>
+								<feature mandatory="true" name="Tintadomedio"/>
+								<feature mandatory="true" name="Tintadosuave"/>
+							</alt>
+						</alt>
+					</and>
+					<alt mandatory="true" name="Faros">
+						<feature mandatory="true" name="Neón"/>
+						<feature mandatory="true" name="Xenon"/>
+					</alt>
+					<feature name="Llantasdealeaciónligera"/>
+				</and>
+				<and mandatory="true" name="Equipamentointerior">
+					<alt mandatory="true" name="Tapicería">
+						<alt mandatory="true" name="Cuero">
+							<feature mandatory="true" name="_r_2_34_37_38_39_40"/>
+							<feature mandatory="true" name="_r_2_34_37_38_39_41"/>
+							<feature mandatory="true" name="Marrón"/>
+						</alt>
+						<alt mandatory="true" name="Estampado">
+							<alt mandatory="true" name="Liso">
+								<feature mandatory="true" name="_r_2_34_37_43_46_47_49_50"/>
+								<feature mandatory="true" name="Rojogranate"/>
+								<feature mandatory="true" name="Verdemusgo"/>
+								<feature mandatory="true" name="Marrónroble"/>
+							</alt>
+							<alt mandatory="true" name="Moteado">
+								<feature mandatory="true" name="Geométricoverde_rojo_amarillo"/>
+								<feature mandatory="true" name="Hojascamarron_negro_amarillo"/>
+								<feature mandatory="true" name="Balonesblanco_azul_verde"/>
+							</alt>
+						</alt>
+					</alt>
+					<alt mandatory="true" name="Asientosdelanteros">
+						<feature mandatory="true" name="Deportivosenvolventes"/>
+						<feature mandatory="true" name="Asientosdeserie"/>
+					</alt>
+					<alt mandatory="true" name="Cinturóndeseguridaddelanteros">
+						<feature mandatory="true" name="Deportivos"/>
+						<feature mandatory="true" name="Deserie"/>
+					</alt>
+					<feature mandatory="true" name="Capacidadpara4personas"/>
+					<and mandatory="true" name="Airbags">
+						<feature mandatory="true" name="Pilotoycopiloto"/>
+						<feature name="Pasajeros"/>
+						<or name="Laterales">
+							<feature mandatory="true" name="_r_2_78_82_83_84"/>
+							<feature mandatory="true" name="_r_2_78_82_83_85"/>
+						</or>
+					</and>
+					<and mandatory="true" name="Cinturonesdeseguridadtraseros">
+						<feature mandatory="true" name="Cirturonesparatresplazas"/>
+						<feature mandatory="true" name="Enganchesparasillasdebebé"/>
+					</and>
+				</and>
+				<feature mandatory="true" name="a5puertas"/>
+				<and mandatory="true" name="Motormixtogasolina_electrico">
+					<alt mandatory="true" name="Baterías">
+						<feature mandatory="true" name="Ión_litio"/>
+						<feature mandatory="true" name="Niquel_cadmio"/>
+					</alt>
+					<and mandatory="true" name="Motordegasolina">
+						<feature mandatory="true" name="a1000cc"/>
+						<feature mandatory="true" name="a16válvulas"/>
+						<feature mandatory="true" name="Catalizador"/>
+					</and>
+				</and>
+				<and mandatory="true" name="Extras">
+					<feature mandatory="true" name="Cierrecentralizado"/>
+					<feature name="Sistemaantirrobointegradoenlallavedeencendido"/>
+					<and mandatory="true" name="Sonido">
+						<feature mandatory="true" name="Radio"/>
+						<feature mandatory="true" name="LectordeCDyreproductordeMP3"/>
+						<and name="Capacidadesespeciales">
+							<feature mandatory="true" name="LectordearchivosMP3porUSB"/>
+							<feature mandatory="true" name="LectordearchivosMP3entarjetasSD"/>
+							<feature mandatory="true" name="Cargadorde3CDs"/>
+						</and>
+						<feature mandatory="true" name="Ecualizadorpreconfigurado"/>
+					</and>
+					<feature name="Aperturaycierredepuertasadistanciaenlallave"/>
+					<feature name="NavegadorGPSintegrado"/>
+					<and name="Temperaturainterior">
+						<feature name="Aireacondicionado"/>
+						<alt name="Aclimatador">
+							<feature mandatory="true" name="Controlescomunes"/>
+							<feature mandatory="true" name="Controlesseparadosdepiloto,copilotoypasajeros"/>
+						</alt>
+					</and>
+					<feature mandatory="true" name="Elevalunaselectricoenlaspuertasdelanteras"/>
+					<feature name="Elevalunaselectricoenlasventanillastraseras"/>
+					<feature name="ReproductordeDVDintegradoconpantallaparalospasajeros"/>
+					<feature mandatory="true" name="Regulaciónelectrónicadelosretrovisoresdesdeelinterior"/>
+					<feature mandatory="true" name="Regulaciónelectrónicadelaalturadelosfarosdesdeelinterior"/>
+				</and>
+				<and mandatory="true" name="Sistemaselectrónicos">
+					<feature mandatory="true" name="ABS"/>
+					<feature mandatory="true" name="ESP"/>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>Deportivosenvolventes</var>
+					</not>
+					<var>Deportivos</var>
+				</disj>
+			</rule>
+			<rule>
+				<disj>
+					<var>Sistemaantirrobointegradoenlallavedeencendido</var>
+					<not>
+						<var>Aperturaycierredepuertasadistanciaenlallave</var>
+					</not>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

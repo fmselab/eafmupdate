@@ -1,0 +1,21 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r IntelligentTutoring(IntelligentTutoring)
+	:m Tutoring(Tutoring)
+		:g [1,*]
+			: tutoringsimulation(tutoringsimulation)
+			: Tutoringexercise(Tutoringexercise)
+			: Tutoringlecture(Tutoringlecture)
+	:m Feedback(Feedback)
+		:m Advice(Advice)
+		:o Grading(Grading)
+	:o ResultMonitoring(ResultMonitoring)
+	:o UserAuthentication(UserAuthentication)
+		:g [1,*]
+			: Student(Student)
+			: Instructor(Instructor)
+</feature_tree>
+<constraints>
+C1:~ResultMonitoring  or  UserAuthentication
+</constraints>
+</feature_model>

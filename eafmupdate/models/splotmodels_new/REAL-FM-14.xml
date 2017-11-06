@@ -1,0 +1,25 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r editor_config(editor_config)
+	:m backup(backup)
+		:o autosave(autosave)
+			:m minutes(minutes)
+		:o backup_onchange(backup_onchange)
+		:m backup_extension(backup_extension)
+			:g [1,1]
+				: file_bak(file_bak)
+				: file_bak_ext(file_bak_ext)
+				: file_ext_bak(file_ext_bak)
+	:o document_class(document_class)
+		:m associated_file_ext(associated_file_ext)
+			:o ext(ext)
+		:m commands(commands)
+			:o remove_blank_lines(remove_blank_lines)
+			:o spell_check(spell_check)
+			:o dos_unix_conversion(dos_unix_conversion)
+		:o syntax_highlighting(syntax_highlighting)
+			:m syntax_definition_file(syntax_definition_file)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

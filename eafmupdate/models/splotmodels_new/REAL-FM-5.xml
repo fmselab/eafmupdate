@@ -1,0 +1,42 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r GPL(GPL)
+	:m Driver(Driver)
+		:m Benchmark(Benchmark)
+	:m Gtp(Gtp)
+		:g [1,1]
+			: directed(directed)
+			: undirected(undirected)
+	:o Weight(Weight)
+		:g [1,1]
+			: weighted(weighted)
+			: unweighted(unweighted)
+	:o Search(Search)
+		:g [1,1]
+			: BFS(BFS)
+			: DFS(DFS)
+	:m Algorithms(Algorithms)
+		:g [1,*]
+			: number(number)
+			: connected(connected)
+			: stronglyc(stronglyc)
+			: cycle(cycle)
+			: mstprim(mstprim)
+			: mstkruskal(mstkruskal)
+			: shortest(shortest)
+</feature_tree>
+<constraints>
+C1:undirected  or  ~mstkruskal
+C2:unweighted  or  ~mstkruskal
+C3:undirected  or  ~mstprim
+C4:undirected  or  ~stronglyc
+C5:unweighted  or  ~mstprim
+C6:DFS  or  ~cycle
+C7:~mstprim  or  ~mstkruskal
+C8:undirected  or  ~connected
+C9:directed  or  ~shortest
+C10:Search  or  ~connected
+C11:unweighted  or  ~shortest
+C12:Search  or  ~number
+</constraints>
+</feature_model>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<or mandatory="true" name="FAME_DBMS">
+				<and mandatory="true" name="OS">
+					<feature name="Nut_OS"/>
+					<feature name="Win"/>
+				</and>
+				<and mandatory="true" name="BufferManager">
+					<or name="Persistent">
+						<and mandatory="true" name="MemoryAllocation">
+							<feature mandatory="true" name="Static"/>
+							<feature name="Dynamic"/>
+						</and>
+						<or mandatory="true" name="PageReplication">
+							<feature mandatory="true" name="LRU"/>
+							<feature mandatory="true" name="LFU"/>
+						</or>
+					</or>
+					<feature name="InMemory"/>
+				</and>
+				<feature mandatory="true" name="DebugLogging"/>
+				<and mandatory="true" name="Storage">
+					<or name="API">
+						<feature mandatory="true" name="Get"/>
+						<feature mandatory="true" name="Put"/>
+						<feature mandatory="true" name="Delete"/>
+					</or>
+					<feature name="B_Tree"/>
+					<feature name="Unindexed"/>
+				</and>
+			</or>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation OS from ALT TO AND to OPT</c>
+			<c>mutation MemoryAllocation from ALT TO OR</c>
+			<c>mutation MemoryAllocation from OR TO AND</c>
+			<c>mutation Dynamic from MANDATORY TO OPTIONAL</c>
+			<c>mutation Storage from ALT TO AND to OPT</c>
+			<c>mutation Persistent from AND TO ALT</c>
+			<c>mutation Persistent from ALT TO AND to OPT</c>
+			<c>mutation PageReplication from ALT TO OR</c>
+			<c>mutation Persistent from AND TO OR</c>
+			<c>mutation FAME_DBMS from AND TO OR</c>
+			<c>mutation BufferManager from ALT TO AND to OPT</c>
+			<c>mutation API from AND TO OR</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

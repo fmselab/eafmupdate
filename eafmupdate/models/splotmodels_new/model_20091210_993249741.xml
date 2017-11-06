@@ -1,0 +1,38 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r ATMsoftware(ATMsoftware)
+	:m UserInterface(UserInterface)
+		:g [1,1]
+			: Basic2Dview(Basic2Dview)
+			: Deluxe3Dview(Deluxe3Dview)
+	:m Bankingfunctionality(Bankingfunctionality)
+		:m Checkingbalance(Checkingbalance)
+		:m Withdrawnmoney(Withdrawnmoney)
+		:o Depositmoney(Depositmoney)
+		:m Viewtransaction(Viewtransaction)
+		:o Printingstatement(Printingstatement)
+		:m Changeaccountpassword(Changeaccountpassword)
+		:o Changemaximumlimitforwithdrawal(Changemaximumlimitforwithdrawal)
+		:o Localtransfertothesamebank(Localtransfertothesamebank)
+		:o Localtransfertootherbanks(Localtransfertootherbanks)
+			:g [1,*]
+				: Detuschbank(Detuschbank)
+				: Stadtparkasse(Stadtparkasse)
+				: Volksbank(Volksbank)
+		:o Internationaltransfer(Internationaltransfer)
+		:o Moneyexchange(Moneyexchange)
+		:o Checkingmoneyexchangerate(Checkingmoneyexchangerate)
+		:m Printingbalanceafterwithdrawal(Printingbalanceafterwithdrawal)
+	:o Additionalfunctionality(Additionalfunctionality)
+		:o Mobiletop_up(Mobiletop_up)
+		:o Paythebills(Paythebills)
+		:o Languageselection(Languageselection)
+			:g [1,1]
+				: German(German)
+				: English(English)
+				: French(French)
+				: Italian(Italian)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

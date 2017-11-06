@@ -1,0 +1,33 @@
+<feature_model name="FeatureIDE model">
+<feature_tree>
+:r Connector(Connector)
+	:m Paradigm(Paradigm)
+		:g [1,1]
+			: Client_Server(Client_Server)
+				:g [1,1]
+					: Synchronous(Synchronous)
+						:o Timeout(Timeout)
+					: Asynchronous(Asynchronous)
+						:g [1,1]
+							: Polling(Polling)
+								:g [1,1]
+									: Blocking(Blocking)
+									: Non_blocking(Non_blocking)
+							: Callback(Callback)
+			: Message_Based(Message_Based)
+				:m Sender(Sender)
+				:m Receiver(Receiver)
+					:g [1,1]
+						: Pull(Pull)
+							:g [1,*]
+								: Queued(Queued)
+								: Non_Queued(Non_Queued)
+						: Push(Push)
+	:m Technology(Technology)
+		:g [1,1]
+			: CAN(CAN)
+			: Local(Local)
+</feature_tree>
+<constraints>
+</constraints>
+</feature_model>

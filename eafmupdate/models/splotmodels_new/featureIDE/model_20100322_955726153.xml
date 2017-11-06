@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="MobilePhone">
+				<and mandatory="true" name="UtilityFunctions">
+					<feature mandatory="true" name="Calls"/>
+					<or mandatory="true" name="Messaging">
+						<feature mandatory="true" name="SMS"/>
+						<feature mandatory="true" name="MMS"/>
+					</or>
+					<feature name="Games"/>
+					<feature mandatory="true" name="Alarm"/>
+					<feature mandatory="true" name="RingingTones"/>
+				</and>
+				<and mandatory="true" name="Settings">
+					<alt mandatory="true" name="OS">
+						<feature mandatory="true" name="Symbian"/>
+						<feature mandatory="true" name="WinCE"/>
+					</alt>
+					<feature name="JavaSupport"/>
+				</and>
+				<and name="Media">
+					<feature mandatory="true" name="Camera"/>
+					<feature name="MP3"/>
+				</and>
+				<and name="Connectivity">
+					<feature mandatory="true" name="USB"/>
+					<feature name="Bluetooth"/>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<not>
+						<var>Games</var>
+					</not>
+					<var>JavaSupport</var>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

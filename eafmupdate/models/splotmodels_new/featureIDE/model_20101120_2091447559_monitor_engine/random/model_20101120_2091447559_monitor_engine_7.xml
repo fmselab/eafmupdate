@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="MonitorEngine">
+				<and mandatory="true" name="MonitorEngineperformance">
+					<alt mandatory="true" name="Monitortemperatures">
+						<feature mandatory="true" name="coolant"/>
+						<feature mandatory="true" name="oil"/>
+						<feature mandatory="true" name="engine"/>
+						<feature mandatory="true" name="transmission"/>
+					</alt>
+					<feature mandatory="true" name="MonitorRPM"/>
+					<feature mandatory="true" name="Monitorexhaustlevelsandtemperature"/>
+				</and>
+				<and name="MonitorFuelConsumption">
+					<and mandatory="true" name="Measures">
+						<feature mandatory="true" name="a1perkm"/>
+						<feature mandatory="true" name="gallonpermile"/>
+					</and>
+					<alt mandatory="true" name="Methods">
+						<feature mandatory="true" name="Basedondistance"/>
+						<feature mandatory="true" name="Basedontypeofdriving"/>
+						<feature mandatory="true" name="Basedondriving"/>
+					</alt>
+					<and name="temperature">
+						<feature mandatory="true" name="F1"/>
+						<feature mandatory="true" name="F2"/>
+					</and>
+				</and>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments>
+			<c>mutation temperature from OR TO AND</c>
+			<c>mutation Measures from ALT TO OR</c>
+			<c>mutation Measures from OR TO AND</c>
+			<c>mutation Monitortemperatures from AND TO ALT</c>
+			<c>mutation MonitorFuelConsumption from MANDATORY TO OPTIONAL</c>
+			<c>mutation Methods from ALT TO AND to OPT</c>
+			<c>mutation Methods from AND TO ALT</c>
+		</comments>
+		<featureOrder userDefined="false"/>
+	</featureModel>

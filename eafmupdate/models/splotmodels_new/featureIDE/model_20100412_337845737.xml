@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="CIMSProductLine">
+				<and mandatory="true" name="Client">
+					<feature mandatory="true" name="Client_Assesment"/>
+					<feature mandatory="true" name="Client_Transport"/>
+					<feature mandatory="true" name="Client_Payment"/>
+					<feature mandatory="true" name="Client_Training"/>
+				</and>
+				<feature mandatory="true" name="Inventory"/>
+				<feature mandatory="true" name="UserProfile"/>
+				<feature mandatory="true" name="Reports"/>
+				<feature mandatory="true" name="Database"/>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

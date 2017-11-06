@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and mandatory="true" name="SAL">
+				<and mandatory="true" name="Language">
+					<feature mandatory="true" name="SimpleArithmetic"/>
+					<feature name="Conditional"/>
+				</and>
+				<alt mandatory="true" name="Evaluator">
+					<feature mandatory="true" name="Evaluationsemantics"/>
+					<feature mandatory="true" name="Machinesemantics"/>
+				</alt>
+				<or name="Optimizer">
+					<feature mandatory="true" name="Constantfolding"/>
+					<feature mandatory="true" name="Short_circuit"/>
+				</or>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<disj>
+					<var>Conditional</var>
+					<not>
+						<var>Short_circuit</var>
+					</not>
+				</disj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

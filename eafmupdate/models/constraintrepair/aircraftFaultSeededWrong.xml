@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<feature_model name="FeatureIDE model">
+		<feature_tree>
+			:r Aircraft(Aircraft)
+				:m Wing(Wing)
+					:m High(High)
+					:o Shoulder(Shoulder)
+					:m Low(Low)
+				:o Engine(Engine)
+					:g [1,*]
+						: Jet(Jet)
+						: Piston(Piston)
+				:m Materials(Materials)
+					:g [1,1]
+						: Metal(Metal)
+						: Wood(Wood)
+						: Cloth(Cloth)
+						: Plastic(Plastic)
+		</feature_tree>
+		<constraints>
+		</constraints>
+	</feature_model>
