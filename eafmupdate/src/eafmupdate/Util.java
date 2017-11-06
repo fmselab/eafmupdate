@@ -1,4 +1,4 @@
-package eafmupdate.model;
+package eafmupdate;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,13 +20,13 @@ import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.base.IFeatureStructure;
 import de.ovgu.featureide.fm.core.base.impl.Feature;
 import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
+import eafmupdate.model.Neighbors;
+import eafmupdate.model.Oracle;
+import eafmupdate.model.Role;
+import eafmupdate.model.Roles;
 import fmautorepair.mutationoperators.FMMutation;
 import fmautorepair.mutationoperators.FMMutator;
 import fmautorepair.utils.CollectionsUtil;
-import fmficrepair.CompareOracleMutantBDD;
-import fmficrepair.GenerateMutants;
-import fmficrepair.GenerateUpdateRequest;
-import fmficrepair.MutatedModel;
 import splar.core.fm.FeatureModelException;
 import splar.core.fm.configuration.ConfigurationEngineException;
 

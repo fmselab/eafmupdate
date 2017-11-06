@@ -1,4 +1,4 @@
-package fmficrepair;
+package eafmupdate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,7 +20,6 @@ import eafmupdate.model.Neighbors;
 import eafmupdate.model.Oracle;
 import eafmupdate.model.Role;
 import eafmupdate.model.Roles;
-import eafmupdate.model.Util;
 import net.sf.javabdd.BDD;
 import net.sf.javabdd.BDD.AllSatIterator;
 
@@ -103,6 +102,14 @@ public class GenerateUpdateRequest {
 		}		
 		
 		return products;
+	}
+	
+	public static long getNumCFadd(Oracle oracle) {
+		return GenerateUpdateRequest.computeProductsToAddOrRemove(oracle, oracle.originalFM, true);
+	}
+
+	public static long getNumCFrem(Oracle oracle) {
+		return GenerateUpdateRequest.computeProductsToAddOrRemove(oracle, oracle.originalFM, false);
 	}
 	
 	public static long computeProductsToAddOrRemove(Oracle oracle, IFeatureModel fm, boolean add) {

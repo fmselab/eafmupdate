@@ -1,4 +1,4 @@
-package fmficrepair;
+package eafmupdate;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,7 +9,6 @@ import org.sat4j.specs.TimeoutException;
 
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import eafmupdate.model.Oracle;
-import eafmupdate.model.Util;
 import fmautorepair.mutationoperators.FMMutation;
 import splar.core.fm.FeatureModelException;
 import splar.core.fm.configuration.ConfigurationEngineException;

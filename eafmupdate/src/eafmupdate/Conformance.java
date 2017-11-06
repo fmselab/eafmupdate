@@ -1,4 +1,4 @@
-package fmficrepair;
+package eafmupdate;
 
 public class Conformance {
 	private long numConfigurations;

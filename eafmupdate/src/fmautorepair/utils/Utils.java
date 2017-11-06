@@ -2,8 +2,11 @@ package fmautorepair.utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashSet;
+import java.util.Set;
 
 import de.ovgu.featureide.fm.core.ExtensionManager.NoSuchExtensionException;
+import de.ovgu.featureide.fm.core.base.IFeature;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
 import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
@@ -60,6 +63,12 @@ public class Utils{
 
 		// stats.dump();
 		return featureModel;
+	}
+	
+	public static Set<String> getFeatureNames(IFeatureModel fm) {
+		Set<String> fnames = new HashSet<>();
+		for (IFeature a : fm.getFeatures()) fnames.add(a.getName());
+		return fnames;
 	}
 
 }

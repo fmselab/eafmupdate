@@ -1,4 +1,4 @@
-package fmficrepair;
+package eafmupdate;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,7 +20,6 @@ import de.ovgu.featureide.fm.core.editing.ModelComparator;
 import de.ovgu.featureide.fm.core.editing.NodeCreator;
 import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
 import eafmupdate.model.Oracle;
-import eafmupdate.model.Util;
 import fmautorepair.utils.Utils;
 import net.sf.javabdd.BDD;
 import net.sf.javabdd.BDDFactory;
@@ -208,12 +207,77 @@ public class CompareOracleMutantBDD {
 	static Oracle currentOracle;
 	static Map<String, BDD> bddCache = new HashMap<>(); // the cache for the current oracle
 	
+	public static BDD getBDD(Oracle o) {
+		if (o.getBDDCache()==null) return generateBDD(o);
+		return o.getBDDCache();
+	}
+	
+	static BDD generateBDD(Oracle o) {
+		return generateBDD(o);
+	}
+	
+	static BDD generateBDD(Oracle o, List<String> fmVars, FMToBDD f2bdd) {
+		if (fmVars==null) fmVars = new ArrayList<>(o.getAllFeatureNames());
+		//if (fmVars==null) fmVars = new ArrayList<>(getFeatureNames());
+		o.fmVars = fmVars;
+		IFeatureModel correctFM = o.oracleFM;
+		if (correctFM==null) {
+			correctFM = o.originalFM.clone();
+			Util.addMissingFeatures(o, correctFM);
+		}
+		if (f2bdd==null) o.f2bdd = f2bdd = new FMToBDD(fmVars);
+		BDD bddOriginalModel = f2bdd.nodeToBDD(NodeCreator.createNodes(correctFM));
+		BDDFactory init = f2bdd.init;
+		
+		if (o.oracleFM!=null) return bddOriginalModel;
+		
+		// products to add
+		BDD bigBDD = null;
+		for (Map<String,Boolean> values : o.productsToAdd) {
+			//Map<String,Boolean> values = oracle.values.get(0);
+			List<Entry<String, Boolean>> vals = new ArrayList<>(values.entrySet());
+			BDD bdd = null;
+			for (Entry<String, Boolean> v : vals) {
+				int elem = fmVars.indexOf(v.getKey());
+				assert elem >= 0 : "element not found " + v.getKey();
+				BDD b = v.getValue() ? init.ithVar(elem) : init.nithVar(elem);
+				if (bdd==null) bdd = b;
+				else bdd.andWith(b);
+			}
+			if (bigBDD==null) bigBDD = bdd;
+			else bigBDD.orWith(bdd);
+		}
+		if (bigBDD!=null) bddOriginalModel.orWith(bigBDD);
+		
+		// products to remove
+		bigBDD = null;
+		for (Map<String,Boolean> values : o.productsToRemove) {
+			//Map<String,Boolean> values = oracle.values.get(0);
+			List<Entry<String, Boolean>> vals = new ArrayList<>(values.entrySet());
+			BDD bdd = null;
+			for (Entry<String, Boolean> v : vals) {
+				int elem = fmVars.indexOf(v.getKey());
+				assert elem >= 0 : "element not found " + vals.get(0).getKey();
+				BDD b = v.getValue() ? init.ithVar(elem) : init.nithVar(elem);
+				if (bdd==null) bdd = b;
+				else bdd.andWith(b);
+			}
+			bdd = bdd.not();
+			if (bigBDD==null) bigBDD = bdd;
+			else bigBDD.andWith(bdd);
+		}
+		if (bigBDD!=null) bddOriginalModel.andWith(bigBDD);
+		
+		return bddOriginalModel;
+	}
+	
+		
 	/** Radavelli. Method created to compute adequacy */
 	public static int getBddsCountDiff(Oracle oracle, IFeatureModel fm2) throws IOException  {
 		//List<String> fmVars = new ArrayList<>(Util.getFeatureNames(oracle.originalFM));
 		//fm.getFeatureOrderList();
 		//FMToBDD f2bdd = new FMToBDD(fmVars);
-		BDD bdd = oracle.getBDD(); // createBDDFromOracle(oracle, fmVars, f2bdd);
+		BDD bdd = getBDD(oracle); // createBDDFromOracle(oracle, fmVars, f2bdd);
 		BDD bdd2 = oracle.f2bdd.nodeToBDD(NodeCreator.createNodes(fm2)); // without cache
 				// generateBDD2(oracle, fm2); // with cache
 
@@ -265,14 +329,14 @@ public class CompareOracleMutantBDD {
 	}
 
 	public static int getStrengtheningCountDiff(Oracle oracle, IFeatureModel fm2) throws IOException, FeatureModelException, ConfigurationEngineException {
-		BDD bdd = oracle.getBDD(); // createBDDFromOracle(oracle, fmVars, f2bdd);
+		BDD bdd = getBDD(oracle); // createBDDFromOracle(oracle, fmVars, f2bdd);
 		BDD bdd2 = generateBDD2(oracle, fm2);
 		BDD and = bdd.and(bdd2);
 		return (int)((bdd.satCount() - and.satCount()));
 	}
 	
 	public static int getWeakeningCountDiff(Oracle oracle, IFeatureModel fm2) throws IOException, FeatureModelException, ConfigurationEngineException {
-		BDD bdd = oracle.getBDD(); // createBDDFromOracle(oracle, fmVars, f2bdd);
+		BDD bdd = getBDD(oracle); // createBDDFromOracle(oracle, fmVars, f2bdd);
 		BDD bdd2 = generateBDD2(oracle, fm2);
 		BDD and = bdd.and(bdd2);
 		return (int)((bdd2.satCount() - and.satCount()));

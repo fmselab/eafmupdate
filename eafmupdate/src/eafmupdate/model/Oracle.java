@@ -4,16 +4,13 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import org.prop4j.FMToBDD;
 
+import de.ovgu.featureide.fm.core.base.IFeature;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
-import de.ovgu.featureide.fm.core.editing.NodeCreator;
-import fmficrepair.GenerateUpdateRequest;
 import net.sf.javabdd.BDD;
-import net.sf.javabdd.BDDFactory;
 
 /**
  * an oracle, made by the original fm, the set of products (combs) to be admitted, and the set of products (combs) to be removed
@@ -75,7 +72,8 @@ public class Oracle {
 	}
 	
 	public Set<String> getFeatureNames() {
-		Set<String> features = Util.getFeatureNames(originalFM);
+		Set<String> features = new HashSet<>();
+		for (IFeature a : originalFM.getFeatures()) features.add(a.getName());
 		if (neighbors!=null && neighbors.neighbors!=null) features.addAll(neighbors.neighbors.keySet());
 		if (featuresToRemove!=null && !featuresToRemove.isEmpty()) features.removeAll(featuresToRemove);
 		return features;
@@ -83,7 +81,8 @@ public class Oracle {
 	
 	/** @return also the feature names of the original model */
 	public Set<String> getAllFeatureNames() {
-		Set<String> features = new HashSet<>(Util.getFeatureNames(oracleFM));
+		Set<String> features = new HashSet<>();
+		for (IFeature a : oracleFM.getFeatures()) features.add(a.getName());
 		features.addAll(featuresToRemove);
 		return features;
 	}
@@ -93,74 +92,15 @@ public class Oracle {
 		this.productsToRemove = productsToRemove;
 	}
 	
-	public BDD getBDD() {
-		if (bdd==null) return generateBDD();
+	public BDD getBDDCache() {
+//		if (bdd==null) return generateBDD();
 		return bdd;
-	}
-	
-	public BDD generateBDD() {
-		return generateBDD(null,null);
-	}
-	
-	public BDD generateBDD(List<String> fmVars, FMToBDD f2bdd) {
-		if (fmVars==null) fmVars = new ArrayList<>(getAllFeatureNames());
-		//if (fmVars==null) fmVars = new ArrayList<>(getFeatureNames());
-		this.fmVars = fmVars;
-		IFeatureModel correctFM = oracleFM;
-		if (correctFM==null) {
-			correctFM = originalFM.clone();
-			Util.addMissingFeatures(this, correctFM);
-		}
-		if (f2bdd==null) this.f2bdd = f2bdd = new FMToBDD(fmVars);
-		BDD bddOriginalModel = f2bdd.nodeToBDD(NodeCreator.createNodes(correctFM));
-		BDDFactory init = f2bdd.init;
-		
-		if (oracleFM!=null) return bddOriginalModel;
-		
-		// products to add
-		BDD bigBDD = null;
-		for (Map<String,Boolean> values : productsToAdd) {
-			//Map<String,Boolean> values = oracle.values.get(0);
-			List<Entry<String, Boolean>> vals = new ArrayList<>(values.entrySet());
-			BDD bdd = null;
-			for (Entry<String, Boolean> v : vals) {
-				int elem = fmVars.indexOf(v.getKey());
-				assert elem >= 0 : "element not found " + v.getKey();
-				BDD b = v.getValue() ? init.ithVar(elem) : init.nithVar(elem);
-				if (bdd==null) bdd = b;
-				else bdd.andWith(b);
-			}
-			if (bigBDD==null) bigBDD = bdd;
-			else bigBDD.orWith(bdd);
-		}
-		if (bigBDD!=null) bddOriginalModel.orWith(bigBDD);
-		
-		// products to remove
-		bigBDD = null;
-		for (Map<String,Boolean> values : productsToRemove) {
-			//Map<String,Boolean> values = oracle.values.get(0);
-			List<Entry<String, Boolean>> vals = new ArrayList<>(values.entrySet());
-			BDD bdd = null;
-			for (Entry<String, Boolean> v : vals) {
-				int elem = fmVars.indexOf(v.getKey());
-				assert elem >= 0 : "element not found " + vals.get(0).getKey();
-				BDD b = v.getValue() ? init.ithVar(elem) : init.nithVar(elem);
-				if (bdd==null) bdd = b;
-				else bdd.andWith(b);
-			}
-			bdd = bdd.not();
-			if (bigBDD==null) bigBDD = bdd;
-			else bigBDD.andWith(bdd);
-		}
-		if (bigBDD!=null) bddOriginalModel.andWith(bigBDD);
-		
-		return bddOriginalModel;
 	}
 	
 	@Override
 	public String toString() {
 		return originalFM.toString() + "\n"
-			+ Util.getFeatureNames(originalFM) + "\n"
+			+ getFeatureNames() + "\n"
 			+ "Neighbor constraints:\n"
 			+ neighbors + "\n"
 			+ "Products to add:\n"
@@ -200,14 +140,6 @@ public class Oracle {
 	public List<Map<String,Boolean>> getCFadd() {
 		if (productsToAdd==null) return new ArrayList<>();
 		return productsToAdd;
-	}
-	
-	public long getNumCFadd() {
-		return GenerateUpdateRequest.computeProductsToAddOrRemove(this, originalFM, true);
-	}
-
-	public long getNumCFrem() {
-		return GenerateUpdateRequest.computeProductsToAddOrRemove(this, originalFM, false);
 	}
 	
 	public List<Map<String,Boolean>> getCFrem() {

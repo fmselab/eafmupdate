@@ -1,16 +1,7 @@
 package fmautorepair.mutationoperators;
 
-import java.io.IOException;
-
-import org.sat4j.specs.TimeoutException;
-
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
-import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
-import eafmupdate.model.Oracle;
-import eafmupdate.model.Util;
 import fmautorepair.utils.Pair;
-import splar.core.fm.FeatureModelException;
-import splar.core.fm.configuration.ConfigurationEngineException;
 
 public class FMMutation extends Pair<IFeatureModel, String> {
 
@@ -38,16 +29,9 @@ public class FMMutation extends Pair<IFeatureModel, String> {
 		return mutationClass;
 	}
 	
-	public double getActualAdequacy(Oracle oracle) throws TimeoutException, IOException, UnsupportedModelException, FeatureModelException, ConfigurationEngineException { return Util.getAdequacy(oracle, getFirst()); }
-	public double getPreviousAdequacy(Oracle oracle) throws TimeoutException, IOException, UnsupportedModelException, FeatureModelException, ConfigurationEngineException { return Util.getAdequacy(oracle, previous); }
-	public double getDeltaAdequacy(Oracle oracle) throws TimeoutException, IOException, FeatureModelException, ConfigurationEngineException, UnsupportedModelException { return getActualAdequacy(oracle)-getPreviousAdequacy(oracle); }
 	
 	public IFeatureModel getPreviousModel() { return previous; }
-	public int getGeneration() { return generation; }
-	
-	public double getActualCompactness() { return Util.getCompactness(getFirst()); }
-	public double getPreviousCompactness() { return Util.getCompactness(previous); }
-	
+	public int getGeneration() { return generation; }	
 	
 	/**
 	 * added by marcoradavelli
@@ -59,28 +43,4 @@ public class FMMutation extends Pair<IFeatureModel, String> {
 		return getMutationClass().getSimpleName()+" "+super.getSecond();
 	}
 	
-	/** @return some statistics in CSV format:
-	 * mutationName; ADQbefore;ADQafter; deltaED;EDbefore;EDafter
-	 * the editDistance is w.r.t. the target model 
-	 * @throws UnsupportedModelException 
-	 * @throws ConfigurationEngineException 
-	 * @throws FeatureModelException 
-	 * @throws IOException 
-	 * @throws TimeoutException */
-	public String getStatistics(Oracle oracle, IFeatureModel target, IFeatureModel initial) throws TimeoutException, IOException, FeatureModelException, ConfigurationEngineException, UnsupportedModelException {
-		return getMutationClass().getSimpleName()
-				+","+getPreviousAdequacy(oracle)
-				+","+getActualAdequacy(oracle)
-				+","+getPreviousCompactness()
-				+","+getActualCompactness()
-				;
-	}
-	
-	public String getStatisticsWithoutCompactness(Oracle oracle, IFeatureModel target, IFeatureModel initial) throws TimeoutException, IOException, FeatureModelException, ConfigurationEngineException, UnsupportedModelException {
-		return getMutationClass().getSimpleName()
-				+","+getPreviousAdequacy(oracle)
-				+","+getActualAdequacy(oracle)
-				;
-	}
-
 }

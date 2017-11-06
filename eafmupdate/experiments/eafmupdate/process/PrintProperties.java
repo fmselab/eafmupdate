@@ -1,8 +1,8 @@
-package fmficrepair.repair;
+package eafmupdate.process;
 
 import org.junit.Test;
 
-import fmficrepair.repair.Models;
+import eafmupdate.process.Models;
 
 /**
  * A test class to print the properties of the benchmarks

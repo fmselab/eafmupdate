@@ -4,11 +4,11 @@ import java.util.Iterator;
 
 import de.ovgu.featureide.fm.core.base.IFeature;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
-import eafmupdate.model.Util;
 import fmautorepair.mutationoperators.FMMutation;
 import fmautorepair.mutationoperators.FMMutator;
 import fmautorepair.utils.Filter;
 import fmautorepair.utils.FilteredIterator;
+import fmautorepair.utils.Utils;
 
 /**
  * given a feature model, it mutates it
@@ -39,7 +39,7 @@ abstract class FeatureMutator extends FMMutator{
 			}
 		};
 		// get all the names
-		final Iterator<String> featureNames = new FilteredIterator<String>(Util.getFeatureNames(fm).iterator(), filterF);
+		final Iterator<String> featureNames = new FilteredIterator<String>(Utils.getFeatureNames(fm).iterator(), filterF);
 		//
 		final Class<? extends FeatureMutator> mutationClazz = this.getClass();
 		//
@@ -50,7 +50,7 @@ abstract class FeatureMutator extends FMMutator{
 				// build a copy (deep) of the model to be mutated
 				IFeatureModel fm2 = fm.clone();
 				// get the same feature in the model
-				assert Util.getFeatureNames(fm2).contains(featureName);
+				assert Utils.getFeatureNames(fm2).contains(featureName);
 				IFeature tobemutated = fm2.getFeature(featureName);
 				// mutate the cloned model
 				String result = mutate(fm2, tobemutated);
