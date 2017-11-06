@@ -1,14 +1,13 @@
-package fmficrepair.repair;
+package eafmupdate.process;
 
 import org.uncommons.watchmaker.framework.selection.RankSelection;
 import org.uncommons.watchmaker.framework.selection.RouletteWheelSelection;
 import org.uncommons.watchmaker.framework.selection.TruncationSelection;
 
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
+import eafmupdate.Util;
 import eafmupdate.model.Oracle;
-import eafmupdate.model.Util;
-//import fmficrepair.repair.ProcessEvolutionary;
-import usingwatchmaker.FeatureModelEvaluator;
+import eafmupdate.process.usingwatchmaker.FeatureModelEvaluator;
 
 /**
  * The enum of different repair configurations of the repair processes, to be used.

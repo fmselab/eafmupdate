@@ -1,4 +1,4 @@
-package usingwatchmaker;
+package eafmupdate.process.usingwatchmaker;
 
 import java.util.Random;
 
@@ -13,9 +13,8 @@ import org.uncommons.watchmaker.framework.selection.TruncationSelection;
 import org.uncommons.watchmaker.framework.termination.GenerationCount;
 import org.uncommons.watchmaker.framework.termination.TargetFitness;
 
-
-import fmficrepair.MutatedModel;
-import fmficrepair.repair.Models;
+import eafmupdate.MutatedModel;
+import eafmupdate.process.Models;
 
 public class ProcessExecutor {
 

@@ -1,4 +1,4 @@
-package fmficrepair.repair;
+package eafmupdate.process;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,10 +8,11 @@ import org.sat4j.specs.TimeoutException;
 
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
+import eafmupdate.FMMutationUtil;
+import eafmupdate.MutatedModel;
+import eafmupdate.Util;
 import eafmupdate.model.Oracle;
-import eafmupdate.model.Util;
 import fmautorepair.mutationoperators.FMMutation;
-import fmficrepair.MutatedModel;
 import splar.core.fm.FeatureModelException;
 import splar.core.fm.configuration.ConfigurationEngineException;
 
@@ -45,7 +46,7 @@ public class Stats {
 	/** the oracle, in the real, usual format */
 	public Oracle oracle;
 	
-	double cachedAdequacy=-1;
+	protected double cachedAdequacy=-1;
 	
 	/** used for experiments */
 	public RepairTag tag = new RepairTag("");
@@ -141,8 +142,8 @@ public class Stats {
 				sb.append(
 						initialTag
 						+","+(bests?(id):"")
-						+","+(!bests ? mutation.getStatistics(oracle, correct, initial) : 
-							mutation.getStatisticsWithoutCompactness(oracle, correct, initial)
+						+","+(!bests ? FMMutationUtil.getStatistics(mutation, oracle, correct, initial) : 
+							FMMutationUtil.getStatisticsWithoutCompactness(mutation, oracle, correct, initial)
 							+","+(id==1 ? Util.getAdequacy(oracle, mutation.getPreviousModel()) : bestFitnesses.get(id-2))
 							+","+bestFitnesses.get(id-1)
 						)

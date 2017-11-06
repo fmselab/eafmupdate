@@ -1,4 +1,4 @@
-package fmficrepair.repair;
+package eafmupdate.process;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,12 +12,13 @@ import java.util.Map.Entry;
 
 import org.junit.Test;
 
-import eafmupdate.model.Util;
-import fmficrepair.MutatedModel;
-import fmficrepair.repair.Models;
-import fmficrepair.repair.Process;
-import fmficrepair.repair.Processes;
-import fmficrepair.repair.Stats;
+import eafmupdate.MutatedModel;
+import eafmupdate.Util;
+import eafmupdate.process.Models;
+import eafmupdate.process.Process;
+import eafmupdate.process.Processes;
+import eafmupdate.process.RepairTag;
+import eafmupdate.process.Stats;
 
 /**
  * To generate data for all the experiments in the report.

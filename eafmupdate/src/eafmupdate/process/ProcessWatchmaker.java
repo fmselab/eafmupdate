@@ -1,4 +1,4 @@
-package fmficrepair.repair;
+package eafmupdate.process;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,13 +21,13 @@ import org.uncommons.watchmaker.framework.termination.TargetFitness;
 
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
+import eafmupdate.MutatedModel;
+import eafmupdate.Util;
 import eafmupdate.model.Oracle;
-import eafmupdate.model.Util;
-import fmficrepair.MutatedModel;
+import eafmupdate.process.usingwatchmaker.FMEvolutionaryOperator;
+import eafmupdate.process.usingwatchmaker.FeatureModelFactory;
 import splar.core.fm.FeatureModelException;
 import splar.core.fm.configuration.ConfigurationEngineException;
-import usingwatchmaker.FMEvolutionaryOperator;
-import usingwatchmaker.FeatureModelFactory;
 
 /**
  * A repair process that uses an evolutionary technique, driven by a fitness function.

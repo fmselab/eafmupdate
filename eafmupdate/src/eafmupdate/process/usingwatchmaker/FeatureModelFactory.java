@@ -1,10 +1,10 @@
-package usingwatchmaker;
+package eafmupdate.process.usingwatchmaker;
 
 import java.util.Random;
 
 import org.uncommons.watchmaker.framework.factories.AbstractCandidateFactory;
 
-import fmficrepair.MutatedModel;
+import eafmupdate.MutatedModel;
 
 
 // build the initial population

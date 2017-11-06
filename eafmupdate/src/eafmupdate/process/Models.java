@@ -1,4 +1,4 @@
-package fmficrepair.repair;
+package eafmupdate.process;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,10 +12,11 @@ import java.util.Map;
 import org.sat4j.specs.TimeoutException;
 
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
+import eafmupdate.GenerateUpdateRequest;
+import eafmupdate.MutatedModel;
+import eafmupdate.Util;
 import eafmupdate.model.Oracle;
-import eafmupdate.model.Util;
 import fmautorepair.utils.Utils;
-import fmficrepair.MutatedModel;
 import splar.core.fm.FeatureModelException;
 import splar.core.fm.configuration.ConfigurationEngineException;
 
@@ -254,8 +255,8 @@ public enum Models {
 				switch (type) {
 				case 1: n = o.getFadd().size(); break;
 				case 2: n = o.getFrem().size(); break;
-				case 3: n = o.getNumCFadd(); break;
-				case 4: n = o.getNumCFrem(); break;
+				case 3: n = GenerateUpdateRequest.getNumCFadd(o); break;
+				case 4: n = GenerateUpdateRequest.getNumCFrem(o); break;
 				case 5: n = 1-Util.getAdequacy(o, m); break;
 				case 6: 
 					IFeatureModel fm = m.clone();
@@ -273,8 +274,8 @@ public enum Models {
 		switch (type) {
 		case 1: return "" + getOracle().getFadd().size();
 		case 2: return "" + getOracle().getFrem().size();
-		case 3: return "" + f(getOracle().getNumCFadd());
-		case 4: return "" + f(getOracle().getNumCFrem());
+		case 3: return "" + f(GenerateUpdateRequest.getNumCFadd(getOracle()));
+		case 4: return "" + f(GenerateUpdateRequest.getNumCFrem(getOracle()));
 		case 5: return "" + f(1-Util.getAdequacy(getOracle(), getFM1()));
 		case 6: 
 			IFeatureModel fm = getFM1();

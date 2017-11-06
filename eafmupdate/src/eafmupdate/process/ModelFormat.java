@@ -1,4 +1,4 @@
-package fmficrepair.repair;
+package eafmupdate.process;
 
 public enum ModelFormat {
 	FEATUREIDE, SPLOT;

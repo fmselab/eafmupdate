@@ -1,4 +1,4 @@
-package usingwatchmaker;
+package eafmupdate.process.usingwatchmaker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +6,9 @@ import java.util.Random;
 
 import org.uncommons.watchmaker.framework.EvolutionaryOperator;
 
-import eafmupdate.model.Util;
+import eafmupdate.MutatedModel;
+import eafmupdate.Util;
 import fmautorepair.mutationoperators.FMMutation;
-import fmficrepair.MutatedModel;
 
 public class FMEvolutionaryOperator implements EvolutionaryOperator<MutatedModel> {
 	
