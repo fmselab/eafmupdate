@@ -57,9 +57,9 @@ public class Experiments {
 			PrintWriter fout = new PrintWriter(new FileWriter("output_"+getExperimentName()+".txt"));
 
 			StringBuilder sb1 = new StringBuilder();
-			sb1.append("repair,model,iteration,nmut,mutation,ADQbefore,ADQafter,deltaED,EDbefore,EDafter,EDbeforeInitial,EDafterInitial,COMPbefore,COMPafter,description\n");
+			sb1.append("repair,model,iteration,nmut,mutation,ADQbefore,ADQafter,COMPbefore,COMPafter,description\n");
 			StringBuilder sb2 = new StringBuilder();
-			sb2.append("id,repair,model,iteration,numSeededMutations,ADQbefore,ADQafter,ED,EDCheatbefore,EDCheatafter,EDbeforeInitial,EDafterInitial,COMPbefore,COMPafter,mutations,time,avg,max,repaired\n");
+			sb2.append("id,repair,model,iteration,numSeededMutations,ADQbefore,ADQafter,COMPbefore,COMPafter,mutations,time,avg,max,repaired\n");
 
 			for (Entry<Models,Integer> m : getModels().entrySet()) {
 				Models model = m.getKey();

@@ -213,7 +213,7 @@ public class CompareOracleMutantBDD {
 	}
 	
 	static BDD generateBDD(Oracle o) {
-		return generateBDD(o);
+		return generateBDD(o, null, null);
 	}
 	
 	static BDD generateBDD(Oracle o, List<String> fmVars, FMToBDD f2bdd) {
