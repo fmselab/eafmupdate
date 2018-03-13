@@ -1,4 +1,4 @@
-package eafmupdate.process.usingwatchmaker;
+package eafmupdate.process;
 
 import java.util.Random;
 
@@ -15,6 +15,9 @@ import org.uncommons.watchmaker.framework.termination.TargetFitness;
 
 import eafmupdate.MutatedModel;
 import eafmupdate.process.Models;
+import eafmupdate.process.usingwatchmaker.FMEvolutionaryOperator;
+import eafmupdate.process.usingwatchmaker.FeatureModelEvaluator;
+import eafmupdate.process.usingwatchmaker.FeatureModelFactory;
 
 public class ProcessExecutor {
 
