@@ -89,7 +89,7 @@ public enum Processes {
 		@Override
 		public Process getRepairProcess(IFeatureModel model, Oracle oracle) {
 			int nrand = getPopulationSize(model);
-			return new ProcessWatchmaker(nrand, 0, MAXORDER, STEADY_STEPS, -1, new FeatureModelEvaluator(oracle, model), new TruncationSelection(Math.max(0.02,  0.5 / (double)nrand + 0.01)) );
+			return new ProcessWatchmaker(nrand, 0, MAXORDER, STEADY_STEPS, -1, new FeatureModelEvaluator(oracle, model), new TruncationSelection(Math.max(0.02,  0.5 / nrand + 0.01)) );
 		}
 	},
 	TRUNCATION_5PERCENT {
@@ -144,14 +144,14 @@ public enum Processes {
 	;
 	
 	public static final int MULT = 5;
-	public static final int MAXORDER = 25; // FIXME: to use in instances
+	static final int MAXORDER = 25; // FIXME: to use in instances
 	public static final int STEADY_STEPS = 15;
 	
 	public Process getRepairProcess(IFeatureModel model, Oracle oracle) {
 		return new ProcessRandom(100, MAXORDER, STEADY_STEPS);
 	}
 	
-	public static Processes[] getUsefulProcesses() {
+	static Processes[] getUsefulProcesses() {
 		return new Processes[] {
 			//TRUNCATE_ADQ__ED_ONLY_IF_TIED_5PERCENT,
 //			TRUNCATION_1PERCENT,   // it doesn't work if the population is too small

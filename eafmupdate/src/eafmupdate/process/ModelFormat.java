@@ -1,5 +1,5 @@
 package eafmupdate.process;
 
-public enum ModelFormat {
+enum ModelFormat {
 	FEATUREIDE, SPLOT;
 }

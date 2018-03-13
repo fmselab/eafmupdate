@@ -12,12 +12,12 @@ import splar.core.fm.FeatureModelException;
 import splar.core.fm.configuration.ConfigurationEngineException;
 
 public class FMMutationUtil {
-	public static double getActualAdequacy(FMMutation m, Oracle oracle) throws TimeoutException, IOException, UnsupportedModelException, FeatureModelException, ConfigurationEngineException { return Util.getAdequacy(oracle, m.getFirst()); }
-	public static double getPreviousAdequacy(FMMutation m, Oracle oracle) throws TimeoutException, IOException, UnsupportedModelException, FeatureModelException, ConfigurationEngineException { return Util.getAdequacy(oracle, m.getPreviousModel()); }
+	private static double getActualAdequacy(FMMutation m, Oracle oracle) throws TimeoutException, IOException, UnsupportedModelException, FeatureModelException, ConfigurationEngineException { return Util.getAdequacy(oracle, m.getFirst()); }
+	private static double getPreviousAdequacy(FMMutation m, Oracle oracle) throws TimeoutException, IOException, UnsupportedModelException, FeatureModelException, ConfigurationEngineException { return Util.getAdequacy(oracle, m.getPreviousModel()); }
 	public static double getDeltaAdequacy(FMMutation m, Oracle oracle) throws TimeoutException, IOException, FeatureModelException, ConfigurationEngineException, UnsupportedModelException { return getActualAdequacy(m, oracle)-getPreviousAdequacy(m, oracle); }
 	
-	public static double getActualCompactness(FMMutation m) { return Util.getCompactness(m.getFirst()); }
-	public static double getPreviousCompactness(FMMutation m) { return Util.getCompactness(m.getPreviousModel()); }
+	private static double getActualCompactness(FMMutation m) { return Util.getCompactness(m.getFirst()); }
+	private static double getPreviousCompactness(FMMutation m) { return Util.getCompactness(m.getPreviousModel()); }
 
 	/** @return some statistics in CSV format:
 	 * mutationName; ADQbefore;ADQafter; deltaED;EDbefore;EDafter

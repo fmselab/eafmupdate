@@ -5,7 +5,6 @@ import org.junit.Test;
 import de.ovgu.featureide.fm.core.base.IFeature;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
-import eafmupdate.process.Models;
 
 public class TestClone {
 	@Test

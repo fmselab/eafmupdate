@@ -45,13 +45,13 @@ public class Util {
 		return fnames;
 	}
 	
-	public static Set<String> getFeatureNamesIn2NotIn1(IFeatureModel fm1, IFeatureModel fm2) {
+	static Set<String> getFeatureNamesIn2NotIn1(IFeatureModel fm1, IFeatureModel fm2) {
 		Set<String> fnames = new HashSet<String>(getFeatureNames(fm2));
 		fnames.removeAll(getFeatureNames(fm1));
 		return fnames;
 	}
 	
-	public static Set<String> getAllFeatures(IFeatureModel m1, IFeatureModel m2) {
+	static Set<String> getAllFeatures(IFeatureModel m1, IFeatureModel m2) {
 		Set<String> features = getFeatureNames(m1);
 		features.addAll(getFeatureNames(m2));
 		return features;
@@ -67,7 +67,7 @@ public class Util {
 		}
 	}
 	
-	public static Set<String> getFeaturesToAdd(Oracle oracle, IFeatureModel fm) {
+	private static Set<String> getFeaturesToAdd(Oracle oracle, IFeatureModel fm) {
 		Set<String> fnames = new HashSet<String>(getFeatureNames(oracle.originalFM));
 		if (oracle.neighbors!=null && oracle.neighbors.neighbors!=null) fnames.addAll(oracle.neighbors.neighbors.keySet());
 		fnames.removeAll(getFeatureNames(fm));
@@ -75,7 +75,7 @@ public class Util {
 	}
 	
 	/** @return the feature from its name, visiting the feature model. It can be expensive */
-	public static IFeatureStructure findFeatureFromName(IFeatureStructure root, String fname) {
+	private static IFeatureStructure findFeatureFromName(IFeatureStructure root, String fname) {
 		if (root.getFeature().getName().equals(fname)) return root;
 		for (IFeatureStructure child : root.getChildren()) {
 			IFeatureStructure f = findFeatureFromName(child, fname);
@@ -84,7 +84,7 @@ public class Util {
 		return null;
 	}
 	
-	public static IFeatureStructure getParentToWhichAddFeature(Neighbors neighbors, IFeatureStructure root, String fname) {
+	private static IFeatureStructure getParentToWhichAddFeature(Neighbors neighbors, IFeatureStructure root, String fname) {
 		if (neighbors==null || neighbors.neighbors==null) return root;
 		Map<String, Roles> n = neighbors.neighbors.get(fname);
 		if (n==null || n.isEmpty()) return root;
@@ -110,7 +110,7 @@ public class Util {
 	}
 	
 	/** it adds missing features to fm, considering the neighbors */
-	public static void addMissingFeatures(IFeatureModel oracle, IFeatureModel fm) {
+	static void addMissingFeatures(IFeatureModel oracle, IFeatureModel fm) {
 		Set<String> featureNamesToAdd = getFeatureNamesIn2NotIn1(fm, oracle);
 		Neighbors n = GenerateUpdateRequest.generateNeighborsForFeaturesToAdd(oracle, fm);
 		for (String fname : featureNamesToAdd) {
@@ -122,7 +122,7 @@ public class Util {
 	}
 	
 	/** it removed the exceeding features from fm */
-	public static void removeOverabundantFeatures(IFeatureModel oracle, IFeatureModel fm) {
+	static void removeOverabundantFeatures(IFeatureModel oracle, IFeatureModel fm) {
 		Set<String> featureNamesToRemove = Util.getFeatureNamesIn2NotIn1(oracle, fm);
 		for (String fname : featureNamesToRemove) {
 			fm.deleteFeature(fm.getFeature(fname));
@@ -164,7 +164,7 @@ public class Util {
 	 * @param feature
 	 * @return
 	 */
-	public static double getCompactness(IFeatureStructure feature) {
+	private static double getCompactness(IFeatureStructure feature) {
 		Map<String,Integer> map = getListOfChildren(feature);
 		int childrenCount=0, nodeCount=0;
 		for (Integer children : map.values()) if (children>0){
@@ -290,7 +290,7 @@ public class Util {
 	}
 	
 	/** @return the parent of f among root and its children */
-	public static IFeatureStructure findParent(IFeatureStructure root, String f) {
+	static IFeatureStructure findParent(IFeatureStructure root, String f) {
 		if (root.getFeature().getName().equals(f)) return null; // They should have at least the same parent
 		// search among the children
 		for (IFeatureStructure child : root.getChildren()) {
@@ -326,7 +326,7 @@ public class Util {
 	}
 	
 	/** converts a model to FeatureIDE format */
-	public static String toFeatureIDE(IFeatureModel model) {
+	private static String toFeatureIDE(IFeatureModel model) {
 		return new de.ovgu.featureide.fm.core.io.xml.XmlFeatureModelFormat().write(model);
 	}
 	

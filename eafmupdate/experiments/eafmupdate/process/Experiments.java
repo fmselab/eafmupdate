@@ -14,10 +14,8 @@ import org.junit.Test;
 
 import eafmupdate.MutatedModel;
 import eafmupdate.Util;
-import eafmupdate.process.Models;
 import eafmupdate.process.Process;
 import eafmupdate.process.Processes;
-import eafmupdate.process.RepairTag;
 import eafmupdate.process.Stats;
 
 /**

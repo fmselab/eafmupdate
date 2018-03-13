@@ -32,22 +32,23 @@ import fmautorepair.mutationoperators.features.OrToAnd;
 import fmautorepair.mutationoperators.features.OrToAndOpt;
 import fmautorepair.utils.CollectionsUtil;
 import fmautorepair.utils.Utils;
+import fmupdate.models.ExampleTaker;
 import splar.core.fm.FeatureModelException;
 import splar.core.fm.configuration.ConfigurationEngineException;
 
 public class GenerateMutants {
 	// Original one
-//	static FMMutator[] mutators = new FMMutator[]{AlternativeToAnd.instance, AlternativeToAndOpt.instance, AlternativeToOr.instance,
-//													AndToAlternative.instance, AndToOr.instance, MandatoryToOptional.instance,
+//	static FMMutator[] mutators = new FMMutator[]{AlternativeToAnd.instance, AlternativeToAndOpt.instance, AltToOr.instance,
+//													AndToAlternative.instance, AndToOr.instance, MandToOpt.instance,
 //													/*MissingFeature.instance,*/ OptionalToMandatory.instance, OrToAltenative.instance,
 //													OrToAnd.instance, OrToAndOpt.instance};
 	
-	public static Set<FMMutator> mutatorsToExclude = new HashSet<>();
+	private static Set<FMMutator> mutatorsToExclude = new HashSet<>();
 	static {
 		//mutatorsToExclude.add(MoveF.instance);
 	}
 	
-	public static FMMutator getRandomMutator() {
+	static FMMutator getRandomMutator() {
 		//mutatorsToExclude.add(MoveF.instance); //make sure there is no move
 		
 		FMMutator m = fmMutators[rnd.nextInt(fmMutators.length)];
@@ -128,13 +129,13 @@ public class GenerateMutants {
 	}*/
 		
 	
-	public static Random rnd = new Random();
+	static Random rnd = new Random();
 
-	public static void init() {
+	private static void init() {
 		org.apache.log4j.Logger.getRootLogger().setLevel(org.apache.log4j.Level.OFF);
 	}
 
-	/*public static Set<MyFMMutation> generateMutantsWithSet(FeatureModel fmodel, int depth, double percSelect) {
+	/*public static Set<MyFMMutation> generateMutantsWithSet(IFeatureModel fmodel, int depth, double percSelect) {
 		assert depth > 0: "depth must be greater than 0 - depth = " + depth;
 		Set<MyFMMutation> currMutants = new HashSet<MyFMMutation>();
 		for(FMMutator mutator: mutators) {
@@ -154,14 +155,14 @@ public class GenerateMutants {
 		}
 		else {
 			for(MyFMMutation currMutant: currMutants) {
-				FeatureModel fmMut = currMutant.getMutation();
+				IFeatureModel fmMut = currMutant.getMutation();
 				mutants.addAll(generateMutantsWithSet(fmMut, depth - 1, percSelect));
 			}
 		}
 		return mutants;
 	}*/
 
-	public static List<FMMutation> generateMutantsNoSet(IFeatureModel fmodel, int depth, double percSelect) {
+	private static List<FMMutation> generateMutantsNoSet(IFeatureModel fmodel, int depth, double percSelect) {
 		assert depth > 0: "depth must be greater than 0 - depth = " + depth;
 		assert percSelect > 0 && percSelect <= 1: "percSelect not allowed: " + percSelect;
 		//System.err.println("depth = " + depth);
@@ -197,9 +198,9 @@ public class GenerateMutants {
 		return mutants;
 	}
 
-	private static void saveMutatedModel(IFeatureModel featureModel, String name, boolean description) throws IOException {
+	private static void saveMutatedModel(IFeatureModel IFeatureModel, String name, boolean description) throws IOException {
 		if(description) {
-			for(String comment: featureModel.getProperty().getComments()) {
+			for(String comment: IFeatureModel.getProperty().getComments()) {
 				if(comment.contains(" from ")) {
 					name = name + "_" + comment.replace("mutation ", "").replaceAll(" from ", "_").replaceAll(" ", "");
 				}
@@ -208,7 +209,7 @@ public class GenerateMutants {
 		//SXFMWriter writer = new SXFMWriter(mutatedModel);
 		//System.out.println(writer.writeToString());
 		FileWriter fw = new FileWriter(new File(name + ".xml"));
-		fw.write(new XmlFeatureModelFormat().write(featureModel));
+		fw.write(new XmlFeatureModelFormat().write(IFeatureModel));
 		fw.close();
 	}
 
@@ -223,7 +224,7 @@ public class GenerateMutants {
 		ModelComparator comparator = new ModelComparator(1000000);
 		int counter = 0;
 		for(File file: dir.listFiles()) {
-			IFeatureModel mutant = Utils.readModel(file.getAbsolutePath());
+			IFeatureModel mutant = ExampleTaker.readModel(file.getAbsolutePath());
 			Comparison comparison = comparator.compare(fm, mutant);
 			if(comparison == Comparison.REFACTORING) {
 				counter++;
@@ -240,11 +241,11 @@ public class GenerateMutants {
 		int counter = 0;
 		for(File file: dir.listFiles()) {
 			if(!file.exists()) continue; 
-			IFeatureModel mutant = Utils.readModel(file.getAbsolutePath());
+			IFeatureModel mutant = ExampleTaker.readModel(file.getAbsolutePath());
 			File sameDir = new File(folderMutants);
 			for(File file2: sameDir.listFiles()) {
 				if(!file2.getName().equals(file.getName())) {
-					IFeatureModel mutant2 = Utils.readModel(file2.getAbsolutePath());
+					IFeatureModel mutant2 = ExampleTaker.readModel(file2.getAbsolutePath());
 					Comparison comparison = comparator.compare(mutant, mutant2);
 					if(comparison == Comparison.REFACTORING) {
 						counter++;
@@ -265,7 +266,7 @@ public class GenerateMutants {
 			if(!file.exists()) continue;
 			String fileName = file.getName().replaceAll("depth" + (depth - 1), "depth" + depth);
 			fileName = fileName.substring(0, fileName.length() - 4);
-			IFeatureModel fmmodel = Utils.readModel(file.getAbsolutePath());
+			IFeatureModel fmmodel = ExampleTaker.readModel(file.getAbsolutePath());
 			List<FMMutation> currMutants = new ArrayList<FMMutation>();
 			for(FMMutator mutator: fmMutators) {
 				currMutants.addAll(CollectionsUtil.listFromIterator(mutator.mutate(fmmodel)));						
@@ -323,7 +324,7 @@ public class GenerateMutants {
 		}
 	}
 
-	public static List<IFeatureModel> generateNmutants(IFeatureModel fmodel, int numMutants, List<IFeatureModel> mutants) {
+	static List<IFeatureModel> generateNmutants(IFeatureModel fmodel, int numMutants, List<IFeatureModel> mutants) {
 		numMutants--;
 		if(numMutants >= 0) {
 			List<FMMutation> currMutants;
@@ -343,7 +344,7 @@ public class GenerateMutants {
 	
 	public static void generateNmutants(String modelPath, int numMutants) throws IOException, UnsupportedModelException, NoSuchExtensionException {
 		init();
-		IFeatureModel fm = Utils.readModel(modelPath);
+		IFeatureModel fm = ExampleTaker.readModel(modelPath);
 		List<IFeatureModel> mutants = new ArrayList<>();
 		generateNmutants(fm, numMutants, mutants);
 
@@ -355,9 +356,9 @@ public class GenerateMutants {
 	}
 
 	public static void getAdequacy(String oraclePath, String mutantsPath) throws TimeoutException, IOException, FeatureModelException, ConfigurationEngineException, UnsupportedModelException, NoSuchExtensionException {
-		IFeatureModel o = Utils.readModel(oraclePath);
+		IFeatureModel o = ExampleTaker.readModel(oraclePath);
 		for(File f: new File(mutantsPath).listFiles()) {
-			IFeatureModel m = Utils.readModel(f.getAbsolutePath());
+			IFeatureModel m = ExampleTaker.readModel(f.getAbsolutePath());
 			System.out.println(CompareOracleMutantBDD.getConformance(o, m).percConfsJudgedCorrectly());
 		}
 	}

@@ -4,7 +4,7 @@ public class Conformance {
 	private long numConfigurations;
 	private long numConfsJudgedCorrectly;
 
-	public Conformance(long numConfigurations, long numConfsJudgedCorrectly) {
+	Conformance(long numConfigurations, long numConfsJudgedCorrectly) {
 		this.numConfigurations = numConfigurations;
 		this.numConfsJudgedCorrectly = numConfsJudgedCorrectly;
 	}

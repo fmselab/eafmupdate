@@ -38,27 +38,27 @@ import splar.core.fm.configuration.ConfigurationEngineException;
 public class ProcessWatchmaker extends Process {
 
 	/** the size of the population */
-	int nrand;
+	private int nrand;
 	
 	/** the size of selected offspring set */
-	int nbests;
+	private int nbests;
 	
 	/** Stop condition when No improvement in last "maxOrder" generations */
-	int noImprovementSteps;
+	private int noImprovementSteps;
 	
 	/** the maximum number of generations (= number of allowed mutations) */
-	int maxOrder;
+	private int maxOrder;
 	
 	/** the maximum repair time, in ms */
-	long timeout;
+	private long timeout;
 	
 	/** used in the process, the starting time of the repair */
-	long repairStart;
+	private long repairStart;
 		
-	PopulationData<? extends MutatedModel> data;
+	private PopulationData<? extends MutatedModel> data;
 	
-	FitnessEvaluator<MutatedModel> fitnessEvaluator;
-	SelectionStrategy<Object> selectionStrategy;
+	private FitnessEvaluator<MutatedModel> fitnessEvaluator;
+	private SelectionStrategy<Object> selectionStrategy;
 	
 	/**
 	 * For the size of population and selected offspring, if the parameter is <=0, it uses default values.
@@ -82,7 +82,7 @@ public class ProcessWatchmaker extends Process {
 		assert nbests <= nrand;
 	}
 	
-	public ProcessWatchmaker(int nrand, int nbests, int maxOrder, int noImprovementSteps, long timeout, FitnessEvaluator<MutatedModel> fitnessEvaluator, SelectionStrategy<Object> selectionStrategy) {
+	ProcessWatchmaker(int nrand, int nbests, int maxOrder, int noImprovementSteps, long timeout, FitnessEvaluator<MutatedModel> fitnessEvaluator, SelectionStrategy<Object> selectionStrategy) {
 		this(nrand,nbests,maxOrder,noImprovementSteps,timeout);
 		this.fitnessEvaluator=fitnessEvaluator;
 		this.selectionStrategy=selectionStrategy;

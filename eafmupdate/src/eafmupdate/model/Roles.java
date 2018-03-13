@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Roles {
-	public List<Role> roles;
+	private List<Role> roles;
 	
 	public Roles(List<Role> roles) {
 		this.roles = roles;

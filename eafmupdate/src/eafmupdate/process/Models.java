@@ -17,6 +17,7 @@ import eafmupdate.MutatedModel;
 import eafmupdate.Util;
 import eafmupdate.model.Oracle;
 import fmautorepair.utils.Utils;
+import fmupdate.models.ExampleTaker;
 import splar.core.fm.FeatureModelException;
 import splar.core.fm.configuration.ConfigurationEngineException;
 
@@ -106,7 +107,8 @@ public enum Models {
 	public static IFeatureModel load(String path, ModelFormat modelFormat) { 
 		try {
 			// try loading from FeatureIDE default XML format
-			if (modelFormat==null || modelFormat==ModelFormat.FEATUREIDE) return Utils.readModel(path);
+			if (modelFormat==null || modelFormat==ModelFormat.FEATUREIDE)
+				return ExampleTaker.readModel(path);
 			else return Utils.readSPLOTModel(path);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -133,7 +135,7 @@ public enum Models {
 	}
 	
 	/** for experiments, it returns the model and save them at the same time */
-	public IFeatureModel getMutatedModel(int iteration) {
+	IFeatureModel getMutatedModel(int iteration) {
 		if (experimentType) return getFM1(); // if real world, there are no mutations
 		if (mutated.containsKey(iteration)) return mutated.get(iteration);
 		IFeatureModel mutatedModel = null;
@@ -142,7 +144,7 @@ public enum Models {
 		try {
 			File f = new File(path);
 			if(f.exists() && !f.isDirectory()) { 
-				mutatedModel = Utils.readModel("models/generated/"+title+".xml");			    
+				mutatedModel = ExampleTaker.readModel("models/generated/"+title+".xml");			    
 			}
 		} catch (Exception e) {System.out.println(iteration+" generating mutated model for "+name());}
 		try {
@@ -169,7 +171,7 @@ public enum Models {
 	}
 	
 	/** @return an array of the only models to be used in the experiments */
-	public static Models[] getModelForExperiments() {
+	static Models[] getModelForExperiments() {
 		return new Models[] { 
 			//SIMPLE,
 			EXAMPLE,
@@ -246,7 +248,7 @@ public enum Models {
 	 * @throws FeatureModelException 
 	 * @throws IOException 
 	 */
-	public String getSize(int type) throws TimeoutException, IOException, FeatureModelException, ConfigurationEngineException {
+	String getSize(int type) throws TimeoutException, IOException, FeatureModelException, ConfigurationEngineException {
 		if (!experimentType) {
 			double sum=0, count=0, min=-1, max=-1;
 			for (IFeatureModel m : getMutatedModels(100).values()) {
@@ -269,7 +271,7 @@ public enum Models {
 				if (max==-1 || n>max) max=n;
 			}
 			if (type==1 || type==2) return f(sum/count);
-			return (f((double)sum/(double)count)+ " ("+f(min)+"-"+f(max)+")").replace(".0 ", " ").replace(".0-","-").replace(".0)", ")");
+			return (f(sum/count)+ " ("+f(min)+"-"+f(max)+")").replace(".0 ", " ").replace(".0-","-").replace(".0)", ")");
 		}
 		switch (type) {
 		case 1: return "" + getOracle().getFadd().size();

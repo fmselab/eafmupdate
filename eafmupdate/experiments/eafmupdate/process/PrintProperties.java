@@ -2,8 +2,6 @@ package eafmupdate.process;
 
 import org.junit.Test;
 
-import eafmupdate.process.Models;
-
 /**
  * A test class to print the properties of the benchmarks
  * @author marcoradavelli

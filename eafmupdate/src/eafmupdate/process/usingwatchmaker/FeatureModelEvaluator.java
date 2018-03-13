@@ -11,9 +11,9 @@ import eafmupdate.model.Oracle;
 
 public class FeatureModelEvaluator implements FitnessEvaluator<MutatedModel> {
 	
-	/** the oracle to compare with */ Oracle oracle;
+	/** the oracle to compare with */ private Oracle oracle;
 	
-	/** the initial FM, to which to compute differences */ IFeatureModel initial;
+	/** the initial FM, to which to compute differences */ private IFeatureModel initial;
 		
 	int numFeatures;
 	

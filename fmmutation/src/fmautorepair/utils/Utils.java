@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.Set;
 
-import de.ovgu.featureide.fm.core.ExtensionManager.NoSuchExtensionException;
 import de.ovgu.featureide.fm.core.base.IFeature;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
@@ -19,16 +18,6 @@ import splar.core.fm.XMLFeatureModel;
 
 /** fmautorepair.utils to read models */
 public class Utils{
-
-	/** read models from the model project 
-	 * @throws NoSuchExtensionException */
-	
-	static public IFeatureModel readModel(String path) throws FileNotFoundException, UnsupportedModelException, NoSuchExtensionException {
-		IFeatureModel fm_original = FMFactoryManager.getDefaultFactory().createFeatureModel();		
-		XmlFeatureModelFormat format = new XmlFeatureModelFormat();
-		FileHandler.load(new File(path).toPath(), fm_original, format);
-		return fm_original;
-	}
 
 	static public IFeatureModel readSPLOTModel(String path) throws FileNotFoundException, UnsupportedModelException {
 		// see https://github.com/FeatureIDE/FeatureIDE/blob/develop/tests/de.ovgu.featureide.fm.core-test/src/de/ovgu/featureide/fm/core/io/sxfm/Experiment_ConvertSPLOTmodels.java
@@ -53,16 +42,16 @@ public class Utils{
 		// www.splot-research.org for details)
 		// If an identifier is not provided for a feature use the feature name
 		// as id
-		splar.core.fm.FeatureModel featureModel = new XMLFeatureModel(featureModelPath,
+		splar.core.fm.FeatureModel IFeatureModel = new XMLFeatureModel(featureModelPath,
 				XMLFeatureModel.USE_VARIABLE_NAME_AS_ID);
 		// load feature model from
-		featureModel.loadModel();
+		IFeatureModel.loadModel();
 		// Now, let's print some statistics about the feature model
-		FeatureModelStatistics stats = new FeatureModelStatistics(featureModel);
+		FeatureModelStatistics stats = new FeatureModelStatistics(IFeatureModel);
 		stats.update();
 
 		// stats.dump();
-		return featureModel;
+		return IFeatureModel;
 	}
 	
 	public static Set<String> getFeatureNames(IFeatureModel fm) {

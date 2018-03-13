@@ -31,17 +31,18 @@ public class MutatedModel {
 		this.model = model;
 	}
 	
-	public MutatedModel(IFeatureModel model, List<FMMutation> mutations) {
+	private MutatedModel(IFeatureModel model, List<FMMutation> mutations) {
 		this.model = model;
 		this.mutations = mutations;
 	}
 	
 	/** create a copy of it, cloning its objects */
+	@Override
 	public MutatedModel clone() {
 		return new MutatedModel(model.clone(), mutations==null ? null : new ArrayList<>(mutations));
 	}
 	
-	public void addMutation(FMMutation mutation) {
+	void addMutation(FMMutation mutation) {
 		if (mutations==null) mutations = new ArrayList<>();
 		mutations.add(mutation);
 	}

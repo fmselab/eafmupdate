@@ -2,7 +2,11 @@ package fmautorepair.mutationoperators;
 
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import fmautorepair.utils.Pair;
-
+/**
+ * mutation + string representing its applied mutant operator  
+ * 
+ * @author garganti
+ */
 public class FMMutation extends Pair<IFeatureModel, String> {
 
 	private Class<? extends FMMutator> mutationClass = null;

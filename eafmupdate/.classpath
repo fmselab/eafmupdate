@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="/fmmutation/libs/org.sat4j.core.jar"/>
 	<classpathentry kind="lib" path="/fmmutation/libs/splar.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/fmmutation"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/fmupdate.models"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

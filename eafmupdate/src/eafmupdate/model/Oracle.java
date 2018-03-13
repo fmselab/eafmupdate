@@ -18,7 +18,7 @@ import net.sf.javabdd.BDD;
  */
 public class Oracle {
 	
-	/** the original FeatureModel. Does NOT contain additional features */
+	/** the original IFeatureModel. Does NOT contain additional features */
 	public IFeatureModel originalFM;
 	
 	/** if known, the oracle feature model */
@@ -35,17 +35,17 @@ public class Oracle {
 	public Neighbors neighbors;
 	
 	/** the set of features that are to be removed */
-	public Set<String> featuresToRemove;
+	private Set<String> featuresToRemove;
 	
 	/** the BDD representation of the oracle */
-	protected BDD bdd;
+	private BDD bdd;
 	
 	/** the FMToBDD needed for initialization: to be in common for all BDDs that are to be joined together */
 	public FMToBDD f2bdd;
 	
 	public List<String> fmVars;
 	
-	public Oracle(IFeatureModel original) {
+	private Oracle(IFeatureModel original) {
 		this.originalFM = original;
 	}
 	
@@ -60,7 +60,7 @@ public class Oracle {
 		this.productsToRemove = productsToRemove;
 	}
 	
-	public Oracle(IFeatureModel original, List<Map<String, Boolean>> productsToAdd, List<Map<String, Boolean>> productsToRemove, Neighbors neighbors) {
+	private Oracle(IFeatureModel original, List<Map<String, Boolean>> productsToAdd, List<Map<String, Boolean>> productsToRemove, Neighbors neighbors) {
 		this(original, productsToAdd, productsToRemove);
 		this.neighbors=neighbors;
 	}
@@ -109,7 +109,7 @@ public class Oracle {
 			+ toString(productsToRemove);
 	}
 	
-	public static String toString(List<Map<String,Boolean>> products) {
+	private static String toString(List<Map<String,Boolean>> products) {
 		if (products==null || products.isEmpty()) return "NullProducts";
 		StringBuilder sb = new StringBuilder();
 		products.forEach(p -> sb.append(p+"\n"));

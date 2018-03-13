@@ -30,18 +30,22 @@ public class Stats {
 	/** the total time for repair */
 	public long time;
 
-	public int mutations;
+	private int mutations;
 	
 	public int order;
 	
 	/** the min, avg, and max adequacy achieved in the mutations */
-	public double min, avg, max;
+	private double min;
+
+	protected double avg;
+
+	protected double max;
 	
 	/** all the mutated models obtained */
-	public List<MutatedModel> models = new ArrayList<>();
+	private List<MutatedModel> models = new ArrayList<>();
 	
 	/** all the mutations applied */
-	public List<FMMutation> allMutations = new ArrayList<>();
+	private List<FMMutation> allMutations = new ArrayList<>();
 	
 	/** the oracle, in the real, usual format */
 	public Oracle oracle;
@@ -57,12 +61,12 @@ public class Stats {
 	/** the used repair process */
 	public Processes repairProcess;
 	
-	public List<Double> bestFitnesses;
+	private List<Double> bestFitnesses;
 	
 	/** used for the merge operators. Set at which stage the first repair process ends, and the second starts */
-	public List<Integer> orderForStep = new ArrayList<>();
+	private List<Integer> orderForStep = new ArrayList<>();
 	
-	public Stats(IFeatureModel initial, Oracle oracle, IFeatureModel correct, MutatedModel repaired, long time, int mutations, 
+	private Stats(IFeatureModel initial, Oracle oracle, IFeatureModel correct, MutatedModel repaired, long time, int mutations, 
 			int order, double min, double avg, double max, List<MutatedModel> models) {
 		this.initial = initial;
 		this.correct = correct;
@@ -78,7 +82,7 @@ public class Stats {
 		this.oracle = oracle==null ? new Oracle(correct, null, null) : oracle;
 	}
 	
-	public Stats(IFeatureModel initial, Oracle oracle, IFeatureModel correct, MutatedModel repaired, long time, int mutations, 
+	Stats(IFeatureModel initial, Oracle oracle, IFeatureModel correct, MutatedModel repaired, long time, int mutations, 
 			int order, double min, double avg, double max, List<MutatedModel> models, List<FMMutation> allMutations, List<Double> bestFitnesses) {
 		this(initial, oracle, correct, repaired, time, mutations, order, min, avg, max, models);
 		this.allMutations = allMutations;
@@ -91,7 +95,7 @@ public class Stats {
 		this(initial, null, correct, new MutatedModel(repaired), time, mutations, order, min, avg, max, toMutatedModelsForCompatibility(models));
 	}
 	
-	protected static List<MutatedModel> toMutatedModelsForCompatibility(List<IFeatureModel> models) {
+	private static List<MutatedModel> toMutatedModelsForCompatibility(List<IFeatureModel> models) {
 		List<MutatedModel> ms = new ArrayList<>();
 		for (IFeatureModel m : models) ms.add(new MutatedModel(m));
 		return ms;

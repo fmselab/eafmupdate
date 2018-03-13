@@ -9,17 +9,17 @@ package eafmupdate.process;
  */
 public class RepairTag {
 
-	public String tag;
+	private String tag;
 	
-	public Models model;
-	public int iteration;
+	private Models model;
+	private int iteration;
 	
 	public RepairTag(Models model, int iteration) {
 		this.model=model;
 		this.iteration=iteration;
 	}
 	
-	public RepairTag(String tag) {
+	RepairTag(String tag) {
 		this.tag=tag;
 	}
 	

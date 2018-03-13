@@ -177,7 +177,7 @@ public class GenerateUpdateRequest {
 		return (long)difference.satCount();
 	}
 	
-	public static Neighbors generateNeighborsForFeaturesToAdd(IFeatureModel oracle, IFeatureModel fm) {
+	static Neighbors generateNeighborsForFeaturesToAdd(IFeatureModel oracle, IFeatureModel fm) {
 		Map<String,Map<String,Roles>> n = new LinkedHashMap<>();
 		Set<String> toAdd = Util.getFeatureNamesIn2NotIn1(fm, oracle);
 		for (String f : toAdd) {

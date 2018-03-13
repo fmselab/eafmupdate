@@ -14,7 +14,6 @@ import org.uncommons.watchmaker.framework.termination.GenerationCount;
 import org.uncommons.watchmaker.framework.termination.TargetFitness;
 
 import eafmupdate.MutatedModel;
-import eafmupdate.process.Models;
 import eafmupdate.process.usingwatchmaker.FMEvolutionaryOperator;
 import eafmupdate.process.usingwatchmaker.FeatureModelEvaluator;
 import eafmupdate.process.usingwatchmaker.FeatureModelFactory;
