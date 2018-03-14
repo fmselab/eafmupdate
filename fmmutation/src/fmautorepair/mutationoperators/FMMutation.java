@@ -33,6 +33,9 @@ public class FMMutation extends Pair<IFeatureModel, String> {
 		return mutationClass;
 	}
 	
+	public void setMutationClass(Class<? extends FMMutator> mutationClass) {
+		this.mutationClass = mutationClass;
+	}
 	
 	public IFeatureModel getPreviousModel() { return previous; }
 	public int getGeneration() { return generation; }	
