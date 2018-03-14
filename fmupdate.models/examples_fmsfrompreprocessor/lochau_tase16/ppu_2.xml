@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and abstract="true" mandatory="true" name="PPU">
+				<and abstract="true" mandatory="true" name="Crane">
+					<feature mandatory="true" name="SRouting"/>
+				</and>
+				<alt abstract="true" mandatory="true" name="Slide">
+					<feature name="Straight"/>
+					<alt abstract="true" name="Conveyor">
+						<feature name="SSortation"/>
+						<feature name="DSortation"/>
+					</alt>
+				</alt>
+				<alt abstract="true" mandatory="true" name="Workpiece">
+					<feature name="Plastic"/>
+					<feature name="Metal"/>
+				</alt>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>
