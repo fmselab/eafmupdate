@@ -48,8 +48,12 @@ public class BDDTest {
 	
 	@Test
 	public void URTest() throws TimeoutException, IOException, FeatureModelException, ConfigurationEngineException {
-		Oracle oracle = Models.EXAMPLE.getOracle();
-		IFeatureModel fm = Models.EXAMPLE.getFM1();
+		Oracle oracle = Models.REGISTER.getOracle();
+		IFeatureModel fm = Models.REGISTER.getFM1();
+		
+		//Oracle oracle = Models.EXAMPLE.getOracle();
+		//IFeatureModel fm = Models.EXAMPLE.getFM1();
+		
 		System.out.println(GenerateUpdateRequest.computeProductsToAddOrRemove(oracle, fm, true) + "\n"
 				+ GenerateUpdateRequest.computeProductsToAddOrRemove(oracle, fm, false) + "\nTo Add: "
 				+ GenerateUpdateRequest.generateProductsToAdd(oracle.oracleFM, fm) + "\nToRemove: "

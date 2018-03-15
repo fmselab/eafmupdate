@@ -28,8 +28,8 @@ import splar.core.fm.configuration.ConfigurationEngineException;
 public enum Models {
 	
 	WRONGEXAMPLE("models/constraintrepair/exampleE1.xml", "models/constraintrepair/example.xml"),
-	EXAMPLE("models/constraintrepair/example.xml", "models/constraintrepair/exampleE4.xml"),
-	REGISTER("models/constraintrepair/registerFaultSeeded.xml","models/constraintrepair/register.xml"),
+	EXAMPLE("constraintrepair/example.xml", "constraintrepair/exampleE4.xml"),
+	REGISTER("constraintrepair/registerFaultSeeded.xml","constraintrepair/register.xml"),
 	FIGURE4("models/examples_fmsfrompreprocessor/TKESSPLC11/Figure4_mr.xml", "models/examples_fmsfrompreprocessor/TKESSPLC11/Figure4_oracle.xml"),
 	AIRCRAFT1("models/constraintrepair/aircraftFault.xml", "models/splotmodels_new/featureIDE/aircraft_fm.xml"),
 	CONNECTOR1("models/constraintrepair/connectorFaultSeeded.xml", "models/splotmodels_new/featureIDE/connector_fm.xml"),
@@ -48,12 +48,14 @@ public enum Models {
 	AIRCRAFT10("models/splotmodels_new/featureIDE/aircraft_fm/aircraft_fm_numMutations10.xml", "models/splotmodels_new/featureIDE/aircraft_fm.xml", true),
 	CONNECTOR10("models/splotmodels_new/featureIDE/connector_fm/connector_fm_numMutations_10.xml", "models/splotmodels_new/featureIDE/connector_fm.xml", true),
 	EXAMPLE_ORDER_SWITCHED("models/constraintrepair/example_featureSwitched.xml", "models/constraintrepair/example.xml"),
-	EXAMPLE_ORACLE("models/constraintrepair/example.xml", "models/constraintrepair/exampleE3.xml", getOracleExample()),
+	//EXAMPLE_ORACLE("models/constraintrepair/example.xml", "models/constraintrepair/exampleE3.xml", getOracleExample()),
 	ERPSPL("models/constraintrepair/ERP_SPL_1.xml", "models/constraintrepair/ERP_SPL_2.xml"),
 	EXAMPLE_E2("models/constraintrepair/exampleE2.xml", "models/constraintrepair/example.xml"),
 	EXAMPLE_E3("models/constraintrepair/exampleE3.xml", "models/constraintrepair/example.xml"),
 	EASY("models/constraintrepair/easy1.xml", "models/constraintrepair/easy2.xml"),	
 	SIMPLE("models/constraintrepair/simpleA.xml", "models/constraintrepair/simpleB.xml"),
+	
+	PPU1("examples_fmsfrompreprocessor/lochau_asej16/ppu_1.xml", "examples_fmsfrompreprocessor/lochau_asej16/ppu_2.xml");
 	;
 	
 	//private static Logger logger = Logger.getLogger(Models.class.getName());
@@ -87,10 +89,20 @@ public enum Models {
 	}
 	
 	/** fm1 is the initial model, usually the wrong one */
-	public IFeatureModel getFM1() { return load(path1, format); }
+	public IFeatureModel getFM1() { 
+		try {
+		return ExampleTaker.readModel(path1);
+		} catch (Exception e) {e.printStackTrace();}
+		return load(path1, format); 
+	}
 	
 	/** fm2 is the final model, the one we know to be correct */
-	public IFeatureModel getFM2() { return load(path2, format); }
+	public IFeatureModel getFM2() { 
+		try {
+			return ExampleTaker.readModel(path2);
+		} catch (Exception e) {e.printStackTrace();}
+		return load(path2, format);
+	}
 	
 	
 	public Oracle getOracle() throws TimeoutException {return oracle==null ? oracle = generateOracle() : oracle;}

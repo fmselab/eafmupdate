@@ -31,7 +31,9 @@ public class ExampleTaker {
 		// get the path relative to THIS project
 		URL location = ExampleTaker.class.getProtectionDomain().getCodeSource().getLocation();
 		String rootPath = location.getPath().replaceAll("%20", " ");
-		File exampleLocation = new File(rootPath + "../" + path);
+		String completePath = rootPath + "../" + path;
+		System.out.println(completePath);
+		File exampleLocation = new File(completePath);
 		assert exampleLocation.exists();
 		// load file
 		FileHandler.load(exampleLocation.toPath(), fm, format);

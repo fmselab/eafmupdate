@@ -30,6 +30,9 @@ public class FMToBDD {
 	}
 
 	public BDD nodeToBDD(Node n) {
+		//return nodeToBDDNormalized(n.eliminate(AtMost.class));
+		//return nodeToBDDNormalized(n);
+		//TODO MR removed eliminate
 		return nodeToBDDNormalized(n.eliminate(Choose.class, AtMost.class,AtLeast.class));
 	}
 
