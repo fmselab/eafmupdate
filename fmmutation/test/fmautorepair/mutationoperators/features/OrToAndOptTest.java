@@ -20,7 +20,7 @@ public class OrToAndOptTest {
 	@Test
 	public void testMutation() throws FileNotFoundException,
 			UnsupportedModelException, NoSuchExtensionException {
-		IFeatureModel fmodel = ExampleTaker.readModel("examples_fmsfrompreprocessor/TKESSPLC11/Figure4_pv.xml");
+		IFeatureModel fmodel = ExampleTaker.readExample("examples_fmsfrompreprocessor/TKESSPLC11/Figure4_pv.xml");
 		List<FMMutation> res = CollectionsUtil.listFromIterator(OrToAndOpt.instance.mutate(fmodel));
 
 		assertEquals(1,res.size());

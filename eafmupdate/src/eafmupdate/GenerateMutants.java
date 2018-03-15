@@ -224,7 +224,7 @@ public class GenerateMutants {
 		ModelComparator comparator = new ModelComparator(1000000);
 		int counter = 0;
 		for(File file: dir.listFiles()) {
-			IFeatureModel mutant = ExampleTaker.readModel(file.getAbsolutePath());
+			IFeatureModel mutant = ExampleTaker.readExample(file.getAbsolutePath());
 			Comparison comparison = comparator.compare(fm, mutant);
 			if(comparison == Comparison.REFACTORING) {
 				counter++;
@@ -241,11 +241,11 @@ public class GenerateMutants {
 		int counter = 0;
 		for(File file: dir.listFiles()) {
 			if(!file.exists()) continue; 
-			IFeatureModel mutant = ExampleTaker.readModel(file.getAbsolutePath());
+			IFeatureModel mutant = ExampleTaker.readExample(file.getAbsolutePath());
 			File sameDir = new File(folderMutants);
 			for(File file2: sameDir.listFiles()) {
 				if(!file2.getName().equals(file.getName())) {
-					IFeatureModel mutant2 = ExampleTaker.readModel(file2.getAbsolutePath());
+					IFeatureModel mutant2 = ExampleTaker.readExample(file2.getAbsolutePath());
 					Comparison comparison = comparator.compare(mutant, mutant2);
 					if(comparison == Comparison.REFACTORING) {
 						counter++;
@@ -266,7 +266,7 @@ public class GenerateMutants {
 			if(!file.exists()) continue;
 			String fileName = file.getName().replaceAll("depth" + (depth - 1), "depth" + depth);
 			fileName = fileName.substring(0, fileName.length() - 4);
-			IFeatureModel fmmodel = ExampleTaker.readModel(file.getAbsolutePath());
+			IFeatureModel fmmodel = ExampleTaker.readExample(file.getAbsolutePath());
 			List<FMMutation> currMutants = new ArrayList<FMMutation>();
 			for(FMMutator mutator: fmMutators) {
 				currMutants.addAll(CollectionsUtil.listFromIterator(mutator.mutate(fmmodel)));						
@@ -344,7 +344,7 @@ public class GenerateMutants {
 	
 	public static void generateNmutants(String modelPath, int numMutants) throws IOException, UnsupportedModelException, NoSuchExtensionException {
 		init();
-		IFeatureModel fm = ExampleTaker.readModel(modelPath);
+		IFeatureModel fm = ExampleTaker.readExample(modelPath);
 		List<IFeatureModel> mutants = new ArrayList<>();
 		generateNmutants(fm, numMutants, mutants);
 
@@ -356,9 +356,9 @@ public class GenerateMutants {
 	}
 
 	public static void getAdequacy(String oraclePath, String mutantsPath) throws TimeoutException, IOException, FeatureModelException, ConfigurationEngineException, UnsupportedModelException, NoSuchExtensionException {
-		IFeatureModel o = ExampleTaker.readModel(oraclePath);
+		IFeatureModel o = ExampleTaker.readExample(oraclePath);
 		for(File f: new File(mutantsPath).listFiles()) {
-			IFeatureModel m = ExampleTaker.readModel(f.getAbsolutePath());
+			IFeatureModel m = ExampleTaker.readExample(f.getAbsolutePath());
 			System.out.println(CompareOracleMutantBDD.getConformance(o, m).percConfsJudgedCorrectly());
 		}
 	}

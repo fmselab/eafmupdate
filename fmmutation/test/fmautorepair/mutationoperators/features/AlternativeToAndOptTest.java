@@ -22,7 +22,7 @@ public class AlternativeToAndOptTest {
 			UnsupportedModelException, NoSuchExtensionException {
 		
 		
-		IFeatureModel fmodel = ExampleTaker.readModel("examples_fmsfrompreprocessor/TKESSPLC11/Figure4_pv3.xml");
+		IFeatureModel fmodel = ExampleTaker.readExample("examples_fmsfrompreprocessor/TKESSPLC11/Figure4_pv3.xml");
 		List<FMMutation> res = CollectionsUtil.listFromIterator(AltToAndOpt.instance.mutate(fmodel));
 
 		assertEquals(1,res.size());

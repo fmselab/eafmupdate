@@ -33,44 +33,46 @@ public class FMToBDD {
 		//return nodeToBDDNormalized(n.eliminate(AtMost.class));
 		//return nodeToBDDNormalized(n);
 		//TODO MR removed eliminate
-		return nodeToBDDNormalized(n.eliminate(Choose.class, AtMost.class,AtLeast.class));
+		//Node newNode = n.eliminate(Choose.class, AtMost.class,AtLeast.class);
+		return nodeToBDDNormalized(n);
 	}
 
 	private BDD nodeToBDDNormalized(Node n) {
 		LOGGER.debug("converting node " + n.toString() + " of class "	+ n.getClass());
 		// as usual
+		Node[] children = n.getChildren();
 		if (n instanceof And) {
-			if (n.getChildren().length < 2) {
-				LOGGER.debug(n.getChildren()[0].toString());
-				return nodeToBDD(n.getChildren()[0]);
+			if (children.length < 2) {
+				LOGGER.debug(children[0].toString());
+				return nodeToBDD(children[0]);
 				// throw new NotTranslableException(n);
 			} else
 				return distribute(BDDOp.AND, nodesToBDDs(((And) n).getChildren()));
 		} else if (n instanceof Or) {
-			assert n.getChildren() != null && n.getChildren().length >= 2;
+			if (children.length ==1)
+				return nodeToBDD(children[0]);
+			
+			assert children != null && children.length >= 2 : children.length;
 			return distribute(BDDOp.OR, nodesToBDDs(((Or) n).getChildren()));
 		} else if (n instanceof Implies) {
-			assert n.getChildren() != null && n.getChildren().length == 2;
+			assert children != null && children.length == 2;
 			return distribute(BDDOp.IMPLIES,
 					nodesToBDDs(((Implies) n).getChildren()));
 		} else if (n instanceof Equals) {
-			assert n.getChildren() != null && n.getChildren().length == 2;
+			assert children != null && children.length == 2;
 			return distribute(BDDOp.EQ, nodesToBDDs(((Equals) n).getChildren()));
 		} else if (n instanceof Not) {
-			if (n.getChildren().length != 1)
+			if (children.length != 1)
 				throw new NotTranslableException(n);
-			Node[] children = ((Not) n).getChildren();
-			return nodeToBDD(children[0]).not();
+			return nodeToBDD(((Not) n).getChildren()[0]).not();
+		} else if (n instanceof AtMost){
+			AtMost most = (AtMost) n;
+			//assert most.max == 1 : most.max;
+			return distribute(BDDOp.OR,nodesToBDDs(most.chooseKofN(most.children,  most.max, false)));
 		} else {
 			assert n instanceof Literal : n.getClass().getCanonicalName();
 			return literalToExpression(n);
-		} /*
-		 * (n.toString().equalsIgnoreCase("-True")) return init.zero(); if
-		 * (n.toString().equalsIgnoreCase("-False"))
-		 * 
-		 * return init.one(); }
-		 */
-
+		}
 	}
 
 	private BDD literalToExpression(Node n) {

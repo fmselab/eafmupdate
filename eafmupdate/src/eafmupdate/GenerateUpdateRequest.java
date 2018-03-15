@@ -111,19 +111,32 @@ public class GenerateUpdateRequest {
 	public static long getNumCFrem(Oracle oracle) {
 		return GenerateUpdateRequest.computeProductsToAddOrRemove(oracle, oracle.originalFM, false);
 	}
+
+
 	
 	public static long computeProductsToAddOrRemove(Oracle oracle, IFeatureModel fm, boolean add) {
+		return computeProductsToAddOrRemove(fm,oracle.oracleFM,add);
+	
+	}
+	public static long computeProductsToAddOrRemove(IFeatureModel fm, IFeatureModel fm2) {
+		return 
+				computeProductsToAddOrRemove(fm,fm2,true)+
+				computeProductsToAddOrRemove(fm,fm2,false);
+	}
+	
+	public static long computeProductsToAddOrRemove(IFeatureModel fm, IFeatureModel fm2, boolean add) {			
+			
 		fm = fm.clone();
 		//Util.addMissingFeatures(oracle, fm);
 		//Util.removeOverabundantFeatures(oracle.oracleFM, fm);
 				
-		List<String> fmVars = new ArrayList<>(Util.getAllFeatures(oracle.oracleFM, fm));
+		List<String> fmVars = new ArrayList<>(Util.getAllFeatures(fm2, fm));
 		//fm.getFeatureOrderList();
 		FMToBDD f2bdd = new FMToBDD(fmVars);
 		
 		BDD bddModel = f2bdd.nodeToBDD(NodeCreator.createNodes(fm));
-		BDD bddOracle = f2bdd.nodeToBDD(NodeCreator.createNodes(oracle.oracleFM));
-		Set<String> varO = Util.getFeatureNames(oracle.oracleFM);  // variabili oracolo
+		BDD bddOracle = f2bdd.nodeToBDD(NodeCreator.createNodes(fm2));
+		Set<String> varO = Util.getFeatureNames(fm2);  // variabili oracolo
 		Set<String> varM = Util.getFeatureNames(fm);  // variabili modello
 		Set<String> varONotM = new HashSet<>(), varMNotO = new HashSet<>();
 		for (String s : varO) if (!varM.contains(s)) varONotM.add(s);  // variabili oracolo e non modello
@@ -150,7 +163,7 @@ public class GenerateUpdateRequest {
 			int elem = fmVars.indexOf(s);
 			assert elem >= 0 : "element not found " + s;
 			
-			String parent = Util.findParent(oracle.oracleFM.getStructure().getRoot(), s).getFeature().getName();
+			String parent = Util.findParent(fm2.getStructure().getRoot(), s).getFeature().getName();
 			int elemP = fmVars.indexOf(parent);
 			assert elemP >= 0 : "element not found " + parent;
 

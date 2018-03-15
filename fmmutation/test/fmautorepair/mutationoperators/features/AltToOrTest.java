@@ -22,7 +22,7 @@ public class AltToOrTest {
 
 	@Test
 	public void test() throws FileNotFoundException, UnsupportedModelException, NoSuchExtensionException {
-		IFeatureModel fm = ExampleTaker.readModel("models/model1fi.xml");
+		IFeatureModel fm = ExampleTaker.readExample("models/model1fi.xml");
 		assertTrue(fm.getStructure().getRoot().isAlternative());
 		List<FMMutation> res = CollectionsUtil.listFromIterator(AltToOr.instance.mutate(fm));
 		// only one mutation

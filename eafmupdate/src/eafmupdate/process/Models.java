@@ -55,7 +55,11 @@ public enum Models {
 	EASY("models/constraintrepair/easy1.xml", "models/constraintrepair/easy2.xml"),	
 	SIMPLE("models/constraintrepair/simpleA.xml", "models/constraintrepair/simpleB.xml"),
 	
-	PPU1("examples_fmsfrompreprocessor/lochau_asej16/ppu_1.xml", "examples_fmsfrompreprocessor/lochau_asej16/ppu_2.xml");
+	PPU1("examples_fmsfrompreprocessor/lochau_asej16/ppu_1.xml", "examples_fmsfrompreprocessor/lochau_asej16/ppu_2.xml"), 
+	PPU2("examples_fmsfrompreprocessor/lochau_asej16/ppu_2.xml", ""),
+	PPU3("examples_fmsfrompreprocessor/lochau_asej16/ppu_3.xml", ""),
+	PPU4("examples_fmsfrompreprocessor/lochau_asej16/ppu_4.xml", ""),
+	PPU5("examples_fmsfrompreprocessor/lochau_asej16/ppu_5.xml", ""),
 	;
 	
 	//private static Logger logger = Logger.getLogger(Models.class.getName());
@@ -91,7 +95,7 @@ public enum Models {
 	/** fm1 is the initial model, usually the wrong one */
 	public IFeatureModel getFM1() { 
 		try {
-		return ExampleTaker.readModel(path1);
+		return ExampleTaker.readExample(path1);
 		} catch (Exception e) {e.printStackTrace();}
 		return load(path1, format); 
 	}
@@ -99,7 +103,7 @@ public enum Models {
 	/** fm2 is the final model, the one we know to be correct */
 	public IFeatureModel getFM2() { 
 		try {
-			return ExampleTaker.readModel(path2);
+			return ExampleTaker.readExample(path2);
 		} catch (Exception e) {e.printStackTrace();}
 		return load(path2, format);
 	}
@@ -120,7 +124,7 @@ public enum Models {
 		try {
 			// try loading from FeatureIDE default XML format
 			if (modelFormat==null || modelFormat==ModelFormat.FEATUREIDE)
-				return ExampleTaker.readModel(path);
+				return ExampleTaker.readExample(path);
 			else return Utils.readSPLOTModel(path);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -156,7 +160,7 @@ public enum Models {
 		try {
 			File f = new File(path);
 			if(f.exists() && !f.isDirectory()) { 
-				mutatedModel = ExampleTaker.readModel("models/generated/"+title+".xml");			    
+				mutatedModel = ExampleTaker.readExample("models/generated/"+title+".xml");			    
 			}
 		} catch (Exception e) {System.out.println(iteration+" generating mutated model for "+name());}
 		try {

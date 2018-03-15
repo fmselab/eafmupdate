@@ -48,16 +48,29 @@ public class BDDTest {
 	
 	@Test
 	public void URTest() throws TimeoutException, IOException, FeatureModelException, ConfigurationEngineException {
-		Oracle oracle = Models.REGISTER.getOracle();
-		IFeatureModel fm = Models.REGISTER.getFM1();
+//		Oracle oracle = Models.REGISTER.getOracle();
+//		IFeatureModel fm = Models.REGISTER.getFM1();
 		
 		//Oracle oracle = Models.EXAMPLE.getOracle();
 		//IFeatureModel fm = Models.EXAMPLE.getFM1();
+		Oracle oracle = Models.PPU1.getOracle();
+		IFeatureModel fm = Models.PPU1.getFM1();
 		
 		System.out.println(GenerateUpdateRequest.computeProductsToAddOrRemove(oracle, fm, true) + "\n"
 				+ GenerateUpdateRequest.computeProductsToAddOrRemove(oracle, fm, false) + "\nTo Add: "
 				+ GenerateUpdateRequest.generateProductsToAdd(oracle.oracleFM, fm) + "\nToRemove: "
 				+ GenerateUpdateRequest.generateProductsToRemove(oracle.oracleFM, fm));
 		System.out.println("FR: "+(1-Util.getAdequacy(oracle, fm)));
+	}
+	
+	@Test
+	public void PPUTest() throws TimeoutException, IOException, FeatureModelException, ConfigurationEngineException, UnsupportedModelException {
+		IFeatureModel fm1 = Models.PPU2.getFM1();
+		IFeatureModel fm2 = Models.PPU1.getFM1();
+		System.out.println(GenerateUpdateRequest.computeProductsToAddOrRemove(fm1,fm2, true) + "\n"
+				+ GenerateUpdateRequest.computeProductsToAddOrRemove(fm1,fm2, false) + "\nTo Add: "
+				+ GenerateUpdateRequest.generateProductsToAdd(fm1,fm2) + "\nToRemove: "
+				+ GenerateUpdateRequest.generateProductsToRemove(fm1,fm2));
+		System.out.println("FR: "+(1-Util.getAdequacy(fm1,fm2)));
 	}
 }

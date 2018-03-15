@@ -31,7 +31,7 @@ public class CompareOracleMutantBDD {
 	
 	private static IFeatureModel readModel(String modelPath) throws FileNotFoundException, UnsupportedModelException, NoSuchExtensionException {
 		try {
-			return ExampleTaker.readModel(modelPath);
+			return ExampleTaker.readExample(modelPath);
 		}
 		catch(UnsupportedModelException e) {}
 		try {

@@ -25,7 +25,7 @@ public class MandToOptTest {
 	@Test
 	public void testFalseMandatory() throws FileNotFoundException,
 			UnsupportedModelException, NoSuchExtensionException {
-		IFeatureModel fmodel = ExampleTaker.readModel("models/modelfman.xml");
+		IFeatureModel fmodel = ExampleTaker.readExample("models/modelfman.xml");
 		// a1 is mandatory ma non reale (non mutare)
 		IFeature a1 = fmodel.getFeature("a1");
 		assertTrue(a1.getStructure().isMandatory());
@@ -64,7 +64,7 @@ public class MandToOptTest {
 	@Test
 	public void testMutation() throws FileNotFoundException,
 			UnsupportedModelException, NoSuchExtensionException {
-		IFeatureModel fmodel = ExampleTaker.readModel("models/modelfman.xml");
+		IFeatureModel fmodel = ExampleTaker.readExample("models/modelfman.xml");
 		List<FMMutation> res = CollectionsUtil.listFromIterator(MandToOpt.instance.mutate(fmodel));	
 		assertEquals(4,res.size());		
 	}
@@ -72,7 +72,7 @@ public class MandToOptTest {
 	@Test
 	public void testMutation4() throws FileNotFoundException,
 			UnsupportedModelException, NoSuchExtensionException {
-		IFeatureModel fmodel = ExampleTaker.readModel("models/model4.xml");
+		IFeatureModel fmodel = ExampleTaker.readExample("models/model4.xml");
 		List<FMMutation> res = CollectionsUtil.listFromIterator(MandToOpt.instance.mutate(fmodel));	
 		assertEquals(2,res.size());		
 	}
@@ -80,7 +80,7 @@ public class MandToOptTest {
 	@Test
 	public void testMutation1Mandatory() throws FileNotFoundException,
 			UnsupportedModelException, NoSuchExtensionException {
-		IFeatureModel fmodel = ExampleTaker.readModel("models/model_one_mandatory.xml");
+		IFeatureModel fmodel = ExampleTaker.readExample("models/model_one_mandatory.xml");
 		List<FMMutation> res = CollectionsUtil.listFromIterator(MandToOpt.instance.mutate(fmodel));	
 		assertEquals(1,res.size());
 		// converto

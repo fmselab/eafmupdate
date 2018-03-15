@@ -21,7 +21,7 @@ public class OptionalToMandatoryTest {
 	@Test
 	public void testOr2Mandatory() throws FileNotFoundException,
 			UnsupportedModelException, NoSuchExtensionException {
-		IFeatureModel fmodel = ExampleTaker.readModel("models/modelfman.xml");
+		IFeatureModel fmodel = ExampleTaker.readExample("models/modelfman.xml");
 		// take a feature with an or
 		IFeature g = fmodel.getFeature("g");
 	}
@@ -29,7 +29,7 @@ public class OptionalToMandatoryTest {
 	@Test
 	public void testMutation() throws FileNotFoundException,
 			UnsupportedModelException, NoSuchExtensionException {
-		IFeatureModel fmodel = ExampleTaker.readModel("models/modelfman.xml");
+		IFeatureModel fmodel = ExampleTaker.readExample("models/modelfman.xml");
 		List<FMMutation> res = CollectionsUtil.listFromIterator(OptToMand.instance.mutate(fmodel));	
 		assertEquals(1,res.size());		
 	}
@@ -37,7 +37,7 @@ public class OptionalToMandatoryTest {
 	@Test
 	public void testMutation2() throws FileNotFoundException,
 			UnsupportedModelException, NoSuchExtensionException {
-		IFeatureModel fmodel = ExampleTaker.readModel("models/model3.xml");
+		IFeatureModel fmodel = ExampleTaker.readExample("models/model3.xml");
 		List<FMMutation> res = CollectionsUtil.listFromIterator(OptToMand.instance.mutate(fmodel));	
 		assertEquals(2,res.size());		
 	}

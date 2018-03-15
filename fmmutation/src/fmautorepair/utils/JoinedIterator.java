@@ -40,8 +40,6 @@ import java.util.List;
  */
 public class JoinedIterator<T> implements Iterator<T> {
 
-	private static final Iterator[] ITERATORS = {};
-
 	// wrapped iterators
 	private List<Iterator<T>> iterators;
 

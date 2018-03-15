@@ -24,15 +24,22 @@ public class ExampleTaker {
 	 * @throws UnsupportedModelException
 	 * @throws NoSuchExtensionException
 	 */
-	static public IFeatureModel readModel(String path)
+	static public IFeatureModel readExample(String path)
 			throws FileNotFoundException, UnsupportedModelException, NoSuchExtensionException {
-		IFeatureModel fm = FMFactoryManager.getDefaultFactory().createFeatureModel();
-		XmlFeatureModelFormat format = new XmlFeatureModelFormat();
 		// get the path relative to THIS project
 		URL location = ExampleTaker.class.getProtectionDomain().getCodeSource().getLocation();
 		String rootPath = location.getPath().replaceAll("%20", " ");
-		String completePath = rootPath + "../" + path;
-		System.out.println(completePath);
+		String completePath = rootPath + "../" + path;		
+		return readFeatureModel(completePath);
+	}
+	/**
+	 * 
+	 * @param completePath
+	 * @return
+	 */
+	public static IFeatureModel readFeatureModel(String completePath) {
+		IFeatureModel fm = FMFactoryManager.getDefaultFactory().createFeatureModel();		
+		XmlFeatureModelFormat format = new XmlFeatureModelFormat();
 		File exampleLocation = new File(completePath);
 		assert exampleLocation.exists();
 		// load file
