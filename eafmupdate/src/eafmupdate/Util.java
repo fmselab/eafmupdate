@@ -45,13 +45,13 @@ public class Util {
 		return fnames;
 	}
 	
-	static Set<String> getFeatureNamesIn2NotIn1(IFeatureModel fm1, IFeatureModel fm2) {
+	public static Set<String> getFeatureNamesIn2NotIn1(IFeatureModel fm1, IFeatureModel fm2) {
 		Set<String> fnames = new HashSet<String>(getFeatureNames(fm2));
 		fnames.removeAll(getFeatureNames(fm1));
 		return fnames;
 	}
 	
-	static Set<String> getAllFeatures(IFeatureModel m1, IFeatureModel m2) {
+	public static Set<String> getAllFeatures(IFeatureModel m1, IFeatureModel m2) {
 		Set<String> features = getFeatureNames(m1);
 		features.addAll(getFeatureNames(m2));
 		return features;
@@ -110,7 +110,7 @@ public class Util {
 	}
 	
 	/** it adds missing features to fm, considering the neighbors */
-	static void addMissingFeatures(IFeatureModel oracle, IFeatureModel fm) {
+	public static void addMissingFeatures(IFeatureModel oracle, IFeatureModel fm) {
 		Set<String> featureNamesToAdd = getFeatureNamesIn2NotIn1(fm, oracle);
 		Neighbors n = GenerateUpdateRequest.generateNeighborsForFeaturesToAdd(oracle, fm);
 		for (String fname : featureNamesToAdd) {
@@ -122,7 +122,7 @@ public class Util {
 	}
 	
 	/** it removed the exceeding features from fm */
-	static void removeOverabundantFeatures(IFeatureModel oracle, IFeatureModel fm) {
+	public static void removeOverabundantFeatures(IFeatureModel oracle, IFeatureModel fm) {
 		Set<String> featureNamesToRemove = Util.getFeatureNamesIn2NotIn1(oracle, fm);
 		for (String fname : featureNamesToRemove) {
 			fm.deleteFeature(fm.getFeature(fname));
@@ -290,7 +290,7 @@ public class Util {
 	}
 	
 	/** @return the parent of f among root and its children */
-	static IFeatureStructure findParent(IFeatureStructure root, String f) {
+	public static IFeatureStructure findParent(IFeatureStructure root, String f) {
 		if (root.getFeature().getName().equals(f)) return null; // They should have at least the same parent
 		// search among the children
 		for (IFeatureStructure child : root.getChildren()) {
