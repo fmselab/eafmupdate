@@ -7,7 +7,7 @@ import org.sat4j.specs.TimeoutException;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
 import eafmupdate.model.Oracle;
-import fmautorepair.mutationoperators.FMMutation;
+import fmmutation.mutationoperators.FMMutation;
 import splar.core.fm.FeatureModelException;
 import splar.core.fm.configuration.ConfigurationEngineException;
 

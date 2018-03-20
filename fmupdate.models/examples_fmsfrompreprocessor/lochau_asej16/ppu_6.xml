@@ -41,6 +41,8 @@
 			</rule>
 		</constraints>
 		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
-		<comments/>
+		<comments>
+		Stamp	Stamp2
+		</comments>
 		<featureOrder userDefined="false"/>
 	</featureModel>

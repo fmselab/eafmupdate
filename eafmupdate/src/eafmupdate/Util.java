@@ -24,9 +24,9 @@ import eafmupdate.model.Neighbors;
 import eafmupdate.model.Oracle;
 import eafmupdate.model.Role;
 import eafmupdate.model.Roles;
-import fmautorepair.mutationoperators.FMMutation;
-import fmautorepair.mutationoperators.FMMutator;
-import fmautorepair.utils.CollectionsUtil;
+import fmmutation.mutationoperators.FMMutation;
+import fmmutation.mutationoperators.FMMutator;
+import fmmutation.utils.CollectionsUtil;
 import splar.core.fm.FeatureModelException;
 import splar.core.fm.configuration.ConfigurationEngineException;
 

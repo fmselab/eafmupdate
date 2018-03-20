@@ -12,7 +12,7 @@ import eafmupdate.FMMutationUtil;
 import eafmupdate.MutatedModel;
 import eafmupdate.Util;
 import eafmupdate.model.Oracle;
-import fmautorepair.mutationoperators.FMMutation;
+import fmmutation.mutationoperators.FMMutation;
 import splar.core.fm.FeatureModelException;
 import splar.core.fm.configuration.ConfigurationEngineException;
 
@@ -82,7 +82,7 @@ public class Stats {
 		this.oracle = oracle==null ? new Oracle(correct, null, null) : oracle;
 	}
 	
-	Stats(IFeatureModel initial, Oracle oracle, IFeatureModel correct, MutatedModel repaired, long time, int mutations, 
+	public Stats(IFeatureModel initial, Oracle oracle, IFeatureModel correct, MutatedModel repaired, long time, int mutations, 
 			int order, double min, double avg, double max, List<MutatedModel> models, List<FMMutation> allMutations, List<Double> bestFitnesses) {
 		this(initial, oracle, correct, repaired, time, mutations, order, min, avg, max, models);
 		this.allMutations = allMutations;

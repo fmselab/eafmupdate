@@ -35,12 +35,12 @@ public class Experiments {
 	
 	public static final boolean otherExperiment = false;
 	
-	public static Map<Models,Integer> getModels() {
+	public static Map<ModelsPair,Integer> getModels() {
 		if (useOnlyOneModel) {
-			Map<Models,Integer> models = new HashMap<>();
-			models.put(Models.MOBILE_MEDIA_V5_TO_V6, 1);
+			Map<ModelsPair,Integer> models = new HashMap<>();
+			models.put(ModelsPair.MOBILE_MEDIA_V5_TO_V6, 1);
 			return models;
-		} else return Models.getModelsForExperiments();
+		} else return ModelsPair.getModelsForExperiments();
 	}
 	
 	public static Processes[] getUsefulRepairProcesses() {
@@ -59,8 +59,8 @@ public class Experiments {
 			StringBuilder sb2 = new StringBuilder();
 			sb2.append("id,repair,model,iteration,numSeededMutations,ADQbefore,ADQafter,COMPbefore,COMPafter,mutations,time,avg,max,repaired\n");
 
-			for (Entry<Models,Integer> m : getModels().entrySet()) {
-				Models model = m.getKey();
+			for (Entry<ModelsPair,Integer> m : getModels().entrySet()) {
+				ModelsPair model = m.getKey();
 				int iterations = m.getValue();
 //				IFeatureModel initialModel = null;
 				int numMutations=-1;
@@ -133,7 +133,7 @@ public class Experiments {
 		} catch (Exception e) {e.printStackTrace();}
 	}
 	
-	private String getExperimentName() {
+	protected String getExperimentName() {
 		return otherExperiment ? "expOther" : (useOnlyOneModel ? "expA" : (useOnlyOneProcess ? "expB" : "expC"));
 	}
 	

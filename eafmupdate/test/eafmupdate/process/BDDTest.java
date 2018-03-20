@@ -21,7 +21,7 @@ public class BDDTest {
 	@Test
 	public void bddTest() {
 		try {
-			Models m = Models.EXAMPLE;
+			ModelsPair m = ModelsPair.EXAMPLE;
 			Oracle o = m.getOracle();
 			BDD bdd = CompareOracleMutantBDD.getBDD(o);
 			
@@ -37,7 +37,7 @@ public class BDDTest {
 	@Test
 	public void adqTest() {
 		try {
-			for (Models m : Models.getModelForExperiments()) {
+			for (ModelsPair m : ModelsPair.getModelForExperiments()) {
 				System.out.println(m+": "+Util.getAdequacy(m.getFM2(), m.getFM1())+" "+Util.getAdequacy(m.getOracle(), m.getFM1()));
 			}
 		} catch (IOException | FeatureModelException | ConfigurationEngineException | TimeoutException | UnsupportedModelException e) {
@@ -56,8 +56,8 @@ public class BDDTest {
 		//Oracle oracle = Models.PPU1.getOracle();
 		//IFeatureModel fm = Models.PPU1.getFM1();
 		
-		Oracle oracle = Models.EXAMPLE_XOR.getOracle();
-		IFeatureModel fm = Models.EXAMPLE_XOR.getFM1();
+		Oracle oracle = ModelsPair.EXAMPLE_XOR.getOracle();
+		IFeatureModel fm = ModelsPair.EXAMPLE_XOR.getFM1();
 		
 		System.out.println(GenerateUpdateRequest.computeProductsToAddOrRemove(oracle, fm, true) + "\n"
 				+ GenerateUpdateRequest.computeProductsToAddOrRemove(oracle, fm, false) + "\nTo Add: "
@@ -68,8 +68,8 @@ public class BDDTest {
 	
 	@Test
 	public void PPUTest() throws TimeoutException, IOException, FeatureModelException, ConfigurationEngineException, UnsupportedModelException {
-		IFeatureModel fm1 = Models.PPU2.getFM1();
-		IFeatureModel fm2 = Models.PPU1.getFM1();
+		IFeatureModel fm1 = ModelsPair.PPU2.getFM1();
+		IFeatureModel fm2 = ModelsPair.PPU1.getFM1();
 		System.out.println(GenerateUpdateRequest.computeProductsToAddOrRemove(fm1,fm2, true) + "\n"
 				+ GenerateUpdateRequest.computeProductsToAddOrRemove(fm1,fm2, false) + "\nTo Add: "
 				+ GenerateUpdateRequest.generateProductsToAdd(fm1,fm2) + "\nToRemove: "

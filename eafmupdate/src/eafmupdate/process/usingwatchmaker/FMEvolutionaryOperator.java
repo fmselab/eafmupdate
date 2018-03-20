@@ -8,7 +8,7 @@ import org.uncommons.watchmaker.framework.EvolutionaryOperator;
 
 import eafmupdate.MutatedModel;
 import eafmupdate.Util;
-import fmautorepair.mutationoperators.FMMutation;
+import fmmutation.mutationoperators.FMMutation;
 
 public class FMEvolutionaryOperator implements EvolutionaryOperator<MutatedModel> {
 	

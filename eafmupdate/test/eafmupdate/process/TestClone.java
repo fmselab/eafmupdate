@@ -9,7 +9,7 @@ import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
 public class TestClone {
 	@Test
 	public void testClone() {
-		IFeatureModel m1 = Models.AIRCRAFT1.getFM1();
+		IFeatureModel m1 = ModelsPair.AIRCRAFT1.getFM1();
 		IFeatureModel m2 = FMFactoryManager.getEmptyFeatureModel();
 		m2 = m1.clone();
 		//m1.getStructure().clone(m2);

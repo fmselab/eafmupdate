@@ -12,12 +12,12 @@ public class PrintProperties {
 	@Test
 	public void printModelProperties() {
 		System.out.println("name & sizeModel & sizeTarget & Fadd & Frem & CFadd & CFrem \\\\");
-		for (Models model : Models.getModelForExperiments()) {
+		for (ModelsPair model : ModelsPair.getModelForExperiments()) {
 			System.out.println(getProperties(model));
 		}
 	}
 	
-	public static String getProperties(Models model) {
+	public static String getProperties(ModelsPair model) {
 		try {
 			return model.name()
 /*

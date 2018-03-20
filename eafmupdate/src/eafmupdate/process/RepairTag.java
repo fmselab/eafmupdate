@@ -11,10 +11,10 @@ public class RepairTag {
 
 	private String tag;
 	
-	private Models model;
+	private ModelsPair model;
 	private int iteration;
 	
-	public RepairTag(Models model, int iteration) {
+	public RepairTag(ModelsPair model, int iteration) {
 		this.model=model;
 		this.iteration=iteration;
 	}

@@ -22,7 +22,7 @@ public class ProcessExecutor {
 
 	public static void main(String[] args) throws TimeoutException {
 		
-		Models model = Models.EXAMPLE;
+		ModelsPair model = ModelsPair.EXAMPLE;
 
 		MutatedModel fm = new MutatedModel(model.getFM1());
 		
