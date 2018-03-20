@@ -1,5 +1,6 @@
 package org.prop4j;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -68,6 +69,7 @@ public class FMToBDD {
 		} else if (n instanceof AtMost){
 			AtMost most = (AtMost) n;
 			//assert most.max == 1 : most.max;
+			System.out.println("AtMost case: "+Arrays.toString(most.children)+" "+most.max);
 			return distribute(BDDOp.OR,nodesToBDDs(most.chooseKofN(most.children,  most.max, false)));
 		} else {
 			assert n instanceof Literal : n.getClass().getCanonicalName();

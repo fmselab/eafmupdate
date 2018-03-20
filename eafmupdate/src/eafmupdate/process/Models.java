@@ -29,6 +29,7 @@ public enum Models {
 	
 	WRONGEXAMPLE("models/constraintrepair/exampleE1.xml", "models/constraintrepair/example.xml"),
 	EXAMPLE("constraintrepair/example.xml", "constraintrepair/exampleE4.xml"),
+	EXAMPLE_XOR("constraintrepair/exampleE4_XOR.xml", "constraintrepair/exampleE4.xml"),
 	REGISTER("constraintrepair/registerFaultSeeded.xml","constraintrepair/register.xml"),
 	FIGURE4("models/examples_fmsfrompreprocessor/TKESSPLC11/Figure4_mr.xml", "models/examples_fmsfrompreprocessor/TKESSPLC11/Figure4_oracle.xml"),
 	AIRCRAFT1("models/constraintrepair/aircraftFault.xml", "models/splotmodels_new/featureIDE/aircraft_fm.xml"),

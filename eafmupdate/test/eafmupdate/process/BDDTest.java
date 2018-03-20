@@ -53,8 +53,11 @@ public class BDDTest {
 		
 		//Oracle oracle = Models.EXAMPLE.getOracle();
 		//IFeatureModel fm = Models.EXAMPLE.getFM1();
-		Oracle oracle = Models.PPU1.getOracle();
-		IFeatureModel fm = Models.PPU1.getFM1();
+		//Oracle oracle = Models.PPU1.getOracle();
+		//IFeatureModel fm = Models.PPU1.getFM1();
+		
+		Oracle oracle = Models.EXAMPLE_XOR.getOracle();
+		IFeatureModel fm = Models.EXAMPLE_XOR.getFM1();
 		
 		System.out.println(GenerateUpdateRequest.computeProductsToAddOrRemove(oracle, fm, true) + "\n"
 				+ GenerateUpdateRequest.computeProductsToAddOrRemove(oracle, fm, false) + "\nTo Add: "
