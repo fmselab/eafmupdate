@@ -364,4 +364,16 @@ public class Util {
 		return new Oracle(fm, null, null, neighbors, featuresToRem, fmOracle);
 	}
 	
+	
+	// SI: added to rename features at the beginning	
+	/** it renames the features in the model fm */
+	public static IFeatureModel renameFeatures(IFeatureModel fm, Map<String,String> renamingMap) {
+		if (renamingMap==null) return fm;
+		for (Map.Entry<String,String> fname : renamingMap.entrySet()) {
+			IFeature f = fm.getFeature(fname.getKey());
+			if (f!=null) f.setName(fname.getValue());
+		}
+		return fm;
+	}
+	
 }

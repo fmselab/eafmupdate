@@ -106,7 +106,7 @@ public enum ModelsPair{
 	
 	/** fm1 is the initial model, usually the wrong one */
 	public IFeatureModel getFM1() { 
-		return m1.getFM();
+		return Util.renameFeatures(m1.getFM(), getRenameMap());
 	}
 	
 	/** fm2 is the final model, the one we know to be correct */
@@ -170,19 +170,19 @@ public enum ModelsPair{
 		if (mutated.containsKey(iteration)) return mutated.get(iteration);
 		IFeatureModel mutatedModel = null;
 		String title = name()+"_"+iteration;
-		String path = "models/generated/"+title+".xml";
+		//String path = "generated/"+title+".xml";
 		try {
-			File f = new File(path);
-			if(f.exists() && !f.isDirectory()) { 
-				mutatedModel = ExampleTaker.readExample("models/generated/"+title+".xml");			    
-			}
+			//File f = new File(path);
+			//if(f.exists() && !f.isDirectory()) { 
+				mutatedModel = ExampleTaker.readExample("generated/"+title+".xml");			    
+			//}
 		} catch (Exception e) {System.out.println(iteration+" generating mutated model for "+name());}
 		try {
 			if (mutatedModel==null) {
 				System.out.println("Genero modello "+title);
 				int numMutations = (int)(Math.random()*11);
 				mutatedModel = Util.mutateRandomly(new MutatedModel(getFM2()), numMutations).model;
-				Util.saveTemporary(mutatedModel, "models/generated/", title);				
+				Util.saveTemporary(mutatedModel, "generated/", title);				
 			}
 			mutated.put(iteration, mutatedModel);
 			return mutatedModel;

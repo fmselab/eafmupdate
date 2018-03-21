@@ -41,7 +41,7 @@ public class ExampleTaker {
 		IFeatureModel fm = FMFactoryManager.getDefaultFactory().createFeatureModel();		
 		XmlFeatureModelFormat format = new XmlFeatureModelFormat();
 		File exampleLocation = new File(completePath);
-		assert exampleLocation.exists();
+		assert exampleLocation.exists() : completePath;
 		// load file
 		FileHandler.load(exampleLocation.toPath(), fm, format);
 		return fm;

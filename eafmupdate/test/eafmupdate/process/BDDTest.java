@@ -68,8 +68,8 @@ public class BDDTest {
 	
 	@Test
 	public void PPUTest() throws TimeoutException, IOException, FeatureModelException, ConfigurationEngineException, UnsupportedModelException {
-		IFeatureModel fm1 = ModelsPair.PPU2.getFM1();
-		IFeatureModel fm2 = ModelsPair.PPU1.getFM1();
+		IFeatureModel fm1 = ModelsPair.PPU1_2.getFM2();
+		IFeatureModel fm2 = ModelsPair.PPU1_2.getFM1();
 		System.out.println(GenerateUpdateRequest.computeProductsToAddOrRemove(fm1,fm2, true) + "\n"
 				+ GenerateUpdateRequest.computeProductsToAddOrRemove(fm1,fm2, false) + "\nTo Add: "
 				+ GenerateUpdateRequest.generateProductsToAdd(fm1,fm2) + "\nToRemove: "
