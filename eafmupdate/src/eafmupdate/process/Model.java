@@ -8,23 +8,23 @@ import fmupdate.models.ExampleTaker;
  * A collection of models used as benchmarks in the experiments.
  * @author mradavelli
  */
-public enum Model{
+public enum Model {
 	
 	// "Simple" Models
-	EXAMPLE_E1("models/constraintrepair/exampleE1.xml"),
+	EXAMPLE_E1("constraintrepair/exampleE1.xml"),
 	EXAMPLE("constraintrepair/example.xml"),
 	EXAMPLE_E4("constraintrepair/exampleE4.xml"),
 	EXAMPLE_XOR("constraintrepair/exampleE4_XOR.xml"),
 	REGISTER_FAULT("constraintrepair/registerFaultSeeded.xml"),
 	REGISTER("constraintrepair/register.xml"),
 	FIGURE4_MR("examples_fmsfrompreprocessor/TKESSPLC11/Figure4_mr.xml"),
-	FIGURE4_ORACLE("models/examples_fmsfrompreprocessor/TKESSPLC11/Figure4_oracle.xml"),
+	FIGURE4_ORACLE("examples_fmsfrompreprocessor/TKESSPLC11/Figure4_oracle.xml"),
 	AIRCRAFT1("constraintrepair/aircraftFault.xml"),
-	AIRCRAFT("models/splotmodels_new/featureIDE/aircraft_fm.xml"),
+	AIRCRAFT("splotmodels_new/featureIDE/aircraft_fm.xml"),
 	CONNECTOR1("constraintrepair/connectorFaultSeeded.xml"),
-	CONNECTOR("models/splotmodels_new/featureIDE/connector_fm.xml"),
-	AIRCRAFT_EXAMPLE_V1("models/constraintrepair/aircraftFault.xml"),
-	AIRCRAFT_EXAMPLE_V2("models/splotmodels_new/featureIDE/aircraft_fm.xml"),
+	CONNECTOR("splotmodels_new/featureIDE/connector_fm.xml"),
+	AIRCRAFT_EXAMPLE_V1("constraintrepair/aircraftFault.xml"),
+	AIRCRAFT_EXAMPLE_V2("splotmodels_new/featureIDE/aircraft_fm.xml"),
 	
 	// Benchmarks
 	MOBILE_MEDIA_V3("constraintrepair/MobileMediaV3.xml"),
@@ -36,10 +36,10 @@ public enum Model{
 	HELP_SYSTEM1("constraintrepair/HelpSystem1.xml"),
 	HELP_SYSTEM2("constraintrepair/HelpSystem2.xml"),
 	//ELEC("models/constraintrepair/elec1.xml", "models/constraintrepair/elec2.xml", true),
-	ERPSPL_S1("models/constraintrepair/ERP_SPL_s1.xml"),
-	ERPSPL_S2("models/constraintrepair/ERP_SPL_s2.xml"),
-	SMARTHOME_V2("models/constraintrepair/SmartHomeV2.xml"),
-	SMARTHOME_V22("models/constraintrepair/SmartHomeV2.2.xml"),
+	ERPSPL_S1("constraintrepair/ERP_SPL_s1.xml"),
+	ERPSPL_S2("constraintrepair/ERP_SPL_s2.xml"),
+	SMARTHOME_V2("constraintrepair/SmartHomeV2.xml"),
+	SMARTHOME_V22("constraintrepair/SmartHomeV2.2.xml"),
 	PPU1("examples_fmsfrompreprocessor/lochau_asej16/ppu_1.xml"), 
 	PPU2("examples_fmsfrompreprocessor/lochau_asej16/ppu_2.xml"),
 	PPU3("examples_fmsfrompreprocessor/lochau_asej16/ppu_3.xml"),
@@ -51,18 +51,18 @@ public enum Model{
 	PPU9("examples_fmsfrompreprocessor/lochau_asej16/ppu_9.xml"),
 	
 	// other models:
-	AIRCRAFT10("models/splotmodels_new/featureIDE/aircraft_fm/aircraft_fm_numMutations10.xml"),
-	CONNECTOR10("models/splotmodels_new/featureIDE/connector_fm/connector_fm_numMutations_10.xml"),
-	EXAMPLE_ORDER_SWITCHED("models/constraintrepair/example_featureSwitched.xml"),
+	AIRCRAFT10("splotmodels_new/featureIDE/aircraft_fm/aircraft_fm_numMutations10.xml"),
+	CONNECTOR10("splotmodels_new/featureIDE/connector_fm/connector_fm_numMutations_10.xml"),
+	EXAMPLE_ORDER_SWITCHED("constraintrepair/example_featureSwitched.xml"),
 	//EXAMPLE_ORACLE("models/constraintrepair/example.xml", "models/constraintrepair/exampleE3.xml", getOracleExample()),
-	ERPSPL1("models/constraintrepair/ERP_SPL_1.xml"),
-	ERPSPL2("models/constraintrepair/ERP_SPL_2.xml"),
-	EXAMPLE_E2("models/constraintrepair/exampleE2.xml"),
-	EXAMPLE_E3("models/constraintrepair/exampleE3.xml"),
-	EASY1("models/constraintrepair/easy1.xml"),	
-	EASY2("models/constraintrepair/easy2.xml"),	
-	SIMPLEA("models/constraintrepair/simpleA.xml"),
-	SIMPLEB("models/constraintrepair/simpleA.xml"),
+	ERPSPL1("constraintrepair/ERP_SPL_1.xml"),
+	ERPSPL2("constraintrepair/ERP_SPL_2.xml"),
+	EXAMPLE_E2("constraintrepair/exampleE2.xml"),
+	EXAMPLE_E3("constraintrepair/exampleE3.xml"),
+	EASY1("constraintrepair/easy1.xml"),	
+	EASY2("constraintrepair/easy2.xml"),	
+	SIMPLEA("constraintrepair/simpleA.xml"),
+	SIMPLEB("constraintrepair/simpleA.xml"),
 		
 	;
 	
