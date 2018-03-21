@@ -42,7 +42,7 @@ public class MutatedModel {
 		return new MutatedModel(model.clone(), mutations==null ? null : new ArrayList<>(mutations));
 	}
 	
-	void addMutation(FMMutation mutation) {
+	public void addMutation(FMMutation mutation) {
 		if (mutations==null) mutations = new ArrayList<>();
 		mutations.add(mutation);
 	}
