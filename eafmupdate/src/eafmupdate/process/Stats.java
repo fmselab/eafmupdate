@@ -30,22 +30,22 @@ public class Stats {
 	/** the total time for repair */
 	public long time;
 
-	private int mutations;
+	public int mutations;
 	
 	public int order;
 	
 	/** the min, avg, and max adequacy achieved in the mutations */
-	private double min;
+	public double min;
 
-	protected double avg;
+	public double avg;
 
-	protected double max;
+	public double max;
 	
 	/** all the mutated models obtained */
-	private List<MutatedModel> models = new ArrayList<>();
+	public List<MutatedModel> models = new ArrayList<>();
 	
 	/** all the mutations applied */
-	private List<FMMutation> allMutations = new ArrayList<>();
+	public List<FMMutation> allMutations = new ArrayList<>();
 	
 	/** the oracle, in the real, usual format */
 	public Oracle oracle;
@@ -61,7 +61,7 @@ public class Stats {
 	/** the used repair process */
 	public Processes repairProcess;
 	
-	private List<Double> bestFitnesses;
+	public List<Double> bestFitnesses;
 	
 	/** used for the merge operators. Set at which stage the first repair process ends, and the second starts */
 	private List<Integer> orderForStep = new ArrayList<>();

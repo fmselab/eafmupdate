@@ -63,7 +63,7 @@ public enum ModelsPair{
 	PPU7_8(Model.PPU7, Model.PPU8), 
 	PPU8_9(Model.PPU8, Model.PPU9), 
 	
-	AIRCRAFT_EXAMPLE(Model.AIRCRAFT1, Model.AIRCRAFT, "Matter\tMaterials"),
+	AIRCRAFT_EXAMPLE(Model.AIRCRAFT_EXAMPLE1, Model.AIRCRAFT_EXAMPLE2, "Matter\tMaterials"),
 	
 	;
 	

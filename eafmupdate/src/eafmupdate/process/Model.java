@@ -63,7 +63,9 @@ public enum Model {
 	EASY2("constraintrepair/easy2.xml"),	
 	SIMPLEA("constraintrepair/simpleA.xml"),
 	SIMPLEB("constraintrepair/simpleA.xml"),
-		
+	
+	AIRCRAFT_EXAMPLE1("constraintrepair/aircraftExample1.xml"),
+	AIRCRAFT_EXAMPLE2("constraintrepair/aircraftExample2.xml"),
 	;
 	
 	//private static Logger logger = Logger.getLogger(Models.class.getName());
