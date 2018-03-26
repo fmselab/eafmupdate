@@ -54,16 +54,18 @@ public enum ModelsPair{
 	EASY(Model.EASY1, Model.EASY2),	
 	SIMPLE(Model.SIMPLEA, Model.SIMPLEB),
 	
-	PPU1_2(Model.PPU1, Model.PPU2), 
-	PPU2_3(Model.PPU2, Model.PPU3), 
-	PPU3_4(Model.PPU3, Model.PPU4), 
-	PPU4_5(Model.PPU4, Model.PPU5), 
-	PPU5_6(Model.PPU5, Model.PPU6), 
-	PPU6_7(Model.PPU6, Model.PPU7), 
-	PPU7_8(Model.PPU7, Model.PPU8), 
-	PPU8_9(Model.PPU8, Model.PPU9), 
+	PPU1_2(Model.PPU1, Model.PPU2, true), 
+	PPU2_3(Model.PPU2, Model.PPU3, true), 
+	PPU3_4(Model.PPU3, Model.PPU4, true), 
+	PPU4_5(Model.PPU4, Model.PPU5, true), 
+	PPU5_6(Model.PPU5, Model.PPU6, true), 
+	PPU6_7(Model.PPU6, Model.PPU7, true), 
+	PPU7_8(Model.PPU7, Model.PPU8, true), 
+	PPU8_9(Model.PPU8, Model.PPU9, true), 
+	PPU5_6_SIMPL(Model.PPU5S, Model.PPU6S, true), 
+	PPU5_6_SIMPL2(Model.PPU5S2, Model.PPU6S2, true), 
 	
-	AIRCRAFT_EXAMPLE(Model.AIRCRAFT_EXAMPLE1, Model.AIRCRAFT_EXAMPLE2, "Matter\tMaterials"),
+	AIRCRAFT_EXAMPLE(Model.AIRCRAFT_EXAMPLE1, Model.AIRCRAFT_EXAMPLE2, "Matter\tMaterials", true),
 	
 	;
 	
@@ -89,7 +91,7 @@ public enum ModelsPair{
 		this.experimentType=experimentType;
 	}
 	
-	private ModelsPair(Model path1, Model path2, boolean experimentType, String rename) {
+	private ModelsPair(Model path1, Model path2, String rename, boolean experimentType) {
 		this(path1,path2, rename);
 		this.experimentType=experimentType;
 	}

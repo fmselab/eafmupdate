@@ -35,7 +35,7 @@ public class Oracle {
 	public Neighbors neighbors;
 	
 	/** the set of features that are to be removed */
-	private Set<String> featuresToRemove;
+	public Set<String> featuresToRemove;
 	
 	/** the BDD representation of the oracle */
 	private BDD bdd;

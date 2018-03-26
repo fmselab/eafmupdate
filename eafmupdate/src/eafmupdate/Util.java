@@ -50,7 +50,7 @@ public class Util {
 		fnames.removeAll(getFeatureNames(fm1));
 		return fnames;
 	}
-	
+	 
 	public static Set<String> getAllFeatures(IFeatureModel m1, IFeatureModel m2) {
 		Set<String> features = getFeatureNames(m1);
 		features.addAll(getFeatureNames(m2));
@@ -231,7 +231,9 @@ public class Util {
 	}
 	
 	public static double getAdequacy(IFeatureModel oracle, IFeatureModel mutant) throws TimeoutException, IOException,  UnsupportedModelException, FeatureModelException, ConfigurationEngineException {
-		return CompareOracleMutantBDD.getConformance(oracle, mutant).percConfsJudgedCorrectly();
+		double d = CompareOracleMutantBDD.getConformance(oracle, mutant).percConfsJudgedCorrectly();
+		System.out.println("Adq2:" +d);
+		return d;
 	}
 	
 	public static double getAdequacy(Oracle oracle, IFeatureModel mutant) throws IOException, TimeoutException, FeatureModelException, ConfigurationEngineException {
@@ -244,6 +246,7 @@ public class Util {
 			System.out.println("Features Oracle: "+oracle.getFeatureNames());
 			System.out.println("Features Mutant: "+Util.getFeatureNames(mutant));
 		}
+		System.out.println("Adq:" +d);
 		return d;
 	}
 	
@@ -362,7 +365,7 @@ public class Util {
 		Neighbors neighbors = GenerateUpdateRequest.generateNeighborsForFeaturesToAdd(fmOracle, fm);
 		Set<String> featuresToRem = Util.getFeatureNamesIn2NotIn1(fmOracle, fm);
 		return new Oracle(fm, null, null, neighbors, featuresToRem, fmOracle);
-	}
+	} 
 	
 	
 	// SI: added to rename features at the beginning	

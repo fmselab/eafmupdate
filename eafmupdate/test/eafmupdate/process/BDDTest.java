@@ -36,7 +36,7 @@ public class BDDTest {
 	
 	@Test
 	public void adqTest() {
-		try {
+		try { 
 			for (ModelsPair m : ModelsPair.getModelForExperiments()) {
 				System.out.println(m+": "+Util.getAdequacy(m.getFM2(), m.getFM1())+" "+Util.getAdequacy(m.getOracle(), m.getFM1()));
 			}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and abstract="true" mandatory="true" name="PPU">
+				<or abstract="true" mandatory="true" name="Workpiece">
+					<or name="Plastic">
+						<feature name="Light"/>
+						<feature name="Dark"/>
+					</or>
+					<feature name="Metal"/>
+				</or>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

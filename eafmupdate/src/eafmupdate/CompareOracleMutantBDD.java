@@ -53,10 +53,13 @@ public class CompareOracleMutantBDD {
 		Set<String> features = oracle.getAllFeatureNames();
 		features.addAll(Util.getFeatureNames(mutant));
 		int numFeatures = features.size();
+		System.out.println("numF:"+numFeatures);
 		
 		assert numFeatures <= 128; // we use the oracle, that we assume that does not have more features than the mutant
 		long numConfigurations = (long)Math.pow(2, numFeatures - 1);
+		System.out.println("F1:"+Util.getFeatureNames(mutant)+" "+oracle.getAllFeatureNames());
 		int confsNotJudgedCorrectly = getBddsCountDiff(oracle, mutant);
+		System.out.println("F2:"+Util.getFeatureNames(mutant)+" "+oracle.getAllFeatureNames());
 		return new Conformance(numConfigurations, numConfigurations - confsNotJudgedCorrectly);
 	}
 	
@@ -220,18 +223,26 @@ public class CompareOracleMutantBDD {
 	private static BDD generateBDD(Oracle o, List<String> fmVars, FMToBDD f2bdd) {
 		if (fmVars==null) fmVars = new ArrayList<>(o.getAllFeatureNames());
 		//if (fmVars==null) fmVars = new ArrayList<>(getFeatureNames());
-		o.fmVars = fmVars;
+		o.fmVars = fmVars; 
 		IFeatureModel correctFM = o.oracleFM;
+		assert correctFM!=null;
 		if (correctFM==null) {
 			correctFM = o.originalFM.clone();
 			Util.addMissingFeatures(o, correctFM);
 		}
 		if (f2bdd==null) o.f2bdd = f2bdd = new FMToBDD(fmVars);
-		BDD bddOriginalModel = f2bdd.nodeToBDD(NodeCreator.createNodes(correctFM));
+		BDD bddOracle = f2bdd.nodeToBDD(NodeCreator.createNodes(correctFM));
+		
+		// aggiunge le feature rimosse al BDD
+		for (String s : o.featuresToRemove) {
+			int elem = o.fmVars.indexOf(s);
+			assert elem >= 0 : "element not found " + s;
+			bddOracle = bddOracle.and(o.f2bdd.init.nithVar(elem));
+		}
+		
+		if (o.oracleFM!=null) return bddOracle;
+		
 		BDDFactory init = f2bdd.init;
-		
-		if (o.oracleFM!=null) return bddOriginalModel;
-		
 		// products to add
 		BDD bigBDD = null;
 		for (Map<String,Boolean> values : o.productsToAdd) {
@@ -248,7 +259,7 @@ public class CompareOracleMutantBDD {
 			if (bigBDD==null) bigBDD = bdd;
 			else bigBDD.orWith(bdd);
 		}
-		if (bigBDD!=null) bddOriginalModel.orWith(bigBDD);
+		if (bigBDD!=null) bddOracle.orWith(bigBDD);
 		
 		// products to remove
 		bigBDD = null;
@@ -267,9 +278,9 @@ public class CompareOracleMutantBDD {
 			if (bigBDD==null) bigBDD = bdd;
 			else bigBDD.andWith(bdd);
 		}
-		if (bigBDD!=null) bddOriginalModel.andWith(bigBDD);
+		if (bigBDD!=null) bddOracle.andWith(bigBDD);
 		
-		return bddOriginalModel;
+		return bddOracle;
 	}
 	
 		
@@ -288,6 +299,8 @@ public class CompareOracleMutantBDD {
 		for (String s : varO) if (!varM.contains(s)) varONotM.add(s);
 		for (String s : varM) if (!varO.contains(s)) varMNotO.add(s);
 		
+		//assert varMNotO.isEmpty() : "Strange";
+		
 		// normalmente non ci dovrebbero essere differenze qui
 		BDD bddOracle = null;
 		for (String s : varMNotO) {
@@ -305,6 +318,9 @@ public class CompareOracleMutantBDD {
 			bddModel = (bddModel==null ? bdd2 : bddModel).and(b);
 		}
 		if (bddModel==null) bddModel = bdd2;
+		
+		System.out.println("M: "+bddModel.var());
+		System.out.println("O: "+bddOracle.var());
 		
 		BDD and = bddOracle.and(bddModel);
 		int diff = (int)((bddOracle.satCount() - and.satCount()) +

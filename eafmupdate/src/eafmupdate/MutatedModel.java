@@ -44,7 +44,7 @@ public class MutatedModel {
 	
 	public void addMutation(FMMutation mutation) {
 		if (mutations==null) mutations = new ArrayList<>();
-		mutations.add(mutation);
+		mutations.add(mutation); 
 	}
 	
 	public FMMutation getLastMutation() {

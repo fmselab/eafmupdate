@@ -43,12 +43,16 @@ public enum Model {
 	PPU1("examples_fmsfrompreprocessor/lochau_asej16/ppu_1.xml"), 
 	PPU2("examples_fmsfrompreprocessor/lochau_asej16/ppu_2.xml"),
 	PPU3("examples_fmsfrompreprocessor/lochau_asej16/ppu_3.xml"),
-	PPU4("examples_fmsfrompreprocessor/lochau_asej16/ppu_4.xml"),
+	PPU4("examples_fmsfrompreprocessor/lochau_asej16/ppu_4.xml"), 
 	PPU5("examples_fmsfrompreprocessor/lochau_asej16/ppu_5.xml"),
 	PPU6("examples_fmsfrompreprocessor/lochau_asej16/ppu_6.xml"),
 	PPU7("examples_fmsfrompreprocessor/lochau_asej16/ppu_7.xml"),
 	PPU8("examples_fmsfrompreprocessor/lochau_asej16/ppu_8.xml"),
 	PPU9("examples_fmsfrompreprocessor/lochau_asej16/ppu_9.xml"),
+	PPU5S("constraintrepair/ppu_5_small.xml"),
+	PPU6S("constraintrepair/ppu_6_small.xml"),
+	PPU5S2("constraintrepair/ppu_5_small2.xml"),
+	PPU6S2("constraintrepair/ppu_6_small2.xml"),
 	
 	// other models:
 	AIRCRAFT10("splotmodels_new/featureIDE/aircraft_fm/aircraft_fm_numMutations10.xml"),
@@ -80,9 +84,6 @@ public enum Model {
 	
 	/** fm1 is the initial model, usually the wrong one */
 	public IFeatureModel getFM() { 
-		try {
-		return ExampleTaker.readExample(path1);
-		} catch (Exception e) {e.printStackTrace();}
 		return load(path1, format); 
 	}
 	
@@ -90,8 +91,11 @@ public enum Model {
 	public static IFeatureModel load(String path, ModelFormat modelFormat) { 
 		try {
 			// try loading from FeatureIDE default XML format
-			if (modelFormat==null || modelFormat==ModelFormat.FEATUREIDE)
-				return ExampleTaker.readExample(path);
+			if (modelFormat==null || modelFormat==ModelFormat.FEATUREIDE) {
+				IFeatureModel m = ExampleTaker.readExample(path);
+				setAllFeaturesToConcrete(m);
+				return m;				
+			}
 			else return Utils.readSPLOTModel(path);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -118,6 +122,10 @@ public enum Model {
 	
 	public String getSizeModel() {
 		return "" + getFM().getNumberOfFeatures();
+	}
+	
+	public static void setAllFeaturesToConcrete(IFeatureModel m) {
+		m.getFeatures().forEach(f -> f.getStructure().setAbstract(false));
 	}
 	
 }

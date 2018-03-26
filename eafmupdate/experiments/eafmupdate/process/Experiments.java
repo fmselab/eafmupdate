@@ -25,15 +25,15 @@ import eafmupdate.process.Stats;
  */
 public class Experiments {
 	
-	public static final ExperimentType experimentType = ExperimentType.WITHOUT_MOVE;
+	public static ExperimentType experimentType = ExperimentType.WITHOUT_MOVE;
 	
-	public static final boolean useOnlyOneProcess = false;
+	public static boolean useOnlyOneProcess = false;
 	
-	public static final boolean useOnlyOneModel = false;
+	public static boolean useOnlyOneModel = false;
 	
-	public static final boolean SAVE_TEMP = false;
+	public static boolean SAVE_TEMP = false;
 	
-	public static final boolean otherExperiment = false;
+	public static boolean otherExperiment = false;
 	
 	public static Map<ModelsPair,Integer> getModels() {
 		if (useOnlyOneModel) {
@@ -143,7 +143,7 @@ public class Experiments {
 		fixExperiment2ForPlot(name+"_bests.csv", name+"_bests_forPlot.csv", Processes.MAXORDER);
 	}
 	
-	public static void fixExperiment2ForPlot(String pathInput, String pathOutput, int maxIteration) {
+	public void fixExperiment2ForPlot(String pathInput, String pathOutput, int maxIteration) {
 		try {
 			BufferedReader fin = new BufferedReader(new FileReader("output/"+pathInput));
 			PrintWriter fout = new PrintWriter(new FileWriter("output/"+pathOutput));

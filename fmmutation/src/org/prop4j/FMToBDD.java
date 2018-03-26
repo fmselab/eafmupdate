@@ -1,6 +1,5 @@
 package org.prop4j;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.log4j.Logger;
