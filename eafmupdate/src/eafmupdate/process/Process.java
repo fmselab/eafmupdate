@@ -25,7 +25,6 @@ public abstract class Process {
 		Stats s = repair(fm, oracle);
 		if (!s.isRepaired()) {
 			System.out.println("not repaired "+s.getOneLineStatisticsAsCSV());
-			GenerateMutants.enableAllMutants();
 			Stats s2 = repair(s.repaired.model, oracle);
 			s.append(s2);
 			System.out.println("It was not repaired");

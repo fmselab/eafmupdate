@@ -5,10 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 import org.sat4j.specs.TimeoutException;
 
@@ -43,34 +42,26 @@ public class GenerateMutants {
 //													/*MissingFeature.instance,*/ OptionalToMandatory.instance, OrToAltenative.instance,
 //													OrToAnd.instance, OrToAndOpt.instance};
 	
-	private static Set<FMMutator> mutatorsToExclude = new HashSet<>();
-	static {
-		//mutatorsToExclude.add(MoveF.instance);
-	}
 	
-	static FMMutator getRandomMutator() {
-		//mutatorsToExclude.add(MoveF.instance); //make sure there is no move
-		
-		FMMutator m = fmMutators[rnd.nextInt(fmMutators.length)];
-		while (mutatorsToExclude.contains(m)) m = fmMutators[rnd.nextInt(fmMutators.length)];
-		//if (m instanceof MoveFeature) System.out.println("Move "+mutatorsToExclude.size());
+	FMMutator getRandomMutator(List<FMMutator> mutators) {
+		List<FMMutator> fmMutators = getFmMutators();
+		FMMutator m = fmMutators .get(rnd.nextInt(fmMutators.size()));
 		return m;
 	}
 	
-	/** now disabled */
-	public static void enableMutant(FMMutator m) {
-		//if (mutatorsToExclude.contains(m)) mutatorsToExclude.remove(m);
-	}
-	public static void enableAllMutants() {
-		//mutatorsToExclude.clear();
-		System.out.println("Enable all mutants: "+mutatorsToExclude.size());
-	}
-	public static void disableMutant(FMMutator m) {
-		mutatorsToExclude.add(m);
-		System.out.println("Disable mutant: "+mutatorsToExclude.size());
+	public static GenerateMutants instance = new GenerateMutants();	
+	protected GenerateMutants() {}
+	
+	/**
+	 * 
+	 * @return a mutator radomnly selected among the mutators from getFmMutators (it can be extended)
+	 */
+	public final FMMutator getRandomMutator() {
+		return getRandomMutator(getFmMutators());
 	}
 	
-	private static FMMutator[] fmMutators = new FMMutator[] { 
+	public List<FMMutator> getFmMutators(){
+		return Arrays.asList( 
 		//MissingFeature.instance,   // not possible to remove features
 		//ConstraintRemover.instance,
 		AltToAnd.instance,
@@ -82,7 +73,7 @@ public class GenerateMutants {
 		AndToOr.instance, 
 		MandToOpt.instance,
 		OptToMand.instance, 
-		AndToAlt.instance,
+		AndToAlt.instance
 		//NegationMutant.instance,
 		//LogicAndToOr.instance,
 		//LogicOrToAnd.instance,
@@ -96,7 +87,8 @@ public class GenerateMutants {
 		//MoveF.instance,    //XXX for lighter version, removed support for move operation
 		// ExcludesAsCNFToRequires.instance,
 		// RequiresAsCnfToExcludes.instance,
-	};
+	);
+				};
 	
 	/*private static FMMutator[] getFMMutators(Neighbors neighbors) {
 		return new FMMutator[] { 
@@ -129,7 +121,7 @@ public class GenerateMutants {
 	}*/
 		
 	
-	static Random rnd = new Random();
+	public Random rnd = new Random();
 
 	private static void init() {
 		org.apache.log4j.Logger.getRootLogger().setLevel(org.apache.log4j.Level.OFF);
@@ -162,12 +154,12 @@ public class GenerateMutants {
 		return mutants;
 	}*/
 
-	private static List<FMMutation> generateMutantsNoSet(IFeatureModel fmodel, int depth, double percSelect) {
+	List<FMMutation> generateMutantsNoSet(IFeatureModel fmodel, int depth, double percSelect) {
 		assert depth > 0: "depth must be greater than 0 - depth = " + depth;
 		assert percSelect > 0 && percSelect <= 1: "percSelect not allowed: " + percSelect;
 		//System.err.println("depth = " + depth);
 		List<FMMutation> mutants = new ArrayList<FMMutation>();
-		for(FMMutator mutator: fmMutators) {
+		for(FMMutator mutator: instance.getFmMutators()) {
 			List<FMMutation> currMutants = CollectionsUtil.listFromIterator(mutator.mutate(fmodel));
 			
 			
@@ -257,7 +249,7 @@ public class GenerateMutants {
 		System.out.println(counter);
 	}
 
-	public static void generateMutantsFromPreviousSet(String path, double percSelect, int depth) throws UnsupportedModelException, IOException, NoSuchExtensionException {
+	public void generateMutantsFromPreviousSet(String path, double percSelect, int depth) throws UnsupportedModelException, IOException, NoSuchExtensionException {
 		init();
 		File dir = new File(path);
 		assert dir.isDirectory();
@@ -268,7 +260,7 @@ public class GenerateMutants {
 			fileName = fileName.substring(0, fileName.length() - 4);
 			IFeatureModel fmmodel = ExampleTaker.readExample(file.getAbsolutePath());
 			List<FMMutation> currMutants = new ArrayList<FMMutation>();
-			for(FMMutator mutator: fmMutators) {
+			for(FMMutator mutator: instance.getFmMutators()) {
 				currMutants.addAll(CollectionsUtil.listFromIterator(mutator.mutate(fmmodel)));						
 			}
 			/*int toRemove = (int)(currMutants.size()*(1 - percSelect));
@@ -301,7 +293,7 @@ public class GenerateMutants {
 		}
 	}
 
-	public static void mutate(String modelPath, int depth, double percMutants) throws IOException, UnsupportedModelException {
+	public void mutate(String modelPath, int depth, double percMutants) throws IOException, UnsupportedModelException {
 		init();
 		IFeatureModel fm = Utils.readSPLOTModel(modelPath);
 		List<FMMutation> mutants = generateMutantsNoSet(fm, depth, percMutants);
@@ -324,7 +316,8 @@ public class GenerateMutants {
 		}
 	}
 
-	static List<IFeatureModel> generateNmutants(IFeatureModel fmodel, int numMutants, List<IFeatureModel> mutants) {
+	List<IFeatureModel> generateNmutants(IFeatureModel fmodel, int numMutants, List<IFeatureModel> mutants) {
+		FMMutator[] fmMutators = instance.getFmMutators().toArray(new FMMutator[0]);
 		numMutants--;
 		if(numMutants >= 0) {
 			List<FMMutation> currMutants;
@@ -342,7 +335,7 @@ public class GenerateMutants {
 		}
 	}
 	
-	public static void generateNmutants(String modelPath, int numMutants) throws IOException, UnsupportedModelException, NoSuchExtensionException {
+	public void generateNmutants(String modelPath, int numMutants) throws IOException, UnsupportedModelException, NoSuchExtensionException {
 		init();
 		IFeatureModel fm = ExampleTaker.readExample(modelPath);
 		List<IFeatureModel> mutants = new ArrayList<>();
@@ -375,6 +368,7 @@ public class GenerateMutants {
 		String model = "stack_fm";
 		getAdequacy("splotmodels_new/featureIDE/" + model + ".xml", "splotmodels_new/featureIDE/" + model + "/random/");
 	}
+
 }
 
 class MyFMMutation {

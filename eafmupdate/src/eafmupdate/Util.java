@@ -258,7 +258,7 @@ public class Util {
 	public static IFeatureModel mutateRandomly(IFeatureModel model, int order) {
 		IFeatureModel fmodel = model.clone();
 		for (int i=0; i<order; i++) {
-			fmodel = GenerateMutants.generateNmutants(fmodel, 1, new ArrayList<>()).get(0);
+			fmodel = GenerateMutants.instance.generateNmutants(fmodel, 1, new ArrayList<>()).get(0);
 		}
 		return fmodel;
 	}
@@ -271,16 +271,17 @@ public class Util {
 		return fmodel;
 	}
 		
-	/** the MutatedModel structure contains information also on the mutations applied. The model is cloned before being mutated */
-	public static MutatedModel mutateRandomly(MutatedModel model, int order) {
+	/** the MutatedModel structure contains information also on the mutations applied. The model is cloned before being mutated 
+	 * @param mutators TODO*/
+	public static MutatedModel mutateRandomly(MutatedModel model, int order, List<FMMutator> mutators) {
 		MutatedModel fmodel = model.clone();
 		for (int i=0; i<order; i++) {
 			List<FMMutation> currMutants;
 			do {
-				FMMutator mutator = GenerateMutants.getRandomMutator();  //GenerateMutants.fmMutators[GenerateMutants.rnd.nextInt(GenerateMutants.fmMutators.length)];
+				FMMutator mutator = GenerateMutants.instance.getRandomMutator();  //GenerateMutants.fmMutators[GenerateMutants.rnd.nextInt(GenerateMutants.fmMutators.length)];
 				currMutants = CollectionsUtil.listFromIterator(mutator.mutate(fmodel.model));
 			} while (currMutants.isEmpty());
-			FMMutation mutation = currMutants.get(GenerateMutants.rnd.nextInt(currMutants.size()));
+			FMMutation mutation = currMutants.get(GenerateMutants.instance.rnd.nextInt(currMutants.size()));
 			fmodel.model = mutation.getFirst();
 			mutation.setPreviousModel(model.model);
 			fmodel.addMutation(mutation);

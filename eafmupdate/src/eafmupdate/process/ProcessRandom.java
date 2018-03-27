@@ -9,6 +9,7 @@ import org.sat4j.specs.TimeoutException;
 
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
+import eafmupdate.GenerateMutants;
 import eafmupdate.MutatedModel;
 import eafmupdate.Util;
 import eafmupdate.model.Oracle;
@@ -46,8 +47,8 @@ public class ProcessRandom extends Process {
 		for (int j=0; j<maxOrder; j++) {
 			MutatedModel orderBest = best;
 			for (int i=0; i<nrand; i++) {
-				if (j==0) models.add(mutant = Util.mutateRandomly(best, 1));
-				else models.set(i, mutant = Util.mutateRandomly(models.get(i), 1));
+				if (j==0) models.add(mutant = Util.mutateRandomly(best, 1, GenerateMutants.instance.getFmMutators()));
+				else models.set(i, mutant = Util.mutateRandomly(models.get(i), 1, GenerateMutants.instance.getFmMutators()));
 				
 				double n = Util.getAdequacy(oracle, mutant.model);
 				values.add(n);

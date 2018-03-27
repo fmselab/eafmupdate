@@ -9,6 +9,7 @@ import java.util.Map;
 import org.sat4j.specs.TimeoutException;
 
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
+import eafmupdate.GenerateMutants;
 import eafmupdate.GenerateUpdateRequest;
 import eafmupdate.MutatedModel;
 import eafmupdate.Util;
@@ -188,7 +189,7 @@ public enum ModelsPair{
 			if (mutatedModel==null) {
 				System.out.println("Genero modello "+title);
 				int numMutations = (int)(Math.random()*11);
-				mutatedModel = Util.mutateRandomly(new MutatedModel(getFM2()), numMutations).model;
+				mutatedModel = Util.mutateRandomly(new MutatedModel(getFM2()), numMutations, GenerateMutants.instance.getFmMutators()).model;
 				Util.saveTemporary(mutatedModel, "generated/", title);				
 			}
 			mutated.put(iteration, mutatedModel);
