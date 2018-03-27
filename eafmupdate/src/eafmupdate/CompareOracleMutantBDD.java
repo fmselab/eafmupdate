@@ -3,6 +3,7 @@ package eafmupdate;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -23,6 +24,7 @@ import eafmupdate.model.Oracle;
 import fmmutation.utils.Utils;
 import fmupdate.models.ExampleTaker;
 import net.sf.javabdd.BDD;
+import net.sf.javabdd.BDD.AllSatIterator;
 import net.sf.javabdd.BDDFactory;
 import splar.core.fm.FeatureModelException;
 import splar.core.fm.configuration.ConfigurationEngineException;
@@ -293,7 +295,7 @@ public class CompareOracleMutantBDD {
 		BDD bdd2 = oracle.f2bdd.nodeToBDD(NodeCreator.createNodes(fm2)); // without cache
 				// generateBDD2(oracle, fm2); // with cache
 
-		Set<String> varO = oracle.getFeatureNames();
+		Set<String> varO = oracle.getAllFeatureNames(); //oracle.getFeatureNames();
 		Set<String> varM = Util.getFeatureNames(fm2);
 		Set<String> varONotM = new HashSet<>(), varMNotO = new HashSet<>();
 		for (String s : varO) if (!varM.contains(s)) varONotM.add(s);
@@ -302,14 +304,16 @@ public class CompareOracleMutantBDD {
 		//assert varMNotO.isEmpty() : "Strange";
 		
 		// normalmente non ci dovrebbero essere differenze qui
-		BDD bddOracle = null;
+		BDD bddOracle = bdd;
+		/*BDD bddOracle = null;
 		for (String s : varMNotO) {
 			int elem = oracle.fmVars.indexOf(s);
 			assert elem >= 0 : "element not found " + s;
 			BDD b = oracle.f2bdd.init.nithVar(elem);
 			bddOracle = (bddOracle==null ? bdd : bddOracle).and(b);
 		}
-		if (bddOracle==null) bddOracle = bdd;
+		if (bddOracle==null) bddOracle = bdd;*/
+		
 		BDD bddModel = null;
 		for (String s : varONotM) {
 			int elem = oracle.fmVars.indexOf(s);
@@ -323,6 +327,21 @@ public class CompareOracleMutantBDD {
 		System.out.println("O: "+bddOracle.var());
 		
 		BDD and = bddOracle.and(bddModel);
+		System.out.println("SATCount: "+ bddOracle.satCount() + " " + bddModel.satCount() + " " + and.satCount());
+
+		for (String s: oracle.fmVars) System.out.print(s+" ");
+		System.out.println("SAT ORACLE: ");
+		AllSatIterator sats = bddOracle.allsat();
+		while (sats.hasNext()) System.out.println(Arrays.toString(sats.nextSat()));
+		
+		System.out.println("SAT MODEL: ");
+		sats = bddModel.allsat();
+		while (sats.hasNext()) System.out.println(Arrays.toString(sats.nextSat()));
+		
+		System.out.println("SAT AND: ");
+		sats = and.allsat();
+		while (sats.hasNext()) System.out.println(Arrays.toString(sats.nextSat()));
+		
 		int diff = (int)((bddOracle.satCount() - and.satCount()) +
 					 (bddModel.satCount() - and.satCount()) );
 		/*System.out.println("AND pathCount " + and.pathCount() + " satCount " + and.satCount());

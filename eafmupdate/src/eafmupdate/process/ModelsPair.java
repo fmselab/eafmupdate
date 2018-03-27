@@ -1,6 +1,5 @@
 package eafmupdate.process;
 
-import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -64,6 +63,12 @@ public enum ModelsPair{
 	PPU8_9(Model.PPU8, Model.PPU9, true), 
 	PPU5_6_SIMPL(Model.PPU5S, Model.PPU6S, true), 
 	PPU5_6_SIMPL2(Model.PPU5S2, Model.PPU6S2, true), 
+	PPU5_6_SIMPL3(Model.PPU5S3, Model.PPU6S3, true),
+	PPU5_6_SIMPL4(Model.PPU5S4, Model.PPU6S, true),
+	PPU5_6_SIMPL5(Model.PPU5S5, Model.PPU6S5, true),
+	PPU5_6_SIMPL5_INVERTITO(Model.PPU6S5, Model.PPU5S5, true),
+	PPU_XOR(Model.PPU_XOR, Model.PPU_XOR, true),
+	PPU_OPZIONALE(Model.PPU_OPZIONALE, Model.PPU_OPZIONALE, true),
 	
 	AIRCRAFT_EXAMPLE(Model.AIRCRAFT_EXAMPLE1, Model.AIRCRAFT_EXAMPLE2, "Matter\tMaterials", true),
 	

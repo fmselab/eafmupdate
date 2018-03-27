@@ -53,6 +53,14 @@ public enum Model {
 	PPU6S("constraintrepair/ppu_6_small.xml"),
 	PPU5S2("constraintrepair/ppu_5_small2.xml"),
 	PPU6S2("constraintrepair/ppu_6_small2.xml"),
+	PPU5S3("constraintrepair/AFTER_ADDREM.xml"),
+	PPU6S3("constraintrepair/ORACLEHERE0.xml"),
+	
+	PPU5S4("constraintrepair/ppu_5_small4.xml"),
+	PPU5S5("constraintrepair/ppu_5_small5.xml"),
+	PPU6S5("constraintrepair/ppu_6_small5.xml"),
+	PPU_XOR("constraintrepair/ppu_xor.xml"),
+	PPU_OPZIONALE("constraintrepair/ppu_opzionale.xml"),
 	
 	// other models:
 	AIRCRAFT10("splotmodels_new/featureIDE/aircraft_fm/aircraft_fm_numMutations10.xml"),

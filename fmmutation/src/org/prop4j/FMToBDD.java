@@ -1,5 +1,7 @@
 package org.prop4j;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -51,7 +53,6 @@ public class FMToBDD {
 		} else if (n instanceof Or) {
 			if (children.length ==1)
 				return nodeToBDD(children[0]);
-			
 			assert children != null && children.length >= 2 : children.length;
 			return distribute(BDDOp.OR, nodesToBDDs(((Or) n).getChildren()));
 		} else if (n instanceof Implies) {
@@ -66,10 +67,28 @@ public class FMToBDD {
 				throw new NotTranslableException(n);
 			return nodeToBDD(((Not) n).getChildren()[0]).not();
 		} else if (n instanceof AtMost){
+			// at most one is true (it is allowed all false)
 			AtMost most = (AtMost) n;
-			//assert most.max == 1 : most.max;
+			assert most.max == 1 : most.max;
 			//System.out.println("AtMost case: "+Arrays.toString(most.children)+" "+most.max);
-			return distribute(BDDOp.OR,nodesToBDDs(most.chooseKofN(most.children,  most.max, false)));
+			BDD[] ors = new BDD[most.children.length+1];
+			Node[] children2 = most.children;
+			for (int i = 0; i < children2.length; i++) {
+				Node c = children2[i];
+				List<Node> otherChildren = new ArrayList<>(Arrays.asList(most.children));
+				otherChildren.remove(c);
+				// c AND not OR children
+				BDD notChildren;
+				if (otherChildren.size() == 1)
+					notChildren = nodeToBDD(otherChildren.get(0)).not();
+				else
+					notChildren = distribute(BDDOp.OR,nodesToBDDs(otherChildren.toArray(new Node[otherChildren.size()]))).not();
+				ors[i] = distribute(BDDOp.AND, new BDD[] {nodeToBDD(c),notChildren});
+			}
+			// oppure tutti falsi
+			BDD allFalse = distribute(BDDOp.OR,nodesToBDDs(most.children)).not();
+			ors[most.children.length] = allFalse;
+			return distribute(BDDOp.OR,ors);
 		} else {
 			assert n instanceof Literal : n.getClass().getCanonicalName();
 			return literalToExpression(n);

@@ -16,6 +16,7 @@ public class FeatureModelEvaluator implements FitnessEvaluator<MutatedModel> {
 	/** the initial FM, to which to compute differences */ private IFeatureModel initial;
 		
 	int numFeatures;
+	static int count=0;
 	
 	public FeatureModelEvaluator(Oracle oracle, IFeatureModel initial) {
 		this.oracle = oracle;
@@ -28,6 +29,9 @@ public class FeatureModelEvaluator implements FitnessEvaluator<MutatedModel> {
 		double adequacy = 0;
 		try {
 			adequacy = Util.getAdequacy(oracle, candidate.model);
+			Util.saveTemporary(oracle.oracleFM, "output/temp/", "ORACLEHERE"+(count++));
+			Util.saveTemporary(candidate.model, "output/temp/", "ADQHERE"+(count++));
+			System.out.println("AdequacyHere: "+adequacy);
 		} catch (Exception e) { 
 			e.printStackTrace(); 
 			System.out.println("Oracle: "+oracle);
