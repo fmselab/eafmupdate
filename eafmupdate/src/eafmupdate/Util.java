@@ -101,12 +101,17 @@ public class Util {
 	/** it adds missing features to fm, considering the neighbors */
 	public static void addMissingFeatures(Oracle oracle, IFeatureModel fm) {
 		Set<String> featureNamesToAdd = getFeaturesToAdd(oracle, fm);
-		for (String fname : featureNamesToAdd) {
-			Feature f = new Feature(fm, fname);
-			fm.addFeature(f);
-			IFeatureStructure parent = getParentToWhichAddFeature(oracle.neighbors, fm.getStructure().getRoot(), fname);
-			parent.addChild(f.getStructure());
+		int placed = 0;
+		while (placed < featureNamesToAdd.size()) {
+			for (String fname : featureNamesToAdd) if (fm.getFeature(fname)==null && fm.getFeature(oracle.neighbors.neighbors.get(fname).keySet().iterator().next())!=null) {
+				Feature f = new Feature(fm, fname);
+				fm.addFeature(f);
+				IFeatureStructure parent = getParentToWhichAddFeature(oracle.neighbors, fm.getStructure().getRoot(), fname);
+				parent.addChild(f.getStructure());
+				placed++;
+			}	
 		}
+		
 	}
 	
 	/** it adds missing features to fm, considering the neighbors */
@@ -246,7 +251,7 @@ public class Util {
 			System.out.println("Features Oracle: "+oracle.getFeatureNames());
 			System.out.println("Features Mutant: "+Util.getFeatureNames(mutant));
 		}
-		System.out.println("Adq:" +d);
+//		System.out.println("Adq:" +d);
 		return d;
 	}
 	

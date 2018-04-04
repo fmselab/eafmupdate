@@ -3,7 +3,6 @@ package eafmupdate;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -24,7 +23,6 @@ import eafmupdate.model.Oracle;
 import fmmutation.utils.Utils;
 import fmupdate.models.ExampleTaker;
 import net.sf.javabdd.BDD;
-import net.sf.javabdd.BDD.AllSatIterator;
 import net.sf.javabdd.BDDFactory;
 import splar.core.fm.FeatureModelException;
 import splar.core.fm.configuration.ConfigurationEngineException;
@@ -55,13 +53,13 @@ public class CompareOracleMutantBDD {
 		Set<String> features = oracle.getAllFeatureNames();
 		features.addAll(Util.getFeatureNames(mutant));
 		int numFeatures = features.size();
-		System.out.println("numF:"+numFeatures);
+//		System.out.println("numF:"+numFeatures);
 		
 		assert numFeatures <= 128; // we use the oracle, that we assume that does not have more features than the mutant
 		long numConfigurations = (long)Math.pow(2, numFeatures - 1);
-		System.out.println("F1:"+Util.getFeatureNames(mutant)+" "+oracle.getAllFeatureNames());
+//		System.out.println("F1:"+Util.getFeatureNames(mutant)+" "+oracle.getAllFeatureNames());
 		int confsNotJudgedCorrectly = getBddsCountDiff(oracle, mutant);
-		System.out.println("F2:"+Util.getFeatureNames(mutant)+" "+oracle.getAllFeatureNames());
+//		System.out.println("F2:"+Util.getFeatureNames(mutant)+" "+oracle.getAllFeatureNames());
 		return new Conformance(numConfigurations, numConfigurations - confsNotJudgedCorrectly);
 	}
 	
@@ -323,24 +321,24 @@ public class CompareOracleMutantBDD {
 		}
 		if (bddModel==null) bddModel = bdd2;
 		
-		System.out.println("M: "+bddModel.var());
-		System.out.println("O: "+bddOracle.var());
+		//System.out.println("M: "+bddModel.var());
+		//System.out.println("O: "+bddOracle.var());
 		
 		BDD and = bddOracle.and(bddModel);
-		System.out.println("SATCount: "+ bddOracle.satCount() + " " + bddModel.satCount() + " " + and.satCount());
+		//System.out.println("SATCount: "+ bddOracle.satCount() + " " + bddModel.satCount() + " " + and.satCount());
 
-		for (String s: oracle.fmVars) System.out.print(s+" ");
-		System.out.println("SAT ORACLE: ");
-		AllSatIterator sats = bddOracle.allsat();
-		while (sats.hasNext()) System.out.println(Arrays.toString(sats.nextSat()));
+		//for (String s: oracle.fmVars) System.out.print(s+" ");
+		//System.out.println("SAT ORACLE: ");
+		//AllSatIterator sats = bddOracle.allsat();
+		//while (sats.hasNext()) System.out.println(Arrays.toString(sats.nextSat()));
 		
-		System.out.println("SAT MODEL: ");
-		sats = bddModel.allsat();
-		while (sats.hasNext()) System.out.println(Arrays.toString(sats.nextSat()));
+		//System.out.println("SAT MODEL: ");
+		//sats = bddModel.allsat();
+		//while (sats.hasNext()) System.out.println(Arrays.toString(sats.nextSat()));
 		
-		System.out.println("SAT AND: ");
-		sats = and.allsat();
-		while (sats.hasNext()) System.out.println(Arrays.toString(sats.nextSat()));
+		//System.out.println("SAT AND: ");
+		//ats = and.allsat();
+		//while (sats.hasNext()) System.out.println(Arrays.toString(sats.nextSat()));
 		
 		int diff = (int)((bddOracle.satCount() - and.satCount()) +
 					 (bddModel.satCount() - and.satCount()) );

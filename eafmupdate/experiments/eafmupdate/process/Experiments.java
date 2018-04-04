@@ -14,9 +14,6 @@ import org.junit.Test;
 
 import eafmupdate.MutatedModel;
 import eafmupdate.Util;
-import eafmupdate.process.Process;
-import eafmupdate.process.Processes;
-import eafmupdate.process.Stats;
 
 /**
  * To generate data for all the experiments in the report.
@@ -27,15 +24,15 @@ public class Experiments {
 	
 	public static ExperimentType experimentType = ExperimentType.WITHOUT_MOVE;
 	
-	public static boolean useOnlyOneProcess = false;
+	public boolean useOnlyOneProcess = false;
 	
-	public static boolean useOnlyOneModel = false;
+	public boolean useOnlyOneModel = false;
 	
-	public static boolean SAVE_TEMP = false;
+	public boolean SAVE_TEMP = false;
 	
-	public static boolean otherExperiment = false;
+	public boolean otherExperiment = false;
 	
-	public static Map<ModelsPair,Integer> getModels() {
+	public Map<ModelsPair,Integer> getModels() {
 		if (useOnlyOneModel) {
 			Map<ModelsPair,Integer> models = new HashMap<>();
 			models.put(ModelsPair.MOBILE_MEDIA_V5_TO_V6, 1);
@@ -43,7 +40,7 @@ public class Experiments {
 		} else return ModelsPair.getModelsForExperiments();
 	}
 	
-	public static Processes[] getUsefulRepairProcesses() {
+	public Processes[] getUsefulRepairProcesses() {
 		if (useOnlyOneProcess) return new Processes[] {Processes.RANDOM};
 		return Processes.getUsefulProcesses();
 	}

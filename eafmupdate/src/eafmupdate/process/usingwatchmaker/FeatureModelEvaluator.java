@@ -31,7 +31,7 @@ public class FeatureModelEvaluator implements FitnessEvaluator<MutatedModel> {
 			adequacy = Util.getAdequacy(oracle, candidate.model);
 //			Util.saveTemporary(oracle.oracleFM, "output/temp/", "ORACLEHERE"+(count++));
 //			Util.saveTemporary(candidate.model, "output/temp/", "ADQHERE"+(count++));
-			System.out.println("AdequacyHere: "+adequacy);
+//			System.out.println("AdequacyHere: "+adequacy);
 		} catch (Exception e) { 
 			e.printStackTrace(); 
 			System.out.println("Oracle: "+oracle);
