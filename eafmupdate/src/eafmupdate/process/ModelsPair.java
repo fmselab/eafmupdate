@@ -74,6 +74,30 @@ public enum ModelsPair{
 	AIRCRAFT_EXAMPLE(Model.AIRCRAFT_EXAMPLE1, Model.AIRCRAFT_EXAMPLE2, "Matter\tMaterials", true),
 	PPU4_5_NOCONSTR(Model.PPU4, Model.PPU5_NOCONSTR, true), 
 	
+	// PPU d=2
+	PPU1_3(Model.PPU1, Model.PPU3, true), 
+	PPU2_4(Model.PPU2, Model.PPU4, true), 
+	PPU3_5(Model.PPU3, Model.PPU5, true), 
+	PPU4_6(Model.PPU4, Model.PPU6, true), 
+	PPU5_7(Model.PPU5, Model.PPU7, true), 
+	PPU6_8(Model.PPU6, Model.PPU8, true), 
+	PPU7_9(Model.PPU7, Model.PPU9, true), 
+	// PPU d=3
+	PPU1_4(Model.PPU1, Model.PPU4, true), 
+	PPU2_5(Model.PPU2, Model.PPU5, true), 
+	PPU3_6(Model.PPU3, Model.PPU6, true), 
+	PPU4_7(Model.PPU4, Model.PPU7, true), 
+	PPU5_8(Model.PPU5, Model.PPU8, true), 
+	PPU6_9(Model.PPU6, Model.PPU9, true), 
+	
+	// PPU d=4
+	PPU1_5(Model.PPU1, Model.PPU5, true), 
+	PPU2_6(Model.PPU2, Model.PPU6, true), 
+	PPU3_7(Model.PPU3, Model.PPU7, true), 
+	PPU4_8(Model.PPU4, Model.PPU8, true), 
+	PPU5_9(Model.PPU5, Model.PPU9, true), 
+
+	
 	;
 	
 	//private static Logger logger = Logger.getLogger(Models.class.getName());
