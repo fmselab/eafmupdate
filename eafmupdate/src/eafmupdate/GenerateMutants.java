@@ -43,8 +43,8 @@ public class GenerateMutants {
 //													OrToAnd.instance, OrToAndOpt.instance};
 	
 	
-	FMMutator getRandomMutator(List<FMMutator> mutators) {
-		List<FMMutator> fmMutators = getFmMutators();
+	FMMutator getRandomMutator(List<FMMutator> fmMutators) {
+		//List<FMMutator> fmMutators = getFmMutators();
 		FMMutator m = fmMutators .get(rnd.nextInt(fmMutators.size()));
 		return m;
 	}

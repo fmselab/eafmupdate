@@ -278,7 +278,7 @@ public class Util {
 		for (int i=0; i<order; i++) {
 			List<FMMutation> currMutants;
 			do {
-				FMMutator mutator = GenerateMutants.instance.getRandomMutator();  //GenerateMutants.fmMutators[GenerateMutants.rnd.nextInt(GenerateMutants.fmMutators.length)];
+				FMMutator mutator = GenerateMutants.instance.getRandomMutator(mutators);  //GenerateMutants.fmMutators[GenerateMutants.rnd.nextInt(GenerateMutants.fmMutators.length)];
 				currMutants = CollectionsUtil.listFromIterator(mutator.mutate(fmodel.model));
 			} while (currMutants.isEmpty());
 			FMMutation mutation = currMutants.get(GenerateMutants.instance.rnd.nextInt(currMutants.size()));

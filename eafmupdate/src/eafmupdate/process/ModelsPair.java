@@ -72,6 +72,7 @@ public enum ModelsPair{
 	PPU_OPZIONALE(Model.PPU_OPZIONALE, Model.PPU_OPZIONALE, true),
 	
 	AIRCRAFT_EXAMPLE(Model.AIRCRAFT_EXAMPLE1, Model.AIRCRAFT_EXAMPLE2, "Matter\tMaterials", true),
+	PPU4_5_NOCONSTR(Model.PPU4, Model.PPU5_NOCONSTR, true), 
 	
 	;
 	
