@@ -11,7 +11,8 @@ public class CartesianIterator <T> implements Iterator <List <T>> {
     private int current = 0;
     private final long last;
 
-    public CartesianIterator (final List <T> ... llo) {
+    @SafeVarargs
+	public CartesianIterator (final List <T> ... llo) {
     	this(Arrays.asList(llo));
     }
     
