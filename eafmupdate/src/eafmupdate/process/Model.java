@@ -80,6 +80,11 @@ public enum Model {
 	AIRCRAFT_EXAMPLE2("constraintrepair/aircraftExample2.xml"),
 	
 	PPU5_NOCONSTR("examples_fmsfrompreprocessor/lochau_asej16/ppu_5_noConstraints.xml"),
+	
+	CAR_2009("examples_fmsfrompreprocessor/pleuss_jss11/car_2009.xml"), 
+	CAR_2010("examples_fmsfrompreprocessor/pleuss_jss11/car_2010.xml"),
+	CAR_2011("examples_fmsfrompreprocessor/pleuss_jss11/car_2011.xml"),
+	CAR_2012("examples_fmsfrompreprocessor/pleuss_jss11/car_2012.xml"),
 	;
 	
 	//private static Logger logger = Logger.getLogger(Models.class.getName());

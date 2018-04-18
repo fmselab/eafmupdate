@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+    <properties/>
+    <struct>
+        <and mandatory="true" name="Car Body">
+            <and name="Multimedia Devices">
+                <alt name="Radio">
+                    <feature name="Monochrome Radio Display"/>
+                    <feature name="Color Radio Display"/>
+                </alt>
+            </and>
+            <feature mandatory="true" name="Other Features"/>
+        </and>
+    </struct>
+    <constraints/>
+    <calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+    <comments/>
+    <featureOrder userDefined="false"/>
+</featureModel>

@@ -97,7 +97,9 @@ public enum ModelsPair{
 	PPU4_8(Model.PPU4, Model.PPU8, true), 
 	PPU5_9(Model.PPU5, Model.PPU9, true), 
 
-	
+	CAR_2009_2010(Model.CAR_2009, Model.CAR_2010, true), 
+	CAR_2010_2011(Model.CAR_2010, Model.CAR_2011, true), 
+	CAR_2011_2012(Model.CAR_2011, Model.CAR_2012, true), 
 	;
 	
 	//private static Logger logger = Logger.getLogger(Models.class.getName());

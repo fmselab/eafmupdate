@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+    <properties/>
+    <struct>
+        <and mandatory="true" name="Car Body">
+            <and name="Multimedia Devices">
+                <alt name="Radio">
+                    <feature name="Monochrome Radio Display"/>
+                    <feature name="Color Radio Display"/>
+                </alt>
+                <and name="Navigation">
+                    <feature name="Monochrome Navigation Display"/>
+                    <feature name="Color Navigation Display"/>
+                    <or name="Data Storage">
+                        <feature name="Hard Disk Drive"/>
+                        <feature name="DVD Drive"/>
+                    </or>
+                </and>
+                <feature name="DVD Entertainment"/>
+            </and>
+            <feature mandatory="true" name="Other Features"/>
+        </and>
+    </struct>
+    <constraints>
+        <rule>
+            <imp>
+                <var>DVD Entertainment</var>
+                <var>DVD Drive</var>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>Navigation</var>
+                <conj>
+                    <not>
+                        <conj>
+                            <var>Monochrome Navigation Display</var>
+                            <var>Color Navigation Display</var>
+                        </conj>
+                    </not>
+                    <not>
+                        <conj>
+                            <not>
+                                <var>Color Navigation Display</var>
+                            </not>
+                            <not>
+                                <var>Monochrome Navigation Display</var>
+                            </not>
+                        </conj>
+                    </not>
+                </conj>
+            </imp>
+        </rule>
+    </constraints>
+    <calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+    <comments/>
+    <featureOrder userDefined="false"/>
+</featureModel>
