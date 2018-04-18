@@ -22,4 +22,5 @@
 hs_err_pid*
 
 !eafmupdate/libs/*.jar
+!fmmutation/libs/*.jar
 .featureide
