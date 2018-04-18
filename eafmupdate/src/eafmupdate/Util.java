@@ -277,14 +277,15 @@ public class Util {
 	}
 		
 	/** the MutatedModel structure contains information also on the mutations applied. The model is cloned before being mutated 
-	 * @param mutators TODO*/
-	public static MutatedModel mutateRandomly(MutatedModel model, int order, List<FMMutator> mutators) {
+	 * @param mutators TODO
+	 * @param safe TODO*/
+	public static MutatedModel mutateRandomly(MutatedModel model, int order, List<FMMutator> mutators, boolean safe) {
 		MutatedModel fmodel = model.clone();
 		for (int i=0; i<order; i++) {
 			List<FMMutation> currMutants;
 			do {
 				FMMutator mutator = GenerateMutants.instance.getRandomMutator(mutators);  //GenerateMutants.fmMutators[GenerateMutants.rnd.nextInt(GenerateMutants.fmMutators.length)];
-				currMutants = CollectionsUtil.listFromIterator(mutator.mutate(fmodel.model));
+				currMutants = CollectionsUtil.listFromIterator(safe ? mutator.mutateSafe(fmodel.model) : mutator.mutate(fmodel.model));
 			} while (currMutants.isEmpty());
 			FMMutation mutation = currMutants.get(GenerateMutants.instance.rnd.nextInt(currMutants.size()));
 			fmodel.model = mutation.getFirst();
@@ -380,7 +381,10 @@ public class Util {
 		if (renamingMap==null) return fm;
 		for (Map.Entry<String,String> fname : renamingMap.entrySet()) {
 			IFeature f = fm.getFeature(fname.getKey());
-			if (f!=null) f.setName(fname.getValue());
+			if (f!=null) {
+				System.out.println("Renamed feature "+f.getName()+" into "+fname.getValue());
+				f.setName(fname.getValue());
+			}
 		}
 		return fm;
 	}

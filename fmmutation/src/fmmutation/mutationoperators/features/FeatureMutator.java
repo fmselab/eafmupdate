@@ -47,26 +47,31 @@ abstract class FeatureMutator extends FMMutator{
 			@Override
 			public FMMutation next() {
 				String featureName = featureNames.next();
-				// build a copy (deep) of the model to be mutated
-				IFeatureModel fm2 = fm.clone();
-				// get the same feature in the model
-				assert Utils.getFeatureNames(fm2).contains(featureName);
-				IFeature tobemutated = fm2.getFeature(featureName);
-				// mutate the cloned model
-				String result = mutate(fm2, tobemutated);
-				assert result != null;
-				// System.out.println(fm2.getRoot().isOr());
-				// System.out.println(fm2.toString());
-				// add some description or the mutation in the model
-				fm2.getProperty().addComment("mutation " + result);				
-				// 
-				return new FMMutation(fm2, mutationClazz, result);
+				return mutate(fm, featureName, mutationClazz);
 			}
 			@Override
 			public boolean hasNext() {
 				return featureNames.hasNext();				
 			}
 		};
+	}
+	
+	/** simulate mutation */
+	public FMMutation mutate(IFeatureModel fm, String featureName, Class<? extends FeatureMutator> mutationClazz) {
+		// build a copy (deep) of the model to be mutated
+		IFeatureModel fm2 = fm.clone();
+		// get the same feature in the model
+		assert Utils.getFeatureNames(fm2).contains(featureName);
+		IFeature tobemutated = fm2.getFeature(featureName);
+		// mutate the cloned model
+		String result = mutate(fm2, tobemutated);
+		assert result != null;
+		// System.out.println(fm2.getRoot().isOr());
+		// System.out.println(fm2.toString());
+		// add some description or the mutation in the model
+		fm2.getProperty().addComment("mutation " + result);				
+		// 
+		return new FMMutation(fm2, mutationClazz, result);
 	}
 
 	abstract boolean isMutable(IFeatureModel fm, IFeature tobemutated);

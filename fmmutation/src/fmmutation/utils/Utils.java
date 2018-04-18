@@ -5,6 +5,11 @@ import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.sat4j.specs.TimeoutException;
+
+import de.ovgu.featureide.fm.core.ConstraintAttribute;
+import de.ovgu.featureide.fm.core.FeatureModelAnalyzer;
+import de.ovgu.featureide.fm.core.base.IConstraint;
 import de.ovgu.featureide.fm.core.base.IFeature;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.base.impl.FMFactoryManager;
@@ -58,6 +63,31 @@ public class Utils{
 		Set<String> fnames = new HashSet<>();
 		for (IFeature a : fm.getFeatures()) fnames.add(a.getName());
 		return fnames;
+	}
+	
+	/**
+	 * If the candidate has no dead features, no redundant constraints
+	 * @param candidate the candidate mutated model
+	 * @return if the mutation is valid
+	 */
+	public static boolean isOk(IFeatureModel candidate) {
+		try {
+			FeatureModelAnalyzer analyzer = candidate.getAnalyser();
+			analyzer.calculateRedundantConstraints=true;
+			if (!analyzer.isValid()) {
+				return false;
+			}
+			if (analyzer.getDeadFeatures().size()>0) {
+				//System.out.println("Dead features: "+candidate.model.getAnalyser().getDeadFeatures().size());
+				return false;
+			}
+			for (IConstraint ctr : candidate.getConstraints()) {
+				if (ctr.getConstraintAttribute()==ConstraintAttribute.REDUNDANT) {
+					return false;
+				}
+			}
+		} catch (TimeoutException e) {e.printStackTrace();}
+		return true;
 	}
 
 }

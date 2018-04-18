@@ -47,8 +47,8 @@ public class ProcessRandom extends Process {
 		for (int j=0; j<maxOrder; j++) {
 			MutatedModel orderBest = best;
 			for (int i=0; i<nrand; i++) {
-				if (j==0) models.add(mutant = Util.mutateRandomly(best, 1, GenerateMutants.instance.getFmMutators()));
-				else models.set(i, mutant = Util.mutateRandomly(models.get(i), 1, GenerateMutants.instance.getFmMutators()));
+				if (j==0) models.add(mutant = Util.mutateRandomly(best, 1, GenerateMutants.instance.getFmMutators(), false));
+				else models.set(i, mutant = Util.mutateRandomly(models.get(i), 1, GenerateMutants.instance.getFmMutators(), false));
 				
 				double n = Util.getAdequacy(oracle, mutant.model);
 				values.add(n);

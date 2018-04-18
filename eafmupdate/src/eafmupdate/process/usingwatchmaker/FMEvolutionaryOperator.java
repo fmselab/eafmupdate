@@ -33,7 +33,7 @@ public class FMEvolutionaryOperator implements EvolutionaryOperator<MutatedModel
 	public List<MutatedModel> apply(List<MutatedModel> selectedCandidates, Random rng) {
 		List<MutatedModel> offspring = new ArrayList<>();
 		for (MutatedModel model : selectedCandidates) {
-			MutatedModel m = Util.mutateRandomly(model, 1, mutators);
+			MutatedModel m = Util.mutateRandomly(model, 1, mutators, true);
 			offspring.add(m);
 			allModels.remove(model);
 			allModels.add(m);

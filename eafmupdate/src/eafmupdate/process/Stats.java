@@ -130,6 +130,12 @@ public class Stats {
 	public boolean isRepaired() throws TimeoutException, IOException, FeatureModelException, ConfigurationEngineException, UnsupportedModelException {
 		return getAdequacy()==1.0;
 	}
+	
+	/** @return true if the model has been completely repaired, according to the oracle passed as parameter */
+	public boolean isRepairedSyntactically() {
+		//System.out.println("ISREPAIRED?: "+correct+" "+repaired.model);
+		return repaired.model.toString().equals(correct.toString());
+	}
 
 	/**
 	 * To create plots and tables, in R
@@ -179,6 +185,7 @@ public class Stats {
 				+ "," + avg
 				+ "," + max
 				+ "," + (finalAdq==1.0 ? "1" : "0");
+
 	}
 	
 	

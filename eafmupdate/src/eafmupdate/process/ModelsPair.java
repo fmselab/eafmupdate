@@ -214,7 +214,7 @@ public enum ModelsPair{
 			if (mutatedModel==null) {
 				System.out.println("Genero modello "+title);
 				int numMutations = (int)(Math.random()*11);
-				mutatedModel = Util.mutateRandomly(new MutatedModel(getFM2()), numMutations, GenerateMutants.instance.getFmMutators()).model;
+				mutatedModel = Util.mutateRandomly(new MutatedModel(getFM2()), numMutations, GenerateMutants.instance.getFmMutators(), true).model;
 				Util.saveTemporary(mutatedModel, "generated/", title);				
 			}
 			mutated.put(iteration, mutatedModel);

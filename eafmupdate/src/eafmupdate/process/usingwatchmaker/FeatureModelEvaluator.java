@@ -11,22 +11,39 @@ import eafmupdate.model.Oracle;
 
 public class FeatureModelEvaluator implements FitnessEvaluator<MutatedModel> {
 	
-	/** the oracle to compare with */ private Oracle oracle;
+	/** the oracle to compare with */ protected Oracle oracle;
 	
-	/** the initial FM, to which to compute differences */ private IFeatureModel initial;
+	/** the initial FM, to which to compute differences */ //private IFeatureModel initial;
 		
-	int numFeatures;
 	static int count=0;
 	
 	public FeatureModelEvaluator(Oracle oracle, IFeatureModel initial) {
 		this.oracle = oracle;
-		this.initial = initial;
-		this.numFeatures = oracle.getFeatureNames().size();
+		//this.initial = initial;
 	}
 	
 	@Override
 	public double getFitness(MutatedModel candidate, List<? extends MutatedModel> population) {
 		double adequacy = 0;
+		/*try {
+			//candidate.model.getAnalyser().calculateRedundantConstraints=true;
+			FeatureModelAnalyzer analyzer = candidate.model.getAnalyser();
+			if (!analyzer.isValid()) {
+				assert false : "Model not valid " + candidate.getLastMutation().toString();
+			
+				return 0;
+			}
+			if (analyzer.getDeadFeatures().size()>0) {
+				//System.out.println("Dead features: "+candidate.model.getAnalyser().getDeadFeatures().size());
+				assert false : "Dead features " + candidate.getLastMutation().toString();
+				return 0;
+			}
+			for (IConstraint c : candidate.model.getConstraints()) 
+				if (c.getConstraintAttribute()==ConstraintAttribute.REDUNDANT) {						
+					assert false : "Model not valid " + candidate.getLastMutation().toString();
+					return 0;
+				}
+		} catch (TimeoutException e) {e.printStackTrace();}*/
 		try {
 			adequacy = Util.getAdequacy(oracle, candidate.model);
 //			Util.saveTemporary(oracle.oracleFM, "output/temp/", "ORACLEHERE"+(count++));
@@ -39,10 +56,11 @@ public class FeatureModelEvaluator implements FitnessEvaluator<MutatedModel> {
 			System.out.println("Population size: "+(population==null ? "null" : population.size()));
 			System.exit(0);
 		}
+		
 		/*double editDistance = 1.0 - ((double)Util.getEditDistance(initial, candidate.model) / (double)(numFeatures*2));
 		double compactness = ((double) Util.getCompactness(candidate.model) / (double)numFeatures-1 );*/
 		
-		//return fitnessType.getFitness(adequacy, editDistance, compactness);
+		//return fitnessType.getFitness(adequacy, editDistance, compactness);		
 		return adequacy;
 		//return adequacy==1.0 ? 1.0 : ( weights[0]*adequacy + weights[1]*editDistance + weights[2]*compactness);
 	}
