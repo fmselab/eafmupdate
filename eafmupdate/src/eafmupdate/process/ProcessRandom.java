@@ -18,10 +18,10 @@ import splar.core.fm.configuration.ConfigurationEngineException;
 
 public class ProcessRandom extends Process {
 
-	private final int maxOrder, nrand, steadySteps;
+	protected final int maxOrder, nrand, steadySteps;
 	
 	/** used in the process, the starting time of the repair */
-	private long repairStart;
+	protected long repairStart;
 	
 	public ProcessRandom(int nrand, int maxOrder, int steadySteps) {
 		this.nrand=nrand;
