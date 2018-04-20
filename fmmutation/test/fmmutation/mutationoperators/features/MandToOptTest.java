@@ -16,7 +16,7 @@ import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.editing.NodeCreator;
 import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
 import fmmutation.mutationoperators.FMMutation;
-import fmmutation.mutationoperators.features.MandToOpt;
+import fmmutation.mutationoperators.features.ManToOpt;
 import fmmutation.utils.CollectionsUtil;
 import fmupdate.models.ExampleTaker;
 
@@ -30,43 +30,43 @@ public class MandToOptTest {
 		// a1 is mandatory ma non reale (non mutare)
 		IFeature a1 = fmodel.getFeature("a1");
 		assertTrue(a1.getStructure().isMandatory());
-		assertFalse(MandToOpt.isTrueMandatory(a1));
+		assertFalse(ManToOpt.isTrueMandatory(a1));
 		// B is mandatory reale (da mutare)
 		IFeature B = fmodel.getFeature("B");
 		assertTrue(B.getStructure().isMandatory());
-		assertTrue(MandToOpt.isTrueMandatory(B));
+		assertTrue(ManToOpt.isTrueMandatory(B));
 		// f is optional
 		IFeature f = fmodel.getFeature("f");
 		assertFalse(f.getStructure().isMandatory());
 		// d is mandatory reale (da mutare)
 		IFeature d = fmodel.getFeature("d");
 		assertTrue(d.getStructure().isMandatory());
-		assertTrue(MandToOpt.isTrueMandatory(d));
+		assertTrue(ManToOpt.isTrueMandatory(d));
 		//
 		IFeature c1 = fmodel.getFeature("c1");
 		assertTrue(c1.getStructure().isMandatory());
-		assertFalse(MandToOpt.isTrueMandatory(c1));
+		assertFalse(ManToOpt.isTrueMandatory(c1));
 		IFeature c2 = fmodel.getFeature("c2");
 		assertTrue(c2.getStructure().isMandatory());
-		assertFalse(MandToOpt.isTrueMandatory(c2));
+		assertFalse(ManToOpt.isTrueMandatory(c2));
 		IFeature g = fmodel.getFeature("g");
 		assertTrue(g.getStructure().isMandatory());
-		assertFalse(MandToOpt.isTrueMandatory(g));
+		assertFalse(ManToOpt.isTrueMandatory(g));
 		// i is mandatoria reale
 		IFeature i = fmodel.getFeature("i");
 		assertTrue(i.getStructure().isMandatory());
-		assertTrue(MandToOpt.isTrueMandatory(i));
+		assertTrue(ManToOpt.isTrueMandatory(i));
 		// w is not mandatory
 		IFeature w = fmodel.getFeature("w");
 		assertTrue(w.getStructure().isMandatory());
-		assertFalse(MandToOpt.isTrueMandatory(w));
+		assertFalse(ManToOpt.isTrueMandatory(w));
 	}
 
 	@Test
 	public void testMutation() throws FileNotFoundException,
 			UnsupportedModelException, NoSuchExtensionException {
 		IFeatureModel fmodel = ExampleTaker.readExample("models/modelfman.xml");
-		List<FMMutation> res = CollectionsUtil.listFromIterator(MandToOpt.instance.mutate(fmodel));	
+		List<FMMutation> res = CollectionsUtil.listFromIterator(ManToOpt.instance.mutate(fmodel));	
 		assertEquals(4,res.size());		
 	}
 
@@ -74,7 +74,7 @@ public class MandToOptTest {
 	public void testMutation4() throws FileNotFoundException,
 			UnsupportedModelException, NoSuchExtensionException {
 		IFeatureModel fmodel = ExampleTaker.readExample("models/model4.xml");
-		List<FMMutation> res = CollectionsUtil.listFromIterator(MandToOpt.instance.mutate(fmodel));	
+		List<FMMutation> res = CollectionsUtil.listFromIterator(ManToOpt.instance.mutate(fmodel));	
 		assertEquals(2,res.size());		
 	}
 	
@@ -82,7 +82,7 @@ public class MandToOptTest {
 	public void testMutation1Mandatory() throws FileNotFoundException,
 			UnsupportedModelException, NoSuchExtensionException {
 		IFeatureModel fmodel = ExampleTaker.readExample("models/model_one_mandatory.xml");
-		List<FMMutation> res = CollectionsUtil.listFromIterator(MandToOpt.instance.mutate(fmodel));	
+		List<FMMutation> res = CollectionsUtil.listFromIterator(ManToOpt.instance.mutate(fmodel));	
 		assertEquals(1,res.size());
 		// converto
 		Node ffm = NodeCreator.createNodes(fmodel,false);

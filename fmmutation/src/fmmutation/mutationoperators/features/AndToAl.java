@@ -7,11 +7,11 @@ import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import fmmutation.mutationoperators.FMMutator;
 
 /** transform AND to alternative */
-public class AndToAlt extends FeatureMutator {
+public class AndToAl extends FeatureMutator {
 
-	private static Logger logger = Logger.getLogger(AndToAlt.class);
+	private static Logger logger = Logger.getLogger(AndToAl.class);
 
-	public static FMMutator instance = new AndToAlt();
+	public static FMMutator instance = new AndToAl();
 
 	@Override
 	String mutate(IFeatureModel fm, IFeature tobemutated) {

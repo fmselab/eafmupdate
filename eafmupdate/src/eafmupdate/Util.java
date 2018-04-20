@@ -68,9 +68,11 @@ public class Util {
 	}
 	
 	private static Set<String> getFeaturesToAdd(Oracle oracle, IFeatureModel fm) {
-		Set<String> fnames = new HashSet<String>(getFeatureNames(oracle.originalFM));
+//		Set<String> fnames = new HashSet<String>(getFeatureNames(oracle.originalFM));
+		Set<String> fnames = new HashSet<String>();
+		if (oracle.oracleFM!=null) fnames.addAll(getFeatureNames(oracle.oracleFM));
 		if (oracle.neighbors!=null && oracle.neighbors.neighbors!=null) fnames.addAll(oracle.neighbors.neighbors.keySet());
-		fnames.removeAll(getFeatureNames(fm));
+		fnames.removeAll(getFeatureNames(oracle.originalFM));
 		return fnames;
 	}
 	
@@ -101,15 +103,22 @@ public class Util {
 	/** it adds missing features to fm, considering the neighbors */
 	public static void addMissingFeatures(Oracle oracle, IFeatureModel fm) {
 		Set<String> featureNamesToAdd = getFeaturesToAdd(oracle, fm);
+		System.out.println("Features to add: "+featureNamesToAdd);
+		System.out.println("Neighbors: "+oracle.neighbors.neighbors);
 		int placed = 0;
 		while (placed < featureNamesToAdd.size()) {
-			for (String fname : featureNamesToAdd) if (fm.getFeature(fname)==null && fm.getFeature(oracle.neighbors.neighbors.get(fname).keySet().iterator().next())!=null) {
-				Feature f = new Feature(fm, fname);
-				fm.addFeature(f);
-				IFeatureStructure parent = getParentToWhichAddFeature(oracle.neighbors, fm.getStructure().getRoot(), fname);
-				parent.addChild(f.getStructure());
+			for (String fname : featureNamesToAdd) {
+				if (fm.getFeature(fname)==null 
+					//&& oracle.neighbors.neighbors.get(fname)!=null
+					&& fm.getFeature(oracle.neighbors.neighbors.get(fname).keySet().iterator().next())!=null) {
+					Feature f = new Feature(fm, fname);
+					fm.addFeature(f);
+					IFeatureStructure parent = getParentToWhichAddFeature(oracle.neighbors, fm.getStructure().getRoot(), fname);
+					parent.addChild(f.getStructure());
+				} // otherwise it is already placed
+				//System.out.println(fm);
 				placed++;
-			}	
+			}
 		}
 		
 	}
@@ -382,7 +391,7 @@ public class Util {
 		for (Map.Entry<String,String> fname : renamingMap.entrySet()) {
 			IFeature f = fm.getFeature(fname.getKey());
 			if (f!=null) {
-				System.out.println("Renamed feature "+f.getName()+" into "+fname.getValue());
+				//System.out.println("Renamed feature "+f.getName()+" into "+fname.getValue());
 				f.setName(fname.getValue());
 			}
 		}

@@ -25,33 +25,39 @@ import splar.core.fm.configuration.ConfigurationEngineException;
  */
 public enum ModelsPair{
 	
-	WRONGEXAMPLE(Model.EXAMPLE_E1, Model.EXAMPLE),
+	WRONGEXAMPLE(Model.EXAMPLE_E1, Model.EXAMPLE, true),
 	EXAMPLE(Model.EXAMPLE, Model.EXAMPLE_E4),
-	EXAMPLE_XOR(Model.EXAMPLE_XOR, Model.EXAMPLE_E4),
+	EXAMPLE_XOR(Model.EXAMPLE_XOR, Model.EXAMPLE_E4, true),
 	REGISTER(Model.REGISTER_FAULT,Model.REGISTER),
 	FIGURE4(Model.FIGURE4_MR, Model.FIGURE4_ORACLE),
 	AIRCRAFT1(Model.AIRCRAFT1, Model.AIRCRAFT),
 	CONNECTOR1(Model.CONNECTOR1, Model.CONNECTOR),
 	
 	//MOBILE_MEDIA_V3_TO_V4("models/constraintrepair/MobileMediaV3.xml", "models/constraintrepair/MobileMediaV4.xml"),  // names not compatible (different case)
-	MOBILE_MEDIA_V4_TO_V5(Model.MOBILE_MEDIA_V4, Model.MOBILE_MEDIA_V5, true),
-	MOBILE_MEDIA_V5_TO_V6(Model.MOBILE_MEDIA_V5, Model.MOBILE_MEDIA_V6, true),
-	//MOBILE_MEDIA_V6_TO_V7("models/constraintrepair/MobileMediaV6.xml", "models/constraintrepair/MobileMediaV7.xml"),  // names not compatible (different case) 
-	MOBILE_MEDIA_V7_TO_V8(Model.MOBILE_MEDIA_V7, Model.MOBILE_MEDIA_V8, true),
+	//MOBILE_MEDIA_V4_TO_V5(Model.MOBILE_MEDIA_V4, Model.MOBILE_MEDIA_V5, true),
+	MOBILE_MEDIA_V5_TO_V6(Model.MOBILE_MEDIA_V5, Model.MOBILE_MEDIA_V6, "Favorites->Favorite", true),
+	MOBILE_MEDIA_V6_TO_V7(Model.MOBILE_MEDIA_V6, Model.MOBILE_MEDIA_V7, "Mobilemedia->MobileMedia;Albummanagement->AlbumManagement;Createalbum->CreateAlbum;Deletealbum->DeleteAlbum;Favorite->Favorites;Setfavorites->SetFavorites;Viewfavorites->ViewFavorites;Photomanagement->MediaManagement;Receivephoto->ReceivePhoto;Sendphoto->SendPhoto;SMStranfer->SMSTransfer;Copyphoto->CopyMedia;Createphoto->CapturePhoto;Deletephoto->DeleteMedia;Editphotolabel->EditMediaLabel;Viewphoto->ViewPhoto;Photooperation->BasicMediaOperation",true),  // names not compatible (different case) 
+	MOBILE_MEDIA_V7_TO_V8(Model.MOBILE_MEDIA_V7, Model.MOBILE_MEDIA_V8, "AlbumManagement->Albummanagement;SetFavorites->Setfavorites;ViewFavorites->Viewfavorites;MediaManagement->Mediamanagement;DeleteMedia->Deletemedia;EditMediaLabel->Editmedialabel;ViewPhoto->Viewphoto;CapturePhoto->Capturephoto;PlayMusic->Playmusic;MediaSelection->Mediaselection;SendPhoto->Sendphoto;ReceivePhoto->Receivephoto;SMSTransfer->SMStransfer;CopyMedia->Copymedia;BasicMediaOperation->Basicmediaoperation;MediaSelection->Mediaselection", true),
+	
+	MOBILE_MEDIA_V5_TO_V7(Model.MOBILE_MEDIA_V5, Model.MOBILE_MEDIA_V7, "Mobilemedia->MobileMedia;Albummanagement->AlbumManagement;Createalbum->CreateAlbum;Deletealbum->DeleteAlbum;Setfavorites->SetFavorites;Viewfavorites->ViewFavorites;Photomanagement->MediaManagement;Copyphoto->CopyMedia;Createphoto->CapturePhoto;Deletephoto->DeleteMedia;Editphotolabel->EditMediaLabel;Photooperation->BasicMediaOperation;Viewphoto->ViewPhoto",true),
+	MOBILE_MEDIA_V6_TO_V8(Model.MOBILE_MEDIA_V6, Model.MOBILE_MEDIA_V8, "Mobilemedia->MobileMedia;Createalbum->CreateAlbum;Deletealbum->DeleteAlbum;Favorite->Favorites;Photomanagement->Mediamanagement;Photooperation->Basicmediaoperation;Createphoto->Createmedia;Deletephoto->Deletemedia;Editphotolabel->Editmedialabel;Copyphoto->Copymedia;SMStranfer->SMStransfer;",true),  // names not compatible (different case) 
+	
+	MOBILE_MEDIA_V5_TO_V8(Model.MOBILE_MEDIA_V5, Model.MOBILE_MEDIA_V8, "Mobilemedia->MobileMedia;Createalbum->CreateAlbum;Deletealbum->DeleteAlbum;Photomanagement->Mediamanagement;Photooperation->Basicmediaoperation;Createphoto->Createmedia;Deletephoto->Deletemedia;Editphotolabel->Editmedialabel;Copyphoto->Copymedia",true),
+	
 	HELP_SYSTEM(Model.HELP_SYSTEM1, Model.HELP_SYSTEM2, true),
 	//ELEC("models/constraintrepair/elec1.xml", "models/constraintrepair/elec2.xml", true),
 	ERPSPLS(Model.ERPSPL_S1, Model.ERPSPL_S2, true),
-	SMARTHOME(Model.SMARTHOME_V2, Model.SMARTHOME_V22, true),
+	SMARTHOME(Model.SMARTHOME_V2, Model.SMARTHOME_V22, "ManualHeating->ManualHeating1;SmartHeating->AutomatedHeating;ElectronicWindows->AutomatedWindows;ManualLight->ManualIlumination;SmartLight->AutomatedIlumination;GUI->UI;PresenceSimulator->PresenceSimulation;BlindSimulation->BlindsSimulation;SmartSprinklers->AutomatedSprinklers;FingerPrintReader->FingerprintReader", true),
 	
 	// other models:
 	AIRCRAFT10(Model.AIRCRAFT10, Model.AIRCRAFT, true),
 	CONNECTOR10(Model.CONNECTOR10, Model.CONNECTOR, true),
-	EXAMPLE_ORDER_SWITCHED(Model.EXAMPLE_ORDER_SWITCHED, Model.EXAMPLE),
+	EXAMPLE_ORDER_SWITCHED(Model.EXAMPLE_ORDER_SWITCHED, Model.EXAMPLE, true),
 	//EXAMPLE_ORACLE("models/constraintrepair/example.xml", "models/constraintrepair/exampleE3.xml", getOracleExample()),
-	ERPSPL(Model.ERPSPL1, Model.ERPSPL2),
-	EXAMPLE_E2(Model.EXAMPLE_E2, Model.EXAMPLE),
-	EXAMPLE_E3(Model.EXAMPLE_E3, Model.EXAMPLE),
-	EASY(Model.EASY1, Model.EASY2),	
+	ERPSPL(Model.ERPSPL1, Model.ERPSPL2, true),
+	EXAMPLE_E2(Model.EXAMPLE_E2, Model.EXAMPLE, true),
+	EXAMPLE_E3(Model.EXAMPLE_E3, Model.EXAMPLE, true),
+	EASY(Model.EASY1, Model.EASY2, true),	
 	SIMPLE(Model.SIMPLEA, Model.SIMPLEB),
 	
 	PPU1_2(Model.PPU1, Model.PPU2, true), 
@@ -71,7 +77,7 @@ public enum ModelsPair{
 	PPU_XOR(Model.PPU_XOR, Model.PPU_XOR, true),
 	PPU_OPZIONALE(Model.PPU_OPZIONALE, Model.PPU_OPZIONALE, true),
 	
-	AIRCRAFT_EXAMPLE(Model.AIRCRAFT_EXAMPLE1, Model.AIRCRAFT_EXAMPLE2, "Matter\tMaterials", true),
+	AIRCRAFT_EXAMPLE(Model.AIRCRAFT_EXAMPLE1, Model.AIRCRAFT_EXAMPLE2, "Matter->Materials", true),
 	PPU4_5_NOCONSTR(Model.PPU4, Model.PPU5_NOCONSTR, true), 
 	
 	// PPU d=2
@@ -100,6 +106,11 @@ public enum ModelsPair{
 	CAR_2009_2010(Model.CAR_2009, Model.CAR_2010, true), 
 	CAR_2010_2011(Model.CAR_2010, Model.CAR_2011, true), 
 	CAR_2011_2012(Model.CAR_2011, Model.CAR_2012, true), 
+	
+	CAR_2009_2011(Model.CAR_2009, Model.CAR_2011, true), 
+	CAR_2010_2012(Model.CAR_2010, Model.CAR_2012, true), 
+	
+	CAR_2009_2012(Model.CAR_2009, Model.CAR_2012, true), 
 	;
 	
 	//private static Logger logger = Logger.getLogger(Models.class.getName());
@@ -152,7 +163,7 @@ public enum ModelsPair{
 	public Map<String,String> getRenameMap() {
 		if (rename==null || rename.isEmpty()) return null;
 		Map<String,String> renamingMap = new HashMap<>();
-		for (String s : rename.split(";")) renamingMap.put(s.split("\t")[0], s.split("\t")[1]);
+		for (String s : rename.split(";")) renamingMap.put(s.split("->")[0], s.split("->")[1]);
 		return renamingMap;
 	}
 	
@@ -163,6 +174,7 @@ public enum ModelsPair{
 	private Oracle generateOracle() throws TimeoutException {
 		IFeatureModel fm = getFM1();
 		IFeatureModel fmOracle = getFM2();
+		//System.out.println("Non rinomia? "+fm+" "+fmOracle);
 		return Util.generateOracle(fm, fmOracle);
 //		return new Oracle(fm, GenerateUpdateRequest.generateProductsToAdd(fmOracle, fm), GenerateUpdateRequest.generateProductsToRemove(fmOracle, fm), neighbors, fmOracle);
 	}
@@ -305,7 +317,7 @@ public enum ModelsPair{
 	}
 	
 	/**
-	 * type: 1->Fadd, 2->Frem, 3->CFadd, 4->CFrem, 5->FMbefore, 6->FMafter
+	 * type: 1->Fadd, 2->Frem, 3->CFadd, 4->CFrem, 5->FMbefore, 6->FMafter, 7->CFrename
 	 * @param type
 	 * @return
 	 * @throws TimeoutException
@@ -329,6 +341,7 @@ public enum ModelsPair{
 					IFeatureModel fm = m.clone();
 					Util.applyAddRem(o, fm);
 					n = 1-Util.getAdequacy(o, fm); break;
+				case 7: return "0";
 				}
 				sum+=n;
 				count++;
@@ -348,6 +361,7 @@ public enum ModelsPair{
 			IFeatureModel fm = getFM1();
 			Util.applyAddRem(getOracle(), fm);
 			return "" + f(1-Util.getAdequacy(getOracle(), fm));
+		case 7: return rename==null ? "0" : "" + (rename.split("->").length-1);
 		}
 		return "error";
 	}
@@ -357,7 +371,7 @@ public enum ModelsPair{
 		if(d <= 9999 && d == (long) d)
 	        return String.format("%d",(long)d);
 	    else {
-	    	if (d<0.01 || d>9999) return "$"+ new DecimalFormat("0.##E0").format(d).replace("E", " \\times 10^{").replace(",",".") + "}$";
+	    	if (d<0.01 || d>9999) return "$"+ new DecimalFormat("0.##E0").format(d).replace("E", " \times 10^{").replace(",",".") + "}$";
 	    	return new DecimalFormat("0.00").format(d).replace(",",".");
 	    }
 	       // return String.format("%f",d);

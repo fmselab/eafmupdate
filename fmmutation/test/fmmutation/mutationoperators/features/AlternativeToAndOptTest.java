@@ -11,7 +11,7 @@ import de.ovgu.featureide.fm.core.ExtensionManager.NoSuchExtensionException;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
 import fmmutation.mutationoperators.FMMutation;
-import fmmutation.mutationoperators.features.AltToAndOpt;
+import fmmutation.mutationoperators.features.AlToAndOpt;
 import fmmutation.utils.CollectionsUtil;
 import fmupdate.models.ExampleTaker;
 
@@ -24,7 +24,7 @@ public class AlternativeToAndOptTest {
 		
 		
 		IFeatureModel fmodel = ExampleTaker.readExample("examples_fmsfrompreprocessor/TKESSPLC11/Figure4_pv3.xml");
-		List<FMMutation> res = CollectionsUtil.listFromIterator(AltToAndOpt.instance.mutate(fmodel));
+		List<FMMutation> res = CollectionsUtil.listFromIterator(AlToAndOpt.instance.mutate(fmodel));
 
 		assertEquals(1,res.size());
 		System.out.println("ORIGINAL "+fmodel);

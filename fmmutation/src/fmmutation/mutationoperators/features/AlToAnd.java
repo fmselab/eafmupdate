@@ -8,15 +8,15 @@ import de.ovgu.featureide.fm.core.base.IFeatureStructure;
 import fmmutation.mutationoperators.FMMutator;
 
 /** transform alternative to AND */
-public class AltToAnd extends FeatureMutator {
+public class AlToAnd extends FeatureMutator {
 
-	private static Logger logger = Logger.getLogger(AltToAnd.class);
+	private static Logger logger = Logger.getLogger(AlToAnd.class);
 
-	public static FMMutator instance = new AltToAnd();
+	public static FMMutator instance = new AlToAnd();
 	
 	protected boolean convertToOpt;
 	
-	protected AltToAnd(){
+	protected AlToAnd(){
 		convertToOpt = false;
 	}
 	

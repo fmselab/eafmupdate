@@ -8,12 +8,12 @@ import de.ovgu.featureide.fm.core.base.IFeatureStructure;
 import fmmutation.mutationoperators.FMMutator;
 
 /** optional to mandatory */
-public class OptToMand extends FeatureMutator {
+public class OptToMan extends FeatureMutator {
 
-	private static Logger logger = Logger.getLogger(OptToMand.class
+	private static Logger logger = Logger.getLogger(OptToMan.class
 			.getName());
 
-	public static FMMutator instance = new OptToMand();
+	public static FMMutator instance = new OptToMan();
 
 	@Override
 	String mutate(IFeatureModel fm, IFeature feature) {

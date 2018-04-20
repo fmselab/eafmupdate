@@ -13,7 +13,7 @@ import de.ovgu.featureide.fm.core.ExtensionManager.NoSuchExtensionException;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
 import fmmutation.mutationoperators.FMMutation;
-import fmmutation.mutationoperators.features.AltToAnd;
+import fmmutation.mutationoperators.features.AlToAnd;
 import fmmutation.utils.CollectionsUtil;
 import fmmutation.utils.Pair;
 import fmupdate.models.ExampleTaker;
@@ -25,7 +25,7 @@ public class AlternativeToAndTest {
 	public void test() throws FileNotFoundException, UnsupportedModelException, NoSuchExtensionException {
 		IFeatureModel fm = ExampleTaker.readExample("models/model1fi.xml");
 		assertTrue(fm.getStructure().getRoot().isAlternative());
-		List<FMMutation> res = CollectionsUtil.listFromIterator(AltToAnd.instance.mutate(fm));
+		List<FMMutation> res = CollectionsUtil.listFromIterator(AlToAnd.instance.mutate(fm));
 		// only one mutation
 		assertEquals(1, res.size());
 		// the original is not mutated

@@ -40,7 +40,6 @@ public class FMEvolutionaryOperator implements EvolutionaryOperator<MutatedModel
 			allMutations.add(m.getLastMutation());
 			
 			count++;
-			
 		}
 		return offspring;
 	}

@@ -11,8 +11,9 @@ public class PrintProperties {
 
 	@Test
 	public void printModelProperties() {
-		System.out.println("name & sizeModel & sizeTarget & Fadd & Frem & CFadd & CFrem \\\\");
-		for (ModelsPair model : ModelsPair.getModelForExperiments()) {
+		System.out.println("name & sizeModel & sizeTarget & Fadd & Frem & CFadd & CFrem & CFrename \\\\");
+		//for (ModelsPair model : ModelsPair.getModelForExperiments()) {
+		for (ModelsPair model : ModelsPair.values()) {
 			System.out.println(getProperties(model));
 		}
 	}
@@ -31,12 +32,16 @@ public class PrintProperties {
 */
 					+ " & " + model.getSizeModel()
 					+ " & " + model.getFM2().getNumberOfFeatures()
+					
+					+ " & " + model.getSize(7)
+					
 					+ " & " + model.getSize(1)
 					+ " & " + model.getSize(2)
 					+ " & " + model.getSize(3)
 					+ " & " + model.getSize(4)
 					//+ " & " + model.getSize(5)
 					//+ " & " + model.getSize(6)
+					
 					
 //					+ " & " + (long)Util.getEditDistance(model.getOracle().oracleFM, model.getOracle().originalFM)
 //				+ " & " + Util.getCompactness(model.getFM1().getStructure().getRoot())

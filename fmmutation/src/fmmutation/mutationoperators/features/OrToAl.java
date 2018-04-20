@@ -7,12 +7,12 @@ import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import fmmutation.mutationoperators.FMMutator;
 
 /** transform alternative to or */
-public class OrToAlt extends FeatureMutator {
+public class OrToAl extends FeatureMutator {
 
-	private static Logger logger = Logger.getLogger(OrToAlt.class
+	private static Logger logger = Logger.getLogger(OrToAl.class
 			.getName());
 
-	public static FMMutator instance = new OrToAlt();
+	public static FMMutator instance = new OrToAl();
 
 	@Override
 	String mutate(IFeatureModel fm, IFeature feature) {

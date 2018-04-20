@@ -12,7 +12,7 @@ import de.ovgu.featureide.fm.core.base.IFeature;
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
 import fmmutation.mutationoperators.FMMutation;
-import fmmutation.mutationoperators.features.OptToMand;
+import fmmutation.mutationoperators.features.OptToMan;
 import fmmutation.utils.CollectionsUtil;
 import fmupdate.models.ExampleTaker;
 
@@ -31,7 +31,7 @@ public class OptionalToMandatoryTest {
 	public void testMutation() throws FileNotFoundException,
 			UnsupportedModelException, NoSuchExtensionException {
 		IFeatureModel fmodel = ExampleTaker.readExample("models/modelfman.xml");
-		List<FMMutation> res = CollectionsUtil.listFromIterator(OptToMand.instance.mutate(fmodel));	
+		List<FMMutation> res = CollectionsUtil.listFromIterator(OptToMan.instance.mutate(fmodel));	
 		assertEquals(1,res.size());		
 	}
 
@@ -39,7 +39,7 @@ public class OptionalToMandatoryTest {
 	public void testMutation2() throws FileNotFoundException,
 			UnsupportedModelException, NoSuchExtensionException {
 		IFeatureModel fmodel = ExampleTaker.readExample("models/model3.xml");
-		List<FMMutation> res = CollectionsUtil.listFromIterator(OptToMand.instance.mutate(fmodel));	
+		List<FMMutation> res = CollectionsUtil.listFromIterator(OptToMan.instance.mutate(fmodel));	
 		assertEquals(2,res.size());		
 	}
 

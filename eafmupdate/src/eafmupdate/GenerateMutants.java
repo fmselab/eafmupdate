@@ -19,14 +19,14 @@ import de.ovgu.featureide.fm.core.io.UnsupportedModelException;
 import de.ovgu.featureide.fm.core.io.xml.XmlFeatureModelFormat;
 import fmmutation.mutationoperators.FMMutation;
 import fmmutation.mutationoperators.FMMutator;
-import fmmutation.mutationoperators.features.AltToAnd;
-import fmmutation.mutationoperators.features.AltToAndOpt;
-import fmmutation.mutationoperators.features.AltToOr;
-import fmmutation.mutationoperators.features.AndToAlt;
+import fmmutation.mutationoperators.features.AlToAnd;
+import fmmutation.mutationoperators.features.AlToAndOpt;
+import fmmutation.mutationoperators.features.AlToOr;
+import fmmutation.mutationoperators.features.AndToAl;
 import fmmutation.mutationoperators.features.AndToOr;
-import fmmutation.mutationoperators.features.MandToOpt;
-import fmmutation.mutationoperators.features.OptToMand;
-import fmmutation.mutationoperators.features.OrToAlt;
+import fmmutation.mutationoperators.features.ManToOpt;
+import fmmutation.mutationoperators.features.OptToMan;
+import fmmutation.mutationoperators.features.OrToAl;
 import fmmutation.mutationoperators.features.OrToAnd;
 import fmmutation.mutationoperators.features.OrToAndOpt;
 import fmmutation.utils.CollectionsUtil;
@@ -64,16 +64,16 @@ public class GenerateMutants {
 		return Arrays.asList( 
 		//MissingFeature.instance,   // not possible to remove features
 		//ConstraintRemover.instance,
-		AltToAnd.instance,
-		AltToOr.instance, 
-		AltToAndOpt.instance,
-		OrToAlt.instance, 
+		AlToAnd.instance,
+		AlToOr.instance, 
+		AlToAndOpt.instance,
+		OrToAl.instance, 
 		OrToAnd.instance, 
 		OrToAndOpt.instance,
 		AndToOr.instance, 
-		MandToOpt.instance,
-		OptToMand.instance, 
-		AndToAlt.instance
+		ManToOpt.instance,
+		OptToMan.instance, 
+		AndToAl.instance
 		//NegationMutant.instance,
 		//LogicAndToOr.instance,
 		//LogicOrToAnd.instance,
