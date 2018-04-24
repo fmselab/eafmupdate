@@ -47,4 +47,10 @@ public class Neighbors {
 		}
 		return false;
 	}
+	
+	/** @return true if the feature has been added (it is in the neighbours map) */
+	public boolean hasBeenAdded(IFeatureStructure featuretobemoved) {
+		Map<String, Roles> n = neighbors.get(featuretobemoved.getFeature().toString());
+		return !(n==null || n.isEmpty());
+	}
 }

@@ -47,7 +47,7 @@ public class CompareOracleMutantBDD {
 	}
 
 	/** added by radavelli */
-	static Conformance getConformance(Oracle oracle, IFeatureModel mutant) throws TimeoutException, IOException, FeatureModelException, ConfigurationEngineException {
+	public static Conformance getConformance(Oracle oracle, IFeatureModel mutant) throws TimeoutException, IOException, FeatureModelException, ConfigurationEngineException {
 //		int numFeatures = oracle.getFeatureNames().size();
 		// all the common features
 		Set<String> features = oracle.getAllFeatureNames();
@@ -285,7 +285,7 @@ public class CompareOracleMutantBDD {
 	
 		
 	/** Radavelli. Method created to compute adequacy */
-	static int getBddsCountDiff(Oracle oracle, IFeatureModel fm2) throws IOException  {
+	public static int getBddsCountDiff(Oracle oracle, IFeatureModel fm2) throws IOException  {
 		//List<String> fmVars = new ArrayList<>(Util.getFeatureNames(oracle.originalFM));
 		//fm.getFeatureOrderList();
 		//FMToBDD f2bdd = new FMToBDD(fmVars);
@@ -340,8 +340,10 @@ public class CompareOracleMutantBDD {
 		//ats = and.allsat();
 		//while (sats.hasNext()) System.out.println(Arrays.toString(sats.nextSat()));
 		
-		int diff = (int)((bddOracle.satCount() - and.satCount()) +
-					 (bddModel.satCount() - and.satCount()) );
+		double andCount = and.satCount();
+		
+		int diff = (int)((bddOracle.satCount() - andCount) +
+					 (bddModel.satCount() - andCount) );
 		/*System.out.println("AND pathCount " + and.pathCount() + " satCount " + and.satCount());
 		and.printDot();
 		//printSolutions(and);

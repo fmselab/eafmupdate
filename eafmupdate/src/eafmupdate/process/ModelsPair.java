@@ -47,7 +47,7 @@ public enum ModelsPair{
 	HELP_SYSTEM(Model.HELP_SYSTEM1, Model.HELP_SYSTEM2, true),
 	//ELEC("models/constraintrepair/elec1.xml", "models/constraintrepair/elec2.xml", true),
 	ERPSPLS(Model.ERPSPL_S1, Model.ERPSPL_S2, true),
-	SMARTHOME(Model.SMARTHOME_V2, Model.SMARTHOME_V22, "ManualHeating->ManualHeating1;SmartHeating->AutomatedHeating;ElectronicWindows->AutomatedWindows;ManualLight->ManualIlumination;SmartLight->AutomatedIlumination;GUI->UI;PresenceSimulator->PresenceSimulation;BlindSimulation->BlindsSimulation;SmartSprinklers->AutomatedSprinklers;FingerPrintReader->FingerprintReader", true),
+	SMARTHOME(Model.SMARTHOME_V2, Model.SMARTHOME_V22, "ManualHeating->ManualHeating1;SmartHeating->AutomatedHeating;ElectronicWindows->AutomatedWindows;ManualLight->ManualIlumination;SmartLight->AutomatedIlumination;GUI->UI;PresenceSimulator->PresenceSimulation;BlindSimulation->BlindsSimulation;SmartSprinklers->AutomatedSprinklers;FingerPrintReader->FingerprintReader;HeatingManagement->HeatingControl;MusicSimulation->AVSimulation", true),
 	
 	// other models:
 	AIRCRAFT10(Model.AIRCRAFT10, Model.AIRCRAFT, true),
@@ -371,7 +371,7 @@ public enum ModelsPair{
 		if(d <= 9999 && d == (long) d)
 	        return String.format("%d",(long)d);
 	    else {
-	    	if (d<0.01 || d>9999) return "$"+ new DecimalFormat("0.##E0").format(d).replace("E", " \times 10^{").replace(",",".") + "}$";
+	    	if (d<0.01 || d>9999) return "$"+ new DecimalFormat("0.##E0").format(d).replace("E", " \\times 10^{").replace(",",".") + "}$";
 	    	return new DecimalFormat("0.00").format(d).replace(",",".");
 	    }
 	       // return String.format("%f",d);

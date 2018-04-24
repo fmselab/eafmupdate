@@ -93,11 +93,11 @@ public class Util {
 		for (Entry<String, Roles> e : n.entrySet()) {
 			if (e.getValue().containsRole(Role.PARENT)) {
 				IFeatureStructure ret = findFeatureFromName(root, e.getKey());
-				return ret==null ? root : ret;
+				return ret;
 			}
 		}
 		IFeatureStructure ret = findFeatureFromName(root, n.keySet().iterator().next());
-		return ret==null ? root : ret;
+		return ret;
 	}
 	
 	/** it adds missing features to fm, considering the neighbors */
@@ -106,19 +106,33 @@ public class Util {
 		System.out.println("Features to add: "+featureNamesToAdd);
 		System.out.println("Neighbors: "+oracle.neighbors.neighbors);
 		int placed = 0;
+		int i=0;
+		Set<String> placedFeatures = new HashSet<>();
+		System.out.println(featureNamesToAdd.size());
 		while (placed < featureNamesToAdd.size()) {
+			i++;
 			for (String fname : featureNamesToAdd) {
 				if (fm.getFeature(fname)==null 
 					//&& oracle.neighbors.neighbors.get(fname)!=null
-					&& fm.getFeature(oracle.neighbors.neighbors.get(fname).keySet().iterator().next())!=null) {
+					//&& fm.getFeature(oracle.neighbors.neighbors.get(fname).keySet().iterator().next())!=null) {
+					&& getParentToWhichAddFeature(oracle.neighbors, fm.getStructure().getRoot(), fname)!=null) {
 					Feature f = new Feature(fm, fname);
 					fm.addFeature(f);
 					IFeatureStructure parent = getParentToWhichAddFeature(oracle.neighbors, fm.getStructure().getRoot(), fname);
 					parent.addChild(f.getStructure());
+					placed++;
+					placedFeatures.add(fname);
 				} // otherwise it is already placed
 				//System.out.println(fm);
-				placed++;
+				if (i>100) {
+					System.out.println("Place features: "+placed+" "+placedFeatures);
+					featureNamesToAdd.removeAll(placedFeatures);
+					System.out.println("Remaining features: "+featureNamesToAdd);
+					System.out.println("Model: "+fm);
+					return;
+				}
 			}
+			
 		}
 		
 	}
@@ -138,6 +152,7 @@ public class Util {
 	/** it removed the exceeding features from fm */
 	public static void removeOverabundantFeatures(IFeatureModel oracle, IFeatureModel fm) {
 		Set<String> featureNamesToRemove = Util.getFeatureNamesIn2NotIn1(oracle, fm);
+		System.out.println("Features to remove: "+featureNamesToRemove);
 		for (String fname : featureNamesToRemove) {
 			fm.deleteFeature(fm.getFeature(fname));
 			//fm.getFeature(fname).getStructure().setAbstract(true);

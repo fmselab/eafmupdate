@@ -42,10 +42,10 @@ public class Stats {
 	public double max;
 	
 	/** all the mutated models obtained */
-	public List<MutatedModel> models = new ArrayList<>();
+	protected List<MutatedModel> models = new ArrayList<>();
 	
 	/** all the mutations applied */
-	public List<FMMutation> allMutations = new ArrayList<>();
+	protected List<FMMutation> allMutations = new ArrayList<>();
 	
 	/** the oracle, in the real, usual format */
 	public Oracle oracle;
@@ -65,6 +65,11 @@ public class Stats {
 	
 	/** used for the merge operators. Set at which stage the first repair process ends, and the second starts */
 	private List<Integer> orderForStep = new ArrayList<>();
+	
+	/** constructor of couples */
+	public Stats(Stats s) {
+		this(s.initial, s.oracle, s.correct, s.repaired, s.time, s.mutations, s.order, s.min, s.avg, s.max, s.models, s.allMutations, s.bestFitnesses);
+	}
 	
 	private Stats(IFeatureModel initial, Oracle oracle, IFeatureModel correct, MutatedModel repaired, long time, int mutations, 
 			int order, double min, double avg, double max, List<MutatedModel> models) {

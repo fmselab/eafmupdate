@@ -18,6 +18,8 @@ import net.sf.javabdd.BDD;
  */
 public class Oracle {
 	
+	public static Oracle currentOracle;
+	
 	/** the original IFeatureModel. Does NOT contain additional features */
 	public IFeatureModel originalFM;
 	
@@ -47,6 +49,7 @@ public class Oracle {
 	
 	private Oracle(IFeatureModel original) {
 		this.originalFM = original;
+		currentOracle = this; // sets the static field representing the only oracle instance that should be in the process of one model
 	}
 	
 	public Oracle(IFeatureModel original, Neighbors neighbors) {
