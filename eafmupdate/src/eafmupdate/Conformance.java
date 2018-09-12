@@ -1,19 +1,19 @@
 package eafmupdate;
 
 public class Conformance {
-	private long numConfigurations;
-	private long numConfsJudgedCorrectly;
+	private double numConfigurations;
+	private double numConfsJudgedCorrectly;
 
-	public Conformance(long numConfigurations, long numConfsJudgedCorrectly) {
+	public Conformance(double numConfigurations, double numConfsJudgedCorrectly) {
 		this.numConfigurations = numConfigurations;
 		this.numConfsJudgedCorrectly = numConfsJudgedCorrectly;
 	}
 
-	public long getNumConfigurations() {
+	public double getNumConfigurations() {
 		return numConfigurations;
 	}
 
-	public long getNumConfsJudgedCorrectly() {
+	public double getNumConfsJudgedCorrectly() {
 		return numConfsJudgedCorrectly;
 	}
 
@@ -37,5 +37,10 @@ public class Conformance {
 	@Override
 	public String toString() {
 		return numConfsJudgedCorrectly + "/" + numConfigurations;  
+	}
+	
+	public double getNumConfsJudgedIncorrectly() {
+//		System.err.println("CONFIGS: "+numConfigurations+" "+numConfsJudgedCorrectly);
+		return numConfigurations - numConfsJudgedCorrectly;
 	}
 }

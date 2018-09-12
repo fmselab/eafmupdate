@@ -61,8 +61,8 @@ public class BDDTest {
 		
 		System.out.println(GenerateUpdateRequest.computeProductsToAddOrRemove(oracle, fm, true) + "\n"
 				+ GenerateUpdateRequest.computeProductsToAddOrRemove(oracle, fm, false) + "\nTo Add: "
-				+ GenerateUpdateRequest.generateProductsToAdd(oracle.oracleFM, fm) + "\nToRemove: "
-				+ GenerateUpdateRequest.generateProductsToRemove(oracle.oracleFM, fm));
+				+ GenerateUpdateRequest.enumerateProducts(oracle.oracleFM, fm, true) + "\nToRemove: "
+				+ GenerateUpdateRequest.enumerateProducts(oracle.oracleFM, fm, false));
 		System.out.println("FR: "+(1-Util.getAdequacy(oracle, fm)));
 	}
 	
@@ -72,8 +72,8 @@ public class BDDTest {
 		IFeatureModel fm2 = ModelsPair.PPU1_2.getFM1();
 		System.out.println(GenerateUpdateRequest.computeProductsToAddOrRemove(fm1,fm2, true) + "\n"
 				+ GenerateUpdateRequest.computeProductsToAddOrRemove(fm1,fm2, false) + "\nTo Add: "
-				+ GenerateUpdateRequest.generateProductsToAdd(fm1,fm2) + "\nToRemove: "
-				+ GenerateUpdateRequest.generateProductsToRemove(fm1,fm2));
+				+ GenerateUpdateRequest.enumerateProducts(fm1,fm2, true) + "\nToRemove: "
+				+ GenerateUpdateRequest.enumerateProducts(fm1,fm2, false));
 		System.out.println("FR: "+(1-Util.getAdequacy(fm1,fm2)));
 	}
 }

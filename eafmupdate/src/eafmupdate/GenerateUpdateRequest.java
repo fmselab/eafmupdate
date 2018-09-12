@@ -11,7 +11,6 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.prop4j.FMToBDD;
-import org.sat4j.specs.TimeoutException;
 
 import de.ovgu.featureide.fm.core.base.IFeatureModel;
 import de.ovgu.featureide.fm.core.base.IFeatureStructure;
@@ -33,99 +32,8 @@ public class GenerateUpdateRequest {
 	
 	private static Logger logger = Logger.getLogger(GenerateUpdateRequest.class.getName());
 	
-	public static List<Map<String,Boolean>> generateProductsToAdd(IFeatureModel oracle, IFeatureModel fm) throws TimeoutException {
-		List<Map<String,Boolean>> products = new ArrayList<>();
-		fm = fm.clone();
-		Util.addMissingFeatures(oracle, fm);
-		Util.removeOverabundantFeatures(oracle, fm);
+	protected static BDD computeBDDDifference(IFeatureModel fm, IFeatureModel fm2, boolean add) {			
 		
-		List<String> fmVars = new ArrayList<>(Util.getAllFeatures(oracle, fm));
-		//fm.getFeatureOrderList();
-		FMToBDD f2bdd = new FMToBDD(fmVars);
-		
-		BDD bdd2 = f2bdd.nodeToBDD(NodeCreator.createNodes(fm));
-		BDD bdd = f2bdd.nodeToBDD(NodeCreator.createNodes(oracle));
-		
-		Set<String> varO = Util.getFeatureNames(oracle);
-		Set<String> varM = Util.getFeatureNames(fm);
-		Set<String> varONotM = new HashSet<>(), varMNotO = new HashSet<>();
-		for (String s : varO) if (!varM.contains(s)) varONotM.add(s);
-		for (String s : varM) if (!varO.contains(s)) varMNotO.add(s);
-		
-		BDD bddOracle = null;
-		for (String s : varMNotO) {
-			int elem = fmVars.indexOf(s);
-			assert elem >= 0 : "element not found " + s;
-			BDD b = f2bdd.init.nithVar(elem);
-			bddOracle = (bddOracle==null ? bdd : bddOracle).and(b);
-		}
-		if (bddOracle==null) bddOracle = bdd;
-		BDD bddModel = null;
-		for (String s : varONotM) {
-			int elem = fmVars.indexOf(s);
-			assert elem >= 0 : "element not found " + s;
-			BDD b = f2bdd.init.nithVar(elem);
-			bddModel = (bddModel==null ? bdd2 : bddModel).and(b);
-		}
-		if (bddModel==null) bddModel = bdd2;
-		
-		BDD weakening = bddOracle.and(bddModel.not());
-		
-		AllSatIterator configs = weakening.allsat();
-		while (configs.hasNext()) {
-			byte[] sat = configs.nextSat();
-			logger.debug(Arrays.toString(sat));
-			Map<String,Boolean> product = new HashMap<String, Boolean>();
-			for (int i=0; i<sat.length; i++) if (sat[i]!=-1) product.put(fmVars.get(i), sat[i]==1); // if it is not a don't care value
-			products.add(product);
-		}
-		return products;
-	}
-	
-	public static List<Map<String,Boolean>> generateProductsToRemove(IFeatureModel oracle, IFeatureModel fm) {
-		List<Map<String,Boolean>> products = new ArrayList<>();
-		List<String> fmVars = new ArrayList<>(Util.getAllFeatures(oracle, fm));
-		logger.debug(Arrays.toString(fmVars.toArray()));
-		FMToBDD f2bdd = new FMToBDD(fmVars);
-		
-		BDD bdd = f2bdd.nodeToBDD(NodeCreator.createNodes(fm));
-		BDD bdd2 = f2bdd.nodeToBDD(NodeCreator.createNodes(oracle));
-		BDD strengthening = bdd.andWith(bdd2.not());
-		
-		AllSatIterator configs = strengthening.allsat();
-		while (configs.hasNext()) {
-			byte[] sat = configs.nextSat();
-			logger.debug(Arrays.toString(sat));
-			Map<String,Boolean> product = new HashMap<String, Boolean>();
-			for (int i=0; i<sat.length; i++) if (sat[i]!=-1) product.put(fmVars.get(i), sat[i]==1); // if it is not a don't care value
-			products.add(product);
-		}		
-		
-		return products;
-	}
-	
-	public static long getNumCFadd(Oracle oracle) {
-		return GenerateUpdateRequest.computeProductsToAddOrRemove(oracle, oracle.originalFM, true);
-	}
-
-	public static long getNumCFrem(Oracle oracle) {
-		return GenerateUpdateRequest.computeProductsToAddOrRemove(oracle, oracle.originalFM, false);
-	}
-
-
-	
-	public static long computeProductsToAddOrRemove(Oracle oracle, IFeatureModel fm, boolean add) {
-		return computeProductsToAddOrRemove(fm,oracle.oracleFM,add);
-	
-	}
-	public static long computeProductsToAddOrRemove(IFeatureModel fm, IFeatureModel fm2) {
-		return 
-				computeProductsToAddOrRemove(fm,fm2,true)+
-				computeProductsToAddOrRemove(fm,fm2,false);
-	}
-	
-	public static long computeProductsToAddOrRemove(IFeatureModel fm, IFeatureModel fm2, boolean add) {			
-			
 		fm = fm.clone();
 		//Util.addMissingFeatures(oracle, fm);
 		//Util.removeOverabundantFeatures(oracle.oracleFM, fm);
@@ -176,6 +84,7 @@ public class GenerateUpdateRequest {
 		
 		BDD difference = (add ? bddOracle.and(bddModel.not()) : bddModel.and(bddOracle.not()));
 		
+		return difference;
 		/*System.out.println("Products: ");
 		AllSatIterator x = difference.allsat();
 		while (x.hasNext()) {
@@ -185,8 +94,46 @@ public class GenerateUpdateRequest {
 			for (int i=0; i<sat.length; i++) if (sat[i]!=-1) product.put(fmVars.get(i), sat[i]==1); // if it is not a don't care value
 			System.out.print(product+" ");
 		}
-		System.out.println();*/
-		
+		System.out.println();*/		
+	}
+
+	
+	public static List<Map<String,Boolean>> enumerateProducts(IFeatureModel fm, IFeatureModel fm2, boolean add) {
+		List<Map<String,Boolean>> products = new ArrayList<>();
+		List<String> fmVars = new ArrayList<>(Util.getAllFeatures(fm, fm2));
+		BDD difference = computeBDDDifference(fm, fm2, add);
+		AllSatIterator configs = difference.allsat();
+		while (configs.hasNext()) {
+			byte[] sat = configs.nextSat();
+			logger.debug(Arrays.toString(sat));
+			Map<String,Boolean> product = new HashMap<String, Boolean>();
+			for (int i=0; i<sat.length; i++) if (sat[i]!=-1) product.put(fmVars.get(i), sat[i]==1); // if it is not a don't care value
+			products.add(product);
+		}
+		return products;
+	}
+	
+	public static long getNumCFadd(Oracle oracle) {
+		return GenerateUpdateRequest.computeProductsToAddOrRemove(oracle, oracle.originalFM, true);
+	}
+
+	public static long getNumCFrem(Oracle oracle) {
+		return GenerateUpdateRequest.computeProductsToAddOrRemove(oracle, oracle.originalFM, false);
+	}
+
+
+	public static long computeProductsToAddOrRemove(Oracle oracle, IFeatureModel fm, boolean add) {
+		return computeProductsToAddOrRemove(fm,oracle.oracleFM,add);
+	
+	}
+	public static long computeProductsToAddOrRemove(IFeatureModel fm, IFeatureModel fm2) {
+		return 
+				computeProductsToAddOrRemove(fm,fm2,true)+
+				computeProductsToAddOrRemove(fm,fm2,false);
+	}
+	
+	public static long computeProductsToAddOrRemove(IFeatureModel fm, IFeatureModel fm2, boolean add) {						
+		BDD difference = computeBDDDifference(fm, fm2, add);
 		return (long)difference.satCount();
 	}
 	
@@ -206,3 +153,80 @@ public class GenerateUpdateRequest {
 	}
 	
 }
+
+
+
+
+
+
+//  ****** OBSOLETE METHODS ***************
+//public static List<Map<String,Boolean>> generateProductsToAdd(IFeatureModel oracle, IFeatureModel fm) throws TimeoutException {
+//	List<Map<String,Boolean>> products = new ArrayList<>();
+//	fm = fm.clone();
+//	Util.addMissingFeatures(oracle, fm);
+//	Util.removeOverabundantFeatures(oracle, fm);
+//	
+//	List<String> fmVars = new ArrayList<>(Util.getAllFeatures(oracle, fm));
+//	//fm.getFeatureOrderList();
+//	FMToBDD f2bdd = new FMToBDD(fmVars);
+//	
+//	BDD bdd2 = f2bdd.nodeToBDD(NodeCreator.createNodes(fm));
+//	BDD bdd = f2bdd.nodeToBDD(NodeCreator.createNodes(oracle));
+//	
+//	Set<String> varO = Util.getFeatureNames(oracle);
+//	Set<String> varM = Util.getFeatureNames(fm);
+//	Set<String> varONotM = new HashSet<>(), varMNotO = new HashSet<>();
+//	for (String s : varO) if (!varM.contains(s)) varONotM.add(s);
+//	for (String s : varM) if (!varO.contains(s)) varMNotO.add(s);
+//	
+//	BDD bddOracle = null;
+//	for (String s : varMNotO) {
+//		int elem = fmVars.indexOf(s);
+//		assert elem >= 0 : "element not found " + s;
+//		BDD b = f2bdd.init.nithVar(elem);
+//		bddOracle = (bddOracle==null ? bdd : bddOracle).and(b);
+//	}
+//	if (bddOracle==null) bddOracle = bdd;
+//	BDD bddModel = null;
+//	for (String s : varONotM) {
+//		int elem = fmVars.indexOf(s);
+//		assert elem >= 0 : "element not found " + s;
+//		BDD b = f2bdd.init.nithVar(elem);
+//		bddModel = (bddModel==null ? bdd2 : bddModel).and(b);
+//	}
+//	if (bddModel==null) bddModel = bdd2;
+//	
+//	BDD weakening = bddOracle.and(bddModel.not());
+//	
+//	AllSatIterator configs = weakening.allsat();
+//	while (configs.hasNext()) {
+//		byte[] sat = configs.nextSat();
+//		logger.debug(Arrays.toString(sat));
+//		Map<String,Boolean> product = new HashMap<String, Boolean>();
+//		for (int i=0; i<sat.length; i++) if (sat[i]!=-1) product.put(fmVars.get(i), sat[i]==1); // if it is not a don't care value
+//		products.add(product);
+//	}
+//	return products;
+//}
+//
+//public static List<Map<String,Boolean>> generateProductsToRemove(IFeatureModel oracle, IFeatureModel fm) {
+//	List<Map<String,Boolean>> products = new ArrayList<>();
+//	List<String> fmVars = new ArrayList<>(Util.getAllFeatures(oracle, fm));
+//	logger.debug(Arrays.toString(fmVars.toArray()));
+//	FMToBDD f2bdd = new FMToBDD(fmVars);
+//	
+//	BDD bdd = f2bdd.nodeToBDD(NodeCreator.createNodes(fm));
+//	BDD bdd2 = f2bdd.nodeToBDD(NodeCreator.createNodes(oracle));
+//	BDD strengthening = bdd.andWith(bdd2.not());
+//	
+//	AllSatIterator configs = strengthening.allsat();
+//	while (configs.hasNext()) {
+//		byte[] sat = configs.nextSat();
+//		logger.debug(Arrays.toString(sat));
+//		Map<String,Boolean> product = new HashMap<String, Boolean>();
+//		for (int i=0; i<sat.length; i++) if (sat[i]!=-1) product.put(fmVars.get(i), sat[i]==1); // if it is not a don't care value
+//		products.add(product);
+//	}		
+//	
+//	return products;
+//}

@@ -103,8 +103,8 @@ public class Util {
 	/** it adds missing features to fm, considering the neighbors */
 	public static void addMissingFeatures(Oracle oracle, IFeatureModel fm) {
 		Set<String> featureNamesToAdd = getFeaturesToAdd(oracle, fm);
-		System.out.println("Features to add: "+featureNamesToAdd);
-		System.out.println("Neighbors: "+oracle.neighbors.neighbors);
+//		System.out.println("Features to add: "+featureNamesToAdd);
+//		System.out.println("Neighbors: "+oracle.neighbors.neighbors);
 		int placed = 0;
 		int i=0;
 		Set<String> placedFeatures = new HashSet<>();
@@ -152,7 +152,7 @@ public class Util {
 	/** it removed the exceeding features from fm */
 	public static void removeOverabundantFeatures(IFeatureModel oracle, IFeatureModel fm) {
 		Set<String> featureNamesToRemove = Util.getFeatureNamesIn2NotIn1(oracle, fm);
-		System.out.println("Features to remove: "+featureNamesToRemove);
+//		System.out.println("Features to remove: "+featureNamesToRemove);
 		for (String fname : featureNamesToRemove) {
 			fm.deleteFeature(fm.getFeature(fname));
 			//fm.getFeature(fname).getStructure().setAbstract(true);
