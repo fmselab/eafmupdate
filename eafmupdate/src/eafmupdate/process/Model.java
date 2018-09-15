@@ -23,8 +23,10 @@ public enum Model {
 	AIRCRAFT("splotmodels_new/featureIDE/aircraft_fm.xml"),
 	CONNECTOR1("constraintrepair/connectorFaultSeeded.xml"),
 	CONNECTOR("splotmodels_new/featureIDE/connector_fm.xml"),
-	AIRCRAFT_EXAMPLE_V1("constraintrepair/aircraftFault.xml"),
-	AIRCRAFT_EXAMPLE_V2("splotmodels_new/featureIDE/aircraft_fm.xml"),
+//	AIRCRAFT_EXAMPLE_V1("constraintrepair/aircraftExample1.xml"),
+//	AIRCRAFT_EXAMPLE_V2("constraintrepair/aircraftExample2.xml"),
+//	AIRCRAFT_EXAMPLE_V1("constraintrepair/aircraftFault.xml"),
+//	AIRCRAFT_EXAMPLE_V2("splotmodels_new/featureIDE/aircraft_fm.xml"),
 	
 	// Benchmarks
 	MOBILE_MEDIA_V3("constraintrepair/MobileMediaV3.xml"),
@@ -79,12 +81,17 @@ public enum Model {
 	AIRCRAFT_EXAMPLE1("constraintrepair/aircraftExample1.xml"),
 	AIRCRAFT_EXAMPLE2("constraintrepair/aircraftExample2.xml"),
 	
+	AIRCRAFT_EXAMPLE1s("constraintrepair/aircraftExample1s.xml"),
+	AIRCRAFT_EXAMPLE2s("constraintrepair/aircraftExample2s.xml"),
+	
 	PPU5_NOCONSTR("examples_fmsfrompreprocessor/lochau_asej16/ppu_5_noConstraints.xml"),
 	
 	CAR_2009("examples_fmsfrompreprocessor/pleuss_jss11/car_2009.xml"), 
 	CAR_2010("examples_fmsfrompreprocessor/pleuss_jss11/car_2010.xml"),
 	CAR_2011("examples_fmsfrompreprocessor/pleuss_jss11/car_2011.xml"),
 	CAR_2012("examples_fmsfrompreprocessor/pleuss_jss11/car_2012.xml"),
+	
+	CAR_2009e("examples_fmsfrompreprocessor/pleuss_jss11/car_20094paper.xml"),	
 	;
 	
 	//private static Logger logger = Logger.getLogger(Models.class.getName());

@@ -78,6 +78,7 @@ public enum ModelsPair{
 	PPU_OPZIONALE(Model.PPU_OPZIONALE, Model.PPU_OPZIONALE, true),
 	
 	AIRCRAFT_EXAMPLE(Model.AIRCRAFT_EXAMPLE1, Model.AIRCRAFT_EXAMPLE2, "Matter->Materials", true),
+	AIRCRAFT_EXAMPLEs(Model.AIRCRAFT_EXAMPLE1s, Model.AIRCRAFT_EXAMPLE2s, "Matter->Materials", true),
 	PPU4_5_NOCONSTR(Model.PPU4, Model.PPU5_NOCONSTR, true), 
 	
 	// PPU d=2
@@ -111,6 +112,8 @@ public enum ModelsPair{
 	CAR_2010_2012(Model.CAR_2010, Model.CAR_2012, true), 
 	
 	CAR_2009_2012(Model.CAR_2009, Model.CAR_2012, true), 
+	
+	CAR_EXAMPLE(Model.CAR_2009, Model.CAR_2009e, "Monochrome Radio Display->Monochrome Display;Color Radio Display->Color Display", true),
 	;
 	
 	//private static Logger logger = Logger.getLogger(Models.class.getName());
