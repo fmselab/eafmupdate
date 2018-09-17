@@ -13,7 +13,6 @@
                 </and>
                 <feature name="DVD Entertainment"/>
             </and>
-            <feature mandatory="true" name="Other Features"/>
         </and>
     </struct>
     <constraints>
