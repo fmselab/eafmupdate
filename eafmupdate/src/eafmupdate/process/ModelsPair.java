@@ -114,6 +114,7 @@ public enum ModelsPair{
 	CAR_2009_2012(Model.CAR_2009, Model.CAR_2012, true), 
 	
 	CAR_EXAMPLE(Model.CAR_2009, Model.CAR_2009e, "Monochrome Radio Display->Monochrome Display;Color Radio Display->Color Display", true),
+	CAR_EXAMPLE2(Model.CAR_2011, Model.CAR_2011e, "Monochrome Radio Display->Radio Display", true),
 	;
 	
 	//private static Logger logger = Logger.getLogger(Models.class.getName());

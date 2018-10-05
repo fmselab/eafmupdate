@@ -92,6 +92,7 @@ public enum Model {
 	CAR_2012("examples_fmsfrompreprocessor/pleuss_jss11/car_2012.xml"),
 	
 	CAR_2009e("examples_fmsfrompreprocessor/pleuss_jss11/car_20094paper.xml"),	
+	CAR_2011e("examples_fmsfrompreprocessor/pleuss_jss11/car_2011_4paper.xml"),
 	;
 	
 	//private static Logger logger = Logger.getLogger(Models.class.getName());
