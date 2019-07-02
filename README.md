@@ -12,8 +12,17 @@ To obtain model properties, run JUnit test case `eafmupdate\experiments\eafmupda
 
 **fmupdate.models** models and case studies for the fm update
 
-# cite as:
+# papers
+
+## Journal version
 Paolo Arcaini, Angelo Gargantini, and Marco Radavelli
 Achieving change requirements of feature models by an evolutionary approach
 in Journal of Systems and SoftwareElsevier BV, vol. 150 (2019): 64--76
 [download the pdf file](http://cs.unibg.it/gargantini/research/papers/vamos2018_SI.pdf)
+
+## preliminary version published at VAMOS 18
+Paolo Arcaini, Angelo Gargantini, and Marco Radavelli
+An evolutionary process for product-driven updates of feature models
+in Proceedings of the 12th International Workshop on Variability Modelling of Software-Intensive Systems - VAMOS 2018ACM Press (2018)
+[download the pdf file](http://cs.unibg.it/gargantini/research/papers/2018_vamos.pdf) 
+
