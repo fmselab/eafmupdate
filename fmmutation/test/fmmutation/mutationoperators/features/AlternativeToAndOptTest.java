@@ -1,6 +1,7 @@
 package fmmutation.mutationoperators.features;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -24,6 +25,7 @@ public class AlternativeToAndOptTest {
 		
 		
 		IFeatureModel fmodel = ExampleTaker.readExample("examples_fmsfrompreprocessor/TKESSPLC11/Figure4_pv3.xml");
+		assertNotNull(fmodel);
 		List<FMMutation> res = CollectionsUtil.listFromIterator(AlToAndOpt.instance.mutate(fmodel));
 
 		assertEquals(1,res.size());

@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-	<featureModel chosenLayoutAlgorithm="1">
-		<struct>
-			<alt abstract="true" mandatory="true" name="TKSESPLC11">
-				<and mandatory="true" name="GraphLibrary">
-					<feature name="Number"/>
-				</and>
-				<feature mandatory="true" name="Cycle"/>
-				<feature mandatory="true" name="Directed"/>
-				<feature mandatory="true" name="Undirected"/>
-			</alt>
-		</struct>
-		<constraints/>
-		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
-		<comments/>
-		<featureOrder userDefined="false"/>
-	</featureModel>
+<featureModel>
+	<properties>
+		<calculations key="tautology" value="true"/>
+		<calculations key="auto" value="true"/>
+		<graphics key="autolayoutconstraints" value="false"/>
+		<graphics key="legendautolayout" value="true"/>
+		<calculations key="redundant" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<calculations key="constraints" value="true"/>
+		<graphics key="layoutalgorithm" value="1"/>
+		<calculations key="features" value="true"/>
+	</properties>
+	<struct>
+		<alt abstract="true" mandatory="true" name="TKSESPLC11">
+			<and name="GraphLibrary">
+				<graphics key="collapsed" value="false"/>
+				<feature name="Number"/>
+			</and>
+			<feature name="Cycle"/>
+			<feature name="Directed"/>
+			<feature name="Undirected"/>
+		</alt>
+	</struct>
+</featureModel>

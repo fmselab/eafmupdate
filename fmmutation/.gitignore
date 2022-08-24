@@ -1,3 +1,4 @@
 /bin/
 !/libs/*.jar
 !/libs/de.ovgu.featureide.lib.fm-v3.4.3.jar
+/target/
