@@ -1,190 +1,203 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-	<featureModel>
-		<properties/>
-		<struct>
-			<and mandatory="true" name="Mounting">
-				<alt mandatory="true" name="Module_1">
-					<feature name="A1"/>
-					<feature name="B1"/>
-					<feature name="C1"/>
-					<feature name="D1"/>
-				</alt>
-				<alt mandatory="true" name="Module_2">
-					<feature name="A2"/>
-					<feature name="B2"/>
-					<feature name="C2"/>
-				</alt>
-				<alt mandatory="true" name="Module_3">
-					<feature name="A3"/>
-					<feature name="B3"/>
-					<feature name="C3"/>
-					<feature name="D3"/>
-				</alt>
-			</and>
-		</struct>
-		<constraints>
-			<rule>
-				<disj>
-					<not>
-						<var>A1</var>
-					</not>
-					<not>
-						<var>A2</var>
-					</not>
-				</disj>
-			</rule>
-			<rule>
-				<disj>
-					<not>
-						<var>C1</var>
-					</not>
-					<not>
-						<var>B2</var>
-					</not>
-				</disj>
-			</rule>
-			<rule>
-				<disj>
-					<not>
-						<var>B2</var>
-					</not>
-					<not>
-						<var>C3</var>
-					</not>
-				</disj>
-			</rule>
-			<rule>
-				<disj>
-					<not>
-						<var>D1</var>
-					</not>
-					<not>
-						<var>C2</var>
-					</not>
-				</disj>
-			</rule>
-			<rule>
-				<disj>
-					<not>
-						<var>C1</var>
-					</not>
-					<not>
-						<var>C3</var>
-					</not>
-				</disj>
-			</rule>
-			<rule>
-				<disj>
-					<not>
-						<var>C2</var>
-					</not>
-					<not>
-						<var>C3</var>
-					</not>
-				</disj>
-			</rule>
-			<rule>
-				<disj>
-					<not>
-						<var>C2</var>
-					</not>
-					<not>
-						<var>D3</var>
-					</not>
-				</disj>
-			</rule>
-			<rule>
-				<disj>
-					<not>
-						<var>B2</var>
-					</not>
-					<not>
-						<var>B3</var>
-					</not>
-				</disj>
-			</rule>
-			<rule>
-				<disj>
-					<not>
-						<var>D1</var>
-					</not>
-					<not>
-						<var>D3</var>
-					</not>
-				</disj>
-			</rule>
-			<rule>
-				<disj>
-					<not>
-						<var>C1</var>
-					</not>
-					<not>
-						<var>C2</var>
-					</not>
-				</disj>
-			</rule>
-			<rule>
-				<disj>
-					<not>
-						<var>B1</var>
-					</not>
-					<not>
-						<var>B2</var>
-					</not>
-				</disj>
-			</rule>
-			<rule>
-				<disj>
-					<not>
-						<var>B1</var>
-					</not>
-					<not>
-						<var>B3</var>
-					</not>
-				</disj>
-			</rule>
-			<rule>
-				<disj>
-					<not>
-						<var>A1</var>
-					</not>
-					<not>
-						<var>A3</var>
-					</not>
-				</disj>
-			</rule>
-			<rule>
-				<disj>
-					<not>
-						<var>B1</var>
-					</not>
-					<not>
-						<var>A2</var>
-					</not>
-				</disj>
-			</rule>
-			<rule>
-				<disj>
-					<not>
-						<var>A2</var>
-					</not>
-					<not>
-						<var>A3</var>
-					</not>
-				</disj>
-			</rule>
-			<rule>
-				<disj>
-					<not>
-						<var>A2</var>
-					</not>
-					<not>
-						<var>B3</var>
-					</not>
-				</disj>
-			</rule>
-		</constraints>
-		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
-		<comments/>
-		<featureOrder userDefined="false"/>
-	</featureModel>
+<featureModel>
+	<properties>
+		<calculations key="tautology" value="true"/>
+		<calculations key="auto" value="true"/>
+		<graphics key="autolayoutconstraints" value="false"/>
+		<graphics key="legendautolayout" value="true"/>
+		<calculations key="redundant" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<calculations key="constraints" value="true"/>
+		<graphics key="layoutalgorithm" value="1"/>
+		<calculations key="features" value="true"/>
+	</properties>
+	<struct>
+		<and mandatory="true" name="Mounting">
+			<alt mandatory="true" name="Module_1">
+				<graphics key="collapsed" value="false"/>
+				<feature name="A1"/>
+				<feature name="B1"/>
+				<feature name="C1"/>
+				<feature name="D1"/>
+			</alt>
+			<alt mandatory="true" name="Module_2">
+				<graphics key="collapsed" value="false"/>
+				<feature name="A2"/>
+				<feature name="B2"/>
+				<feature name="C2"/>
+			</alt>
+			<alt mandatory="true" name="Module_3">
+				<graphics key="collapsed" value="false"/>
+				<feature name="A3"/>
+				<feature name="B3"/>
+				<feature name="C3"/>
+				<feature name="D3"/>
+			</alt>
+		</and>
+	</struct>
+	<constraints>
+		<rule>
+			<disj>
+				<not>
+					<var>A1</var>
+				</not>
+				<not>
+					<var>A2</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<not>
+					<var>C1</var>
+				</not>
+				<not>
+					<var>B2</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<not>
+					<var>B2</var>
+				</not>
+				<not>
+					<var>C3</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<not>
+					<var>D1</var>
+				</not>
+				<not>
+					<var>C2</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<not>
+					<var>C1</var>
+				</not>
+				<not>
+					<var>C3</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<not>
+					<var>C2</var>
+				</not>
+				<not>
+					<var>C3</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<not>
+					<var>C2</var>
+				</not>
+				<not>
+					<var>D3</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<not>
+					<var>B2</var>
+				</not>
+				<not>
+					<var>B3</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<not>
+					<var>D1</var>
+				</not>
+				<not>
+					<var>D3</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<not>
+					<var>C1</var>
+				</not>
+				<not>
+					<var>C2</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<not>
+					<var>B1</var>
+				</not>
+				<not>
+					<var>B2</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<not>
+					<var>B1</var>
+				</not>
+				<not>
+					<var>B3</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<not>
+					<var>A1</var>
+				</not>
+				<not>
+					<var>A3</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<not>
+					<var>B1</var>
+				</not>
+				<not>
+					<var>A2</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<not>
+					<var>A2</var>
+				</not>
+				<not>
+					<var>A3</var>
+				</not>
+			</disj>
+		</rule>
+		<rule>
+			<disj>
+				<not>
+					<var>A2</var>
+				</not>
+				<not>
+					<var>B3</var>
+				</not>
+			</disj>
+		</rule>
+	</constraints>
+</featureModel>
