@@ -10,7 +10,10 @@ public class TestClone {
 	@Test
 	public void testClone() {
 		IFeatureModel m1 = ModelsPair.AIRCRAFT1.getFM1();
-		IFeatureModel m2 = FMFactoryManager.getEmptyFeatureModel();
+		//
+		IFeatureModel m2 = null;
+				// no longer present this method:
+				// FMFactoryManager.getEmptyFeatureModel();
 		m2 = m1.clone();
 		//m1.getStructure().clone(m2);
 		IFeature f = //FMFactoryManager.getDefaultFactory().createFeature(m2, "Root");
