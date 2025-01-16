@@ -6,6 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="/fmmutation/libs/de.ovgu.featureide.lib.fm-v3.8.1.jar"/>
+	<classpathentry kind="lib" path="/eafmupdate.fmmutation/libs/de.ovgu.featureide.lib.fm-v3.8.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -165,7 +165,8 @@ public class Util {
 	}
 	
 	public static String convertToGUIDSL(IFeatureModel fm) {
-		return new de.ovgu.featureide.fm.core.io.guidsl.GuidslWriter().writeToString(fm);
+		throw new RuntimeException("no longer supported");
+		//return new de.ovgu.featureide.fm.core.io.guidsl.GuidslWriter().writeToString(fm);
 	}
 	
 	public static String convertToCNF(IFeatureModel fm) {
